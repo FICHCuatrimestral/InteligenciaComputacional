@@ -34,3 +34,10 @@ La carpeta `Bibliografía-20260811/` tiene el material de cátedra (Haykin, Bish
 ## Proyecto
 
 Todavía por definir — la idea es un proyecto que crezca junto con la cursada, sumando una técnica nueva a medida que se va dando en clase, en vez de encararlo todo de una. Se va a documentar acá a medida que tome forma.
+
+## Apuntes
+
+- **[Perceptrón simple](Perceptrón/apunte/)** — material de estudio de la Unidad 1, construido
+  sobre las clases 001–005 y cruzado con Haykin, Freeman & Skapura y Kosko. Incluye
+  [versión PDF de 46 páginas](Perceptrón/apunte/Perceptron-simple-apunte.pdf), 15 figuras
+  vectoriales, diagramas editables en Excalidraw y las fuentes para regenerarlo.
