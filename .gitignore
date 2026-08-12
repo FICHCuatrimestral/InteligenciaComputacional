@@ -1,0 +1,9 @@
+# Bibliografía de cátedra: libros con derechos de autor, no se versionan.
+# Queda solo en el disco local.
+Bibliografía-20260811/
+
+# Basura habitual de SO / editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
