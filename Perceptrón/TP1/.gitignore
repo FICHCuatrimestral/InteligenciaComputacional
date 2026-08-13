@@ -1,0 +1,16 @@
+# Archivos generados por Python al ejecutar el código (no se deben versionar)
+__pycache__/
+*.pyc
+*.pyo
+
+# Entornos virtuales, por si creás uno para instalar numpy, etc.
+.venv/
+venv/
+env/
+
+# Archivos de configuración del editor/IDE
+.vscode/
+.idea/
+
+# Checkpoints de Jupyter, si en algún momento usás notebooks
+.ipynb_checkpoints/
