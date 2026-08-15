@@ -1,0 +1,295 @@
+en esta parte lo que vamos a ver es una forma de encontrar los pesos sinápticos que en principio es equivalente a lo que
+0:12
+12 segundos
+vimos antes pero tiene un mayor sustento matemático Así que lo que vamos a hacer es aprovechar los métodos gradientes que
+0:21
+21 segundos
+algunos de ustedes pueden conocer desde los métodos numéricos para encontrar una ecuación prácticamente igual a la que
+0:27
+27 segundos
+encontramos antes en el método de gradiente la idea básica es que nosotros movamos los pesos
+0:35
+35 segundos
+iteración a iteración en el sentido en donde se va reduciendo el error es decir si en gradiente apunta en la
+0:45
+45 segundos
+dirección en donde la curva de error o la superficie de error crece nosotros vamos a tratar de movernos
+0:53
+53 segundos
+iterativamente en el sentido opuesto al gradiente Entonces nosotros en el caso más simplificado nos podemos imaginar que
+1:01
+1 minuto y 1 segundo
+hay una curva que tiene esta forma esta especie de paraboloide y que para cualquier valor de los pesos que
+1:10
+1 minuto y 10 segundos
+nosotros definamos imagínense que yo acá estoy graficando distintos valores de w1
+1:17
+1 minuto y 17 segundos
+y w2 que me van a dar una un distinto error un diferente error
+1:24
+1 minuto y 24 segundos
+acá vamos a poner el error Entonces si elijo un determinado
+1:32
+1 minuto y 32 segundos
+una determinada combinación de pesos sinápticos voy a estar parado en alguna zona de esta curva por ejemplo por acá
+1:40
+1 minuto y 40 segundos
+si elijo otros pesos sinápticos voy a estar parado en otra zona de la curva y en cada zona de la curva que yo me pare
+1:49
+1 minuto y 49 segundos
+voy a tener un vectorcito que es el vector del gradiente que apunta hacia donde crece esa superficie de error Pero
+1:56
+1 minuto y 56 segundos
+yo lo que quiero encontrar es este punto el punto donde está el mínimo donde cometo el menor error posible con mi
+2:05
+2 minutos y 5 segundos
+perceptrón simple o en el caso general para la remendar entonces lo que voy a hacer es tratar de moverme siempre modificar los pesos
+2:13
+2 minutos y 13 segundos
+en el sentido opuesto al gradiente O sea que estos pesos yo tengo que pensar que
+2:19
+2 minutos y 19 segundos
+los estoy queriendo mover a w1 y w2 para irme a la zona en donde cometo el menor
+2:27
+2 minutos y 27 segundos
+error posible entonces básicamente lo que obtengo es esta ecuación vean que acá yo vuelvo a
+2:35
+2 minutos y 35 segundos
+tener los pesos en la iteración siguiente del entrenamiento los pesos en la iteración actual y acá lo que tengo
+2:43
+2 minutos y 43 segundos
+es el opuesto o sea por eso el signo negativo al gradiente de error
+2:52
+2 minutos y 52 segundos
+en relación a los pesos con respecto a los pesos multiplicado por nuevamente una constante que es la velocidad de
+2:59
+2 minutos y 59 segundos
+aprendizaje esa constante si yo la hago más grande se va a mover más rápido en la superficie si la hago más pequeña se
+3:06
+3 minutos y 6 segundos
+va a mover más lentamente en el caso de tener superficies suaves yo puedo ir más
+3:14
+3 minutos y 14 segundos
+rápido y como saben si la superficie es muy escarpada o tiene muchos altibajos voy a tener que moverme con más cuidado
+3:21
+3 minutos y 21 segundos
+y con algunos otros criterios entonces este método ingrediente yo lo puedo aplicar para el caso sencillo del
+3:29
+3 minutos y 29 segundos
+perceptrón simple y como vamos a ver en las partes que siguen también lo puedo aplicar para una red neuronal completa o
+3:37
+3 minutos y 37 segundos
+sea con una red que tenga muchas interconexiones de neuronas vamos a ver primero Entonces cómo aplicarlo en el caso del perceptrón
+3:45
+3 minutos y 45 segundos
+simple supongamos que vamos a medir el error de esta manera acá estamos usando como de
+3:53
+3 minutos y 53 segundos
+la salida deseada el que antes también llamamos y subd Y esta es la salida
+4:00
+4 minutos
+actual O sea la salida que me está dando la red neuronal el error cuadrático me dice que si la diferencia entre estas
+4:09
+4 minutos y 9 segundos
+dos es cero el error va a ser cero y si la diferencia es más uno o menos uno o más dos o menos dos como habíamos visto
+4:18
+4 minutos y 18 segundos
+hoy en Cualquiera de esos dos casos me va a dar un error elevado al cuadrado no entonces en base
+4:27
+4 minutos y 27 segundos
+a esa diferencia fíjense que acá reemplazamos la salida de la red Por el simple producto interno una observación
+4:35
+4 minutos y 35 segundos
+importante es que estamos considerando un caso lineal Qué significa esto la función de activación la eliminamos estamos
+4:44
+4 minutos y 44 segundos
+haciendo una simplificación para que ustedes vean Este primer caso en donde la salida de activación es la función de
+4:52
+4 minutos y 52 segundos
+activación el lugar ser en lugar de ser la función signos se acuerdan que así así o una sigmoide Es simplemente una
+5:01
+5 minutos y 1 segundo
+recta una función lineal Entonces si nosotros hacemos la derivada
+5:09
+5 minutos y 9 segundos
+fíjense que nosotros Recuerden que tenemos que hacer el gradiente del error con respecto a los pesos podemos hacer acá tenemos la derivada de
+5:18
+5 minutos y 18 segundos
+una función que es la función cuadrática O sea que dejamos lo de adentro como está bajamos el 2 y hacemos la derivada
+5:27
+5 minutos y 27 segundos
+Y tenemos la derivada de lo que me queda dentro fíjense que en esta derivada Yo estoy
+5:33
+5 minutos y 33 segundos
+derivando con respecto a los pesos no con respecto a x como ustedes hacían en matemáticas sino que acá x sería una
+5:42
+5 minutos y 42 segundos
+constante para mí así que tengo esta constante que está sumando a el término
+5:49
+5 minutos y 49 segundos
+contra el que estoy está la variable contra la que estoy derivando y esta otra constante que está multiplicando O sea que lo que me queda es simplemente
+5:58
+5 minutos y 58 segundos
+la que está multiplicando esta la derivada es cero Así que con esto yo estoy obteniendo
+6:07
+6 minutos y 7 segundos
+en gradiente del error como igual a 2 esto que está acá adelante que es
+6:14
+6 minutos y 14 segundos
+simplemente el error la salida deseada menos la salida que estoy teniendo de la red por menos x que
+6:23
+6 minutos y 23 segundos
+es la entrada de esta manera si yo reemplazo en la ecuación de gradiente que tenía antes
+6:30
+6 minutos y 30 segundos
+fíjense que acá tengo el vector de pesos en la próxima iteración Acá tengo el vector de pesos actual
+6:38
+6 minutos y 38 segundos
+Acá tengo menos el gradiente de error Así que reemplazando yo lo que voy a obtener es esta ecuación que ustedes les
+6:47
+6 minutos y 47 segundos
+tiene que sonar muy similar a la que teníamos antes fíjense que simplemente lo que ha cambiado con la que habíamos obtenido en la parte anterior en la
+6:55
+6 minutos y 55 segundos
+parte intuitiva es que tenemos dos por mu Y antes teníamos una eta Así que si decimos que esta es igual a 2 por mu
+7:04
+7 minutos y 4 segundos
+tenemos Exactamente lo mismo hemos obtenido Exactamente lo mismo quiero destacar que hay una simplificación acá
+7:11
+7 minutos y 11 segundos
+y les vuelvo a recordar que estamos analizando un caso lineal donde hemos obviado la existencia de la función de
+7:19
+7 minutos y 19 segundos
+activación en las próximas partes vamos a hacerlo con la función de activación completa para que ustedes tengan la ecuación completa vamos a ver un pequeño
+7:28
+7 minutos y 28 segundos
+ejemplo de cómo funciona esta actualización de los pesos vamos a suponer que en una iteración Cualquiera
+7:35
+7 minutos y 35 segundos
+podría ser la primera o cualquiera del proceso de aprendizaje tenemos estos pesos sinópticos fíjense valen todos uno
+7:44
+7 minutos y 44 segundos
+y recibimos una entrada observen que la entrada que recibimos es solamente x1 x2
+7:51
+7 minutos y 51 segundos
+Recuerden que x0 es la entrada de sesgo o de vallas y vale siempre menos uno
+7:58
+7 minutos y 58 segundos
+y también lo que tenemos como referencia es cuál es la salida que debería dar en el caso correcto entonces veamos cómo
+8:06
+8 minutos y 6 segundos
+funciona nuestro persetón simple si nosotros multiplicamos cada peso por la entrada que le corresponde
+8:15
+8 minutos y 15 segundos
+tenemos más uno por menos uno Este menos uno de acá más uno por más uno más uno
+8:23
+8 minutos y 23 segundos
+más uno por más uno más uno y el signo de todo esto va a dar uno positivo que
+8:31
+8 minutos y 31 segundos
+evidentemente no coincide con lo correcto o lo que a nosotros nos dice el dato de entrenamiento que debería ser lo
+8:39
+8 minutos y 39 segundos
+correcto entonces evidentemente acá tenemos un error ya que corregir los pesos sinápticos
+8:46
+8 minutos y 46 segundos
+para corregirlos vamos a utilizar la formulita de adaptación de pesos que acabamos de encontrar
+8:54
+8 minutos y 54 segundos
+en donde tenemos a los pesos actuales le vamos a sumar esta componente que es la
+9:03
+9 minutos y 3 segundos
+que acabamos de encontrar fíjense acá tenemos los pesos actuales que son los que habíamos dicho que eran los que estaban inicialmente
+9:11
+9 minutos y 11 segundos
+acá tenemos los valores de la entrada acá tenemos el error
+9:19
+9 minutos y 19 segundos
+observen que nosotros tenemos el -1 que es la deseada menos
+9:26
+9 minutos y 26 segundos
+uno que es el valor que me está dando actualmente y acá tenemos esta constante
+9:32
+9 minutos y 32 segundos
+de aprendizaje Entonces vamos a suponer para este ejemplo que la constante de
+9:39
+9 minutos y 39 segundos
+aprendizaje de 0,5 un medio directamente entonces que nos va a quedar acá Este un medio va a ir al menú nos va a quedar
+9:48
+9 minutos y 48 segundos
+simplemente esta actualización nos quedó un dos ahí adelante y el
+9:55
+9 minutos y 55 segundos
+vector nuevo de pesos el vector de la próxima iteración va a ser el vector actual de pesos recordarán
+10:02
+10 minutos y 2 segundos
+y esto que es el ajuste el cambio que hicimos Así que nos va a quedar simplemente acá sumamos como se suman
+10:11
+10 minutos y 11 segundos
+los vectores nos va a quedar 3 - 1 - 1 veamos Ahora qué pasa si vuelve a entrar
+10:21
+10 minutos y 21 segundos
+a nuestra neurona la misma entrada que entró antes se habrán corregido los pesos de manera adecuada para que ahora
+10:28
+10 minutos y 28 segundos
+la salida sea correcta bueno Tendremos que hacer los mismos cálculos que antes fíjense que ahora si vuelve a entrar la
+10:36
+10 minutos y 36 segundos
+misma entrada estos son los pesos que tenemos los nuevos Y esta es la entrada Así que es 3 por -1 es este menos tres
+10:45
+10 minutos y 45 segundos
+de acá menos uno por uno está así es parte de la entrada verdadera Recuerden
+10:51
+10 minutos y 51 segundos
+que este era el X Sub Zero y menos uno por uno esta otra parte que es lo que
+10:59
+10 minutos y 59 segundos
+tenemos acá el signo de esto es menos uno por lo tanto se acuerdan que la salida deseada
+11:06
+11 minutos y 6 segundos
+era -1 efectivamente hemos logrado que el error sea cero con este ejemplo sencillo vemos como
+11:14
+11 minutos y 14 segundos
+en una sola iteración de la actualización pudimos corregir automáticamente a partir de un ejemplo
+11:21
+11 minutos y 21 segundos
+los valores de los pesos sinápticos y por lo tanto podemos decir que la neurona aprendió aprendió ese ejemplo en
+11:30
+11 minutos y 30 segundos
+el caso general nosotros vamos a pretender que la neurona aprenda muchos ejemplos en nuestro archivo de entrenamiento recuerden va a tener a lo
+11:37
+11 minutos y 37 segundos
+mejor 50 100 casos para aprender Entonces vamos a tener que ir moviendo con una velocidad de aprendizaje
+11:45
+11 minutos y 45 segundos
+Recuerden el mooc pequeña para que aprenda un poquito de cada uno e incluso le vamos a poder Mostrar ese archivo de
+11:54
+11 minutos y 54 segundos
+entrenamiento muchas veces hasta que la neurona realmente no se equivoque en ninguno de los casos o la menor cantidad
+12:01
+12 minutos y 1 segundo
+posible de casos de entrenamiento vamos a ver ahora este problema
+12:09
+12 minutos y 9 segundos
+que les parece este perceptrón simple podrá resolver este problema
+12:16
+12 minutos y 16 segundos
+si nosotros ubicamos aunque sea manualmente la recta acá estaríamos clasificando mal
+12:23
+12 minutos y 23 segundos
+este caso si ubicáramos la recta acá se acuerdan que la podíamos mover con el origen
+12:30
+12 minutos y 30 segundos
+seguiríamos clasificando mal este si ubicáramos la recta acá también estaríamos clasificando al parecer
+12:37
+12 minutos y 37 segundos
+siempre ubiquemos donde ubiquemos la recta estaríamos clasificando mal uno o hasta
+12:45
+12 minutos y 45 segundos
+dos de los casos Entonces qué está pasando acá realmente la neurona puede resolver un problema
+12:53
+12 minutos y 53 segundos
+tan simple como este o no lo puede resolver Este es el típico problema de oro exclusivo y vamos a ver qué pasa en
+13:03
+13 minutos y 3 segundos
+la próxima parte
