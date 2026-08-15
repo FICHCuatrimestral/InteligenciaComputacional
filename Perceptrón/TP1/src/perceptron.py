@@ -25,6 +25,7 @@ class Perceptron:
 
     def entrenar(self, entradas_entrenamiento, salidas_deseadas, maximo_epocas, criterio_de_corte="cero_errores"):
         errores_por_epoca = []
+        historial_pesos = [(self.pesos.copy(), self.umbral)]
         for epoca in range(maximo_epocas):
             errores_en_esta_epoca = 0
             for entradas, salida_deseada in zip(entradas_entrenamiento, salidas_deseadas):
@@ -33,9 +34,10 @@ class Perceptron:
                     errores_en_esta_epoca += 1
                 self.entrenar_un_patron(entradas, salida_deseada)
             errores_por_epoca.append(errores_en_esta_epoca)
+            historial_pesos.append((self.pesos.copy(), self.umbral))
             if criterio_de_corte == "cero_errores" and errores_en_esta_epoca == 0:
                 break
-        return errores_por_epoca
+        return errores_por_epoca, historial_pesos
 
     def probar(self, entradas_prueba, salidas_deseadas_prueba):
         cantidad_patrones = len(salidas_deseadas_prueba)
