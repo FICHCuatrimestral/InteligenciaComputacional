@@ -148,17 +148,32 @@ def graficar_errores_por_epoca(series, titulo, archivo_salida=None, dpi=150):
 
     colores = (COLOR_CLASE_POSITIVA, "#1baf7a", COLOR_CLASE_NEGATIVA)
 
-    for serie, color in zip(series, colores):
+    for numero_de_serie, (serie, color) in enumerate(zip(series, colores)):
         porcentaje = 100 * np.array(serie["errores"]) / serie["cantidad_patrones"]
         epocas = np.arange(1, len(porcentaje) + 1)
+
         ejes.plot(epocas, porcentaje, color=color, linewidth=2.0,
                   label=serie["etiqueta"], zorder=3)
-        ejes.scatter([epocas[-1]], [porcentaje[-1]], s=40, color=color,
-                     edgecolors=SUPERFICIE, linewidths=1.5, zorder=4)
+        ejes.scatter(epocas, porcentaje, s=22, color=color,
+                     edgecolors=SUPERFICIE, linewidths=1.2, zorder=4)
+
+        convergio = porcentaje[-1] == 0
+        detalle = f"0 errores en la época {len(porcentaje)}" if convergio else \
+                  f"se estanca en {porcentaje[-1]:.1f} %"
+        ejes.annotate(
+            f"{serie['etiqueta']}: {detalle}",
+            xy=(epocas[-1], porcentaje[-1]),
+            xytext=(22, 20 + 26 * numero_de_serie),
+            textcoords="offset points",
+            color=TINTA_SECUNDARIA, fontsize=9,
+            ha="right" if not convergio else "left",
+            arrowprops=dict(arrowstyle="-", color=TINTA_TENUE, linewidth=0.9,
+                            shrinkA=0, shrinkB=3),
+        )
 
     ejes.grid(True, color=GRILLA, linewidth=0.8, zorder=0)
     ejes.set_axisbelow(True)
-    ejes.set_ylim(bottom=0)
+    ejes.set_ylim(bottom=-0.4)
     for lado in ("top", "right"):
         ejes.spines[lado].set_visible(False)
     for lado in ("left", "bottom"):
@@ -167,7 +182,8 @@ def graficar_errores_por_epoca(series, titulo, archivo_salida=None, dpi=150):
     ejes.set_xlabel("época", color=TINTA_SECUNDARIA, fontsize=11)
     ejes.set_ylabel("% de patrones mal clasificados", color=TINTA_SECUNDARIA, fontsize=11)
     ejes.set_title(titulo, color=TINTA_PRIMARIA, fontsize=13, pad=12, loc="left")
-    ejes.legend(frameon=False, fontsize=10, labelcolor=TINTA_SECUNDARIA)
+    ejes.legend(frameon=False, fontsize=10, labelcolor=TINTA_SECUNDARIA,
+                loc="lower right")
 
     figura.tight_layout()
     if archivo_salida is not None:
