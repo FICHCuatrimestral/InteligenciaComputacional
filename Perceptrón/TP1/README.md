@@ -1,10 +1,5 @@
 # TP1 — Perceptrón simple
 
-Resolución de la Guía de trabajos prácticos 1 de Inteligencia Computacional (FICH–UNL).
-
-El desarrollo completo —consignas, código ejecutable, resultados y análisis— está en
-**[`TP1.ipynb`](TP1.ipynb)**. El notebook está guardado sin resultados, así que hay que
-ejecutarlo para ver las salidas y los gráficos.
 
 ## Contenido
 
@@ -19,16 +14,42 @@ ejecutarlo para ver las salidas y los gráficos.
 
 ## Cómo ejecutarlo
 
-Hace falta Python 3.10 o superior.
+Hace falta Python 3.10 o superior y **Visual Studio Code**. No hace falta abrir Jupyter en el
+navegador: se trabaja íntegramente dentro de VS Code.
 
-**1. Clonar el repositorio y ubicarse en esta carpeta**
+### 1. Instalar las extensiones de VS Code
+
+En VS Code, abrir el panel de extensiones (`Ctrl+Shift+X`) e instalar estas dos, ambas
+publicadas por **Microsoft**:
+
+| extensión | identificador | para qué |
+|---|---|---|
+| **Python** | `ms-python.python` | reconocer el intérprete y los entornos virtuales |
+| **Jupyter** | `ms-toolsai.jupyter` | abrir y ejecutar archivos `.ipynb` |
+
+
+![alt text](image.png)
+
+Buscar por el identificador (por ejemplo `ms-toolsai.jupyter`) evita instalar alguna de las
+muchas extensiones parecidas de terceros. Alternativamente, desde una terminal:
 
 ```bash
-git clone https://github.com/FICHCuatrimestral/InteligenciaComputacional.git
-cd "InteligenciaComputacional/Perceptrón/TP1"
+code --install-extension ms-python.python
+code --install-extension ms-toolsai.jupyter
 ```
 
-**2. Crear un entorno virtual e instalar las dependencias**
+### 2. Ubicarse en esta carpeta
+
+Abrir en VS Code la carpeta `Perceptrón/TP1` del repositorio clonado
+(*Archivo → Abrir carpeta…*).
+
+> **Importante:** hay que abrir **esta** carpeta, no la raíz del repositorio. El notebook
+> importa el paquete `src/` y busca los datos en `Dataset/` mediante rutas relativas, así que
+> si se abre desde otro lado fallan el `import` y la lectura de los CSV.
+
+### 3. Crear el entorno virtual e instalar las dependencias
+
+En la terminal integrada de VS Code (`Ctrl+Ñ`), estando en `Perceptrón/TP1`:
 
 En Windows (PowerShell):
 
@@ -46,24 +67,21 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-**3. Abrir el notebook**
+> Si PowerShell bloquea la activación con un error de *execution policy*, ejecutar una vez:
+> `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
 
-Con **VS Code**: abrir `TP1.ipynb` y, cuando pida el kernel, elegir el intérprete de
-`.venv`. Requiere tener instalada la extensión *Jupyter* de Microsoft.
+### 4. Abrir el notebook y elegir el kernel
 
-Con **Jupyter** en el navegador:
+Abrir `TP1.ipynb`. Arriba a la derecha aparece el botón **Select Kernel**: elegir
+*Python Environments…* y seleccionar el intérprete que dice `.venv` (queda marcado como
+**Recommended**).
 
-```bash
-pip install notebook
-jupyter notebook TP1.ipynb
-```
+Si `.venv` no aparece en la lista, cerrar y volver a abrir VS Code para que detecte el
+entorno recién creado.
 
-**4. Ejecutar todas las celdas** (en VS Code, botón *Run All*).
+### 5. Ejecutar
 
-> **Importante:** el notebook debe ejecutarse desde esta carpeta (`Perceptrón/TP1`), porque
-> importa el paquete `src/` y busca los datos en `Dataset/` mediante rutas relativas. Tanto
-> VS Code como Jupyter usan por defecto la carpeta del notebook como directorio de trabajo,
-> así que abriéndolo normalmente funciona sin necesidad de configurar nada.
+Botón **Run All** en la barra superior del notebook, o `Ctrl+Enter` celda por celda.
 
 ## Reproducibilidad
 
