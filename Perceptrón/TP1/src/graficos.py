@@ -49,7 +49,7 @@ def _checkpoints_sin_duplicados(historial_pesos, cantidad_checkpoints):
 
 
 def graficar_y_animar_entrenamientos(
-    casos, ruta_gif, cantidad_checkpoints=6, fps=5, cantidad_frames_max=30, dpi=70
+    casos, ruta_gif, cantidad_checkpoints=6, fps=5, cantidad_frames_max=30, dpi=100
 ):
     """Grilla 2×2: por cada caso (columna) un panel estático de checkpoints arriba y uno
     animado, época a época, abajo. Los cuatro paneles quedan en una sola figura, guardada
@@ -61,7 +61,7 @@ def graficar_y_animar_entrenamientos(
     (relevante para GitHub, que no renderiza notebooks con outputs muy pesados).
     """
     columnas = len(casos)
-    fig, ejes = plt.subplots(2, columnas, figsize=(3.6 * columnas, 3.6 * 2), squeeze=False)
+    fig, ejes = plt.subplots(2, columnas, figsize=(5.0 * columnas, 5.0 * 2), squeeze=False)
 
     lineas = []
     for columna, (entradas, salidas, historial_pesos, titulo) in enumerate(casos):
