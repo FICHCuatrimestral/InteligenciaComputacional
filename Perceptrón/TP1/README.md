@@ -5,11 +5,11 @@
 
 | ruta | qué es |
 |---|---|
-| `TP1.ipynb` | notebook principal: los tres ejercicios con su análisis |
-| `src/perceptron.py` | clase `Perceptron`: pesos, umbral, activación, entrenamiento y prueba |
+| `TP.ipynb` | notebook principal: los tres ejercicios con su análisis (incluye la clase `Perceptron`) |
 | `src/data_loader.py` | lectura de los archivos de patrones separados por comas |
-| `src/graficos.py` | rutinas de graficación |
+| `src/graficos.py` | rutinas de graficación: grilla de checkpoints y animación de la recta de separación |
 | `Dataset/` | archivos de patrones provistos por la cátedra |
+| `Graficos/` | GIFs generados por el notebook (se regeneran al ejecutarlo) |
 | `IC_GTP1.pdf` | enunciado original |
 
 ## Cómo ejecutarlo
@@ -72,7 +72,7 @@ pip install -r requirements.txt
 
 ### 4. Abrir el notebook y elegir el kernel
 
-Abrir `TP1.ipynb`. Arriba a la derecha aparece el botón **Select Kernel**: elegir
+Abrir `TP.ipynb`. Arriba a la derecha aparece el botón **Select Kernel**: elegir
 *Python Environments…* y seleccionar el intérprete que dice `.venv` (queda marcado como
 **Recommended**).
 
@@ -82,6 +82,10 @@ entorno recién creado.
 ### 5. Ejecutar
 
 Botón **Run All** en la barra superior del notebook, o `Ctrl+Enter` celda por celda.
+
+> Las celdas que generan animaciones (Ejercicios 2 y 3) tardan un par de minutos: arman un GIF
+> con varios paneles y hasta 100 frames cuando el entrenamiento no converge (XOR, OR al 90 %).
+> Es esperable, no significa que se haya colgado.
 
 ## Reproducibilidad
 
