@@ -1,191 +1,114 @@
-import matplotlib.pyplot as plt
 import numpy as np
-
-SUPERFICIE = "#fcfcfb"
-TINTA_PRIMARIA = "#0b0b0b"
-TINTA_SECUNDARIA = "#52514e"
-TINTA_TENUE = "#898781"
-GRILLA = "#e1e0d9"
-EJE = "#c3c2b7"
-COLOR_CLASE_POSITIVA = "#2a78d6"
-COLOR_CLASE_NEGATIVA = "#eb6834"
+from IPython.display import Image, display
+from matplotlib import pyplot as plt
+from matplotlib.animation import FuncAnimation, PillowWriter
 
 
-def _recta_de_separacion(pesos, umbral, x1):
+def _graficar_patrones(ax, entradas, salidas):
+    positivos = entradas[salidas == 1]
+    negativos = entradas[salidas == -1]
+    ax.scatter(positivos[:, 0], positivos[:, 1], c="tab:blue", s=15, label="Clase +1")
+    ax.scatter(negativos[:, 0], negativos[:, 1], c="tab:red", s=15, label="Clase -1")
+
+
+def _puntos_recta(pesos, umbral, x1_rango):
     w1, w2 = pesos
-    if w2 == 0:
+    if abs(w2) < 1e-9:
         return None
-    return (umbral - w1 * x1) / w2
+    x1 = np.array(x1_rango)
+    x2 = (umbral - w1 * x1) / w2
+    return x1, x2
 
 
-def _dibujar_patrones(ejes, entradas, salidas_deseadas, tamanio_punto):
-    for clase, color, etiqueta in (
-        (1, COLOR_CLASE_POSITIVA, "clase +1"),
-        (-1, COLOR_CLASE_NEGATIVA, "clase -1"),
-    ):
-        pertenecen_a_la_clase = salidas_deseadas == clase
-        ejes.scatter(
-            entradas[pertenecen_a_la_clase, 0],
-            entradas[pertenecen_a_la_clase, 1],
-            s=tamanio_punto,
-            c=color,
-            edgecolors=SUPERFICIE,
-            linewidths=0.5,
-            alpha=0.85,
-            label=etiqueta,
-            zorder=2,
-        )
+def _rango_ejes(entradas, margen=0.5):
+    x1_rango = (entradas[:, 0].min() - margen, entradas[:, 0].max() + margen)
+    x2_rango = (entradas[:, 1].min() - margen, entradas[:, 1].max() + margen)
+    return x1_rango, x2_rango
 
 
-def _aplicar_estilo(ejes, limite_x1, limite_x2):
-    ejes.set_facecolor(SUPERFICIE)
-    ejes.set_xlim(*limite_x1)
-    ejes.set_ylim(*limite_x2)
-    ejes.set_aspect("equal", adjustable="box")
-    ejes.grid(True, color=GRILLA, linewidth=0.8, zorder=0)
-    ejes.set_axisbelow(True)
-    ejes.axhline(0, color=EJE, linewidth=1.0, zorder=1)
-    ejes.axvline(0, color=EJE, linewidth=1.0, zorder=1)
-    for lado in ("top", "right"):
-        ejes.spines[lado].set_visible(False)
-    for lado in ("left", "bottom"):
-        ejes.spines[lado].set_color(EJE)
-    ejes.tick_params(colors=TINTA_TENUE, labelsize=9)
-    ejes.set_xlabel("x₁", color=TINTA_SECUNDARIA, fontsize=11)
+def _mismo_estado(historial_pesos, indice_a, indice_b):
+    pesos_a, umbral_a = historial_pesos[indice_a]
+    pesos_b, umbral_b = historial_pesos[indice_b]
+    return np.array_equal(pesos_a, pesos_b) and umbral_a == umbral_b
 
 
-def graficar_entrenamiento(entradas, salidas_deseadas, historial_pesos, titulo,
-                           archivo_salida=None, dpi=150):
-    figura, ejes = plt.subplots(figsize=(6.6, 6.0), dpi=dpi)
-    figura.patch.set_facecolor(SUPERFICIE)
+def _checkpoints_sin_duplicados(historial_pesos, cantidad_checkpoints):
+    cantidad = min(cantidad_checkpoints, len(historial_pesos))
+    candidatos = np.unique(np.linspace(0, len(historial_pesos) - 1, cantidad).astype(int))
 
-    _dibujar_patrones(ejes, entradas, salidas_deseadas, tamanio_punto=26)
-
-    x1_minimo, x1_maximo = entradas[:, 0].min(), entradas[:, 0].max()
-    x2_minimo, x2_maximo = entradas[:, 1].min(), entradas[:, 1].max()
-    margen_x1 = 0.12 * (x1_maximo - x1_minimo)
-    margen_x2 = 0.12 * (x2_maximo - x2_minimo)
-
-    x1 = np.linspace(x1_minimo - margen_x1, x1_maximo + margen_x1, 100)
-    cantidad_de_rectas_previas = len(historial_pesos) - 1
-
-    for numero_de_recta, (pesos, umbral) in enumerate(historial_pesos[:-1]):
-        x2 = _recta_de_separacion(pesos, umbral, x1)
-        if x2 is None:
+    # Una vez que el perceptrón converge, los pesos quedan congelados (punto fijo): si dos
+    # checkpoints consecutivos caen en el mismo estado, la recta del primero queda tapada por
+    # la del segundo. Nos quedamos solo con el último de cada tramo de estados repetidos.
+    indices = []
+    for posicion, indice in enumerate(candidatos):
+        es_ultimo = posicion == len(candidatos) - 1
+        if not es_ultimo and _mismo_estado(historial_pesos, indice, candidatos[posicion + 1]):
             continue
-        avance = numero_de_recta / max(cantidad_de_rectas_previas - 1, 1)
-        ejes.plot(x1, x2, color=TINTA_TENUE, linewidth=1.1,
-                  alpha=0.25 + 0.45 * avance, zorder=3)
-
-    pesos_finales, umbral_final = historial_pesos[-1]
-    x2_final = _recta_de_separacion(pesos_finales, umbral_final, x1)
-    if x2_final is not None:
-        ejes.plot(x1, x2_final, color=TINTA_PRIMARIA, linewidth=2.2, zorder=4,
-                  label=f"recta final (época {cantidad_de_rectas_previas})")
-    if cantidad_de_rectas_previas > 0:
-        ejes.plot([], [], color=TINTA_TENUE, linewidth=1.1, alpha=0.5,
-                  label=f"inicio + épocas previas ({cantidad_de_rectas_previas})")
-
-    _aplicar_estilo(ejes,
-                    (x1_minimo - margen_x1, x1_maximo + margen_x1),
-                    (x2_minimo - margen_x2, x2_maximo + margen_x2))
-    ejes.set_ylabel("x₂", color=TINTA_SECUNDARIA, fontsize=11)
-    ejes.set_title(titulo, color=TINTA_PRIMARIA, fontsize=13, pad=14, loc="left")
-    ejes.legend(loc="upper left", bbox_to_anchor=(0, -0.12), ncol=2,
-                frameon=False, fontsize=9, labelcolor=TINTA_SECUNDARIA)
-
-    figura.tight_layout()
-    if archivo_salida is not None:
-        figura.savefig(archivo_salida, facecolor=SUPERFICIE, bbox_inches="tight")
-    return figura
+        indices.append(indice)
+    return indices
 
 
-def graficar_comparacion_dispersiones(resultados, archivo_salida=None, dpi=150):
-    figura, panel_de_ejes = plt.subplots(1, len(resultados), figsize=(13.5, 5.2), dpi=dpi,
-                                         sharex=True, sharey=True)
-    figura.patch.set_facecolor(SUPERFICIE)
+def graficar_y_animar_entrenamientos(casos, ruta_gif, cantidad_checkpoints=6, fps=5):
+    """Grilla 2×2: por cada caso (columna) un panel estático de checkpoints arriba y uno
+    animado, época a época, abajo. Los cuatro paneles quedan en una sola figura, guardada
+    como un único GIF (el panel animado es el único que cambia entre frames).
 
-    limite = max(abs(resultado["entradas"]).max() for resultado in resultados) * 1.1
+    `casos` es una lista de tuplas (entradas, salidas, historial_pesos, titulo).
+    """
+    columnas = len(casos)
+    fig, ejes = plt.subplots(2, columnas, figsize=(5.5 * columnas, 5.5 * 2), squeeze=False)
 
-    for ejes, resultado in zip(panel_de_ejes, resultados):
-        _dibujar_patrones(ejes, resultado["entradas"], resultado["salidas_deseadas"],
-                          tamanio_punto=18)
+    lineas = []
+    for columna, (entradas, salidas, historial_pesos, titulo) in enumerate(casos):
+        x1_rango, x2_rango = _rango_ejes(entradas)
 
-        x1 = np.linspace(-limite, limite, 100)
-        x2 = _recta_de_separacion(resultado["pesos"], resultado["umbral"], x1)
-        if x2 is not None:
-            ejes.plot(x1, x2, color=TINTA_PRIMARIA, linewidth=2.2, zorder=4,
-                      label="recta aprendida")
+        ax_estatico = ejes[0][columna]
+        _graficar_patrones(ax_estatico, entradas, salidas)
+        indices = _checkpoints_sin_duplicados(historial_pesos, cantidad_checkpoints)
+        colores = plt.cm.viridis(np.linspace(0, 1, len(indices)))
+        for color, indice in zip(colores, indices):
+            pesos, umbral = historial_pesos[indice]
+            recta = _puntos_recta(pesos, umbral, x1_rango)
+            if recta is not None:
+                ax_estatico.plot(*recta, color=color, linewidth=2, label=f"Época {indice}")
+        ax_estatico.set_xlim(*x1_rango)
+        ax_estatico.set_ylim(*x2_rango)
+        ax_estatico.set_xlabel("x₁")
+        ax_estatico.set_ylabel("x₂")
+        ax_estatico.set_title(f"{titulo} — checkpoints")
+        ax_estatico.grid(True, linestyle="--", alpha=0.4)
+        ax_estatico.legend(loc="center left", bbox_to_anchor=(1.0, 0.5), fontsize=8)
 
-        _aplicar_estilo(ejes, (-limite, limite), (-limite, limite))
+        ax_animado = ejes[1][columna]
+        _graficar_patrones(ax_animado, entradas, salidas)
+        linea, = ax_animado.plot([], [], color="black", linewidth=2, label="Recta de separación")
+        ax_animado.set_xlim(*x1_rango)
+        ax_animado.set_ylim(*x2_rango)
+        ax_animado.set_xlabel("x₁")
+        ax_animado.set_ylabel("x₂")
+        ax_animado.grid(True, linestyle="--", alpha=0.4)
+        ax_animado.legend(loc="upper right", fontsize=8)
+        lineas.append((ax_animado, linea, x1_rango, historial_pesos, titulo))
 
-        convergio = "convergió" if resultado["convergio"] else "no convergió"
-        ejes.set_title(resultado["nombre"], color=TINTA_PRIMARIA, fontsize=13, pad=18)
-        ejes.text(0.5, 1.03,
-                  f"test {resultado['porcentaje_aciertos']:.1f}%  ·  {convergio} en {resultado['epocas']} épocas",
-                  transform=ejes.transAxes, ha="center",
-                  color=TINTA_SECUNDARIA, fontsize=9.5)
+    fig.tight_layout()
 
-    panel_de_ejes[0].set_ylabel("x₂", color=TINTA_SECUNDARIA, fontsize=11)
-    manejadores, etiquetas = panel_de_ejes[0].get_legend_handles_labels()
+    cantidad_frames = max(len(historial_pesos) for _, _, _, historial_pesos, _ in lineas)
 
-    figura.suptitle("Perceptrón simple sobre OR con dispersión creciente",
-                    color=TINTA_PRIMARIA, fontsize=15, y=1.04)
-    figura.tight_layout()
-    figura.subplots_adjust(bottom=0.20)
-    figura.legend(manejadores, etiquetas, loc="lower center", ncol=3, frameon=False,
-                  fontsize=10.5, labelcolor=TINTA_SECUNDARIA, bbox_to_anchor=(0.5, 0.0))
+    def actualizar(indice):
+        artistas = []
+        for ax, linea, x1_rango, historial_pesos, titulo in lineas:
+            indice_caso = min(indice, len(historial_pesos) - 1)
+            pesos, umbral = historial_pesos[indice_caso]
+            recta = _puntos_recta(pesos, umbral, x1_rango)
+            if recta is not None:
+                linea.set_data(*recta)
+            ax.set_title(f"{titulo} — animado, época {indice_caso} de {len(historial_pesos) - 1}")
+            artistas.append(linea)
+        return artistas
 
-    if archivo_salida is not None:
-        figura.savefig(archivo_salida, facecolor=SUPERFICIE, bbox_inches="tight")
-    return figura
+    animacion = FuncAnimation(fig, actualizar, frames=cantidad_frames, blit=False)
+    ruta_gif.parent.mkdir(parents=True, exist_ok=True)
+    animacion.save(ruta_gif, writer=PillowWriter(fps=fps))
+    plt.close(fig)
 
-
-def graficar_errores_por_epoca(series, titulo, archivo_salida=None, dpi=150):
-    figura, ejes = plt.subplots(figsize=(9.0, 4.6), dpi=dpi)
-    figura.patch.set_facecolor(SUPERFICIE)
-    ejes.set_facecolor(SUPERFICIE)
-
-    colores = (COLOR_CLASE_POSITIVA, "#1baf7a", COLOR_CLASE_NEGATIVA)
-
-    for numero_de_serie, (serie, color) in enumerate(zip(series, colores)):
-        porcentaje = 100 * np.array(serie["errores"]) / serie["cantidad_patrones"]
-        epocas = np.arange(1, len(porcentaje) + 1)
-
-        ejes.plot(epocas, porcentaje, color=color, linewidth=2.0,
-                  label=serie["etiqueta"], zorder=3)
-        ejes.scatter(epocas, porcentaje, s=22, color=color,
-                     edgecolors=SUPERFICIE, linewidths=1.2, zorder=4)
-
-        convergio = porcentaje[-1] == 0
-        detalle = f"0 errores en la época {len(porcentaje)}" if convergio else \
-                  f"se estanca en {porcentaje[-1]:.1f} %"
-        ejes.annotate(
-            f"{serie['etiqueta']}: {detalle}",
-            xy=(epocas[-1], porcentaje[-1]),
-            xytext=(22, 20 + 26 * numero_de_serie),
-            textcoords="offset points",
-            color=TINTA_SECUNDARIA, fontsize=9,
-            ha="right" if not convergio else "left",
-            arrowprops=dict(arrowstyle="-", color=TINTA_TENUE, linewidth=0.9,
-                            shrinkA=0, shrinkB=3),
-        )
-
-    ejes.grid(True, color=GRILLA, linewidth=0.8, zorder=0)
-    ejes.set_axisbelow(True)
-    ejes.set_ylim(bottom=-0.4)
-    for lado in ("top", "right"):
-        ejes.spines[lado].set_visible(False)
-    for lado in ("left", "bottom"):
-        ejes.spines[lado].set_color(EJE)
-    ejes.tick_params(colors=TINTA_TENUE, labelsize=9)
-    ejes.set_xlabel("época", color=TINTA_SECUNDARIA, fontsize=11)
-    ejes.set_ylabel("% de patrones mal clasificados", color=TINTA_SECUNDARIA, fontsize=11)
-    ejes.set_title(titulo, color=TINTA_PRIMARIA, fontsize=13, pad=12, loc="left")
-    ejes.legend(frameon=False, fontsize=10, labelcolor=TINTA_SECUNDARIA,
-                loc="lower right")
-
-    figura.tight_layout()
-    if archivo_salida is not None:
-        figura.savefig(archivo_salida, facecolor=SUPERFICIE, bbox_inches="tight")
-    return figura
+    display(Image(filename=str(ruta_gif)))
