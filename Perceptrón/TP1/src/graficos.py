@@ -48,15 +48,20 @@ def _checkpoints_sin_duplicados(historial_pesos, cantidad_checkpoints):
     return indices
 
 
-def graficar_y_animar_entrenamientos(casos, ruta_gif, cantidad_checkpoints=6, fps=5):
+def graficar_y_animar_entrenamientos(
+    casos, ruta_gif, cantidad_checkpoints=6, fps=5, cantidad_frames_max=30, dpi=70
+):
     """Grilla 2×2: por cada caso (columna) un panel estático de checkpoints arriba y uno
     animado, época a época, abajo. Los cuatro paneles quedan en una sola figura, guardada
     como un único GIF (el panel animado es el único que cambia entre frames).
 
-    `casos` es una lista de tuplas (entradas, salidas, historial_pesos, titulo).
+    `casos` es una lista de tuplas (entradas, salidas, historial_pesos, titulo). Cuando el
+    entrenamiento más largo tiene más de `cantidad_frames_max` épocas, se muestrea un
+    subconjunto parejo en vez de una época por frame, para que el GIF no crezca sin límite
+    (relevante para GitHub, que no renderiza notebooks con outputs muy pesados).
     """
     columnas = len(casos)
-    fig, ejes = plt.subplots(2, columnas, figsize=(5.5 * columnas, 5.5 * 2), squeeze=False)
+    fig, ejes = plt.subplots(2, columnas, figsize=(3.6 * columnas, 3.6 * 2), squeeze=False)
 
     lineas = []
     for columna, (entradas, salidas, historial_pesos, titulo) in enumerate(casos):
@@ -92,12 +97,15 @@ def graficar_y_animar_entrenamientos(casos, ruta_gif, cantidad_checkpoints=6, fp
 
     fig.tight_layout()
 
-    cantidad_frames = max(len(historial_pesos) for _, _, _, historial_pesos, _ in lineas)
+    epoca_maxima = max(len(historial_pesos) - 1 for _, _, _, historial_pesos, _ in lineas)
+    cantidad_frames = min(cantidad_frames_max, epoca_maxima + 1)
+    epocas_objetivo = np.unique(np.linspace(0, epoca_maxima, cantidad_frames).astype(int))
 
-    def actualizar(indice):
+    def actualizar(indice_frame):
+        epoca_objetivo = epocas_objetivo[indice_frame]
         artistas = []
         for ax, linea, x1_rango, historial_pesos, titulo in lineas:
-            indice_caso = min(indice, len(historial_pesos) - 1)
+            indice_caso = min(epoca_objetivo, len(historial_pesos) - 1)
             pesos, umbral = historial_pesos[indice_caso]
             recta = _puntos_recta(pesos, umbral, x1_rango)
             if recta is not None:
@@ -106,9 +114,9 @@ def graficar_y_animar_entrenamientos(casos, ruta_gif, cantidad_checkpoints=6, fp
             artistas.append(linea)
         return artistas
 
-    animacion = FuncAnimation(fig, actualizar, frames=cantidad_frames, blit=False)
+    animacion = FuncAnimation(fig, actualizar, frames=len(epocas_objetivo), blit=False)
     ruta_gif.parent.mkdir(parents=True, exist_ok=True)
-    animacion.save(ruta_gif, writer=PillowWriter(fps=fps))
+    animacion.save(ruta_gif, writer=PillowWriter(fps=fps), dpi=dpi)
     plt.close(fig)
 
     display(Image(filename=str(ruta_gif)))
