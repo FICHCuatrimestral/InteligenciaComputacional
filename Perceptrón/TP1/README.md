@@ -56,7 +56,7 @@ En Windows (PowerShell):
 ```powershell
 python -m venv .venv
 .venv\Scripts\Activate.ps1
-pip install -r requirements.txt
+pip install -r ..\requirements.txt
 ```
 
 En Linux o macOS:
@@ -64,7 +64,7 @@ En Linux o macOS:
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r ../requirements.txt
 ```
 
 > Si PowerShell bloquea la activación con un error de *execution policy*, ejecutar una vez:
