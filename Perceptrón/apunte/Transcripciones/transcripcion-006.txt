@@ -1,0 +1,232 @@
+bueno vamos a seguir con la clase de hoy en el en el tema como recordarán teníamos un problema importante con el percepción
+0:13
+13 segundos
+simple que le habíamos dado algo tan simple como la función lógica or
+0:18
+18 segundos
+exclusiva o x org o exclusivo y no la podíamos resolver recordarán qué
+0:28
+28 segundos
+habíamos planteado este problema no teníamos x1 era una de las entradas que podría ser verdadero o falso que
+0:35
+35 segundos
+nosotros utilizábamos la codificación más uno menos uno para las neuronas teníamos la otra entrada x2 y ya
+0:43
+43 segundos
+habíamos dicho bueno por donde podemos pasar la recta la recta de decisión del perfecto simple de manera que resuelva este problema dijimos bueno podemos
+0:52
+52 segundos
+pasar por acá pero resulta que nos queda todo un plano mezclando zonas donde tiene que dar más uno tiene que dar
+1:01
+1 minuto y 1 segundo
+menos uno entonces empezamos a mover acá también nos pasa lo mismo acá también nos pasa lo mismo
+1:08
+1 minuto y 8 segundos
+por lo tanto veíamos que con el percepción simple no podíamos resolver este problema valga la redundancia tan
+1:15
+1 minuto y 15 segundos
+simple como de él o exclusivo la propuesta ahora es juntar más de un perfecto en particular vamos a ver qué
+1:24
+1 minuto y 24 segundos
+se puede hacer con simplemente tres para tratar de partir el plano de una manera un poco más
+1:31
+1 minuto y 31 segundos
+inteligente que es definir una zona para uno de los perceptores otra zona para
+1:38
+1 minuto y 38 segundos
+otros los perceptores y la idea final es que un tercer perceptor pueda cubrir esa zona intermedia de
+1:47
+1 minuto y 47 segundos
+manera que vean que nos queda adentro los dos lugares en donde tiene que dar verdadero y nos quedan afuera los dos
+1:54
+1 minuto y 54 segundos
+lugares en donde tiene que dar falso la función x org entonces vamos a comenzar
+2:02
+2 minutos y 2 segundos
+vamos a definir un perceptor a un perceptor que van a hacer los dos primeros y después vamos a hacer un
+2:09
+2 minutos y 9 segundos
+tercer perfecto 11 que es el que va a dar la salida final de la red neuronal para el perceptor una fíjense lo que
+2:18
+2 minutos y 18 segundos
+vamos a hacer es separar un primero semi plano en una primera región del plano vamos a poner una recta ahí y
+2:27
+2 minutos y 27 segundos
+vamos a hacer que en toda esta zona toda la zona que queda por arriba por ejemplo de más 1 y en toda la zona quede
+2:37
+2 minutos y 37 segundos
+para abajo me de -1 observen qué este pero centro no resuelven el
+2:44
+2 minutos y 44 segundos
+problema porque está dando más uno también para este caso que tendría que dar menos uno entonces
+2:53
+2 minutos y 53 segundos
+es una fase una parte de la resolución del problema vamos a definir un segundo perceptor acá deje en verde marcado el
+3:02
+3 minutos y 2 segundos
+primero vamos a definir un segundo perceptor que haga algo parecido pero un poquito más arriba o sea que
+3:12
+3 minutos y 12 segundos
+fíjense que es el mismo perfecto donde antes prácticamente los van a hacer los mismos pesos pero le corrimos recorrimos la ordenada al origen en este caso
+3:21
+3 minutos y 21 segundos
+también vamos a tener qué el perceptor va a dar más 1 en toda esta
+3:27
+3 minutos y 27 segundos
+zona y menos 1 en toda esta zona vamos a seguir un paso más ahora nos
+3:35
+3 minutos y 35 segundos
+quedan definido el perceptor y el perfecto y fíjense en la zona en donde el
+3:44
+3 minutos y 44 segundos
+perceptor a baa1 esta zona de acá y en la zona en donde a la vez el
+3:53
+3 minutos y 53 segundos
+percepción de dame uno es donde tenemos la intersección de esas dos zonas que nos interesan entonces tendríamos que
+4:00
+4 minutos
+estar pensando en un tercer perceptor que trabaje bien en esa zona de interfaz
+4:06
+4 minutos y 6 segundos
+que junte esas dos salidas así es como vamos a idear un tercer perceptor
+4:14
+4 minutos y 14 segundos
+como decía al principio con la idea de que decida bien o sea que demás uno en esta
+4:21
+4 minutos y 21 segundos
+zona intersección en donde uno graba más uno y el otro da menos uno y que de menos uno en cualquiera de los otros
+4:28
+4 minutos y 28 segundos
+casos ese va a ser nuestro perceptor 11 el percepción que va a dar la salida final entonces vamos a ver cómo podemos
+4:35
+4 minutos y 35 segundos
+construir ese perceptor 11 tenemos que pensar en las salidas de los
+4:43
+4 minutos y 43 segundos
+dos percepciones anteriores de la hierba y qué hacer con esas salidas del perceptor ona y del perceptor entonces
+4:51
+4 minutos y 51 segundos
+vamos a considerar la salida de la y la salida del b y ante la salida de la salida debe que
+5:01
+5 minutos y 1 segundo
+van a ser las entradas así vamos a ver que debería dar la salida de ese centro un final
+5:09
+5 minutos y 9 segundos
+habíamos dicho si la salida de a es más uno
+5:15
+5 minutos y 15 segundos
+y la salida debe es más uno entonces en qué regiones estamos
+5:23
+5 minutos y 23 segundos
+si la salida de a es más uno que cubre todo esto
+5:31
+5 minutos y 31 segundos
+y la salida debe también en 1 estamos acá en esta región en la región donde hay intersección
+5:40
+5 minutos y 40 segundos
+entre las superficies estoy dibujando en ese caso que tiene que dar el perceptor 11
+5:47
+5 minutos y 47 segundos
+el person conoce para que de bien tiene que dar lo que tenemos marcado ahí el -1 bueno ahora vamos a considerar un
+5:54
+5 minutos y 54 segundos
+segundo caso vamos a suponer que estamos en la región en donde el perceptor a damas 1 y el perceptor onda
+6:03
+6 minutos y 3 segundos
+de da menos 1 cual región sería esa bueno similar a lo que hicimos antes toda esta zona
+6:11
+6 minutos y 11 segundos
+sería la región en donde el perfecto no da más uno y voy a dibujar la zona en donde
+6:19
+6 minutos y 19 segundos
+presentaron bbva -1 fíjese en la intersección donde quedan
+6:26
+6 minutos y 26 segundos
+los rombos esa franja en la franja que nos interesa y que esperamos que de nuestro último pérez el peroné pero
+6:33
+6 minutos y 33 segundos
+entonces bueno en esta zona lo que queremos que dé es más uno qué es la zona en donde la función x os
+6:41
+6 minutos y 41 segundos
+da verdadero así que para esa zona le vamos a pedir más 1 finalmente hay otra
+6:49
+6 minutos y 49 segundos
+zona que nos interesa que es la zona en donde ambos percepciones dan menos 1
+6:56
+6 minutos y 56 segundos
+tenemos menos uno menos uno que donde sería sería en esta zona donde hay al menos 1 lo voy
+7:05
+7 minutos y 5 segundos
+a hacer con una sin uso hoy de en ese caso nosotros que queremos queremos que la salida del perceptor
+7:13
+7 minutos y 13 segundos
+final sea menos 1 entonces fíjense que con este simple análisis nos hemos armado
+7:22
+7 minutos y 22 segundos
+una tablita de verdad y en función de esa tablita de verdad es que vamos a tratar de diseñar el perceptor 11
+7:32
+7 minutos y 32 segundos
+volviendo un poco al el ejemplo anterior fíjense nosotros cuando teníamos acá acá dibujé para
+7:40
+7 minutos y 40 segundos
+aclarar la salida del perceptor a la salida del placer hombre fíjense que corresponde a la región
+7:48
+7 minutos y 48 segundos
+que separaba la recta la primera recta a la recta verde del perceptor y la región que separaba la recta b habíamos dicho
+7:56
+7 minutos y 56 segundos
+que cuando ambas eran positivas
+8:03
+8 minutos y 3 segundos
+la salida del perceptor 11 tenía que ser menos 1 cuando teníamos
+8:09
+8 minutos y 9 segundos
+a positiva y negativa se acuerdan que era la franja intermedia era esta parte que nos interesaba que de
+8:18
+8 minutos y 18 segundos
++1 y cuando teníamos ambas negativas que era la parte de abajo la zona que quedaba bien abajo a la izquierda en el
+8:26
+8 minutos y 26 segundos
+dibujo teníamos esta otra salida para el por centro quiere decir qué
+8:33
+8 minutos y 33 segundos
+y acá trazamos una recta que pase por acá podríamos estar ya resolviendo el problema porque nos quedan todos los
+8:41
+8 minutos y 41 segundos
+menos unos abajo y todo lo que debería ser más uno arriba así que
+8:50
+8 minutos y 50 segundos
+muy parecido a como sabemos ya diseñar para el percepción simple una solución
+8:58
+8 minutos y 58 segundos
+tenemos que hacer pasar para el perceptor 11 esa recta y vamos a estar cumpliendo con la tabla de verdad que
+9:07
+9 minutos y 7 segundos
+nos va a dar la salida deseada una observación más fíjense que en esa tabla de verdad había tres valores no
+9:14
+9 minutos y 14 segundos
+más y en ningún momento nos interesó qué pasa cuando la salida ve es más uno pero la
+9:23
+9 minutos y 23 segundos
+salida a menos uno realmente lo que sucede es que nunca se forman regiones con esa intersección
+9:31
+9 minutos y 31 segundos
+entonces no nos va a importar qué salida del perfecto 11 en esa situación por eso acá yo puse una equis porque realmente
+9:40
+9 minutos y 40 segundos
+no nos interesa las situaciones que se pueden dar son las que tenemos dibujadas acá que son las tres posibles
+9:47
+9 minutos y 47 segundos
+intersecciones de esas esos semi planos y esas son las que nos queremos asegurar de que dé correctamente la salida el
+9:55
+9 minutos y 55 segundos
+perceptor 11 bien así que dijimos que la recta del perfecto 11 tendría que pasar
+10:02
+10 minutos y 2 segundos
+aproximadamente por ahí podemos tomar un punto de referencia fíjense que también
+10:08
+10 minutos y 8 segundos
+tenemos una pendiente de 45 grados y tenemos una ordenada el origen de más 1
+10:15
+10 minutos y 15 segundos
+o sea que cuando se sube se haga 0 esto es va a tener que bailar más 1
