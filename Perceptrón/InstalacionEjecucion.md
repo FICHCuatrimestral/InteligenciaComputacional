@@ -1,16 +1,16 @@
-# TP1 — Perceptrón simple
+# Instalación y ejecución
 
+Guía común para los TPs de esta carpeta (`TP1`, `TP2`, ...). Cada TP es una carpeta
+autocontenida con su propio notebook, código y datos:
 
-## Contenido
-
-| ruta | qué es |
+| ruta (dentro de cada `TPx/`) | qué es |
 |---|---|
-| `TP.ipynb` | notebook principal: los tres ejercicios con su análisis (incluye la clase `Perceptron`) |
-| `src/data_loader.py` | lectura de los archivos de patrones separados por comas |
-| `src/graficos.py` | rutinas de graficación: grilla de checkpoints y animación de la recta de separación |
+| `TP.ipynb` | notebook principal con los ejercicios y su análisis |
+| `src/` | código reutilizado por el notebook (carga de datos, gráficos, etc.) |
 | `Dataset/` | archivos de patrones provistos por la cátedra |
-| `Graficos/` | GIFs generados por el notebook (se regeneran al ejecutarlo) |
-| `IC_GTP1.pdf` | enunciado original |
+| `IC_GTPx.pdf` | enunciado original |
+
+Las dependencias (`requirements.txt`) están acá, en `Perceptrón/`, compartidas por todos los TPs.
 
 ## Cómo ejecutarlo
 
@@ -28,8 +28,6 @@ publicadas por **Microsoft**:
 | **Jupyter** | `ms-toolsai.jupyter` | abrir y ejecutar archivos `.ipynb` |
 
 
-![alt text](image.png)
-
 Buscar por el identificador (por ejemplo `ms-toolsai.jupyter`) evita instalar alguna de las
 muchas extensiones parecidas de terceros. Alternativamente, desde una terminal:
 
@@ -38,18 +36,19 @@ code --install-extension ms-python.python
 code --install-extension ms-toolsai.jupyter
 ```
 
-### 2. Ubicarse en esta carpeta
+### 2. Ubicarse en la carpeta del TP
 
-Abrir en VS Code la carpeta `Perceptrón/TP1` del repositorio clonado
-(*Archivo → Abrir carpeta…*).
+Abrir en VS Code la carpeta del TP que corresponda, por ejemplo `Perceptrón/TP1` o
+`Perceptrón/TP2` (*Archivo → Abrir carpeta…*).
 
-> **Importante:** hay que abrir **esta** carpeta, no la raíz del repositorio. El notebook
-> importa el paquete `src/` y busca los datos en `Dataset/` mediante rutas relativas, así que
-> si se abre desde otro lado fallan el `import` y la lectura de los CSV.
+> **Importante:** hay que abrir **esa** carpeta (`TPx/`), no `Perceptrón/` ni la raíz del
+> repositorio. Cada notebook importa su paquete `src/` y busca los datos en `Dataset/`
+> mediante rutas relativas, así que si se abre desde otro lado fallan el `import` y la
+> lectura de los CSV.
 
 ### 3. Crear el entorno virtual e instalar las dependencias
 
-En la terminal integrada de VS Code (`Ctrl+Ñ`), estando en `Perceptrón/TP1`:
+En la terminal integrada de VS Code (`Ctrl+Ñ`), estando en la carpeta del TP (`TPx/`):
 
 En Windows (PowerShell):
 
@@ -83,11 +82,5 @@ entorno recién creado.
 
 Botón **Run All** en la barra superior del notebook, o `Ctrl+Enter` celda por celda.
 
-> Las celdas que generan animaciones (Ejercicios 2 y 3) tardan un par de minutos: arman un GIF
-> con varios paneles y hasta 100 frames cuando el entrenamiento no converge (XOR, OR al 90 %).
-> Es esperable, no significa que se haya colgado.
-
-## Reproducibilidad
-
-Los pesos se inicializan con una semilla fija (`semilla = 42`), de modo que todas las
-corridas dan exactamente los mismos resultados que los citados en el análisis.
+> Las celdas que generan animaciones o entrenan sobre datos que no separan linealmente pueden
+> tardar un par de minutos. Es esperable, no significa que se haya colgado.
