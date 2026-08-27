@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-datos = pd.read_csv("XOR_trn.csv", header = None)
+datos = pd.read_csv("Dataset/XOR_trn.csv", header = None)
 X = datos.iloc[:, 0:2].values
 yd = datos.iloc[:, 2].values
 
@@ -79,7 +79,7 @@ print('epocas', epocas)
 
 # test -------------------------------------------------
 
-datos = pd.read_csv("XOR_tst.csv", header = None)
+datos = pd.read_csv("Dataset/XOR_tst.csv", header = None)
 X = datos.iloc[:, 0:2].values
 yd = datos.iloc[:, 2].values
 
