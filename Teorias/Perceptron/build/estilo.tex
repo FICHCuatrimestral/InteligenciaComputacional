@@ -1,0 +1,41 @@
+% Encabezado LaTeX para los apuntes de Inteligencia Computacional (FICH-UNL)
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[most]{tcolorbox}
+\usepackage{microtype}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+
+\definecolor{tintaTitulo}{HTML}{0b0b0b}
+\definecolor{tintaSuave}{HTML}{52514e}
+\definecolor{acentoOjo}{HTML}{eb6834}
+\definecolor{acentoIdea}{HTML}{2a78d6}
+\definecolor{acentoDefensa}{HTML}{1baf7a}
+
+\newtcolorbox{recuadrobase}[2]{
+  enhanced, breakable, sharp corners=all, boxrule=0pt,
+  leftrule=3pt, colframe=#1, colback=#1!5!white,
+  left=10pt, right=10pt, top=8pt, bottom=8pt,
+  fontupper=\small,
+  title={#2}, coltitle=#1, fonttitle=\small\bfseries\sffamily,
+  attach title to upper=\par\vspace{4pt},
+  colbacktitle=#1!5!white, titlerule=0pt, toptitle=0pt, bottomtitle=0pt
+}
+\newenvironment{recuadroojo}[1]{\begin{recuadrobase}{acentoOjo}{#1}}{\end{recuadrobase}}
+\newenvironment{recuadroidea}[1]{\begin{recuadrobase}{acentoIdea}{#1}}{\end{recuadrobase}}
+\newenvironment{recuadrodefensa}[1]{\begin{recuadrobase}{acentoDefensa}{#1}}{\end{recuadrobase}}
+
+\titleformat{\section}{\LARGE\bfseries\sffamily\color{tintaTitulo}}{}{0pt}{}
+  [\vspace{-0.5em}{\color{acentoIdea}\rule{\linewidth}{1.2pt}}]
+\titleformat{\subsection}{\large\bfseries\sffamily\color{tintaSuave}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{2.0em}{0.9em}
+\titlespacing*{\subsection}{0pt}{1.4em}{0.5em}
+\setcounter{secnumdepth}{0}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\small\color{tintaSuave}\thepage}
+\fancyfoot[R]{\footnotesize\color{tintaSuave}Inteligencia Computacional · FICH-UNL}
+\renewcommand{\headrulewidth}{0pt}
+
+\setlength{\emergencystretch}{3em}

@@ -1,0 +1,400 @@
+
+009 perceptron multicapa Regiones de decision y arquitectura
+Diego Milone
+Diego Milone
+376 suscriptores
+
+    
+    
+    
+    
+
+    
+  
+
+    
+    
+    
+    
+
+    
+  
+494 visualizaciones  18 oct 2019
+Inteligencia Computacional, FICH-UNL
+Preguntar
+Encuentra respuestas, consulta temas y más
+Transcripción
+
+Sigue la transcripción para no perderte nada.
+Diego Milone
+376 suscriptores
+Vídeos
+Información
+0 comentarios
+Matías Bertona
+Añade un comentario...
+Transcripción
+Buscar en transcripción
+0:04
+4 segundos
+bueno hemos visto de manera general Cómo armar un perceptrón simple luego
+0:12
+12 segundos
+combinamos tres percepciones simples para resolver un problema que cuando había uno solo no se podía resolver Y
+0:20
+20 segundos
+ahora queremos generalizar un poco tener una idea de qué problemas se pueden resolver de acuerdo a la cantidad de
+0:27
+27 segundos
+percepciones que tengamos entonces esa va a ser una primera parte de lo que vamos a ver ahora y luego vamos a
+0:34
+34 segundos
+empezar a ver de manera general la arquitectura de un perceptor multicapa que pueda tener cualquier cantidad de neuronas cualquier cantidad de capas y
+0:42
+42 segundos
+crecer del tamaño que haga falta para solucionar los problemas más complejos acá tenemos un gráfico muy conocido y
+0:51
+51 segundos
+que está en toda la bibliografía desde hace muchísimos años este fue un resultado importante de los años 80 sobre
+0:59
+59 segundos
+las capacidades de los perceptrones multicapa fíjense que acá nosotros en esta primera
+1:06
+1 minuto y 6 segundos
+columna tenemos distintas estructuras estructuras de una capa o de un solo perceptrón
+1:13
+1 minuto y 13 segundos
+estructuras de dos capas o de dos tres perceptrones como que
+1:21
+1 minuto y 21 segundos
+vimos recién Pero bueno podrían ser dos capas en términos generales y una estructura de tres capas que ya es algo
+1:28
+1 minuto y 28 segundos
+más complejo que luego vamos a ver Cómo resolver y lo que vemos en el resto del gráfico es Qué tipo de problemas
+1:37
+1 minuto y 37 segundos
+puede resolver cada una de estas arquitecturas o cada una de estas estructuras fíjense para el
+1:45
+1 minuto y 45 segundos
+primer caso cuando teníamos un solo perceptrón lo que podíamos hacer era separar el espacio de soluciones en dos
+1:55
+1 minuto y 55 segundos
+semiplanos es decir pasar una recta en algún lugar donde me quedaba de un lado más uno y del otro lado menos uno por lo
+2:05
+2 minutos y 5 segundos
+tanto en este caso de que tenemos la clase a y la clase a de este lado este es claramente el caso del xor tendríamos
+2:14
+2 minutos y 14 segundos
+que el problema no está bien resuelto hay clases más complejas imagínense que todos los valores o los puntos que
+2:23
+2 minutos y 23 segundos
+corresponden a la clase B están en esta especie de media luna y todos los que están en la clase a están en esta otra media luna
+2:32
+2 minutos y 32 segundos
+imagínense que más aún le va a costar mucho a este perceptrón simple resolver el caso
+2:40
+2 minutos y 40 segundos
+trazará una recta pero claramente hay zonas de la recta que van a quedar mal clasificadas acá esta puntita de la
+2:49
+2 minutos y 49 segundos
+clase a va a quedar del lado de la clase b y por supuesto eso puntos que estén ahí van a dar error Así que para el caso
+2:57
+2 minutos y 57 segundos
+general lo que tenemos es un semiplano Y si pensamos en muchas dimensiones será
+3:04
+3 minutos y 4 segundos
+un hiperplano en r la 3 será realmente un plano en r la 4 un hiper plano r la 4
+3:12
+3 minutos y 12 segundos
+y así dependiendo la cantidad de entradas que tengamos No acá estamos graficando una r la 2 porque tenemos x1 y x2 como era el problema lógico básico
+3:21
+3 minutos y 21 segundos
+pero en el caso general podemos tener x1 x2 x 3 x 7 x 28 y será un hiperplano en
+3:30
+3 minutos y 30 segundos
+r la 28 para el caso de dos capas acá tenemos una primera capa de entrada
+3:39
+3 minutos y 39 segundos
+y una capa de salida Ya vimos que podíamos resolver regiones más complicadas podíamos delimitar
+3:47
+3 minutos y 47 segundos
+regiones más complicadas y en el caso particular del o exclusivo podríamos armar esta región que nos permitía Ahora
+3:56
+3 minutos y 56 segundos
+sí resolver correctamente el problema pero una limitación que tenemos es que
+4:04
+4 minutos y 4 segundos
+estas regiones son convexas abiertas o cerradas pero no nos podemos salir de esa situación fíjense que podríamos
+4:12
+4 minutos y 12 segundos
+haber ubicado uno de los perceptores acá el otro de los perceptrones acá pero en
+4:19
+4 minutos y 19 segundos
+este caso de las dos medialunas tenemos una situación un poquito más complicada y no estamos pudiendo resolver
+4:26
+4 minutos y 26 segundos
+correctamente algunas partes por ejemplo esta parte de la a va a ser clasificado como si fuera de la clase b y eso es
+4:35
+4 minutos y 35 segundos
+incorrecto en el caso general yo puedo ir aumentando la cantidad de perceptrones en la primera capa y puedo
+4:43
+4 minutos y 43 segundos
+incrementar la cantidad de Semi planos que voy solapando para
+4:50
+4 minutos y 50 segundos
+encontrar una región Entonces fíjense como Acá tengo un semi plano dos y tres
+4:59
+4 minutos y 59 segundos
+semi planos y con tres neuronas en la primera capa pude redondear un poco esa
+5:06
+5 minutos y 6 segundos
+región y por lo tanto a medida que aumente más la cantidad de Semi planos voy a ir pudiendo definir mejor más
+5:13
+5 minutos y 13 segundos
+finamente la región de decisión pero no voy a poder hacer regiones con
+5:21
+5 minutos y 21 segundos
+huecos o con concavidades como necesito para resolver el problema de las medialunas entonces si yo agregara una
+5:29
+5 minutos y 29 segundos
+capa más fíjense ahora que en tres capas tengo la capa de entrada la capa de salida que tenía antes pero aparece una
+5:37
+5 minutos y 37 segundos
+nueva capa esa nueva capa la vamos a eliminar capa oculta porque no está en contacto ni con la salida ni con la
+5:44
+5 minutos y 44 segundos
+entrada y esa capa oculta ya nos permite resolver virtualmente cualquier tipo de problemas
+5:52
+5 minutos y 52 segundos
+digo virtualmente porque la arquitectura permite resolverlo pero como vieron hay que saber encontrar los pesos no los pesos que efectivamente lo resuelven
+6:01
+6 minutos y 1 segundo
+entonces puedo hacer cosas como esta por ejemplo encerrar las regiones del xgor y tener
+6:09
+6 minutos y 9 segundos
+regiones que no están no son conexas O sea que no están pegadas fíjense como acá puedo generar esta zona de
+6:17
+6 minutos y 17 segundos
+concavidad que me permite representar bien al hueco que hay entre medio de las dos medialunas y
+6:26
+6 minutos y 26 segundos
+prácticamente ahí estoy pudiendo resolver el problema y en el caso más general puedo representar este tipo de concavidades o
+6:35
+6 minutos y 35 segundos
+huecos dentro de regiones lo cual está demostrado me permite resolver cualquier problema que yo planteé en estos
+6:44
+6 minutos y 44 segundos
+términos por supuesto esto lo estamos viendo insisto en r a la 2 pero para el caso general en r la n
+6:52
+6 minutos y 52 segundos
+también se cumple vamos a pasar ahora a ver una arquitectura más general donde tenemos
+7:00
+7 minutos
+muchas neuronas tenemos como yo les decía una capa de entrada una capa oculta oculta le decimos a la que no
+7:08
+7 minutos y 8 segundos
+está ni en contacto directo con la entrada ni en contacto directo con la salida y la capa de salida que fíjense
+7:16
+7 minutos y 16 segundos
+puede tener más de una salida también podría ser que una salida sea uno menos uno
+7:25
+7 minutos y 25 segundos
+o podría ser que sea menos uno uno y así yo puedo armar con tres salidas más
+7:32
+7 minutos y 32 segundos
+combinaciones con cuatro salidas más combinaciones O sea que ya no estaría limitado pudiendo poner muchas neuronas acá a tener solamente Dos clases como
+7:40
+7 minutos y 40 segundos
+era la función lógica que tenía más uno o menos uno si ahora puedo tener todas las clases que yo quiera y por
+7:49
+7 minutos y 49 segundos
+otro lado observen que acá para el ejemplo estoy poniendo cuatro entradas O sea que
+7:57
+7 minutos y 57 segundos
+estoy teniendo patrones o datos de entrada en r la4 esto puede ser difícil de imaginarse
+8:06
+8 minutos y 6 segundos
+pero en la práctica se da mucho como yo les decía en algún ejemplo si la entrada fuera una imagen imagínense que yo tengo
+8:14
+8 minutos y 14 segundos
+que clasificar rostros cada Pixel de la imagen podría ser una entrada y si yo tengo una imagen de 1024
+8:22
+8 minutos y 22 segundos
+por 1024 yo tendría acá un millón de píxeles que estarían entrando a la red neuronal por lo tanto
+8:30
+8 minutos y 30 segundos
+traía en un espacio r a la un millón estaría clasificando en ese espacio tan
+8:37
+8 minutos y 37 segundos
+grande como r al un millón en las neuronas observen que si bien acá por para simplificar el dibujo no está
+8:46
+8 minutos y 46 segundos
+hecho Está también faltando el x0 que siempre valía menos uno y que por supuesto va a estar
+8:54
+8 minutos y 54 segundos
+conectado a todas las neuronas de todas las capas tanto a la de entrada
+9:01
+9 minutos y 1 segundo
+como a la capa oculta como a la capa de salida y por supuesto también va a haber pesos
+9:09
+9 minutos y 9 segundos
+w0 para cada una de esas capas como hicimos al principio todo nosotros vamos a hacer una anotación vectorial en donde
+9:19
+9 minutos y 19 segundos
+si tenemos en entradas va a haber un vectorcito que va a ser de n+1 cuyo
+9:26
+9 minutos y 26 segundos
+valor W 0 va a corresponder al peso W 0 de El sesgo entonces para entrar un
+9:35
+9 minutos y 35 segundos
+poquito en la anotación vamos a tener una matriz
+9:41
+9 minutos y 41 segundos
+de entrada vamos a usar este superíndice para indicar que es la capa 1
+9:48
+9 minutos y 48 segundos
+y esta matriz cuánto va a tener va a ser una matriz que va a contener todos estos
+9:55
+9 minutos y 55 segundos
+pesos que están acá o sea que va a tener cuatro por cinco
+10:02
+10 minutos y 2 segundos
+acá cuatro por cinco si los contamos va a haber 20 pesos esos 20 pesos van a estar representados en esta matriz
+10:10
+10 minutos y 10 segundos
+w1 observen también que vamos a usar la anotación de negritas para matrices y vectores
+10:19
+10 minutos y 19 segundos
+a la salida de la primera capa vamos a tener un vector de salidas un vector y
+10:25
+10 minutos y 25 segundos
+que va a tener cinco salidas salida de cada una de las neuronas
+10:32
+10 minutos y 32 segundos
+y también usamos la anotación del súper índice para indicar la capa en la que estamos de la misma manera que hicimos
+10:41
+10 minutos y 41 segundos
+para la primera Capa en la capa oculta o capa 2 que le llamamos acá vamos a tener otra matriz de pesos que van a ser los
+10:49
+10 minutos y 49 segundos
+pesos que unen a la primera capa de neuronas con la segunda capa neurona observen que la
+10:56
+10 minutos y 56 segundos
+anotación hace referencia siempre a la capa de la neurona en la que estamos parados acá estamos parados en la capa 2 Entonces estamos
+11:05
+11 minutos y 5 segundos
+considerando que los pesos que unen a la capa 1 con la capa 2 pertenecen o le corresponden a la capa 2
+11:13
+11 minutos y 13 segundos
+también en la capa 2 tendremos las salidas acá habrá un vectorcito de cuatro salidas
+11:20
+11 minutos y 20 segundos
+que se va a llamar y Súper índice 2 nuevamente para la capa 3 o capa de
+11:27
+11 minutos y 27 segundos
+salida tenemos otra matriz de pesos acá tenemos 4 por 2
+11:34
+11 minutos y 34 segundos
+y finalmente tenemos las salidas que son directamente la salida finales o sea las
+11:40
+11 minutos y 40 segundos
+salidas de la capa 3 son ya la salida finales de toda la red neuronal
+11:47
+11 minutos y 47 segundos
+con esta anotación vamos a empezar a resumir un poco las cuentas que se hacen en una red neuronal para el caso general
+11:57
+11 minutos y 57 segundos
+entonces en la capa 1 recuerdan que podíamos usar la notación de producto interno o también
+12:06
+12 minutos y 6 segundos
+hacer esta especie de promedio ponderado iniciando desde el 0 para tener en
+12:13
+12 minutos y 13 segundos
+cuenta al vías o sesgo entonces fíjense que acá están los pesos de la capa 1
+12:21
+12 minutos y 21 segundos
+y acá tenemos las entradas estamos multiplicando todos los pesos de la capa 1 por las entradas observen que
+12:29
+12 minutos y 29 segundos
+lo que obtenemos es esta que es la salida lineal le vamos a llamar salida lineal porque todavía no
+12:37
+12 minutos y 37 segundos
+pasó por la función signo ni ninguna función no lineal que utilicemos la salida lineal de la neurona J que está
+12:45
+12 minutos y 45 segundos
+en la capa 1 es la neurona J que pertenece a la capa 1 esto para el caso general lo podemos
+12:53
+12 minutos y 53 segundos
+representar matricialmente de esta manera fíjense que acá están todas las salidas de todas las neuronas J de la capa 1 acá
+13:03
+13 minutos y 3 segundos
+se está haciendo el producto matriz por vector luego lo que tenemos que hacer es que la
+13:11
+13 minutos y 11 segundos
+salida lineal que teníamos pase por la función no lineal se acuerdan la función de activación que antes utilizábamos la
+13:21
+13 minutos y 21 segundos
+función signo pero ahora vamos a utilizar una función que yo también les comenté en la en una de las primeras partes que es la función sigmoidea la
+13:30
+13 minutos y 30 segundos
+función sigmoide recordarán tiene una forma más suave entre más uno y menos uno
+13:41
+13 minutos y 41 segundos
+y básicamente lo que nos permite es que a través de este parámetro la podemos hacer tan abrupta casi como la función
+13:49
+13 minutos y 49 segundos
+signo sin entrar en ningún tipo de discontinuidades como nos generaba la
+13:55
+13 minutos y 55 segundos
+función signo se imaginarán que como hicimos al principio Si queremos aplicar el gradiente tenemos que poder derivar sin mayor complicación también la
+14:05
+14 minutos y 5 segundos
+función no lineal Así que vamos a utilizar esta función sigmoidea que es simétrica acá por favor tenga
+14:13
+14 minutos y 13 segundos
+mucho cuidado porque la bibliografía lo trata de diferente manera Hay libros que usan la función sigmoide simétrica que
+14:21
+14 minutos y 21 segundos
+es la que usamos nosotros entre más uno y menos uno pero hay otros que usan otra función sigmoide muy parecida muy
+14:27
+14 minutos y 27 segundos
+parecida que va entre 0 y 1 si utilizan esa función todos los
+14:36
+14 minutos y 36 segundos
+cálculos cambian completamente Así que tengan mucho cuidado de Con qué bibliografías se están manejando cualquiera de las dos es correcta una
+14:43
+14 minutos y 43 segundos
+cuestión de convenciones si utilizamos 01 o -11 pero sí hay que tener mucho
+14:50
+14 minutos y 50 segundos
+cuidado y sobre todo de no mezclar bibliografía no usar algunas ecuaciones de un libro y otras de otro libro o cosas así porque luego no va a haber
+14:59
+14 minutos y 59 segundos
+forma de que funcionen bien nuestras redes neuronales entonces de la misma manera que hicimos para la capa 1
+15:07
+15 minutos y 7 segundos
+en la capa 2 vamos a tomar como entrada las salidas de la capa 1 y lo que vamos a hacer es el producto
+15:15
+15 minutos y 15 segundos
+interno con los pesos que le corresponden a cada neurona de la capa 2 para obtener la
+15:23
+15 minutos y 23 segundos
+salida lineal de la capa 2 esa salida lineal es la que va a pasar por la función sigmoide y se va a convertir en
+15:31
+15 minutos y 31 segundos
+la salida no lineal o salida propiamente dicha de la capa 2 esas salidas de la
+15:38
+15 minutos y 38 segundos
+capa 2 van a ser las que van a entrar a la capa 3 y así podemos seguir con todas las capas que tengamos la red neuronal
+15:47
+15 minutos y 47 segundos
+en la capa 3 nuevamente se va a hacer este promedio ponderado o producto interno de acuerdo a los valores que
+15:54
+15 minutos y 54 segundos
+traigan los pesos de la capa 3 se va a obtener nuestra salida lineal de la capa 3
+16:01
+16 minutos y 1 segundo
+y después al pasar por la función no lineal se va a obtener la salida definitiva de la capa 3 que en nuestro
+16:09
+16 minutos y 9 segundos
+caso que habíamos hecho una red neuronal con sólo tres capas vendría a ser la salida final de nuestra red neuronal

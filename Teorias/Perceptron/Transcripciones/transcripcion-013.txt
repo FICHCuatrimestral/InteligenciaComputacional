@@ -1,0 +1,308 @@
+2 segundos
+en esta parte vamos a ver entonces cómo seguir aplicando este proceso retro propagación pero ahora en la capa oculta
+0:11
+11 segundos
+ahora se empieza a complicar un poco más la cosa volvemos a la definición básica de
+0:21
+21 segundos
+esta ecuación de ajuste de pesos el delta w pero ahora ya estamos
+0:29
+29 segundos
+en la capa 2 parece lo mismo que teníamos antes pero ha cambiado super índice fíjense que
+0:37
+37 segundos
+ahora tenemos un gradiente de error local instantáneo para la capa 2 y como entrada a la capa 2 tenemos lo
+0:46
+46 segundos
+que son las salidas de la capa 1 que todavía no son las entradas de toda la red tendríamos que ir una capa más atrás todavía
+0:55
+55 segundos
+o sea que con esta ecuación básica lo que tenemos que hacer es encontrar cuánto vale el gradiente de
+1:05
+1 minuto y 5 segundos
+error local instantáneo para este caso así que nuevamente vamos a reemplazar se acuerdan que la
+1:14
+1 minuto y 14 segundos
+primera parte o la última de las derivadas parciales que teníamos correspondía a la derivada de la función
+1:21
+1 minuto y 21 segundos
+sin moldea así que esa parte de gradiente de error local instantáneo ya lo tenemos resuelta y nos queda como
+1:28
+1 minuto y 28 segundos
+siempre la derivada del criterio de error qué definimos el error cuadrática medio que
+1:37
+1 minuto y 37 segundos
+estaba el final de todo respecto d la salida de la neurona j en la capa 2
+1:44
+1 minuto y 44 segundos
+observen que no estamos tan cerca cada vez estamos más lejos de la salida final de la red este error lo estamos midiendo
+1:52
+1 minuto y 52 segundos
+en la capa de salida pero ahora queremos derivar con respecto a la capa oculta no con respecto a la capa de salida o sea
+2:00
+2 minutos
+que tenemos que atravesar la capa de salida y la capa oculta para poder encontrar eso
+2:06
+2 minutos y 6 segundos
+así que vamos a tener ahí el criterio de error cuadrática
+2:12
+2 minutos y 12 segundos
+recuerdan observen que adentro de esta vuelvo a insistir en lo mismo no está
+2:20
+2 minutos y 20 segundos
+esta salida no es esa jesus j de la capa 2 la que está dentro de esa es la que
+2:28
+2 minutos y 28 segundos
+estaba dentro de esta era la aie j de la capa 3 que se restaba con la salida deseada así
+2:37
+2 minutos y 37 segundos
+que tenemos que recorrer un camino para encontrar esa derivada así que lo primero que podemos hacer para simplificar un poquito las cuentas
+2:45
+2 minutos y 45 segundos
+más adelante hacer este simple reemplazo que la derivada de la sumatoria en la sumatoria de las derivadas
+2:53
+2 minutos y 53 segundos
+nada más que eso hicimos sacamos en un medio afuera y la sumatoria sobre los casos fíjense que ahora acá le estamos llamando para no confundirnos con el
+3:02
+3 minutos y 2 segundos
+jota que es en la capa en la que estamos parados que es la capa oculta estamos llamando acá el índice que recorre las neuronas de la
+3:12
+3 minutos y 12 segundos
+capa de salida para no confundir con jota que es el índice que recorre las neuronas de la capa que nos interesa
+3:19
+3 minutos y 19 segundos
+y vuelvo a insistir y sería el índice que recorre a las capas a la capa
+3:27
+3 minutos y 27 segundos
+de entrada a la capa está a la capa 2 así que tenemos y j acá y es la salida
+3:36
+3 minutos y 36 segundos
+de la capa anterior o sea la entrada a la capa actual j es la capa actual o sea las neuronas de la
+3:44
+3 minutos y 44 segundos
+capa actual y acá es la capa de salida entonces esto es la derivada de una
+3:52
+3 minutos y 52 segundos
+función cuadrática nuevamente la función por la función como está por la deriva de la función
+3:59
+3 minutos y 59 segundos
+entonces bajamos en un medio y nos queda el error acá y la derivada del error está colista la
+4:08
+4 minutos y 8 segundos
+vamos a seguir arrastrando de la función sin media seguimos ahora si vamos a ir recorriendo
+4:18
+4 minutos y 18 segundos
+todo lo que hay entre el error en la capa de salida y la neurona en la
+4:26
+4 minutos y 26 segundos
+capa oculta contra la cual estamos tratando de obtener la derivada y tenemos el error en la capacidad
+4:34
+4 minutos y 34 segundos
+respecto a la salida en la capa de salida la salida en la capa de salida y
+4:41
+4 minutos y 41 segundos
+respecto de la salida lineal ya que antes de pasar por la función sin media y finalmente si tenemos la salida
+4:49
+4 minutos y 49 segundos
+lineal respecto de la salida de la capa oculta que vendría a ser la entrada
+4:56
+4 minutos y 56 segundos
+capa final o la capa de salida ahí llegamos hasta la capa en la que nosotros está muy interesado calcular el
+5:03
+5 minutos y 3 segundos
+gradiente de error local finalmente acá nuevamente tenemos la colita que venimos llevando siempre de
+5:10
+5 minutos y 10 segundos
+la derivada de la función sin movió vamos haciendo un poquito las cuentas
+5:18
+5 minutos y 18 segundos
+fíjense que acá en esta primera parte tenemos el error el simple error esto ya
+5:25
+5 minutos y 25 segundos
+lo habíamos hecho antes tiene que sacar la derivada a esto
+5:31
+5 minutos y 31 segundos
+y luego tenemos en esta segunda parte qué relación hay entre la salida no
+5:39
+5 minutos y 39 segundos
+lineal y la salida lineal la derivada de la función de activación así que bueno ya sabemos cómo es la formulita de la
+5:46
+5 minutos y 46 segundos
+derivada de la función de activación en un medio por uno más por uno menos la reemplazamos directamente observen
+5:56
+5 minutos y 56 segundos
+que esta es la función de activación de la capa salida y esta colita que tenemos al final es la función la derivada de la
+6:04
+6 minutos y 4 segundos
+función de activación de la capa en la que estamos parados en la capa oculta estamos acumulando dos ahí y lo otro que nos queda
+6:12
+6 minutos y 12 segundos
+es esta última derivada que es simplemente la derivada d
+6:21
+6 minutos y 21 segundos
+a los pesos que ponderan a las entradas o sea que para obtener la salida lineal
+6:28
+6 minutos y 28 segundos
+de la capa 3 yo lo que hago es multiplicar los pesos de la capa 3 por la entrada a la capa 3 que viene a ser
+6:37
+6 minutos y 37 segundos
+la salida de la capa 2 entonces y que bueno y que viene a ser por supuesto respecto de lo que estamos queriendo
+6:45
+6 minutos y 45 segundos
+derivar en última instancia así que bueno esto está bastante directo son cuentas muy parecidas a las que hicimos
+6:52
+6 minutos y 52 segundos
+antes como vimos acá tenemos la derivada de esto nos va a dar este menos 1 que está puesto ahí
+7:00
+7 minutos
+explícitamente para aclarar la derivada de esta segunda parte la derivada de la función de activación
+7:09
+7 minutos y 9 segundos
+en la última capa y la derivada de esta parte es nuevamente lo mismo que ya nos pasó
+7:18
+7 minutos y 18 segundos
+antes tenemos una sumatoria con muchos términos la mayoría de esos términos son constantes salvo justo el término jota
+7:27
+7 minutos y 27 segundos
+que es contra quien estamos derivando y por lo tanto la constante que está delante de la variable contra la que estamos derivando
+7:35
+7 minutos y 35 segundos
+es lo que nos queda acá así que hemos obtenido la fórmula para el gradiente de error
+7:44
+7 minutos y 44 segundos
+local en la capa oculta fíjense que nos costó un poco más que en la capa de salida porque estamos más lejos de donde realmente medimos el error y tenemos que
+7:52
+7 minutos y 52 segundos
+retro propagar esa información por eso es que vamos hacia atrás y ahora vamos a ver una pequeña
+8:00
+8 minutos
+reorganización de esta fórmula fíjense que tenemos es la misma ecuación que teníamos antes
+8:08
+8 minutos y 8 segundos
+nada más que metimos acá la derivada de la función sin media en la capa de salida acá está
+8:17
+8 minutos y 17 segundos
+el peso o los pesos de la capa de salida acá hasta la colita que tenemos en la capa actual en la capa oculta que
+8:25
+8 minutos y 25 segundos
+tenemos y este es el error esto también lo podemos escribir de esta
+8:32
+8 minutos y 32 segundos
+manera fíjense el gradiente de error local para la capa 3era
+8:40
+8 minutos y 40 segundos
+esto lo hemos definido en la parte anterior tenía esta forma era un medio
+8:47
+8 minutos y 47 segundos
+por el error por uno más que en la capa tres por uno menos en la capa tres y si
+8:55
+8 minutos y 55 segundos
+observamos esta forma esto que está acá es justamente ese gradiente error local en la capa 3
+9:04
+9 minutos y 4 segundos
+para que no se pierdan ubiquémonos que estamos calculando el gradiente de error local instantáneo en la capa 2 pero
+9:11
+9 minutos y 11 segundos
+vemos que en la fórmula de gradiente de error local instantáneo de la capa 2 está metido en gradiente
+9:20
+9 minutos y 20 segundos
+de error local instantáneo de la capa 3 entonces lo que podemos hacer es
+9:27
+9 minutos y 27 segundos
+reemplazarlo directamente y acá viene una cuestión clave este reemplazo es el corazón se podría decir
+9:37
+9 minutos y 37 segundos
+de el método retro propagación es lo que nos permite hacerlo de manera más eficiente y simplificar el cálculo pero
+9:45
+9 minutos y 45 segundos
+que además tiene un contenido conceptual muy importante observen lo que tenemos en esta parte
+9:53
+9 minutos y 53 segundos
+tenemos un promedio ponderado del gradiente de error local en la capa 3 este es gradiente del oro local en la
+10:01
+10 minutos y 1 segundo
+capa 3 y es como que lo estamos pasando por los pesos de la capa 3 o sea que estamos haciendo que el
+10:09
+10 minutos y 9 segundos
+gradiente de error local de la capa 3 pase a través de los pesos que unen la capa 3 con la capa 2
+10:18
+10 minutos y 18 segundos
+o sea que estamos haciendo pasar el gradiente de error local de la capa 3 de atrás para adelante desde la salida
+10:25
+10 minutos y 25 segundos
+hacia la capa oculta y por eso es que hablamos de retro propagación porque así como cuando propagamos hacia adelante
+10:34
+10 minutos y 34 segundos
+hacíamos pasar las entradas por los pesos o sea hacer el ese promedio ponderado de las entradas por los pesos
+10:41
+10 minutos y 41 segundos
+obtener la salida de la capa 1 y esa salida pasarla por los pesos de la capa
+10:48
+10 minutos y 48 segundos
+2 para obtener luego la salida de la capa 2 es sobre la propagación hacia adelante ahora estamos haciendo casi lo
+10:56
+10 minutos y 56 segundos
+mismo pero hacia atrás estamos con el gradiente de error local instantáneo
+11:02
+11 minutos y 2 segundos
+estamos pasándolo al que ya calculamos para la capa 3 a través de los pesos en la capa 3 para obtener el de la capa 2
+11:12
+11 minutos y 12 segundos
+que estamos calculando y finalmente siempre acá como siempre venimos haciendo nos queda como colista la
+11:19
+11 minutos y 19 segundos
+derivada de la función signo idea de la capa en la que estamos parados pero la cuestión conceptual importante es la
+11:27
+11 minutos y 27 segundos
+retro propagación del gradiente local instantáneo de error entonces vamos a contar un poquito estas
+11:37
+11 minutos y 37 segundos
+fórmulas para obtener el lenta de pesos que en definitiva es lo que queremos no actualizar los pesos hacer
+11:44
+11 minutos y 44 segundos
+que la renta prenda y vamos a reemplazar esta que está acá al final es la entrada
+11:53
+11 minutos y 53 segundos
+a la capa 2 esto que está acá en el medio
+12:00
+12 minutos
+la derivada de la función de activación en la capa 2 y esto que está acá es
+12:09
+12 minutos y 9 segundos
+la retro propagación de gradiente de error local instantánea de la capa 3 hacia la capa 2 o sea atravesando de
+12:17
+12 minutos y 17 segundos
+atrás para adelante los pesos de la capa 3 esta ecuación es fundamental porque no importa la cantidad de capas que
+12:26
+12 minutos y 26 segundos
+tengamos nos permite ir retro propagando esa información de error hacia atrás y
+12:33
+12 minutos y 33 segundos
+ajustando los pesos sin áticos de todas las capas de la red podríamos por ejemplo
+12:40
+12 minutos y 40 segundos
+hacer una generalización de esta ecuación en donde podemos llamar en lugar de 1234 llamar p
+12:50
+12 minutos y 50 segundos
+un número genérico a la capa en la que estamos parados actualmente es la capa a la que le queremos calcular ese ajuste
+12:58
+12 minutos y 58 segundos
+de pesos entonces le vamos a llamar p entonces p - uno va a ser la entrada a
+13:07
+13 minutos y 7 segundos
+esa capa lo que tenemos acá o sea que tenemos como entrada a la capa p la
+13:13
+13 minutos y 13 segundos
+salida de la capa p - 1 en el medio como habíamos visto tenemos la derivada de la función de activación
+13:23
+13 minutos y 23 segundos
+de la capa en la que estamos parados y acá lo que tenemos es un producto interno que es la retro
+13:32
+13 minutos y 32 segundos
+propagación de gradiente de error local de la capa p más 1 o sea la capa siguiente a la capa
+13:40
+13 minutos y 40 segundos
+en la que estamos calculando finalmente como siempre tenemos la velocidad de aprendizaje que es con la que vamos a
+13:47
+13 minutos y 47 segundos
+determinar qué tan rápido aprende o no y qué tan rápido se olvida de lo último que le enseñamos

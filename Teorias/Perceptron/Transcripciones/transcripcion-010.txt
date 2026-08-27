@@ -1,0 +1,181 @@
+Buscar en transcripción
+0:02
+2 segundos
+en esta parte vamos a empezar a ver la propagación ya vimos cómo se propagaba hacia adelante y ahora nos interesa ver
+0:11
+11 segundos
+cómo propagar hacia atrás porque porque a partir de esa propagación hacia atrás vamos a tener o vamos a encontrar una
+0:18
+18 segundos
+forma de actualizar los pesos o sea de hacer que la red neuronal aprenda así que esta
+0:27
+27 segundos
+propagación hacia atrás lo que nos va a permitir es que iteración a iteración ejemplo ejemplo
+0:36
+36 segundos
+que les vamos mostrando se ajuste en los pesos se modifiquen levemente de a poquito y de esa manera la red neuronal
+0:45
+45 segundos
+vaya corrigiendo las salidas este para que de las salidas correctas entonces
+0:53
+53 segundos
+vamos a empezar definiendo un criterio de error pensemos que ahora tenemos varias
+1:01
+1 minuto y 1 segundo
+salidas en la red neuronal como se vio en el gráfico en la parte anterior entonces para cada una de esas neuronas
+1:09
+1 minuto y 9 segundos
+va a haber un error podemos pensar que tenemos las neuronas de la capa de salida en este caso estoy dibujando 3
+1:18
+1 minuto y 18 segundos
+entonces va a haber un c1 c2 c3
+1:27
+1 minuto y 27 segundos
+y vamos a tener un valor de referencia qué
+1:32
+1 minuto y 32 segundos
+va a ser un he deseado 11 deseado 2 he
+1:39
+1 minuto y 39 segundos
+deseado 3 lo que nosotros queremos hacer es comparar
+1:48
+1 minuto y 48 segundos
+estos valores a través de una recta y cada uno de estos va a ser un error un
+1:55
+1 minuto y 55 segundos
+error dos error 3 eso es lo que tenemos acá que fíjense
+2:02
+2 minutos y 2 segundos
+los estamos elevando al cuadrado para cada una de las salidas restamos la salida que no está dando la red
+2:11
+2 minutos y 11 segundos
+y la salida verdadera la correcta elevamos eso al cuadrado y luego sumamos fíjense algo
+2:19
+2 minutos y 19 segundos
+importante que esto de elevarlo al cuadrado no es una cuestión menor porque si una salida estuviera dando error más
+2:28
+2 minutos y 28 segundos
+uno y la otra salida estuviera dando error menos uno al sumarlo se compensarían y la suma
+2:35
+2 minutos y 35 segundos
+total de los errores estaría dando 0 cuando en realidad las neuronas efectivamente se están equivocando
+2:42
+2 minutos y 42 segundos
+entonces esto del cuadrado tiene una importancia no menor porque al elevar todos los errores al cuadrado siempre la
+2:49
+2 minutos y 49 segundos
+suma va creciendo cuando hay un error por otro lado observen que acá hay un medio que simplemente está por
+2:57
+2 minutos y 57 segundos
+conveniencia dado que como van a ver luego esto le vamos a hacer una derivada este 2 va a bajar
+3:05
+3 minutos y 5 segundos
+y nos va a simplificar bastante que se simplifique con ese otro 2 un medio así que bueno como criterio de error
+3:14
+3 minutos y 14 segundos
+instantáneo fíjense esta palabra instantáneo también tiene su importancia es un error para el instante n
+3:24
+3 minutos y 24 segundos
+no es un error para todos los patrones de entrenamiento que le estemos dando todos los ejemplos es el error para el
+3:30
+3 minutos y 30 segundos
+enésimo ejemplo para el enésimo ejemplo en la iteración n podría ser que ese
+3:38
+3 minutos y 38 segundos
+mismo ejemplo después de muchas interacciones se lo volvamos a mostrarnos pero es un error específicamente para el integraciones por eso estamos hablando de error
+3:46
+3 minutos y 46 segundos
+cuadrática e instantáneo con este error cuadrática nosotros este
+3:54
+3 minutos y 54 segundos
+criterio de error cuadrática que acabamos de definir lo que vamos a hacer es aplicar lo mismo que vimos antes para el caso general ahora la regla del
+4:03
+4 minutos y 3 segundos
+gradiente b se acuerdan que vamos a tratar de modificar los pesos según delta de pesos en el sentido
+4:11
+4 minutos y 11 segundos
+opuesto al que contribuyen al gradiente de error o sea que en sentido opuesto al que hacen crecer el gradiente de ronse
+4:19
+4 minutos y 19 segundos
+que queremos irnos hacia abajo el ingrediente y acá lo que aparece este muy que antes
+4:26
+4 minutos y 26 segundos
+también le llamamos esta es la velocidad de aprendizaje es decir qué tan rápido
+4:33
+4 minutos y 33 segundos
+nos movemos en esa superficie de error qué tan rápido ajustamos los pesos tienen que pensar de que si yo
+4:41
+4 minutos y 41 segundos
+conceptualmente con una velocidad de aprendizaje muy grande que va a ser la neurona se va a aprender el ejemplo que le acabo de mostrar pero se va olvida
+4:50
+4 minutos y 50 segundos
+todo lo que aprendió antes porque va a modificar tanto los pesos que va a perder se va a olvidar todo lo que aprendió de
+4:58
+4 minutos y 58 segundos
+los ejemplos anteriores por otro lado si yo le pusiera una velocidad de aprendizaje muy chica conceptualmente va
+5:05
+5 minutos y 5 segundos
+a aprender muy lento sólo voy a tener que mostrar muchísimas veces las cosas para que pueda aprender así que bueno hay un compromiso en esa velocidad de aprendizaje que luego vamos a analizar
+5:14
+5 minutos y 14 segundos
+también y acá tenemos él gradiente de error la derivada parcial de este criterio de error cuadrática
+5:23
+5 minutos y 23 segundos
+medio que definimos con respecto a observen a los pesos
+5:30
+5 minutos y 30 segundos
+estoy derivando con respecto a los pesos porque la superficie una superficie de error en cuyas coordenadas o parámetros
+5:38
+5 minutos y 38 segundos
+están los pesos para distintos valores de pesos va a haber distintos errores y es sobre esa superficie sobre la que me
+5:45
+5 minutos y 45 segundos
+estoy moviendo y quiero obtener el conjunto de valores de pesos que hacen mínimo
+5:52
+5 minutos y 52 segundos
+así que con este criterio de roh cuadrática ahora lo que tenemos acá es la simple aplicación de la regla de
+5:59
+5 minutos y 59 segundos
+la cadena recordarán que cuando vieron las reglas de derivadas que cuando tenemos una función de una función para
+6:08
+6 minutos y 8 segundos
+derivar la tenemos que aplicar la regla de la cadena pero particularmente acá tenemos una función de una función de una función de observe
+6:17
+6 minutos y 17 segundos
+el error el criterio de error cuadrática medio depende
+6:24
+6 minutos y 24 segundos
+el error cuadrática de la neurona que nos interesa la neurona j o sea asociada al peso j en
+6:34
+6 minutos y 34 segundos
+el que estamos interesados en la neurona de salida j no a su vez el error cuadrática de esa
+6:42
+6 minutos y 42 segundos
+neurona depende de la salida que haya dado esa neurona se acuerdan que era la
+6:49
+6 minutos y 49 segundos
+salida menos la salida deseada la salida correcta o sea que hay una dependencia es una simple resta pero depende
+6:57
+6 minutos y 57 segundos
+a su vez nuevamente la salida de la neurona depende de la salida lineal en
+7:04
+7 minutos y 4 segundos
+esa cuerda que teníamos la salida lineal que era simplemente la sumatoria de los pesos por las entradas de esa neurona y la otra salida la salida final o la
+7:13
+7 minutos y 13 segundos
+salida no lineal que era la que ya había pasado con la función de activación así que la salida final de esa neurona depende
+7:23
+7 minutos y 23 segundos
+de la salida lineal en que está acá y la salida lineal finalmente es lo que depende de forma directa de los pesos la
+7:31
+7 minutos y 31 segundos
+salida era la sumatoria de los dobles por ahí recién llegamos a w y j que es con respecto a lo que estamos derivando
+7:40
+7 minutos y 40 segundos
+que bueno esta es la ecuación fundamental que nos va a guiar la
+7:47
+7 minutos y 47 segundos
+próxima parte de esta clase y la vamos a tener que ir desmenuzando de a poco y
+7:55
+7 minutos y 55 segundos
+obteniendo cada uno de esos factores

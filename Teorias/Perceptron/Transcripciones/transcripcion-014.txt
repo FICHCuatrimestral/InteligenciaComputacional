@@ -1,0 +1,351 @@
+0:02
+2 segundos
+pero lo que vamos a ver ahora es un resumen de todo este algoritmo de retro propagación
+0:09
+9 segundos
+y vamos a ver en forma gráfica cómo aplicar estas ecuaciones que logramos
+0:16
+16 segundos
+deducir en la parte anterior así que como algoritmo general tenemos una etapa
+0:23
+23 segundos
+de inicialización como siempre en redes neuronales inicializa mos al azar con valores pequeños de pesos por ejemplo
+0:32
+32 segundos
+con un valor al azar entre más menos en los 5 luego hacemos una propagación hacia
+0:38
+38 segundos
+adelante ahí es donde entra un patrón
+0:45
+45 segundos
+va pasando por la primera capa o sea se multiplica por los pesos o sea es el promedio ponderado se
+0:53
+53 segundos
+aplican las funciones de activación de la primera capa de neuronas la salida de esa primera capa nuevamente pasa por los
+1:00
+1 minuto
+pesos de la segunda y así cuando llegamos hasta el final lo que tenemos que hacer es la propagación
+1:07
+1 minuto y 7 segundos
+hacia atrás ese sería el siguiente paso la propagación hacia atrás o sea que se acuerdan calculamos los celtas
+1:15
+1 minuto y 15 segundos
+básicamente íbamos retros propagando los delta es la etapa de la propagación
+1:22
+1 minuto y 22 segundos
+hacia atrás o sea ese gradiente de error local instantáneo lo íbamos llevando hacia atrás mira lo que en la tercera
+1:31
+1 minuto y 31 segundos
+etapa nos permitía hacer la adaptación de los pesos o sea cambiar los valores que
+1:38
+1 minuto y 38 segundos
+tienen cada uno de los pesos de todas las capas de la red neuronal esto lo que hicimos fue para un patrón
+1:46
+1 minuto y 46 segundos
+en la etapa en el paso 5 lo que hacemos es volver a 2 tomamos el siguiente patrón o el siguiente datos de el
+1:55
+1 minuto y 55 segundos
+archivo de entrenamiento y hacemos todo lo mismo lo propagamos hacia adelante propagamos hacia atrás el delta y
+2:03
+2 minutos y 3 segundos
+ajustamos los pesos y ya tomamos el tercero el cuarto en quinto y así con todos los datos que tengamos en nuestro
+2:10
+2 minutos y 10 segundos
+archivo entrenamiento y a cada una de esas pasadas con todos los datos de entrenamiento que tenemos le llamamos
+2:17
+2 minutos y 17 segundos
+épocas en una época sería cuando todos los datos entrenamientos pasaron una vez pero podemos para entrenar tener 10 20
+2:26
+2 minutos y 26 segundos
+50 100 épocas es decir le estamos mostrando los datos entrenamiento muchas veces entonces vamos a ver ahora un poquito más en detalle de forma gráfica
+2:35
+2 minutos y 35 segundos
+como son estas pasadas hacia adelante y hacia atrás y el ajuste de pesos
+2:43
+2 minutos y 43 segundos
+acá tenemos un esquema simplificado de la red neuronal tenemos las entradas simplemente hay dos
+2:50
+2 minutos y 50 segundos
+entradas acá tenemos tres neuronas en la primera capa dos neuronas en la capa
+2:57
+2 minutos y 57 segundos
+oculta y una sola neurona en la capa de salida acá están las funciones de activación
+3:05
+3 minutos y 5 segundos
+y acá adentro tenemos lo que es la salida lineal de la sumatoria de los pesos multiplicado por la entrada
+3:12
+3 minutos y 12 segundos
+y fíjense que acá está detallada la anotación que venimos usando antes en las ecuaciones como super índice estamos indicando la
+3:22
+3 minutos y 22 segundos
+capa y como subíndice el número de neuronas dentro de cada una de las capas
+3:30
+3 minutos y 30 segundos
+entonces vamos a empezar con la propagación hacia adelante por ejemplo entra un x1 y un x2
+3:41
+3 minutos y 41 segundos
+con estos dos pesos con el peso 11 o sea el peso que une la neurona 1 con x 1 de
+3:48
+3 minutos y 48 segundos
+la capa 1 multiplicamos la entrada x 1 y este otro
+3:55
+3 minutos y 55 segundos
+peso que está resaltado sería el 12 el peso que une la entrada 2 con la neurona
+4:02
+4 minutos y 2 segundos
+1 así que simplemente esto es como está acá una multiplicación en el primer peso por la entrada el segundo personal por la entrada
+4:11
+4 minutos y 11 segundos
+pero no nos olvidemos que tenemos el sesgo que no estaba dibujado en este gráfico tenemos
+4:20
+4 minutos y 20 segundos
+el váyase se quejó qué es un peso más que se multiplica siempre por menos 1
+4:27
+4 minutos y 27 segundos
+fíjense que estamos calculando la salida de la primera neurona por supuesto cuando calculemos la salida de la
+4:34
+4 minutos y 34 segundos
+segunda neurona vamos a tener también el sesgo que viene acá y con la tercera acá y lo mismo para las neuronas de la
+4:42
+4 minutos y 42 segundos
+segunda capa todas para tener sus ojos y bien de ahora más lo vamos a simplificar en el gráfico recuerden que siempre va a
+4:49
+4 minutos y 49 segundos
+estar ahí presente el sesgo o sea que pudimos calcular la salida de la primera neurona de la capa oculta fíjense que es
+4:57
+4 minutos y 57 segundos
+simplemente multiplicar cada peso por la entrada y el peso del sesgo por menos 1 sumamos
+5:05
+5 minutos y 5 segundos
+todo eso y le aplicamos la función no lineal que era la sin movida que habíamos visto antes eso ya me da la
+5:12
+5 minutos y 12 segundos
+primer salida de la misma manera vamos a calcular la salida de la segunda neurona con las dos entradas
+5:20
+5 minutos y 20 segundos
+los dos pesos y la entrada menos uno y el seco que siempre está ahí no y el peso correspondiente a esa entrada
+5:30
+5 minutos y 30 segundos
+y de la misma manera vamos a calcular la salida de la neurona 3 quiere decir que ya tenemos calculadas
+5:38
+5 minutos y 38 segundos
+las salidas tenemos la salida 1 la 2 la 3 y podemos hacer lo mismo con
+5:47
+5 minutos y 47 segundos
+la sal la siguiente capa por ejemplo acá tenemos la ecuación cita para la primera
+5:55
+5 minutos y 55 segundos
+neurona de la segunda capa que lo que va a tomar van a ser este peso que está acá este peso que está acá este peso que
+6:04
+6 minutos y 4 segundos
+está acá más no se olviden el peso del sesgo
+6:10
+6 minutos y 10 segundos
+son los que están acá el primero el segundo el tercero y el sesgo multiplicamos peso por entrada acá la
+6:19
+6 minutos y 19 segundos
+entrada es la salida de la neurona correspondiente en la capa anterior vamos sumando todo eso le explicamos la
+6:26
+6 minutos y 26 segundos
+función en línea o sea que de esa manera ya tenemos calculadas las salidas de la capa 2 y finalmente a partir de la
+6:34
+6 minutos y 34 segundos
+salida de la capa 2 y utilizando los pesos de la capa 3 podemos calcular la salida final acá
+6:43
+6 minutos y 43 segundos
+tenemos el primer peso de la capa 3 por la salida de la neurona 1 de la capa 2 en el
+6:51
+6 minutos y 51 segundos
+segundo peso de la capa 3 por la salida de la neurona 2 de la capa 2 y el sesgo
+7:01
+7 minutos y 1 segundo
+que siempre lo tenemos ahí así que finalmente bueno esta salida de la capa 3 es en definitiva la
+7:09
+7 minutos y 9 segundos
+salida final de la neurona lo que hicimos fue nada más que propagar hacia adelante la entrada todavía no entregamos nada
+7:17
+7 minutos y 17 segundos
+para entrenar recuerdan que lo que primero teníamos que hacer era calcular los deltas de cada una de las neuronas
+7:25
+7 minutos y 25 segundos
+ahora veamos vamos a ver paso por paso así como vimos la propagación hacia delante ahora la
+7:32
+7 minutos y 32 segundos
+propagación hacia atrás primero que todo podemos calcular el delta que es uno único de la última
+7:40
+7 minutos y 40 segundos
+neurona de la capa ese delta tenía una ecuación en particular ustedes recuerdan que era directamente la salida deseada
+7:48
+7 minutos y 48 segundos
+menos la salida actual o la salida que está dando la la red neuronal la que acabamos de
+7:56
+7 minutos y 56 segundos
+calcular en la propagación hacia adelante o sea el error esto en definitiva es el error en este error que está acá que es como que está entrando
+8:04
+8 minutos y 4 segundos
+de atrás para adelante en la red y acá tenemos se acuerdan la derivada de la función de activación que va a ser la colita esa que vamos a tener siempre en
+8:13
+8 minutos y 13 segundos
+los deltas ya tenemos el delta de la capa 3 y ahora lo que vamos a hacer es propagar ese
+8:21
+8 minutos y 21 segundos
+delta de la capa 3 que reiteró su no solo porque en la capa 3 hay una sola neurona en la capa de salida lo vamos a
+8:27
+8 minutos y 27 segundos
+propagar hacia la capa 2 como lo propagamos multiplicando
+8:34
+8 minutos y 34 segundos
+por el peso que une a la neurona 1 de la capa 2 con la neurona de la capa de
+8:41
+8 minutos y 41 segundos
+salida así que de esa manera propagamos hacia atrás el delta y acá tenemos como siempre la colita de
+8:50
+8 minutos y 50 segundos
+la función de activación de la neurona sobre la que estamos calculando o sea de ahora de la neurona en la capa 2 así que
+8:56
+8 minutos y 56 segundos
+ya tenemos calculado en delta de la neurona 1 de la capa 2 con esa simple formulistas de la misma manera
+9:05
+9 minutos y 5 segundos
+vamos a calcular este otro delta el delta de la neurona 2 de la capa 2
+9:13
+9 minutos y 13 segundos
+simplemente usando el peso que corresponde y ahora podemos seguir hacia atrás ya tenemos los dos centros calculados en la
+9:20
+9 minutos y 20 segundos
+capa oculta podemos tratar de calcular los deltas de la primera capa nuevamente para el caso de la primera
+9:28
+9 minutos y 28 segundos
+capa fíjense que los que contribuyen calcular el delta de la neurona 1 de la
+9:36
+9 minutos y 36 segundos
+capa 1 son los dos del tas porque hay pesos que unen a la neurona 1 con la 1
+9:43
+9 minutos y 43 segundos
+de la capa 2 y la neurona 1 de la capa 1 con las 2 de la capa 2 o sea que tenemos que tener en consideración tanto el delta de la neurona 1 como de
+9:54
+9 minutos y 54 segundos
+la neurona 2 en la capa 2 así que acá están y simplemente multiplicados por los pesos que corresponden y acá está la
+10:03
+10 minutos y 3 segundos
+derivada de la función de activación que tenemos siempre de la misma manera vamos a poder calcular todos tenemos el delta 1 el
+10:13
+10 minutos y 13 segundos
+delta 2 y el 33 los 3 delta de las tres neuronas que tienen la primera capa ya tenemos teníamos calculado de antes los
+10:21
+10 minutos y 21 segundos
+dos delta de las dos neuronas que teníamos en la capa oculta y el delta de la capa de salida que tenía una ecuación un poquito diferente ya calculamos todos
+10:30
+10 minutos y 30 segundos
+los deltas entonces ahora que podemos hacer podemos empezar a ajustar a los pesos vamos ahora a cambiar el valor que
+10:39
+10 minutos y 39 segundos
+tienen los pesos fíjense que todo esto que hicimos hasta ahora fue hecho con los valores de pesos originales en los
+10:47
+10 minutos y 47 segundos
+que tenía en la integración anterior ahora recién vamos a hacer un cambio en el valor de los pesos así que lo primero
+10:54
+10 minutos y 54 segundos
+que tenemos que hacer es adaptar por ejemplo el primer peso este peso en que une a la entrada con la neurona 1 lo
+11:04
+11 minutos y 4 segundos
+tenemos que ajustar y está que está acá era la ecuación cita con la que ajustamos los pesos teníamos la velocidad de aprendizaje
+11:13
+11 minutos y 13 segundos
+teníamos el delta correspondiente y la entrada que estamos considerando y que se aclaró
+11:20
+11 minutos y 20 segundos
+que yo obtengo de este lado es el delta peso o sea que al peso actual le tenemos que sumar el delta peso y eso me va a
+11:29
+11 minutos y 29 segundos
+dar el peso que va a actuar la próxima vez que le mostremos un patrones de la neurona la próxima vez que hagamos entrar un
+11:36
+11 minutos y 36 segundos
+patrón va a actuar ese peso wm actual + delta w
+11:44
+11 minutos y 44 segundos
+por ahora en todas las cosas que hacemos hemos siempre utilizado los pesos que teníamos en la en la red actual
+11:51
+11 minutos y 51 segundos
+entonces corregimos ese peso y de la misma manera podemos corregir
+11:57
+11 minutos y 57 segundos
+el otro peso de esa neurona y el peso una entrada 2 con la neurona 1
+12:06
+12 minutos y 6 segundos
+también no nos olvidemos que tenemos un peso acá vuelve a aparecer está que por simplicidad no la estamos dibujando de
+12:13
+12 minutos y 13 segundos
+el sesgo había un peso que unía la entrada de sesgo con cada una de las neuronas y también hay actualizados o
+12:22
+12 minutos y 22 segundos
+sea que acá tenemos la actualización en base al delta de la misma neurona que es el que estamos tratando ahora de el peso
+12:32
+12 minutos y 32 segundos
+de sesgo lo mismo es para todas las neuronas no lo voy a repetir pero recuerden que todas las neuronas tienen su peso de
+12:40
+12 minutos y 40 segundos
+sesgo y tiene que ser actualizado de la misma manera que actualizamos los pesos para la neurona 1 actualizaremos
+12:48
+12 minutos y 48 segundos
+en función del delta 2 los pesos los 2 pesos esto y el descenso para la neurona 2
+12:55
+12 minutos y 55 segundos
+fíjense que yo insisto pongo delta w acá pero lo que yo voy a obtener es un w
+13:04
+13 minutos y 4 segundos
+igual al doble m actual más el delta w ese no con eso voy a obtener el nuevo peso
+13:12
+13 minutos y 12 segundos
+y de la misma manera también tendríamos que actualizar los pesos de la neurona 3d una vez que tenemos actualizados todos
+13:20
+13 minutos y 20 segundos
+los pesos de la primera capa vamos a pasar a actualizar los pesos de la segunda capa quiero hacer una pequeña
+13:30
+13 minutos y 30 segundos
+aclaración en esta en esta parte el orden en que cual hicimos los pesos no tiene
+13:37
+13 minutos y 37 segundos
+una importancia en esta etapa si bien yo lo estoy mostrando como si fuéramos hacia adelante con la
+13:44
+13 minutos y 44 segundos
+actualización de los pesos piensen que en realidad la salida de esta neurona la calculamos con los
+13:53
+13 minutos y 53 segundos
+pesos originales no con los precios actualizados calculamos cuando hicimos la etapa hacia adelante recordarán
+13:59
+13 minutos y 59 segundos
+cuando estaba todo azul ya calculamos la salida de todas las neuronas y nos guardamos las salidas de esas neuronas no las volvemos a calcular ahora con los
+14:08
+14 minutos y 8 segundos
+pesos que acabamos de modificar así que una vez que hicimos la etapa hacia adelante guardamos cuál es la
+14:17
+14 minutos y 17 segundos
+salida de todas las neuronas o sea fueron calculados con los pesos actuales sin modificar y esos son los valores que vamos a utilizar en todas
+14:25
+14 minutos y 25 segundos
+las actualizaciones después por lo tanto actualizar primero la primera capa o primero la segunda o hacerlo en el orden
+14:34
+14 minutos y 34 segundos
+que sea no cambia el resultado o sea que esta última etapa de actualización de pesos no tiene que ser hecha estrictamente en este orden que ya lo
+14:42
+14 minutos y 42 segundos
+estoy diciendo así que bueno actualizamos los pesos de la primera capa actualizamos ahora con los deltas de la misma manera los pesos
+14:51
+14 minutos y 51 segundos
+de la segunda capa actualizamos los pesos de la tercera capa y ya tenemos la nueva red con todos
+14:58
+14 minutos y 58 segundos
+los pesos actualizados para cuál era la parte siguiente a continuación les volvíamos a mostrar otro nuevo patrón de
+15:07
+15 minutos y 7 segundos
+un nuevo patrón en el siguiente en la lista en el archivo que tenemos guardado todos los patrones de entrenamiento y volvemos a hacer todo lo mismo pasado
+15:16
+15 minutos y 16 segundos
+hacia adelante pasada hacia atrás o sea retro propagación de 90 y después ajuste de pesos en los tres
+15:25
+15 minutos y 25 segundos
+pasos básicos del entrenamiento para cada uno de los patrones así que de a poquito se van actualizando esos pesos y
+15:32
+15 minutos y 32 segundos
+la red neuronal va aprendiendo a resolver el problema que tenemos en más

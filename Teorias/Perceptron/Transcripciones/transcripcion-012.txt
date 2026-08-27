@@ -1,0 +1,139 @@
+Buscar en transcripción
+0:05
+5 segundos
+vamos a ver esta idea de la retro comparación ya aplicada en el caso especial de la capa de salida lo que
+0:14
+14 segundos
+vimos antes fue el caso general le sacamos la derivada a la función de activación pero ahora nos interesa empezar a
+0:23
+23 segundos
+aplicarlo a los casos particulares de las capas que va a tener dos empezamos por la última que es la más sencilla
+0:30
+30 segundos
+ahora vamos a simplemente detallar un poco la notación
+0:38
+38 segundos
+fíjense que agregamos los super índices tenemos como interés el cálculo del
+0:48
+48 segundos
+ajuste que le corresponde a los pesos de la última capa la capa 3 hemos dicho que en esta en este ejemplo tenemos tres
+0:55
+55 segundos
+capas o sea la capa de salida tenemos el gradiente de error local para la capa 3 que ahora vamos a ver cómo lo
+1:03
+1 minuto y 3 segundos
+podemos calcular acá delante siempre está la velocidad de aprendizaje y tenemos
+1:10
+1 minuto y 10 segundos
+está allí que insisto es jesús y qué es la entrada
+1:18
+1 minuto y 18 segundos
+a la capa 3 es decir la salida de la capa 2 lo que sale de las neuronas de la capa 2
+1:26
+1 minuto y 26 segundos
+es lo que entra en las neuronas de la capa 3 entonces lo que tenemos que hacer es calcular el gradiente de error local
+1:34
+1 minuto y 34 segundos
+instantáneo para esta capa 3 este gradiente de error local va a tener como
+1:42
+1 minuto y 42 segundos
+parte final derivada de la función sigmoidea simétrica en la función de activación
+1:49
+1 minuto y 49 segundos
+acá simplemente reemplazamos por la formulita general que encontramos antes y un medio por si
+1:57
+1 minuto y 57 segundos
+1% -1 acá está dado vuelta pero en lo mismo y acá lo que nos queda por determinar es
+2:05
+2 minutos y 5 segundos
+la derivada de nuestro criterio de error cuadrática medio respecto de la salida
+2:12
+2 minutos y 12 segundos
+que tenemos actualmente en la salida que sería la salida final en el caso de la capa de salida
+2:20
+2 minutos y 20 segundos
+entonces esa derivada la volvemos a descomponer se acuerdan que habíamos resumir un poquito de la notación
+2:29
+2 minutos y 29 segundos
+habíamos salteado el paso de lae pero el criterio de error cuadrática medio depende del error de
+2:37
+2 minutos y 37 segundos
+cada neurona y el error de cada neurona depende de la salida de cada neurona que contra lo que queremos derivar en
+2:45
+2 minutos y 45 segundos
+definitiva entonces para hacer esas derivadas vamos a reemplazar ahora acá fíjense simplemente reemplazamos
+2:54
+2 minutos y 54 segundos
+el criterio de error cuadrática que habíamos definido al principio pusimos la sumatoria sobre todas las neuronas de salida de el error o sea la
+3:03
+3 minutos y 3 segundos
+resta entre la salida que está dando la red y la salida deseada elevado al cuadrado y acá
+3:11
+3 minutos y 11 segundos
+fíjense que pusimos cuánto es cuánto vale lo que acabo de decir la resta entre la deseada y la
+3:20
+3 minutos y 20 segundos
+salida que está dando la neurona así que tenemos que sacar la derivada de esta función con respecto a e o sea con
+3:29
+3 minutos y 29 segundos
+respecto al error y de esta función muy sencilla respecto de si esas son las dos derivadas que tenemos que calcular este
+3:38
+3 minutos y 38 segundos
+último pedacito está colista la venimos arrastrando que es la derivada de la función signo
+3:45
+3 minutos y 45 segundos
+de simétrica de la función de activación así que bueno calculando esto es la derivada
+3:52
+3 minutos y 52 segundos
+de algo que está elevado al cuadrado observen el detalle nuevamente de que para todos los términos de esta
+4:00
+4 minutos
+sumatoria para el término 1 2 3 4 5 de todos los que no sean justo el jota contra el que estoy derivando van a dar
+4:07
+4 minutos y 7 segundos
+0 y cuando justo le toque al término j es la derivada de cuadrado respecto de o
+4:16
+4 minutos y 16 segundos
+sea que el 2 directamente por l y ese 2 que baja de la derivada se puede
+4:24
+4 minutos y 24 segundos
+simplificar con este un medio que está acá así que me queda este y que está acá
+4:31
+4 minutos y 31 segundos
+este un medio corresponde a ese que está ahí adelante luego tenemos la derivada d
+4:40
+4 minutos y 40 segundos
+esta segunda parte y fíjese que es la derivada de una constante menos 1 por la variable contra la que
+4:49
+4 minutos y 49 segundos
+estoy derivando o sea que la derivada de esa humedad menos 1 s menos 1 se simplifica con este menos 1 y bueno
+4:58
+4 minutos y 58 segundos
+directamente acá es como que acá quedó un 1 que por supuesto no lo ponemos y por último tenemos lo que nos queda
+5:07
+5 minutos y 7 segundos
+siempre de colita que es parte de la derivada de la función sin moldea este resultado acá tiene una estrellita
+5:15
+5 minutos y 15 segundos
+lo vamos a volver a utilizar más adelante bueno como ecuación final ahora lo que tenemos que hacer es reemplazar todos
+5:24
+5 minutos y 24 segundos
+estos resultados parciales en la ecuación de ajuste del error que se acuerdan que era en el sentido opuesto
+5:31
+5 minutos y 31 segundos
+del gradiente de error lo que calculamos en definitiva es el gradiente y nos va a quedar alguna constante
+5:39
+5 minutos y 39 segundos
+fíjense que acá está la constante esta que de alguna manera absorbe todas las constantes que nos estén quedando por
+5:46
+5 minutos y 46 segundos
+ahí y la constante de aprendizaje o la velocidad de aprendizaje en error y la derivada de la función
+5:56
+5 minutos y 56 segundos
+de activación y finalmente tenemos la entrada o sea que fíjense la estructura que tiene
+6:03
+6 minutos y 3 segundos
+velocidad de aprendizaje error derivada de la función de activación y
+6:10
+6 minutos y 10 segundos
+entrada esa sería la ecuación con la que podemos ajustar los pesos en la capa de salida

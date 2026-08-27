@@ -1,0 +1,203 @@
+4 segundos
+lo que nos queda por ver es si realmente este perceptrón que que armamos que
+0:11
+11 segundos
+tiene apenas tres neuronas esta primera red neuronal tiene realmente la capacidad de resolver el problema x or que nos había
+0:20
+20 segundos
+motivado esta parte de la clase entonces resumiendo un poco eh habíamos dicho que teníamos dos entradas eh la x1 la x2 y
+0:30
+30 segundos
+eh Teníamos dos neuronas la neurona a y la neurona B que fijaban las dos primeras rectas que se paraba el plano y
+0:39
+39 segundos
+la neurona c la tercera y la la salida que eh hacía la tomaba la decisión final
+0:46
+46 segundos
+a partir de los semiplanos que separaban la a y la b entonces habíamos encontrado que
+0:53
+53 segundos
+podíamos poner esta combinación de pesos sinápticos en la primera capa teníamos tods valores
+1:01
+1 minuto y 1 segundo
+uno en la segunda capa teníamos un 1 y un -1 y finalmente la neurona c era la
+1:09
+1 minuto y 9 segundos
+que iba a dar la salida final eh además no nos olvidemos que tenemos el sesgo eh
+1:16
+1 minuto y 16 segundos
+Esa entrada x0 eh que siempre vale -1 Y que está conectada por pesos a las
+1:24
+1 minuto y 24 segundos
+distintas neuronas eh toda neurona tiene su sesgo que se acuerdan venía del umbral para este caso particular habíamos
+1:32
+1 minuto y 32 segundos
+determinado que en la neurona B el sesgo era un en la neurona a -1 y en la neurona c era + 1 entonces Esta es
+1:40
+1 minuto y 40 segundos
+nuestra red neuronal que tenía las vamos a dejar ahí abajo para hacer ahora la prueba a ver si realmente resuelve el
+1:48
+1 minuto y 48 segundos
+xor y también la podíamos representar con una ecuación se acuerdan que cada neuronita tenía una ecuación en la que
+1:57
+1 minuto y 57 segundos
+multiplicaba los pesos por las entradas eh le sumaba o le restaba el sesgo y a
+2:04
+2 minutos y 4 segundos
+ese resultado le calculaba el signo Eh entonces acá tenemos el caso de la neurona a la neurona B Y a partir de la
+2:12
+2 minutos y 12 segundos
+salida de la a y la b empieza a actuar la neurona c Así que vamos a verificar a ver si eh
+2:20
+2 minutos y 20 segundos
+realmente funciona esto del xg vamos a suponer las entradas x1 y x2 eh que para
+2:29
+2 minutos y 29 segundos
+empezar vamos a suponer que son -1 y -1 es decir en este caso tenemos falso y
+2:37
+2 minutos y 37 segundos
+falso vamos a ver en nuestra red neuronal Cuáles serían las salidas de la
+2:43
+2 minutos y 43 segundos
+neurona a y de la neurona B en el caso de la neurona a la tenemos acá el -1 que
+2:53
+2 minutos y 53 segundos
+entra de la entrada do se multiplica por 1 h y el -1 que entra de la entrada 1
+3:02
+3 minutos y 2 segundos
+También se multiplica por 1 o sea que tenemos -1
+3:09
+3 minutos y 9 segundos
+-1 y el sesgo de la neurona a es -1 O sea que en total estamos
+3:16
+3 minutos y 16 segundos
+teniendo acá lo podemos ver en la ecuación eh -1
+3:25
+3 minutos y 25 segundos
+-1 + 1 recuerden que adelante de El sesgo tenemos el factor negativo O sea que si
+3:33
+3 minutos y 33 segundos
+entra -1 por el peso -1 me da + 1 que es el más que está acá eh Por lo tanto nos
+3:42
+3 minutos y 42 segundos
+está quedando -1 - 2 + 1 -1 es menor que 0 por lo tanto acá vamos a tener como
+3:50
+3 minutos y 50 segundos
+salida de la neurona a -1 de la misma manera podemos hacer el cálculo para la neurona B nuevamente
+3:58
+3 minutos y 58 segundos
+consideramos la entrada x 1 y x2 como -1 y -1 eh a la neurona B Le va a llegar se
+4:08
+4 minutos y 8 segundos
+va a multiplicar el primer -1 por 1 el segundo -1 también por 1 así que la
+4:14
+4 minutos y 14 segundos
+neurona B Le va a llegar -1 -1 y en este caso también se resta ahora eh tenemos
+4:23
+4 minutos y 23 segundos
+-1 que es el x0 por 1 que es el peso del sesgo O sea que acá aparece un -1 así
+4:31
+4 minutos y 31 segundos
+que tenemos -1 -1 -1 -3 Eh Así que el signo va a ser negativo por lo tanto la
+4:38
+4 minutos y 38 segundos
+salida va a ser -1 bien tenemos que y sub a y y sub B
+4:45
+4 minutos y 45 segundos
+son -1 cuánto dará la salida final eh Y sub c eh que definitiva es la
+4:53
+4 minutos y 53 segundos
+salida y acá lo que tenemos que hacer es multiplicar el -1 que sale de la neurona
+5:01
+5 minutos y 1 segundo
+a por 1 y el -1 que sale de la neurona B por
+5:08
+5 minutos y 8 segundos
+-1 esos dos entran a la neurona c y además también entra el -1 del x0 del
+5:16
+5 minutos y 16 segundos
+sesgo Por un o sea otro os1 más O sea que tenemos en primer lugar el -1 de la
+5:25
+5 minutos y 25 segundos
+a acá tendríamos un -1 el os1 de la B pero fíjense que está
+5:32
+5 minutos y 32 segundos
+con signo negativo O sea que es este menos que está acá en el en el peso sináptico O sea que es -1 * -1 + 1
+5:41
+5 minutos y 41 segundos
+eh - 1 así que finalmente lo que obtenemos ahí es también signo negativo eh o sea que la
+5:51
+5 minutos y 51 segundos
+salida final va a ser -1 fíjense que esto es correcto Porque
+5:57
+5 minutos y 57 segundos
+habíamos dicho que el o exclusivo eh solamente tiene que dar + un cuando
+6:06
+6 minutos y 6 segundos
+uno de los dos es verdadero cuando x1 es verdadero o cuando x2 verdadero pero cuando los dos son falsos o los dos son
+6:15
+6 minutos y 15 segundos
+verdaderos eh tiene que dar -1 bueno veamos Qué pasa en el siguiente caso
+6:22
+6 minutos y 22 segundos
+vamos a suponer que ahora entra falso en la entrada uno y verdadero en la entrada
+6:29
+6 minutos y 29 segundos
+dos H Así que volvemos a hacer las cuentas eh fíjense que podemos hacerlo tanto en
+6:38
+6 minutos y 38 segundos
+la red neuronal como en nuestra ecuación en el caso del perceptrón a fíjense que
+6:45
+6 minutos y 45 segundos
+para x2 tenemos +1 eh Y para x1 tenemos -1 H el sesgo También acá me queda eh +
+6:56
+6 minutos y 56 segundos
+un H Así que el perceptrón a va a estar dando un valor positivo eh + 1 el signo
+7:03
+7 minutos y 3 segundos
+es positivo para el caso del B eh lo mismo + 1 acá tenemos -1 pero acá le
+7:10
+7 minutos y 10 segundos
+resta -1 eh o sea que acá me va a estar dando un valor negativo eh Y lo que nos queda hacer ahora es ver
+7:19
+7 minutos y 19 segundos
+qué pasa con el perceptrón C para el perceptrón c dijimos que y sub a vale +
+7:27
+7 minutos y 27 segundos
+1 y sub B vale -1 pero acá tenemos -
+7:33
+7 minutos y 33 segundos
+b - y sub B así que - -1 me va a dar + 1 y finalmente A eso le tenemos que
+7:41
+7 minutos y 41 segundos
+restar 1 que es lo que viene de multiplicar el -1 del x0 por el uno del peso del sesgo Así que acá lo que me va a quedar
+7:50
+7 minutos y 50 segundos
+es un valor positivo + 1 por lo tanto la salida va a ser + 1 fíjense que es exactamente lo que necesitamos porque
+7:59
+7 minutos y 59 segundos
+cuando una de las dos entradas es verdadera el o exclusivo
+8:06
+8 minutos y 6 segundos
+tiene que dar verdadero ustedes podrán resolver los otros dos casos que faltan nos está
+8:14
+8 minutos y 14 segundos
+quedando + 1 - 1 eh y + 1 +
+8:20
+8 minutos y 20 segundos
+1 vean que en este caso + 1 - 1 va a quedar Exactamente igual que el anterior
+8:28
+8 minutos y 28 segundos
+porque como todos los pesos son uno en la primera capa la neurona a y la neurona B van a recibir Exactamente lo
+8:36
+8 minutos y 36 segundos
+mismo eh Porque no importa si viene de x1 o de x2 Eh Así que este es muy fácil va a quedar todo
+8:44
+8 minutos y 44 segundos
+igual ya ya vemos que este también nos va a dar + un y en el caso de que sean los dos
+8:53
+8 minutos y 53 segundos
+positivos les dejo como ejercicio determinar Cuánto les tiene que dar se supone que en el caso
+9:02
+9 minutos y 2 segundos
+de que sean los dos positivos esto tiene que dar men1 no porque es uno exclusivo

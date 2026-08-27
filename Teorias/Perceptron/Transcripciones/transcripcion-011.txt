@@ -1,0 +1,447 @@
+amos a empezar por la última parte
+0:04
+fíjense que acá yo reemplace simplemente
+0:07
+el bcj por
+0:11
+su ecuación equivalente
+0:14
+de la sumatoria de los pesos desde cero
+0:16
+hasta nn en la cantidad de neuronas que
+0:18
+tengo en esa capa
+0:23
+y acá están los pesos doble mes un jota
+0:25
+y
+0:27
+acá tenemos
+0:29
+la entrada a esa neurona
+0:33
+entonces los pesos por la entrada
+0:35
+respecto de los pesos
+0:37
+fíjense que en esta derivada
+0:40
+los términos
+0:43
+que se van a dar para todos los valores
+0:45
+de y para igual a cero igual a 123 igual
+0:50
+a n
+0:51
+son todos términos constantes en
+0:55
+relación a lo que estamos derivando con
+0:57
+contra que estamos derivando salvo
+0:59
+cuando
+1:01
+esa y valga justamente y que es el bar
+1:05
+el que nos interesa a nosotros
+1:08
+así que
+1:10
+lo que nos va a quedar acá es un montón
+1:12
+de términos que van a ser constantes
+1:14
+cuando como ustedes saben la derivada
+1:16
+una constante cero y solo un término que
+1:20
+va a ser el término wv sub jota y de n
+1:25
+por jesús y de n
+1:28
+que es el que nos va a quedar para
+1:30
+derivar todos los otros se van a hacer 0
+1:32
+y en este término es la derivada de una
+1:35
+constante por la variable fíjense que la
+1:39
+variable es esta no está es la variable
+1:43
+contra la cual estamos derivando y esta
+1:46
+es la constante
+1:48
+entonces de acuerdo cuando tenían la
+1:50
+derivada de tres por equis respecto de x
+1:53
+que le quedaba y queda la constante o
+1:55
+sea que simplemente nos queda que la
+1:59
+constante
+2:00
+una sutileza para que observen fíjense
+2:03
+que estalle que está acá
+2:07
+no es estalle que está acá que jesús j
+2:14
+jesús es la entrada
+2:18
+a la neurona que fue pesada con el peso
+2:21
+w es un j es la salida de la neurona
+2:26
+la salida no lineal
+2:28
+eso después cuando hagamos este paso
+2:31
+para cada una de las capas lo vamos a
+2:34
+remarcar mejor con la anotación vamos a
+2:37
+poner en la anotación el super índice
+2:39
+indicando de a qué capa corresponde cada
+2:42
+cosa ahora estamos en un caso general
+2:44
+para ver cómo aplicamos el gradiente
+2:49
+la otra parte que nos interesa es lo que
+2:52
+se conoce como gradiente de error local
+2:57
+instantáneo
+2:59
+local porque es para esa neurona en
+3:02
+particular la neurona j instantáneo
+3:05
+nuevamente porque está calculado en un
+3:07
+instante n
+3:09
+de este proceso de esta interacción
+3:12
+y es un gradiente porque bueno como
+3:15
+vemos es una derivada es la derivada es
+3:19
+una parte del gradiente global que
+3:21
+habíamos que venimos calculando acá
+3:24
+simplemente ya reemplace x
+3:26
+la última derivada parcial que acabamos
+3:28
+de calcular y acá escribí una versión
+3:32
+simplificada de ese gradiente
+3:34
+simplemente acá tenemos el error
+3:38
+instantánea local respecto de la salida
+3:43
+a diferencia de acá que estamos pasando
+3:46
+a través del error es simplemente una
+3:48
+forma de escribirlo para enfatizar el
+3:52
+paso que no se sigue pero como concepto
+3:55
+importante
+3:57
+definimos en gradiente de error local
+4:01
+instantánea ese delta muchas veces se lo
+4:05
+llama simplemente delta
+4:09
+ahora lo que vamos a ver es
+4:12
+este pedacito la segunda parte de ese
+4:15
+delta que
+4:18
+fíjense básicamente es la derivada de la
+4:21
+función de activación que relaciona la
+4:24
+salida lineal
+4:26
+con la salida final o no lineal de una
+4:30
+neurona la función de activación de
+4:33
+acuerdo que habíamos dicho que podría
+4:35
+ser sin movilidad o que podría ser el
+4:36
+simple signo
+4:38
+y como vimos antes acá vamos a utilizar
+4:41
+la función signo idea pero pueden ser
+4:43
+muchas diferentes
+4:45
+además también vamos a considerar que
+4:47
+todas las neuronas tienen la misma
+4:48
+función de activación hay redes
+4:50
+neuronales que tienen distintas
+4:52
+funciones de activación en cada neurona
+4:54
+o distintos parámetros pero acá vamos a
+4:55
+hacer esta simplificación y por lo tanto
+4:58
+vamos a encontrar cuánto vale esa
+5:00
+derivada y ya la tenemos calculada para
+5:02
+todos los casos que encontremos en todas
+5:05
+las redes neuronales
+5:07
+fíjense acá está
+5:09
+deducido muy muy paso a paso muy
+5:13
+detalladamente la derivada de la función
+5:16
+de activación
+5:17
+les recuerdo que esta es la función de
+5:20
+activación simétrica es la que va entre
+5:24
+menos uno y uno
+5:28
+tengan cuidado en la bibliografía porque
+5:30
+hay algunos libros que usan la que no es
+5:33
+simétrica la que va entre 0 y 1 así que
+5:35
+esta parte en particular del desarrollo
+5:39
+es muy dependiente de la bibliografía
+5:41
+por eso también que acá está un poquito
+5:44
+más en detalle la deducción
+5:47
+básicamente esto es algún manejo
+5:50
+algebraico sencillo para encontrar la
+5:53
+derivada de esa función en el primer
+5:56
+paso simplemente estoy reemplazando el
+5:58
+valor de g por la definición que
+6:01
+habíamos hecho de la función 5 díaz en
+6:03
+función de la salida lineal b que es un
+6:07
+simple reemplazo
+6:08
+y luego fíjense que acá podemos hacer
+6:11
+nuevamente la derivada de una función
+6:16
+esta función está en el denominador o
+6:19
+sea la variable está en ordenador les
+6:22
+recuerdo que estamos derivando con
+6:24
+respecto a b
+6:26
+así que lo que tenemos en esta primera
+6:30
+derivada es acá arriba
+6:35
+el exponencial y acá abajo tenemos la
+6:39
+misma parte que teníamos abajo elevado
+6:41
+al cuadrado acá abajo el 2 este quedó el
+6:44
+2 que es una constante directamente
+6:47
+ahora lo que podemos hacer con esa
+6:49
+primera derivada es separar las dos
+6:53
+fíjense qué
+6:55
+como un producto y acá sería un producto
+7:00
+lo que tenemos acá
+7:02
+o sea que estamos escribiendo
+7:03
+exactamente lo mismo de arriba
+7:06
+y en este pedacito le vamos a sumar y
+7:08
+restar 1
+7:09
+sumar y restar 1 es lo mismo que no
+7:12
+hacer nada pero nos permite partir en 2
+7:15
+estos una primera parte acá y una
+7:20
+segunda parte acá o sea este denominador
+7:23
+con el menos 1 y este denominador con
+7:27
+toda la otra
+7:29
+parte del uno más el exponencial
+7:32
+así que esto va quedando igual como
+7:35
+teníamos hasta ahora
+7:37
+y luego lo que podemos hacer es
+7:40
+simplemente acá reescribir eso
+7:43
+a ser sencilla fíjense que esto que
+7:46
+tenemos acá
+7:48
+es lo mismo que la signo idea
+7:51
+y fíjense que esto tiene prácticamente
+7:53
+la misma forma que habíamos definido
+7:56
+para la función sin movilidad así que lo
+7:59
+podemos escribir directamente
+8:01
+como función de la salida
+8:05
+tenemos la salida este también lo
+8:07
+podemos que como función de la salida
+8:10
+voy a volver por un segundo al sly
+8:13
+anterior para que vean
+8:16
+como era la función de la 5 día que
+8:18
+teníamos acá dos sobres uno más en
+8:20
+exponencial menos uno
+8:23
+así que lo que estamos reemplazando es
+8:27
+a este
+8:29
+qué es 2 sobre una exponencial menos 1
+8:32
+le sumamos 1 lo dividimos por 2 es
+8:35
+estamos teniendo este pedacito de acá
+8:38
+arriba y lo mismo hacemos acá
+8:42
+pero simplemente no estamos dando
+8:43
+vueltas entonces ahora nos quedó una
+8:46
+versión
+8:47
+bastante más sencilla pareciera que ya
+8:50
+nos sacamos de encima exponencial por
+8:53
+así decirlo y nos quedó que la derivada
+8:56
+está directamente en función de
+9:01
+sub j este es el cheque es la salida en
+9:04
+la salida de no lineal nuevamente acá
+9:07
+damos vuelta algunas cosas sencillas
+9:11
+simplificamos los dos como pueden ver
+9:15
+y lo que obtenemos es una ecuación muy
+9:20
+simple que es la que vamos a utilizar
+9:23
+el resto de la clase fíjense que es
+9:26
+también muy fácil de acordarse que la
+9:29
+derivada de ésta sino ya es un medio por
+9:32
+la salida más 1 por la salida menos 1
+9:35
+la salida más 1 por la salida menos
+9:38
+esa es
+9:40
+la derivada que nos simplifica bastante
+9:43
+los cálculos de horas más
+9:46
+entonces bueno ya tenemos la derivada de
+9:49
+la sinovia la podemos reemplazar acá y
+9:52
+por supuesto lo que nos va a quedar para
+9:55
+calcular siempre va a ser esa primera
+9:57
+parte del gradiente de error local
+10:00
+instantáneo que como vamos a ver va a
+10:03
+depender en cada caso de la capa en la
+10:06
+que estemos parados fíjense que acá
+10:08
+arriba también ya está simplificado
+10:13
+el gradiente me queda
+10:16
+lo que habíamos obtenido en la primera
+10:19
+derivada que hicimos en la derivada
+10:22
+parcial que estaba al final de toda la
+10:23
+regla de la cadena que era la entrada
+10:27
+fíjense que este es jesús y j sé que es
+10:32
+la entrada
+10:34
+tenemos el gradiente error local y la
+10:37
+velocidad de aprendizaje
+10:40
+fíjense que también acá se simplificó el
+10:42
+signo negativo que teníamos antes

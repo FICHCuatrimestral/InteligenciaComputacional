@@ -1,0 +1,240 @@
+0:05
+5 segundos
+hemos estado viendo Cómo armar a partir de tres perceptrones una solución y lo que sigue es tratar de
+0:14
+14 segundos
+conectar esos tres perceptrones para ver que efectivamente tengamos esa solución habíamos posicionado las rectas y por
+0:23
+23 segundos
+supuesto a partir de la posición de las rectas tenemos que encontrar los pesos sinápticos los valores que le vamos a dar a las conexiones de las neuronas
+0:32
+32 segundos
+se acuerdan que teníamos un perceptrón a que tenía la recta como la que se muestra en la figura esa era el primer perceptrón por el que
+0:41
+41 segundos
+pasaban las entradas y para ese perceptrón tenemos que definir el valor de los pesos sinápticos
+0:49
+49 segundos
+fíjense que esa recta es una recta con pendiente menos 1 que cuando
+0:56
+56 segundos
+x1 se hace cero vale menos uno esto que tenemos acá así que
+1:04
+1 minuto y 4 segundos
+cualquier combinación de pesos que nos dé como resultado esa recta va a ser válida como ven
+1:13
+1 minuto y 13 segundos
+acá tenemos muchas combinaciones posibles fíjense que acá queremos un -1 adelante
+1:22
+1 minuto y 22 segundos
+o sea que con cualquier combinación en donde wa0 y wa2 tengan el mismo valor
+1:30
+1 minuto y 30 segundos
+para que dé uno pero con signo invertido ya estaríamos satisfaciendo Esa esa petición se requerimiento
+1:38
+1 minuto y 38 segundos
+el otro caso también basta con que el W a1 y el W a2 tengan el mismo valor ya es
+1:47
+1 minuto y 47 segundos
+suficiente Así que podría haber muchas combinaciones de W que dan una recta correcta nosotros vamos a tomar una en
+1:55
+1 minuto y 55 segundos
+particular fíjense elegimos W a 0 - 1
+2:02
+2 minutos y 2 segundos
+W a1 + 1 y W A Dos más Dos por lo tanto
+2:08
+2 minutos y 8 segundos
+fíjense que cumplimos con que W a 0
+2:14
+2 minutos y 14 segundos
+dividido W a 2 me da -1 y también cumplimos con que W a1 dividido W a 2 da
+2:24
+2 minutos y 24 segundos
+1 por lo tanto efectivamente logramos la recta que queríamos
+2:31
+2 minutos y 31 segundos
+y la función de la neurona Recuerden que teníamos la activación o función de
+2:38
+2 minutos y 38 segundos
+activación no lineal por lo tanto la función completa va a ser la evaluación de la recta que acabamos de construir y
+2:47
+2 minutos y 47 segundos
+vamos a verificar en qué momento pasa de cero hacia arriba o hacia abajo Esa es la zona donde el perceptrón va a tomar
+2:57
+2 minutos y 57 segundos
+una decisión así que básicamente lo que va a hacer este perceptrón es sumar las dos entradas el valor que venga 1 -
+3:06
+3 minutos y 6 segundos
+1 el que sea y a esa suma le va a agregar uno Eso es todo lo que va a ser el perceptrón luego va a determinar si
+3:14
+3 minutos y 14 segundos
+eso es mayor que 0 o menor que cero y si es mayor que cero va a dar más uno si es menor que cero va a dar menos uno
+3:21
+3 minutos y 21 segundos
+pasemos al segundo perceptrón el perceptrón B como se imaginarán vamos a seguir la misma dinámica Tenemos también
+3:29
+3 minutos y 29 segundos
+una ordenada al origen que nos da una referencia y una pendiente menos uno esta sería la recta que necesitamos una
+3:38
+3 minutos y 38 segundos
+recta que cuando x1 se hace cero pasa por más uno o sea x2 Pasa por más uno
+3:47
+3 minutos y 47 segundos
+nuevamente podemos tomar varias combinaciones de wb0w
+3:54
+3 minutos y 54 segundos
+porque quedan dividiendo Y como en el caso anterior se simplifican entonces
+3:59
+3 minutos y 59 segundos
+fíjense que wb0 dividido w2 va a dar +1 como necesitamos y W
+4:08
+4 minutos y 8 segundos
+B1 dividido w2 me va a dar acá también el +1 que queda delante del signo
+4:16
+4 minutos y 16 segundos
+negativo de la ecuación de la recta ya directamente generando la pendiente que necesitamos por lo tanto de manera muy
+4:25
+4 minutos y 25 segundos
+similar a lo que pasaba con el perceptrón 1 Vamos a tener una suma se
+4:32
+4 minutos y 32 segundos
+suman simplemente x1 y x2 las dos entradas y ahora se le resta menos 1
+4:40
+4 minutos y 40 segundos
+vamos a pasar entonces a tratar de encontrar Cuáles serían los pesos para el perceptrón c recuerdan que
+4:49
+4 minutos y 49 segundos
+habíamos llegado a la conclusión de que el perceptrón c dadas como entradas las que eran salidas de El perceptrón a y el perceptrón B
+4:58
+4 minutos y 58 segundos
+tenía que pasar por esta zona y dividir haciendo que todas las salidas por arriba sean más uno entonces tenemos
+5:07
+5 minutos y 7 segundos
+nuevamente una ordenada al origen y una pendiente que nos ayuda a encontrar la recta al igual que antes va a haber
+5:15
+5 minutos y 15 segundos
+varias alternativas para esta recta acá simplemente lo que hice fue poner la recta fíjense observen nuevamente que
+5:23
+5 minutos y 23 segundos
+esta recta relaciona con b ya no es una recta que está en función de las entradas sino que este percepción recibe
+5:33
+5 minutos y 33 segundos
+como entrada lo que fueron las salidas de los dos percepciones anteriores entonces una posible combinación para
+5:41
+5 minutos y 41 segundos
+esa recta es estos pesos sinápticos wc-0 ws1 ws2 que como ven satisfacen con
+5:50
+5 minutos y 50 segundos
+la recta que estábamos buscando finalmente observen que qué va a ser el perceptrón c va a tomar la salida del perceptrón a
+6:00
+6 minutos
+le va a restar la salida del perceptrón b y después le va a restar 1 a todo eso
+6:06
+6 minutos y 6 segundos
+le vas a aplicar la función signo y va a verificar si el signo es mayor que uno va a dar como salida final ya de toda
+6:15
+6 minutos y 15 segundos
+nuestra red más uno y si es menos uno va a dar -1 Entonces vamos a tratar de dibujar
+6:22
+6 minutos y 22 segundos
+rápidamente esta red neuronal que conseguimos nosotros tenemos una salida final que va
+6:31
+6 minutos y 31 segundos
+a ser la salida y esa salida final va a salir de El perceptrón
+6:39
+6 minutos y 39 segundos
+c No es cierto Este era el perceptrón c y también tenemos otros dos perceptriones otras dos neuronas
+6:47
+6 minutos y 47 segundos
+que van a ser las neuronas a y las neuronas B
+6:54
+6 minutos y 54 segundos
+Y por último o mejor dicho primero que todo que es lo que entra tenemos la entrada x1 y x2 así
+7:04
+7 minutos y 4 segundos
+que lo que nos está faltando acá es conectar los pesos nosotros teníamos que
+7:12
+7 minutos y 12 segundos
+x1 se une con el perceptrón a mediante un peso que cuánto vale
+7:19
+7 minutos y 19 segundos
+vale w a1 o sea que le habíamos puesto más uno
+7:29
+7 minutos y 29 segundos
+x1 se une con el perceptrón B con un peso que también vale
+7:37
+7 minutos y 37 segundos
+más uno así que acá también Tenemos uno y de la misma manera x2 se une con el
+7:45
+7 minutos y 45 segundos
+perceptrón a con un peso que vale más uno y x2 se une con el perceptrón B con un
+7:52
+7 minutos y 52 segundos
+peso que vale 1 al final todos esos valían uno que nos está quedando se acuerdan
+7:59
+7 minutos y 59 segundos
+el peso w0 el sesgo o vayas recuerdan que habíamos definido como
+8:09
+8 minutos y 9 segundos
+convención que x0 siempre iba a valer -1 esa entrada que nos permitía dar el
+8:16
+8 minutos y 16 segundos
+sesgo y acá lo que nos falta conectar es x0 con a que va a tener un valor menos
+8:22
+8 minutos y 22 segundos
+uno y x0 con b que va a tener un valor más uno
+8:31
+8 minutos y 31 segundos
+Y por último nos queda conectar también el percepción c habíamos encontrado que el perceptrón c tenía un peso que valía
+8:38
+8 minutos y 38 segundos
+1 entre la salida del perceptrón a y la salida del perceptrón y la entrada del
+8:46
+8 minutos y 46 segundos
+perceptrón C en cambio en el caso de la salida del perceptrón B este peso valía menos uno y
+8:55
+8 minutos y 55 segundos
+finalmente de sesgo también valía más uno así que
+9:02
+9 minutos y 2 segundos
+finalmente acá encontramos nuestra red neuronal fíjense que está completamente conectada
+9:09
+9 minutos y 9 segundos
+ya tenemos los valores de todos los pesos y la función En definitiva que se está calculando es tan simple como lo
+9:18
+9 minutos y 18 segundos
+siguiente entra la entrada con valores x2 y x1
+9:26
+9 minutos y 26 segundos
+en el perceptrón a se va a realizar esta operación se va a sumar x1 + x2 Y a eso se le va a
+9:35
+9 minutos y 35 segundos
+sumar 1 y después se va a verificar si es mayor que cero o no el persetrón B va a ser algo muy similar
+9:43
+9 minutos y 43 segundos
+va a sumar x1 y x2 acá pero le va a restar uno
+9:53
+9 minutos y 53 segundos
+fíjense que x0 por 1 positivo estaría
+9:58
+9 minutos y 58 segundos
+dando este esta resta que tenemos acá y finalmente de lo que den los valores
+10:08
+10 minutos y 8 segundos
+del signo pueden dar más uno o menos uno tanto para la como para el B vamos a estar teniendo lo que serían las salidas
+10:16
+10 minutos y 16 segundos
+de los perceptrones a y b qué qué va a pasar la salida de a se va a multiplicar por más uno
+10:26
+10 minutos y 26 segundos
+A eso se le va a sumar la salida de B multiplicada por menos uno o sea menos b
+10:35
+10 minutos y 35 segundos
+y A eso se le va a restar menos uno que es nuevamente el -1 por el 1 que tenemos acá y de esa
+10:44
+10 minutos y 44 segundos
+manera va a estar funcionando con esta simple ecuación que dejamos acá abajo nuestro nuestra primera red neuronal que
+10:53
+10 minutos y 53 segundos
+solamente tiene tres neuronitas pero ya es una red neuronal no es un percentrón
