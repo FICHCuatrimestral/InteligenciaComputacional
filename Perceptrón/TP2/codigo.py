@@ -6,12 +6,16 @@ X = datos.iloc[:, 0:2].values
 yd = datos.iloc[:, 2].values
 
 alpha = 0.1
+capas = [2,2,3,1]
 
-W1 = np.random.uniform(-0.5, 0.5, (2, 2))
-b1 = np.random.uniform(-0.5, 0.5, 2)
+w = []
+b = []
 
-W2 = np.random.uniform(-0.5, 0.5, (2, 1))
-b2 = np.random.uniform(-0.5, 0.5, 1)
+for i in range(len(capas)-1):
+    w.append(np.random.uniform(-0.5, 0.5, (capas[i], capas[i+1])))
+    b.append(np.random.uniform(-0.5, 0.5, capas[i+1]))
+
+
 
 def sigmoide(v):
     return 2 / (1 + np.exp(-v)) - 1
@@ -30,41 +34,47 @@ for epoca in range(1000):
 
     for i in range(len(X)):
 
-        entrada = X[i]
+        a = X[i]
 
         # propagacion
-        z1 = np.dot(entrada, W1) + b1
-        a1 = sigmoide(z1)
+        activaciones = [a]
 
-        z2 = np.dot(a1, W2) + b2
-        y = sigmoide(z2)[0]
+        for j in range(len(capas)-1):
+            salida = np.dot(a, w[j]) + b[j]
+            a = sigmoide(salida)
+            activaciones.append(a)
 
-        error = yd[i] - y
-
+        error = yd[i] - a
 
 
         # retro propagacion
-        delta2 = error * derivada_sigmoide(y)
+        deltas = [None] * (len(capas)-1)
 
-        delta1 = derivada_sigmoide(a1)* (W2.flatten() * delta2)
+        # ultima capa
+        deltas[-1] = error * derivada_sigmoide(activaciones[-1])
 
+        # capas anteriores
+        for j in range(len(deltas)-2, -1, -1):
+            deltas[j] = derivada_sigmoide(activaciones[j+1]) * np.dot(w[j+1], deltas[j+1])
 
 
         # actualizacion pesos
-        W2 = W2 + alpha * np.outer(a1, delta2)
+        for j in range(len(w)):
 
-        b2 = b2 + alpha * delta2
+            w[j] = w[j] + alpha * np.outer(activaciones[j],deltas[j])
 
-        W1 = W1 + alpha * np.outer(entrada, delta1)
+            b[j] = b[j] + alpha * deltas[j]
 
-        b1 = b1 + alpha * delta1
 
-        if abs(error) > 0.1:
+        # Contar errores ---------------------------------
+
+        if np.any(abs(error) > 0.1):
+
             errores = errores + 1
 
     if errores == 0: break
 
-print(epocas )
+print('epocas', epocas)
 
 
 # test -------------------------------------------------
@@ -77,13 +87,13 @@ C = 0
 
 for i in range(len(X)):
 
-    z1 = np.dot(X[i], W1) + b1
-    a1 = sigmoide(z1)
+    a = X[i]
+    for j in range(len(capas)-1):
+        salida = np.dot(a, w[j]) + b[j]
+        a = sigmoide(salida)
+  
 
-    z2 = np.dot(a1, W2) + b2
-    y = sigmoide(z2)[0]
-
-    if y >= 0:
+    if a >= 0:
         y = 1
     else:
         y = -1
@@ -93,6 +103,5 @@ for i in range(len(X)):
         C = C + 1
 
 
-print(C)
-print("%:", C / len(X))
-print(len(X))
+print('aciertos',C)
+print(C / len(X) * 100, '%')
