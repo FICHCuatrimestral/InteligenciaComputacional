@@ -4,7 +4,7 @@ subtitle: "Inteligencia Computacional · FICH-UNL · Diego Milone \\newline Diap
 lang: es
 ---
 
-*Continúa a `03-xor-con-tres-neuronas.md`, donde se armó a mano una red de tres neuronas. Responde las dos preguntas que quedaron abiertas: qué se puede resolver según cuántas capas tenga la red, y cómo encuentra sola los pesos.*
+*Continúa a `01-perceptron-simple-y-gradiente.md`, que llegó hasta la red de tres neuronas armada a mano. Responde las dos preguntas que quedaron abiertas: qué se puede resolver según cuántas capas tenga la red, y cómo encuentra sola los pesos.*
 
 *Notación: vectores columna, $x_0=-1$; **negritas** para matrices y vectores ($\mathbf{W}$, $\mathbf{y}$) y **superíndices romanos** para la capa ($\mathbf{W}^{I}$, $\mathbf{y}^{II}$).*
 
@@ -14,7 +14,7 @@ lang: es
 
 Éste es un resultado importante de los años 80 y la figura está en toda la bibliografía. Resume qué tipo de regiones de decisión puede construir una red según cuántas capas tenga.
 
-![Cada fila agrega una capa y con ella un tipo de región nueva. Las columnas 3 y 4 muestran dos problemas concretos: el XOR y dos clases entrelazadas.](imagenes/07-regiones-decision.png)
+![Cada fila agrega una capa y con ella un tipo de región nueva. Las columnas 3 y 4 muestran dos problemas concretos: el XOR y dos clases entrelazadas.](../imagenes/07-regiones-decision.png)
 
 ### Una capa — semiplano
 
@@ -86,7 +86,7 @@ Los tres casos clásicos, que son los de la figura:
 
 Hasta acá las redes eran de juguete. Ahora se generaliza a cualquier cantidad de entradas, neuronas y capas.
 
-![Tres capas de neuronas, una matriz de pesos por capa y un vector de salidas por capa.](imagenes/09-arquitectura-general.png)
+![Tres capas de neuronas, una matriz de pesos por capa y un vector de salidas por capa.](../imagenes/09-arquitectura-general.png)
 
 Tres cosas cambian respecto de los ejemplos anteriores:
 
@@ -186,7 +186,7 @@ $$
 \varphi(v) = \frac{2}{1 + e^{-b\,v}} - 1
 $$
 
-![La sigmoide simétrica para tres valores de $b$, con $\mathrm{sgn}$ punteada como referencia.](imagenes/08-sigmoide.png)
+![La sigmoide simétrica para tres valores de $b$, con $\mathrm{sgn}$ punteada como referencia.](../imagenes/08-sigmoide.png)
 
 **Por qué se cambia.** Porque hay que derivarla. Todo el método del gradiente exige que la función de activación sea derivable, y $\mathrm{sgn}$ tiene una discontinuidad en el origen: su derivada es cero donde está definida y no existe justo donde importa. La sigmoide da la misma forma en $S$ **sin discontinuidades**.
 
@@ -232,6 +232,11 @@ $$
 \xi(n) = \frac{1}{2}\sum_{j=1}^{M} e_j^2(n)
 $$
 
+donde **$M$ es la cantidad de neuronas de la capa de salida** —el $M_p$ de la sección 2, con $p$ la última capa— y **$j$ las recorre**, de 1 a $M$. El patrón es $n$: la suma **no** corre sobre los patrones.
+
+> **OJO — no confundas los dos errores**
+> $\xi(n)$ es el error de **un** patrón, sumado sobre las $M$ salidas. El que se grafica por época es otro: $\sum_n \xi(n)$, sumado sobre **todos los patrones** del conjunto. Con una sola salida ($M=1$, como en el XOR o en concent) la sumatoria de $\xi(n)$ tiene un único término y es fácil creer que ahí ya está el error total. Con tres salidas (iris81) la diferencia se ve enseguida.
+
 Tres decisiones metidas en esa fórmula, y las tres tienen motivo:
 
 **Por qué al cuadrado.** No es cosmético. Si una salida se equivoca en $+1$ y otra en $-1$, al sumarlas **se compensarían** y el error total daría cero, con la red equivocándose en las dos. Elevando al cuadrado, cada error suma siempre y el total sólo baja cuando las neuronas realmente aciertan.
@@ -248,7 +253,7 @@ Tres decisiones metidas en esa fórmula, y las tres tienen motivo:
 
 | Clave | Qué tenés que poder responder |
 |---|---|
-| $\xi(n)$ | Escribirla y decir sobre qué índice suma |
+| $\xi(n)$ | Escribirla y decir sobre qué índice suma: $j$, las salidas, no los patrones |
 | El cuadrado | El argumento de la compensación entre errores |
 | El $\tfrac{1}{2}$ | Para qué está y de dónde viene |
 | "Instantáneo" | Qué distingue este error del error sobre todo el conjunto |
@@ -274,7 +279,7 @@ Se deriva **respecto de los pesos** porque la superficie de error tiene a los pe
 
 Acá está el corazón del asunto. El error no depende de los pesos de forma directa: depende **a través de una cadena de dependencias**.
 
-![Cada eslabón depende del anterior; derivar $\xi$ respecto de $w_{ji}$ obliga a recorrerlos todos.](imagenes/10-cadena-dependencias.png)
+![Cada eslabón depende del anterior; derivar $\xi$ respecto de $w_{ji}$ obliga a recorrerlos todos.](../imagenes/10-cadena-dependencias.png)
 
 Leído de derecha a izquierda, que es como lo dice la clase — *"una función de una función de una función"*:
 
@@ -350,15 +355,23 @@ Es el caso de derivar $3x$ respecto de $x$: queda la constante que multiplica. A
 
 ## 8. El gradiente de error local instantáneo: $\delta_j$
 
-![Todo lo que pasa en una neurona: hacia adelante la entrada se pesa, se suma y pasa por $\varphi$; hacia atrás vuelve un único número, el $\delta_j$.](imagenes/12-neurona-en-detalle.png)
+![Todo lo que pasa en una neurona: hacia adelante la entrada se pesa, se suma y pasa por $\varphi$; hacia atrás vuelve un único número, el $\delta_j$.](../imagenes/12-neurona-en-detalle.png)
 
-Los tres factores restantes de la cadena se agrupan en una sola cantidad, que es **la pieza central de todo back-propagation**:
+La §7 se llevó el último factor de la cadena. Los **tres restantes** se agrupan en una sola cantidad, que es **la pieza central de todo back-propagation**:
 
 $$
 \boxed{\;
 \delta_j(n) = -\frac{\partial \xi(n)}{\partial y_j(n)}\;\frac{\partial y_j(n)}{\partial v_j(n)}
 \;}
 $$
+
+> **OJO — son tres eslabones, aunque se vean dos**
+> $\dfrac{\partial \xi}{\partial y_j}$ es la **fusión** de los dos primeros de la §6: $\dfrac{\partial \xi}{\partial e_j}\dfrac{\partial e_j}{\partial y_j}$. Se escriben juntos porque siempre van juntos.
+> Si buscás dónde quedó el $e$, está ahí adentro: con $\xi = \tfrac{1}{2}\sum e_j^2$ y $e_j = d_j - y_j$ resulta $\partial\xi/\partial e_j = e_j$ y $\partial e_j/\partial y_j = -1$, o sea $\partial \xi / \partial y_j = -e_j$. Reemplazando, $\delta_j = e_j\,\varphi'(v_j)$, que es la fórmula de la §11.
+
+> **IDEA DE FONDO — por qué la definición no se escribe directamente con $e_j$**
+> Porque **una neurona oculta no tiene $e_j$**: no hay $d_j$ para ella, el error no existe en esa capa. Lo que sí existe siempre es $\partial \xi / \partial y_j$, sólo que en las ocultas vale otra cosa —$-\sum_k \delta_k w_{kj}$, la §12—.
+> Ésa es toda la razón de que la definición sea genérica: **es la única forma que sirve para los dos casos**. Definirla como $e_j\varphi'$ te dejaría sin manera de bajar a las capas ocultas.
 
 Cada palabra del nombre está justificada:
 
@@ -377,13 +390,37 @@ En la práctica se lo llama simplemente **delta**.
 > **OJO — el signo menos del $\delta$**
 > En el desarrollo de clase el $\delta$ aparece primero **sin** el signo menos y enseguida **con** él. La versión que se usa de acá en adelante es **con el menos**, y no es un detalle: es lo que hace que la actualización quede **sumando** en vez de restando, absorbiendo el $-\mu$ de la regla del gradiente. Si copiás la versión sin el menos y después usás la fórmula final, la red aprende en la dirección contraria.
 
-Notá además que se escribió $\dfrac{\partial \xi}{\partial y_j}$ de una sola vez en lugar de $\dfrac{\partial \xi}{\partial e_j}\dfrac{\partial e_j}{\partial y_j}$. Es la misma cosa: sólo se compactaron dos eslabones de la cadena para dejar a la vista lo que importa.
+### Para la pizarra: el último factor y la definición de $\delta$
+
+**Te preguntan:** *"Planteá la regla de la cadena para ajustar un peso de una red."*
+
+**Arrancás escribiendo:** la cadena de dependencias completa.
+
+**Paso 1.** Escribís de qué depende qué: $\xi \leftarrow e_j \leftarrow y_j \leftarrow v_j \leftarrow w_{ji}$.
+
+> **Llegás a:** $\;\dfrac{\partial \xi}{\partial w_{ji}} = \dfrac{\partial \xi}{\partial e_j}\dfrac{\partial e_j}{\partial y_j}\dfrac{\partial y_j}{\partial v_j}\dfrac{\partial v_j}{\partial w_{ji}}$
+
+**Paso 2.** Resolvés el último factor. Escribís $v_j = \sum_i w_{ji} y_i$ y derivás respecto de **un** peso: todos los términos con índice distinto de $i$ son constantes.
+
+> **Llegás a:** $\;\dfrac{\partial v_j}{\partial w_{ji}} = y_i(n)$
+> **Trampa:** confundir $y_i$ con $y_j$. $y_i$ es **la entrada** por esa conexión (salida de la capa anterior); $y_j$ es la salida de la neurona.
+
+**Paso 3.** Agrupás los tres factores restantes y los bautizás.
+
+> **Llegás a:** $\;\delta_j(n) = -\dfrac{\partial \xi}{\partial y_j}\,\dfrac{\partial y_j}{\partial v_j}$
+> Decí las tres palabras: **gradiente** (es una derivada), **local** (de esa neurona), **instantáneo** (en la iteración $n$).
+
+**Paso 4.** Armás la regla de ajuste.
+
+> **Llegás a:** $\;\boxed{\Delta w_{ji}(n) = \mu\,\delta_j(n)\,y_i(n)}$
+> **Trampa:** perder el signo. El menos de $\delta$ cancela el $-\mu$ del gradiente.
 
 ### Claves de la sección 8
 
 | Clave | Qué tenés que poder responder |
 |---|---|
-| Definición | Escribir $\delta_j$ y decir qué factores agrupa |
+| Definición | Escribir $\delta_j$ y decir qué **tres** factores agrupa |
+| Dónde está el $e$ | Que $\partial\xi/\partial y_j = -e_j$, y sólo en la capa de salida |
 | Las tres palabras | Justificar "gradiente", "local" e "instantáneo" |
 | Por qué ese corte | Qué es de la neurona y qué es de la conexión |
 | El signo | Qué pasa si lo copiás sin el menos |
@@ -462,7 +499,7 @@ $$
 
 ### Qué significa esta derivada
 
-![Arriba la sigmoide, abajo su derivada. La corrección de los pesos es proporcional a la curva de abajo.](imagenes/11-derivada-sigmoide.png)
+![Arriba la sigmoide, abajo su derivada. La corrección de los pesos es proporcional a la curva de abajo.](../imagenes/11-derivada-sigmoide.png)
 
 La derivada vale como máximo $0{,}5$, justo en $v_j = 0$ —donde la neurona está indecisa— y se desploma hacia cero en los extremos.
 
@@ -471,6 +508,37 @@ Como $\varphi'$ multiplica al $\delta$, y el $\delta$ multiplica a la correcció
 Es el mismo fenómeno que anticipaba el recuadro de la sección 4 sobre inicializar los pesos chicos, ahora con la cuenta que lo explica: si $\|w\|$ es grande, $v$ es grande, $\varphi'\approx 0$ y el aprendizaje se apaga.
 
 Y explica algo más, que aparece cuando se apilan capas: como cada capa hacia atrás multiplica por otro $\varphi' \le 0{,}5$, las correcciones se van achicando a medida que se alejan de la salida. Las primeras capas aprenden más lento que las últimas — un problema real de las redes profundas, y acá se ve de dónde sale.
+
+### Para la pizarra: la derivada de la sigmoide simétrica
+
+**Te preguntan:** *"Deducí la derivada de la función de activación."*
+
+**Arrancás escribiendo:** la definición, y aclarando que es **la simétrica**, entre $-1$ y $+1$.
+
+**Paso 1.** Escribís $\varphi$ y derivás respecto de $v$ como cociente.
+
+> **Llegás a:** $\;\dfrac{\partial y_j}{\partial v_j} = \dfrac{2\,e^{-v_j}}{\big(1+e^{-v_j}\big)^2}$
+
+**Paso 2.** Partís esa fracción en dos factores.
+
+> **Llegás a:** $\;2\cdot\dfrac{1}{1+e^{-v_j}}\cdot\dfrac{e^{-v_j}}{1+e^{-v_j}}$
+
+**Paso 3.** En el segundo factor **sumás y restás $1$** en el numerador.
+
+> **Llegás a:** $\;\dfrac{e^{-v_j}}{1+e^{-v_j}} = \dfrac{-1+1+e^{-v_j}}{1+e^{-v_j}} = 1 - \dfrac{1}{1+e^{-v_j}}$
+> **Trampa:** no explicar el truco. Decilo: *"sumar y restar uno es no hacer nada, pero me deja partirlo en dos"*.
+
+**Paso 4.** Despejás $\dfrac{1}{1+e^{-v_j}}$ de la definición de la sigmoide y reemplazás en los dos factores.
+
+> **Llegás a:** $\;\dfrac{1}{1+e^{-v_j}} = \dfrac{y_j+1}{2}$, y con eso $\;2\cdot\dfrac{y_j+1}{2}\left(1-\dfrac{y_j+1}{2}\right)$
+
+**Paso 5.** Simplificás.
+
+> **Llegás a:** $\;\boxed{\varphi'(v_j) = \tfrac{1}{2}\big(1+y_j\big)\big(1-y_j\big)}$
+> **Trampa:** escribir $(1+y)(y-1)$. Da **negativa**, y una función creciente no puede tener derivada negativa.
+> **Control de tres segundos:** en $v=0$ tiene que dar $+0{,}5$.
+
+**Paso 6 (si te lo piden).** Decís por qué importa: la derivada quedó **en función de la salida**, que la pasada hacia adelante ya calculó. No hay que recalcular ninguna exponencial.
 
 ### Claves de la sección 9
 
@@ -591,6 +659,38 @@ $$
 > **OJO — otra vez la constante cambia de nombre**
 > Se pasó de $\mu$ a $\eta$ para absorber el $\tfrac{1}{2}$ que venía del $\delta$. Es el mismo movimiento que en la unidad del perceptrón simple, donde $\eta = 4\mu$. **La constante de aprendizaje se redefine cada vez que aparece un factor numérico**, así que no te preocupes por su valor: lo que hay que reconocer es la forma de la ecuación. Si en un parcial te aparece un $\tfrac{1}{2}$ de más o de menos, mirá si el enunciado usa $\mu$ o $\eta$.
 
+### Para la pizarra: el $\delta$ de la capa de salida
+
+**Te preguntan:** *"Deducí el ajuste de los pesos de la capa de salida."*
+
+**Arrancás escribiendo:** $\Delta w^{III}_{ji} = \mu\,\delta^{III}_j\,y^{II}_i$, y aclarás que $y^{II}_i$ es **la entrada** a la capa III.
+
+**Paso 1.** Escribís el $\delta$ y separás la parte ya conocida (la derivada de la activación) de la que falta.
+
+> **Llegás a:** $\;\delta^{III}_j = -\dfrac{\partial \xi}{\partial y^{III}_j}\cdot\tfrac{1}{2}\big(1+y^{III}_j\big)\big(1-y^{III}_j\big)$
+
+**Paso 2.** Abrís $\dfrac{\partial \xi}{\partial y^{III}_j}$ en dos eslabones.
+
+> **Llegás a:** $\;\dfrac{\partial \xi}{\partial e_j}\,\dfrac{\partial e_j}{\partial y^{III}_j}$
+
+**Paso 3.** Primer eslabón: reemplazás $\xi = \tfrac{1}{2}\sum_k e_k^2$ y derivás respecto de $e_j$. **Sobrevive un solo término** y el $2$ que baja se cancela con el $\tfrac{1}{2}$.
+
+> **Llegás a:** $\;\dfrac{\partial \xi}{\partial e_j} = e_j(n)$
+
+**Paso 4.** Segundo eslabón: $e_j = d_j - y^{III}_j$, con $d_j$ constante.
+
+> **Llegás a:** $\;\dfrac{\partial e_j}{\partial y^{III}_j} = -1$
+
+**Paso 5.** Juntás: el $-1$ cancela el menos de adelante.
+
+> **Llegás a:** $\;\boxed{\delta^{III}_j = \tfrac{1}{2}\,e_j\,\big(1+y^{III}_j\big)\big(1-y^{III}_j\big)}\quad\star$
+> **Marcá la estrella en la pizarra.** La vas a reusar en la sección 12.
+
+**Paso 6.** Escribís el ajuste final y **decís su estructura en voz alta**.
+
+> **Llegás a:** $\;\Delta w^{III}_{ji} = \eta\; e_j\,\big(1+y^{III}_j\big)\big(1-y^{III}_j\big)\; y^{II}_i$
+> **La frase:** *velocidad de aprendizaje, por error, por derivada de la activación, por entrada.*
+
 ### Claves de la sección 11
 
 | Clave | Qué tenés que poder responder |
@@ -629,7 +729,7 @@ $$
 
 ### 12.2 Los tres índices: ordenar esto antes de empezar
 
-![Cada índice vive en una capa distinta. Confundirlos es el error más común de toda la unidad.](imagenes/14-indices.png)
+![Cada índice vive en una capa distinta. Confundirlos es el error más común de toda la unidad.](../imagenes/14-indices.png)
 
 Antes de la cuenta hay que fijar la notación, porque de acá en adelante conviven tres índices y en clase se insiste en no mezclarlos:
 
@@ -725,7 +825,7 @@ $$
 \;}
 $$
 
-![Los mismos pesos que llevan la información hacia adelante llevan el error hacia atrás.](imagenes/15-espejo.png)
+![Los mismos pesos que llevan la información hacia adelante llevan el error hacia atrás.](../imagenes/15-espejo.png)
 
 > **PARA LA DEFENSA — qué significa ese corchete**
 > Es el punto que en clase se marca como *"una cuestión clave, el corazón del método"*, y no es sólo eficiencia de cálculo: tiene contenido conceptual.
@@ -743,6 +843,47 @@ $$
 $$
 
 **La misma estructura de siempre**: velocidad de aprendizaje $\times$ error $\times$ derivada de la activación $\times$ entrada. Lo único que cambió es que el "error" ya no es $e_j$ sino el error **retropropagado** desde la capa siguiente.
+
+### Para la pizarra: el $\delta$ de una capa oculta
+
+**Te preguntan:** *"¿Y cómo se ajustan los pesos de una capa oculta, si ahí no hay salida deseada?"*
+
+**Arrancás dibujando** tres capas y marcando los índices: $i$ de dónde viene, $j$ dónde estoy, $k$ adónde va. **Sin esto la cuenta se te mezcla.**
+
+![Los tres índices. Escribilos en la pizarra antes de empezar.](imagenes/14-indices.png)
+
+**Paso 1.** Planteás el problema: el error se mide en la capa de salida, pero hay que derivar respecto de una neurona de la capa oculta. Hay que **atravesar la capa de salida**.
+
+**Paso 2.** Escribís el $\delta$ y reemplazás $\xi$, metiendo la derivada dentro de la sumatoria.
+
+> **Llegás a:** $\;\delta^{II}_j = -\sum_k e_k\,\dfrac{\partial e_k}{\partial y^{II}_j}\;\cdot\;\tfrac{1}{2}\big(1+y^{II}_j\big)\big(1-y^{II}_j\big)$
+> **Trampa:** colapsar la sumatoria como en la capa de salida. Acá **ningún** término es constante: la neurona oculta alimenta a **todas** las de salida.
+
+**Paso 3.** Abrís $\dfrac{\partial e_k}{\partial y^{II}_j}$ en tres eslabones, atravesando la capa de salida.
+
+> **Llegás a:** $\;\dfrac{\partial e_k}{\partial y^{III}_k}\;\dfrac{\partial y^{III}_k}{\partial v^{III}_k}\;\dfrac{\partial v^{III}_k}{\partial y^{II}_j}$
+
+**Paso 4.** Resolvés los tres.
+
+> **Llegás a:**
+> $(1)\;\dfrac{\partial e_k}{\partial y^{III}_k} = -1$
+> $(2)\;\dfrac{\partial y^{III}_k}{\partial v^{III}_k} = \tfrac{1}{2}\big(1+y^{III}_k\big)\big(1-y^{III}_k\big)$
+> $(3)\;\dfrac{\partial v^{III}_k}{\partial y^{II}_j} = w^{III}_{kj}$
+> **Trampa:** evaluar la derivada de la activación en la neurona equivocada. La de $(2)$ va en **$k$**; la que arrastrás desde el paso 2 va en **$j$**. Son **dos** derivadas distintas.
+
+**Paso 5.** Reemplazás; el $-1$ cancela el menos.
+
+> **Llegás a:** $\;\delta^{II}_j = \sum_k e_k\,\tfrac{1}{2}\big(1+y^{III}_k\big)\big(1-y^{III}_k\big)\,w^{III}_{kj}\;\cdot\;\tfrac{1}{2}\big(1+y^{II}_j\big)\big(1-y^{II}_j\big)$
+
+**Paso 6 (el remate).** Señalás la estrella de la sección 11: eso que quedó adentro de la sumatoria **es $\delta^{III}_k$**.
+
+> **Llegás a:** $\;\boxed{\delta^{II}_j = \left[\sum_k \delta^{III}_k\,w^{III}_{kj}\right]\tfrac{1}{2}\big(1+y^{II}_j\big)\big(1-y^{II}_j\big)}$
+
+**Paso 7.** Explicás qué es el corchete. **Éste es el punto que te están evaluando.**
+
+> **La frase:** *es un promedio ponderado de los $\delta$ de la capa siguiente, pesado por los pesos que las unen. Estamos haciendo pasar los $\delta$ por los mismos pesos, en sentido contrario. Por eso se llama retropropagación.*
+
+![El espejo: la información va y el error vuelve, por los mismos pesos.](imagenes/15-espejo.png)
 
 ### Claves de la sección 12
 
@@ -785,9 +926,52 @@ Pieza por pieza:
 > No es la fila de pesos de una neurona: es el vector de los pesos que **salen** de la neurona $j$ hacia todas las neuronas de la capa $p+1$. En la matriz $\mathbf{W}^{(p+1)}$ eso es **la columna $j$**, no una fila. Por eso el producto interno se escribe con $\boldsymbol{\delta}^{(p+1)}$, que tiene una componente por cada neurona de esa capa.
 > Es la forma compacta de decir $\sum_k \delta^{(p+1)}_k w^{(p+1)}_{kj}$.
 
+### La misma fórmula, desplegada para una red de tres capas
+
+La forma general es compacta pero tiene **dos bordes** donde hay que interpretarla. Conviene tenerla escrita entera al menos una vez, con $y^{(0)}_i = x_i$:
+
+**Capa III, la de salida.** No existe $p+1$, así que el producto interno se reemplaza por el error verdadero:
+
+$$\Delta w^{(III)}_{ji}(n) = \eta\; \underbrace{\big(d_j(n) - y^{(III)}_j(n)\big)}_{e_j(n)}\; \big(1+y^{(III)}_j\big)\big(1-y^{(III)}_j\big)\; y^{(II)}_i(n)$$
+
+**Capa II, oculta.** La fórmula general, tal cual:
+
+$$\Delta w^{(II)}_{ji}(n) = \eta\; \big\langle \boldsymbol{\delta}^{(III)},\, \mathbf{w}^{(III)}_j \big\rangle\; \big(1+y^{(II)}_j\big)\big(1-y^{(II)}_j\big)\; y^{(I)}_i(n)$$
+
+**Capa I, la primera.** Igual, pero la "salida de la capa anterior" es la **entrada de la red**:
+
+$$\Delta w^{(I)}_{ji}(n) = \eta\; \big\langle \boldsymbol{\delta}^{(II)},\, \mathbf{w}^{(II)}_j \big\rangle\; \big(1+y^{(I)}_j\big)\big(1-y^{(I)}_j\big)\; x_i(n)$$
+
+Los $\delta$ se calculan **en este orden**, porque cada capa necesita los de la siguiente:
+
+$$\delta^{(III)}_j = e_j\big(1+y^{(III)}_j\big)\big(1-y^{(III)}_j\big)
+\;\longrightarrow\;
+\delta^{(II)}_j = \big\langle \boldsymbol{\delta}^{(III)}, \mathbf{w}^{(III)}_j \big\rangle \big(1+y^{(II)}_j\big)\big(1-y^{(II)}_j\big)
+\;\longrightarrow\;
+\delta^{(I)}_j$$
+
+> **OJO — los dos bordes son lo único que cambia**
+> **Arriba** ($p$ = capa de salida): no hay $\boldsymbol{\delta}^{(p+1)}$, va $e_j$ en su lugar.
+> **Abajo** ($p = I$): no hay $y^{(p-1)}$, va $x_i$ en su lugar.
+> En el medio la fórmula es idéntica para todas las capas, tenga la red tres o veinte. Si en el pizarrón te piden desplegarla, escribí primero la del medio y después aclará los dos bordes: se entiende mejor que ir capa por capa.
+
 > **PARA LA DEFENSA — por qué esta ecuación cierra la unidad**
 > Porque **no importa cuántas capas tenga la red**. Con esta única fórmula se pueden ajustar los pesos de todas las capas: se empieza por la de salida, donde el $\delta$ sale del error verdadero, y de ahí para atrás cada capa arma su $\delta$ con los de la capa siguiente. Es un **bucle**, no una fórmula por capa.
 > Si te piden "explicá back-propagation", esto es el final del camino: una regla recursiva que hace bajar el error por una red de profundidad arbitraria.
+
+### Para la pizarra: la generalización a una capa $p$
+
+**Te preguntan:** *"Escribí la regla general para una capa cualquiera."*
+
+**Paso 1.** Renombrás: $p$ es donde estás, $p-1$ de dónde viene la entrada, $p+1$ la capa siguiente.
+
+**Paso 2.** Escribís la fórmula.
+
+> **Llegás a:**
+> $$\Delta w^{(p)}_{ji}(n) = \eta\;\big\langle \boldsymbol{\delta}^{(p+1)},\, \mathbf{w}^{(p+1)}_j \big\rangle\;\big(1+y^{(p)}_j\big)\big(1-y^{(p)}_j\big)\;y^{(p-1)}_i(n)$$
+> **Trampa:** decir que $\mathbf{w}^{(p+1)}_j$ es una fila. Es **la columna $j$**: los pesos que **salen** de la neurona $j$.
+
+**Paso 3.** Cerrás con por qué esto termina la unidad: **no importa cuántas capas tenga la red**. Se empieza por la de salida, donde el $\delta$ sale del error verdadero, y de ahí para atrás cada capa arma el suyo con los de la siguiente. Es un bucle, no una fórmula por capa.
 
 ### Claves de la sección 13
 
@@ -804,7 +988,7 @@ Pieza por pieza:
 
 Todo lo deducido hasta acá son ecuaciones sueltas. Esta sección las pone en orden de ejecución: qué se calcula primero, qué después, y con qué valores.
 
-![Los cuatro pasos y el bucle que los repite. El paso 4 nunca se hace antes de terminar el 3.](imagenes/16-ciclo-bp.png)
+![Los cuatro pasos y el bucle que los repite. El paso 4 nunca se hace antes de terminar el 3.](../imagenes/16-ciclo-bp.png)
 
 La red de ejemplo es chica a propósito: **2 entradas, 3 neuronas en la capa I, 2 en la capa II y 1 en la capa de salida.** Alcanza para que aparezcan todos los casos.
 
@@ -816,7 +1000,7 @@ Ya vimos el motivo en la sección 9, pero conviene tenerlo a mano: con pesos gra
 
 ### Paso 2 — Propagación hacia adelante
 
-![Se entra un patrón y se calcula la salida de cada neurona, capa por capa.](imagenes/17-paso-adelante.png)
+![Se entra un patrón y se calcula la salida de cada neurona, capa por capa.](../imagenes/17-paso-adelante.png)
 
 Entra un patrón $(x_1, x_2)$ y se recorre la red de izquierda a derecha. Para la primera neurona de la capa I:
 
@@ -840,7 +1024,7 @@ $$
 
 ### Paso 3 — Propagación hacia atrás
 
-![El error entra por la salida y retrocede convertido en $\delta$.](imagenes/18-paso-atras.png)
+![El error entra por la salida y retrocede convertido en $\delta$.](../imagenes/18-paso-atras.png)
 
 Ahora se recorre la red de derecha a izquierda calculando un $\delta$ por neurona.
 
@@ -873,7 +1057,7 @@ Al terminar el paso 3 hay un $\delta$ por neurona: $\delta^{I}_1, \delta^{I}_2, 
 
 ### Paso 4 — Adaptación de los pesos
 
-![Recién acá cambian los pesos, y todos con los mismos valores guardados del paso 2.](imagenes/19-paso-ajuste.png)
+![Recién acá cambian los pesos, y todos con los mismos valores guardados del paso 2.](../imagenes/19-paso-ajuste.png)
 
 Ahora sí. Para cada peso:
 
@@ -922,7 +1106,171 @@ Todo lo anterior fue **para un solo patrón**. Se toma el siguiente del archivo 
 
 ---
 
-## 15. Cierre: el recorrido completo de la unidad
+---
+
+## 15. Un ejemplo numérico completo, paso por paso
+
+Todo lo anterior, sobre una red **2 → 3 → 2 → 1**, con un patrón y una sola iteración. Cada bloque
+dice **qué fórmula está aplicando y de qué sección sale**.
+
+![La red del ejemplo: en azul los valores del paso 1, en naranja los $\delta$ del paso 3](../imagenes/23-ejemplo-numerico.png)
+
+### Los datos de partida
+
+Los pesos son inventados —al entrenar salen de un sorteo—, el patrón es $\mathbf{x} = (1,\,-1)$, la
+respuesta correcta es $d = 1$ y la velocidad de aprendizaje es $\mu = 0{,}5$.
+
+$$\mathbf{W}^{I} = \begin{pmatrix} 0{,}5 & -0{,}4 \\ -0{,}3 & 0{,}6 \\ 0{,}2 & 0{,}2 \end{pmatrix}
+\quad
+\mathbf{u}^{I} = \begin{pmatrix} 0{,}1 \\ -0{,}2 \\ 0{,}3 \end{pmatrix}
+\quad
+\mathbf{W}^{II} = \begin{pmatrix} 0{,}4 & 0{,}5 & -0{,}6 \\ -0{,}7 & 0{,}2 & 0{,}3 \end{pmatrix}
+\quad
+\mathbf{u}^{II} = \begin{pmatrix} 0{,}2 \\ -0{,}1 \end{pmatrix}
+\quad
+\mathbf{W}^{III} = \begin{pmatrix} 0{,}8 & -0{,}5 \end{pmatrix}
+\quad
+u^{III} = 0{,}1$$
+
+Los $\mathbf{u}$ son los pesos del sesgo, o sea los $w_{j0}$ que multiplican a $x_0 = -1$. Son 14 pesos
+de conexión más 6 umbrales: **20 parámetros**.
+
+### Paso 1 — Hacia adelante
+
+> **Fórmulas: §3 y §4.** $\;v_j = \sum_i w_{ji}\,y_i + w_{j0}(-1)\;$ y $\;y_j = \varphi(v_j)$, con
+> $\varphi(v) = \dfrac{2}{1+e^{-v}} - 1$.
+
+**Capa I** — entra $\mathbf{x}$:
+
+$$\begin{aligned}
+v^{I}_1 &= 0{,}5\,(1) + (-0{,}4)(-1) - 0{,}1 = 0{,}5 + 0{,}4 - 0{,}1 = \mathbf{0{,}8} \\
+v^{I}_2 &= (-0{,}3)(1) + 0{,}6\,(-1) - (-0{,}2) = -0{,}3 - 0{,}6 + 0{,}2 = \mathbf{-0{,}7} \\
+v^{I}_3 &= 0{,}2\,(1) + 0{,}2\,(-1) - 0{,}3 = 0{,}2 - 0{,}2 - 0{,}3 = \mathbf{-0{,}3}
+\end{aligned}$$
+
+$$y^{I}_1 = \varphi(0{,}8) = 0{,}3799 \qquad y^{I}_2 = \varphi(-0{,}7) = -0{,}3364 \qquad y^{I}_3 = \varphi(-0{,}3) = -0{,}1489$$
+
+**Capa II** — sus entradas son las tres salidas de la capa I:
+
+$$\begin{aligned}
+v^{II}_1 &= 0{,}4\,(0{,}3799) + 0{,}5\,(-0{,}3364) + (-0{,}6)(-0{,}1489) - 0{,}2 = -0{,}1269 \\
+v^{II}_2 &= (-0{,}7)(0{,}3799) + 0{,}2\,(-0{,}3364) + 0{,}3\,(-0{,}1489) - (-0{,}1) = -0{,}2779
+\end{aligned}$$
+
+$$y^{II}_1 = \varphi(-0{,}1269) = -0{,}0634 \qquad y^{II}_2 = \varphi(-0{,}2779) = -0{,}1381$$
+
+**Capa III** — una sola neurona:
+
+$$v^{III} = 0{,}8\,(-0{,}0634) + (-0{,}5)(-0{,}1381) - 0{,}1 = -0{,}0507 + 0{,}0691 - 0{,}1 = -0{,}0817$$
+
+$$y = \varphi(-0{,}0817) = \mathbf{-0{,}0408}$$
+
+### Paso 2 — El error
+
+> **Fórmula: §5.** $\;e_j(n) = d_j(n) - y_j(n)\;$ y $\;\xi(n) = \tfrac{1}{2}\sum_j e_j^2(n)$.
+> Con $M = 1$ la sumatoria tiene un solo término.
+
+$$e = 1{,}0000 - (-0{,}0408) = \mathbf{1{,}0408} \qquad\qquad \xi = \tfrac{1}{2}(1{,}0408)^2 = 0{,}5416$$
+
+### Paso 3 — Hacia atrás
+
+**Capa III.**
+
+> **Fórmulas: §11 y §9.** $\;\delta_j = e_j\,\varphi'(v_j)\;$ con $\;\varphi'(v_j) = \tfrac{1}{2}(1+y_j)(1-y_j)$.
+
+$$\varphi'(v^{III}) = \tfrac{1}{2}\,(1 - 0{,}0408)(1 + 0{,}0408) = 0{,}4992$$
+$$\delta^{III} = 1{,}0408 \times 0{,}4992 = \mathbf{0{,}5195}$$
+
+**Capa II.** Acá no hay error propio, así que el primer factor cambia.
+
+> **Fórmula: §12.** $\;\delta^{(p)}_j = \Big(\sum_k \delta^{(p+1)}_k\, w^{(p+1)}_{kj}\Big)\,\varphi'(v^{(p)}_j)$
+> — que es el $\big\langle \boldsymbol{\delta}^{(p+1)}, \mathbf{w}^{(p+1)}_j \big\rangle$ de la §13.
+> Con una sola neurona en la capa III, la sumatoria tiene un término.
+
+$$\begin{aligned}
+\text{para } j=1:\quad & \delta^{III} w^{III}_{11} = 0{,}5195 \times 0{,}8 = 0{,}4156 \\
+\text{para } j=2:\quad & \delta^{III} w^{III}_{12} = 0{,}5195 \times (-0{,}5) = -0{,}2598
+\end{aligned}$$
+
+$$\delta^{II}_1 = 0{,}4156 \times \underbrace{0{,}4980}_{\varphi'(v^{II}_1)} = \mathbf{0{,}2070}
+\qquad
+\delta^{II}_2 = -0{,}2598 \times \underbrace{0{,}4905}_{\varphi'(v^{II}_2)} = \mathbf{-0{,}1274}$$
+
+> **OJO — por qué la neurona 2 tiene $\delta$ negativo**
+> Porque su peso hacia la salida es $-0{,}5$: le manda señal **en contra**. Si la salida quedó corta,
+> esta neurona ayuda **bajando**, no subiendo. El signo del peso decide el signo de la culpa.
+
+**Capa I.** La misma fórmula, pero ahora la sumatoria tiene **dos** términos, porque cada neurona de
+la capa I alimenta a las dos de la capa II:
+
+$$\begin{aligned}
+j=1:\quad & 0{,}4\,(0{,}2070) + (-0{,}7)(-0{,}1274) = 0{,}0828 + 0{,}0892 = 0{,}1720 \\
+j=2:\quad & 0{,}5\,(0{,}2070) + 0{,}2\,(-0{,}1274) = 0{,}1035 - 0{,}0255 = 0{,}0780 \\
+j=3:\quad & (-0{,}6)(0{,}2070) + 0{,}3\,(-0{,}1274) = -0{,}1242 - 0{,}0382 = -0{,}1624
+\end{aligned}$$
+
+$$\delta^{I}_1 = 0{,}1720 \times 0{,}4278 = \mathbf{0{,}0736}
+\qquad
+\delta^{I}_2 = 0{,}0780 \times 0{,}4434 = \mathbf{0{,}0346}
+\qquad
+\delta^{I}_3 = -0{,}1624 \times 0{,}4889 = \mathbf{-0{,}0794}$$
+
+> **IDEA DE FONDO — todo $\delta$ tiene la misma forma**
+> $\delta = (\text{algo que viene de afuera}) \times \varphi'(v)$. Lo único que cambia es el primer
+> factor: en la capa de salida es el error $e$ (§11); en cualquier oculta es la suma de las culpas que
+> le llegan de la capa siguiente (§12). El segundo factor es siempre el mismo.
+
+### Paso 4 — Mover los pesos
+
+> **Fórmula: §10.** $\;\Delta w_{ji}(n) = \mu\,\delta_j(n)\,y_i(n)$. Para el umbral, cuya "entrada" es
+> el $-1$ fijo: $\;\Delta w_{j0} = \mu\,\delta_j\,(-1) = -\mu\,\delta_j$.
+
+**Capa III** — $\delta = 0{,}5195$, y sus entradas fueron $\mathbf{y}^{II} = (-0{,}0634,\,-0{,}1381)$:
+
+$$\begin{aligned}
+\Delta w^{III}_{11} &= 0{,}5 \times 0{,}5195 \times (-0{,}0634) = -0{,}0165 &&\longrightarrow\quad 0{,}8 - 0{,}0165 = 0{,}7835 \\
+\Delta w^{III}_{12} &= 0{,}5 \times 0{,}5195 \times (-0{,}1381) = -0{,}0359 &&\longrightarrow\quad -0{,}5 - 0{,}0359 = -0{,}5359 \\
+\Delta u^{III} &= -0{,}5 \times 0{,}5195 = -0{,}2598 &&\longrightarrow\quad 0{,}1 - 0{,}2598 = -0{,}1598
+\end{aligned}$$
+
+Las otras dos capas salen igual. Las matrices completas, antes y después:
+
+$$\mathbf{W}^{I}: \begin{pmatrix} 0{,}5 & -0{,}4 \\ -0{,}3 & 0{,}6 \\ 0{,}2 & 0{,}2 \end{pmatrix}
+\longrightarrow
+\begin{pmatrix} 0{,}5368 & -0{,}4368 \\ -0{,}2827 & 0{,}5827 \\ 0{,}1603 & 0{,}2397 \end{pmatrix}
+\qquad
+\mathbf{W}^{II}: \begin{pmatrix} 0{,}4 & 0{,}5 & -0{,}6 \\ -0{,}7 & 0{,}2 & 0{,}3 \end{pmatrix}
+\longrightarrow
+\begin{pmatrix} 0{,}4393 & 0{,}4652 & -0{,}6154 \\ -0{,}7242 & 0{,}2214 & 0{,}3095 \end{pmatrix}$$
+
+### El control
+
+Se vuelve a pasar el **mismo** patrón por la red con los pesos nuevos:
+
+| | Antes | Después |
+|---|---:|---:|
+| Salida $y$ | $-0{,}0408$ | $0{,}1465$ |
+| Error $\xi$ | $0{,}5416$ | $0{,}3642$ |
+
+La salida se movió hacia el $1$ que buscábamos y el error bajó un 33 %, **en una sola iteración con un
+solo patrón**. Eso es todo el algoritmo: repetir esto para cada patrón, muchas épocas.
+
+> **OJO — el orden de los pasos 3 y 4 no se puede mezclar**
+> Todos los $\delta$ se calculan primero, y recién después se mueven todos los pesos. Si fueras
+> actualizando mientras retrocedés, los $\delta$ de las capas de más atrás saldrían calculados con
+> pesos que ya cambiaron, y ése ya no es el gradiente que buscabas.
+
+### Claves de la sección 15
+
+| Clave | Qué tenés que poder responder |
+|---|---|
+| Contar parámetros | 14 pesos + 6 umbrales = 20, y de dónde sale cada número |
+| Qué fórmula en cada paso | §3 y §4 adelante, §5 el error, §11 y §12 los $\delta$, §10 la corrección |
+| El $\delta$ negativo | Por qué el signo del peso decide el signo de la culpa |
+| Cuántos términos tiene la suma | Tantos como neuronas tenga la capa siguiente |
+| El control | Que el error baja: es la única verificación que vale |
+
+## 16. Cierre: el recorrido completo de la unidad
 
 Vale la pena mirar el camino entero de una vez, porque cada pieza contesta la pregunta que dejó abierta la anterior:
 
@@ -994,6 +1342,17 @@ Vale la pena mirar el camino entero de una vez, porque cada pieza contesta la pr
 - Intercalar el cálculo de los $\delta$ con la actualización de los pesos. Primero **todos** los $\delta$, después **todos** los $\Delta w$.
 - Olvidar de actualizar los pesos de sesgo, que no están dibujados pero existen en todas las neuronas.
 - Confundir iteración con época: una época son **todos** los patrones, una vez cada uno.
+
+## Los seis controles de signo
+
+Son los lugares donde se pierde un menos y la red termina aprendiendo al revés:
+
+1. El gradiente apunta hacia arriba: por eso el paso lleva **menos**.
+2. En la regla LMS (apunte `01` §8), el $-x$ de la derivada cancela ese menos: la corrección queda **sumando**.
+3. El $\delta$ se define **con** signo menos adelante.
+4. En la capa de salida (§11), $\partial e_j/\partial y_j = -1$ cancela el menos del $\delta$.
+5. En las capas ocultas (§12), pasa exactamente lo mismo con el factor $(1)$.
+6. $\varphi'$ es $(1+y)(1-y)$, **positiva** siempre. En $v=0$ vale $+0{,}5$.
 
 ## Autoevaluación
 

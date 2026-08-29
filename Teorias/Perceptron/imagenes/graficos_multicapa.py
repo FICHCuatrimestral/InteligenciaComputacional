@@ -853,3 +853,61 @@ if __name__ == "__main__":
     figura_paso_atras()
     figura_paso_ajuste()
     print("figuras del multicapa generadas")
+
+
+# ============================================================ FIGURA 23
+def figura_ejemplo_numerico():
+    """La red 2-3-2-1 del ejemplo, con los valores de ida y los delta de vuelta."""
+    figura, ejes = plt.subplots(figsize=(11.0, 4.6))
+    ejes.set_xlim(0, 13.2); ejes.set_ylim(-0.9, 7.6)
+    ejes.set_xticks([]); ejes.set_yticks([])
+    for lado in ejes.spines.values():
+        lado.set_visible(False)
+
+    columnas = {"ent": 1.3, "I": 4.3, "II": 7.9, "III": 11.2}
+    nodos = {
+        "ent": [(4.6, "$x_1$", "1.00", None), (2.0, "$x_2$", "$-1.00$", None)],
+        "I":   [(5.5, "$y^I_1$", "0.380", "0.0736"), (3.3, "$y^I_2$", "$-0.336$", "0.0346"),
+                (1.1, "$y^I_3$", "$-0.149$", "$-0.0794$")],
+        "II":  [(4.6, "$y^{II}_1$", "$-0.063$", "0.2070"), (2.0, "$y^{II}_2$", "$-0.138$", "$-0.1274$")],
+        "III": [(3.3, "$y$", "$-0.041$", "0.5195")],
+    }
+    for origen, destino in [("ent", "I"), ("I", "II"), ("II", "III")]:
+        for altura_o, *_ in nodos[origen]:
+            for altura_d, *_ in nodos[destino]:
+                ejes.plot([columnas[origen] + 0.52, columnas[destino] - 0.52],
+                          [altura_o, altura_d], color=COLOR_GRILLA, linewidth=1.0, zorder=1)
+
+    for capa, lista in nodos.items():
+        if capa == "ent":
+            borde, relleno = COLOR_CLASE_A, "#e4eefb"
+        elif capa == "III":
+            borde, relleno = COLOR_ACENTO, "#e2f3ed"
+        else:
+            borde, relleno = TINTA_SECUNDARIA, "white"
+        for altura, nombre, valor, delta in lista:
+            ejes.add_patch(Circle((columnas[capa], altura), 0.52, facecolor=relleno,
+                                  edgecolor=borde, linewidth=1.6, zorder=4))
+            ejes.text(columnas[capa], altura + 0.14, nombre, ha="center", va="center",
+                      fontsize=9.5, zorder=5)
+            ejes.text(columnas[capa], altura - 0.20, valor, ha="center", va="center",
+                      fontsize=8, zorder=5, color=COLOR_CLASE_A)
+            if delta:
+                ejes.text(columnas[capa], altura - 0.88, f"$\\delta=${delta}", ha="center",
+                          va="center", fontsize=7.6, color=COLOR_CLASE_B)
+
+    ejes.text(11.2, 3.3 + 0.95, "$d = 1.00$", ha="center", fontsize=9, color=COLOR_ACENTO)
+    for capa, etiqueta in [("ent", "entrada"), ("I", "capa I"), ("II", "capa II"), ("III", "capa III")]:
+        ejes.text(columnas[capa], -0.6, etiqueta, ha="center", fontsize=8.5,
+                  color=TINTA_SECUNDARIA, style="italic")
+    ejes.annotate("", xy=(9.6, 7.25), xytext=(2.4, 7.25),
+                  arrowprops=dict(arrowstyle="-|>", color=COLOR_CLASE_A, linewidth=1.6))
+    ejes.text(6.0, 7.4, "paso 1: hacia adelante  (en azul, las salidas)", ha="center",
+              fontsize=8.6, color=COLOR_CLASE_A)
+    ejes.annotate("", xy=(2.4, 6.75), xytext=(9.6, 6.75),
+                  arrowprops=dict(arrowstyle="-|>", color=COLOR_CLASE_B, linewidth=1.6))
+    ejes.text(6.0, 6.42, "paso 3: hacia atrás  (en naranja, los $\\delta$)", ha="center",
+              fontsize=8.6, color=COLOR_CLASE_B)
+    figura.savefig("23-ejemplo-numerico.png", dpi=170, bbox_inches="tight")
+    plt.close(figura)
+    print("escrita: 23-ejemplo-numerico.png")
