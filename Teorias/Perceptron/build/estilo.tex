@@ -5,6 +5,11 @@
 \usepackage{microtype}
 \usepackage{titlesec}
 \usepackage{fancyhdr}
+\usepackage{etoolbox}
+\usepackage{titling}
+\setlength{\droptitle}{-2.2cm}
+\posttitle{\par\vspace{-0.6em}}
+\postdate{\par\vspace{-1.2em}}
 
 \definecolor{tintaTitulo}{HTML}{0b0b0b}
 \definecolor{tintaSuave}{HTML}{52514e}
@@ -15,9 +20,9 @@
 \newtcolorbox{recuadrobase}[2]{
   enhanced, breakable, sharp corners=all, boxrule=0pt,
   leftrule=3pt, colframe=#1, colback=#1!5!white,
-  left=10pt, right=10pt, top=8pt, bottom=8pt,
-  fontupper=\small,
-  title={#2}, coltitle=#1, fonttitle=\small\bfseries\sffamily,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  fontupper=\footnotesize,
+  title={#2}, coltitle=#1, fonttitle=\footnotesize\bfseries\sffamily,
   attach title to upper=\par\vspace{4pt},
   colbacktitle=#1!5!white, titlerule=0pt, toptitle=0pt, bottomtitle=0pt
 }
@@ -25,11 +30,13 @@
 \newenvironment{recuadroidea}[1]{\begin{recuadrobase}{acentoIdea}{#1}}{\end{recuadrobase}}
 \newenvironment{recuadrodefensa}[1]{\begin{recuadrobase}{acentoDefensa}{#1}}{\end{recuadrobase}}
 
-\titleformat{\section}{\LARGE\bfseries\sffamily\color{tintaTitulo}}{}{0pt}{}
-  [\vspace{-0.5em}{\color{acentoIdea}\rule{\linewidth}{1.2pt}}]
-\titleformat{\subsection}{\large\bfseries\sffamily\color{tintaSuave}}{}{0pt}{}
-\titlespacing*{\section}{0pt}{2.0em}{0.9em}
-\titlespacing*{\subsection}{0pt}{1.4em}{0.5em}
+\titleformat{\section}{\large\bfseries\sffamily\color{tintaTitulo}}{}{0pt}{}
+  [\vspace{-0.45em}{\color{acentoIdea}\rule{\linewidth}{0.9pt}}]
+\titleformat{\subsection}{\normalsize\bfseries\sffamily\color{tintaSuave}}{}{0pt}{}
+\titleformat{\subsubsection}{\small\bfseries\sffamily\color{tintaSuave}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.5em}{0.6em}
+\titlespacing*{\subsection}{0pt}{1.0em}{0.35em}
+\titlespacing*{\subsubsection}{0pt}{0.9em}{0.3em}
 \setcounter{secnumdepth}{0}
 
 \pagestyle{fancy}
@@ -39,3 +46,8 @@
 \renewcommand{\headrulewidth}{0pt}
 
 \setlength{\emergencystretch}{3em}
+
+% Tablas y bloques de código un punto más chicos que el cuerpo
+\AtBeginEnvironment{longtable}{\footnotesize}
+\AtBeginEnvironment{verbatim}{\footnotesize}
+\AtBeginEnvironment{Highlighting}{\footnotesize}

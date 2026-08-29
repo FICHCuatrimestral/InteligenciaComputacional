@@ -7,7 +7,7 @@ Los archivos están **numerados en orden de lectura**. El `00` orienta, del `01`
 | # | Archivo | Qué es | Cuándo usarlo |
 |:---:|---|---|---|
 | 00 | `00-mapa-de-la-unidad.md` | El recorrido completo en una carilla: 8 preguntas, 5 fórmulas, 6 frases | Antes de empezar, y el día antes del parcial |
-| 01 | `01-perceptron-simple.pdf` | Neurona biológica, modelo, activaciones, geometría, sesgo, corrección de error | Primera pasada del tema |
+| 01 | `01-perceptron-simple.md` | Neurona biológica, modelo, activaciones, geometría, sesgo, corrección de error | Primera pasada del tema |
 | 02 | `02-metodos-de-gradiente.md` | Método del gradiente y LMS, ejemplo numérico, el límite del XOR | Después del 01 |
 | 03 | `03-xor-con-tres-neuronas.md` | El XOR resuelto a mano con tres perceptrones | Después del 02 |
 | 04 | `04-perceptron-multicapa.md` | Regiones de decisión, arquitectura, sigmoide y back-propagation completo | El más largo; es el corazón de la unidad |
@@ -46,6 +46,7 @@ los compañeros, van en `Practicas/`.
 Las figuras:
 
 ```bash
+python3 imagenes/graficos_simple.py
 python3 imagenes/graficos_xor.py
 python3 imagenes/graficos_multicapa.py
 python3 imagenes/graficos_gradiente.py

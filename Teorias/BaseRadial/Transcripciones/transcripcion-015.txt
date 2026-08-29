@@ -1,0 +1,305 @@
+4 segundos
+en la clase de hoy vamos a comenzar a ver otro tipo de redes neuronales qué son las redes neuronales con funciones
+0:12
+12 segundos
+de base radial volvemos al problema del x org que nos
+0:18
+18 segundos
+dio bastantes problemas propiamente y ya lo hemos podido solucionar con el perceptor multicapa pero es interesante
+0:25
+25 segundos
+volver a analizar la forma en que encontramos esa solución porque nos sirve para ver otras alternativas que
+0:32
+32 segundos
+justamente vamos a proponer con las redes que vamos a ver hoy estirada se acuerdan teníamos que en el
+0:40
+40 segundos
+caso de dos entradas verdaderos o dos entradas falsas el equipo tenía que dar falso y en el
+0:48
+48 segundos
+caso de que una de las dos sea verdadera y la otra falsa teníamos el equipo que
+0:55
+55 segundos
+nos daba verdadero habíamos logrado solucionarlo poniendo tres neuronas una se acuerdan hace una
+1:05
+1 minuto y 5 segundos
+separación y ahí otra ponía la recta de decisión ahí y la tercera así una
+1:13
+1 minuto y 13 segundos
+combinación de estas dos regiones de decisión para dar verdadero en toda esta
+1:20
+1 minuto y 20 segundos
+zona y falso afuera de esa manera habíamos podido resolver con tres neuronas no más el problema del x org
+1:29
+1 minuto y 29 segundos
+veamos un poco más cómo se conforman estas regiones de decisión esta zona donde se acuerdan era el lugar
+1:40
+1 minuto y 40 segundos
+en donde es la función signo cambiaba se ha pasado de menos uno más uno y luego habíamos utilizado también la función
+1:49
+1 minuto y 49 segundos
+signo idea tiene una forma que podríamos tratar de graficar en tres dimensiones pensando
+1:56
+1 minuto y 56 segundos
+que es menos 1 en toda esta zona y de pronto si fuera la función signo se hace más 1
+2:05
+2 minutos y 5 segundos
+podríamos pensar que tenemos un papel que está doblado y hay una parte en la
+2:11
+2 minutos y 11 segundos
+que sube con esta forma del asignó edad fíjense que acá estaría la parte central
+2:18
+2 minutos y 18 segundos
+de acero y de acá estaría el +1 y acá estaría el -1 en el caso que tuviéramos la función signo esa subida sería mucho
+2:27
+2 minutos y 27 segundos
+más escarpada y sería como un escalón de una escalera esta forma del assignia es
+2:36
+2 minutos y 36 segundos
+similar para todos los casos y depende de nosotros podamos poner la recta se va a girar
+2:44
+2 minutos y 44 segundos
+en un sentido o en el otro con estas cinco ideas y solapando estas regiones de decisión que ahora dibujamos
+2:53
+2 minutos y 53 segundos
+en tres dimensiones es que habíamos logrado formar esa franja esa franja con una región de decisión y
+3:02
+3 minutos y 2 segundos
+con la otra región de decisión por ejemplo acá acá tendríamos una de las dos neuronas que está haciendo esa
+3:09
+3 minutos y 9 segundos
+región de decisión acá tenemos la parte del +1 y acá tenemos la parte del -1 y
+3:16
+3 minutos y 16 segundos
+con la otra neurona tendríamos que lograr formar una zona en donde la subida
+3:23
+3 minutos y 23 segundos
+estaba un poco más adelante como recordarán entonces finalmente con estos dos
+3:30
+3 minutos y 30 segundos
+papeles doblados que tenemos acá es que la tercera neurona estaba
+3:37
+3 minutos y 37 segundos
+armando la región de decisión que dejaba la zona intermedia como más uno verdadero
+3:46
+3 minutos y 46 segundos
+lo que podemos pensar es que no necesariamente las funciones tengan que tener esa forma sino idea sino que quizás podrían tener
+3:55
+3 minutos y 55 segundos
+una forma más interesante por ejemplo la de un círculo si nosotros pudiéramos encerrar la zona que nos interesa con un
+4:04
+4 minutos y 4 segundos
+círculo entonces podríamos clasificar directamente todos los patrones todos los datos que tengan
+4:12
+4 minutos y 12 segundos
+dentro de ese círculo como una clase y todo lo que estén afuera como otra esta es la idea de cambiar
+4:19
+4 minutos y 19 segundos
+funciones sino ideas o la función signo por otras funciones que tengan una forma
+4:27
+4 minutos y 27 segundos
+radial en este caso y de ahí proviene el nombre de las funciones de base radial entonces en lugar de tener algo así que
+4:35
+4 minutos y 35 segundos
+era la función signo idea ese papel doblado que que nos imaginábamos antes vamos a pasar a tener funciones que
+4:43
+4 minutos y 43 segundos
+tienen en tres dimensiones una forma algo así como si fuera una distribución causada
+4:51
+4 minutos y 51 segundos
+en dos dimensiones pero bueno en general puede ser cualquier función radial es radial se llama justamente porque tiene
+4:59
+4 minutos y 59 segundos
+este radio que es el que va cambiando con la distancia del centro la idea ahora es poder armar redes
+5:08
+5 minutos y 8 segundos
+neuronales que en lugar de tener función de activación 5 día tengan otro tipo de funciones de activación lo que podemos hacer es tener estas funciones radiales
+5:17
+5 minutos y 17 segundos
+en lugar de ser esas cinco ideas que generaban una especie de hiper plano un poco doblados y tener esas funciones
+5:27
+5 minutos y 27 segundos
+radiales y separar regiones del espacio de soluciones que nos interesan y después utilizar alguna función podría
+5:36
+5 minutos y 36 segundos
+ser firmo diao de gualco lineal en la salida que una a esas funciones de forma circular
+5:44
+5 minutos y 44 segundos
+entonces vamos a ver así estas funciones de base radial para las redes neuronales
+5:52
+5 minutos y 52 segundos
+originalmente se utilizaban para aproximar funciones entraba
+5:59
+5 minutos y 59 segundos
+un vector de entrada como hicimos antes también de números reales serían las x
+6:08
+6 minutos y 8 segundos
+en rn sin que tenía n dimensiones y se buscaba obtener una salida única que
+6:16
+6 minutos y 16 segundos
+como vimos después nosotros podemos agregar varias neuronas en la salida y obtener varias esa función era la que tenía que cumplir
+6:26
+6 minutos y 26 segundos
+nuestra red neuronal aproximar funciones fíjense que esta salida es una salida real
+6:34
+6 minutos y 34 segundos
+estamos hablando de los orígenes de estas redes funciones radial no se originaron o no fueron originalmente motivadas como el caso de las neuronas
+6:42
+6 minutos y 42 segundos
+del personal tan simple que tenía que dar más un -1 sino que se buscaba aproximar una función que tenía valores
+6:49
+6 minutos y 49 segundos
+reales continuos en un rango determinado cualquiera entonces para hacer esa aproximación se
+6:57
+6 minutos y 57 segundos
+propuso utilizar unos pesos que vendrían a ser los equivalentes a los pesos sinápticos y
+7:05
+7 minutos y 5 segundos
+alguna función esta sería nuestra función de base radial que mide fíjense mide una distancia entre
+7:14
+7 minutos y 14 segundos
+en nuestro patrón de entrada y un vector de medias que ya tiene la base radial y lo pasa a esa distancia y la pasa por
+7:23
+7 minutos y 23 segundos
+algún tipo de función no lineal en particular se suele utilizar como función fit esa función lineal la cause
+7:31
+7 minutos y 31 segundos
+jana pero bueno puede haber muchas otras diferentes nosotros vamos a utilizar esta función cause jana que es de las
+7:39
+7 minutos y 39 segundos
+más utilizadas y la más sencilla acá hay un ejemplo de cómo estas funciones cause llanas sumadas pueden
+7:47
+7 minutos y 47 segundos
+verse en dos dimensiones acá tenemos una de las dimensiones acá tenemos la otra de las dimensiones y
+7:55
+7 minutos y 55 segundos
+estos picos serían los centros en sí yo trazo acá
+8:02
+8 minutos y 2 segundos
+dos coordenadas este vector de medias o centro éste estaría aproximadamente en
+8:10
+8 minutos y 10 segundos
+82 y el vector muy s estaría
+8:16
+8 minutos y 16 segundos
+82 series en cambio este otro que está un poco más acá arriba
+8:23
+8 minutos y 23 segundos
+si yo trazo acá y acá estaría más o menos este otro modo tengamos a marengo 1 vamos a llamarle mudos sería el de la
+8:32
+8 minutos y 32 segundos
+otra neurona estaría más o menos en 7 y acá tenemos 7
+8:39
+8 minutos y 39 segundos
+esos serían los muchos de los que estamos hablando y por supuesto tenemos acá otro más y otro más tenemos varios
+8:46
+8 minutos y 46 segundos
+ahí que están sumados ahora vamos a ver un poquito más cómo es la arquitectura de esta red neuronal ustedes ya se la
+8:54
+8 minutos y 54 segundos
+pueden estar imaginando tenemos las entradas como siempre por
+9:00
+9 minutos
+ejemplo tenemos x 1 x 2 vamos a tener una capa radial esta va a ser la primera
+9:07
+9 minutos y 7 segundos
+capa que puede tener muchas neuronas yo acá estoy dibujando solamente 4 en esta capa radial van a estar las cancionistas
+9:15
+9 minutos y 15 segundos
+y ahí van a estar las gaussianos y acá va a haber pesos sinápticos como
+9:23
+9 minutos y 23 segundos
+siempre que conectan las entradas con todas las neuronas de la capa radial
+9:32
+9 minutos y 32 segundos
+esta reducción la fíjense que cada una de las ganas va a recibir dos entradas
+9:38
+9 minutos y 38 segundos
+la entrada de x 1 y la entrada de x2 por lo tanto esas gaussianos van a estar en
+9:45
+9 minutos y 45 segundos
+r a las 2 me van a ser dos dianas parecidas a las que vimos en el ejemplo de antes y luego podemos tener unas más salidas
+9:53
+9 minutos y 53 segundos
+en principio podríamos dibujar una salida ahí y vamos a tener los pesos sinápticos que conectan la salida de
+10:01
+10 minutos y 1 segundo
+cada una de esas causas a la salida final de la neurona como estas redes
+10:08
+10 minutos y 8 segundos
+neuronales se motivaron a originalmente para un problema de aproximación de funciones la salida
+10:17
+10 minutos y 17 segundos
+generalmente se utiliza una función lineal o sea directamente una constante no hay ahí hay por supuesto los pesos en
+10:26
+10 minutos y 26 segundos
+w 1 el w12 el w3b w 4 y una constante que simplemente escala
+10:34
+10 minutos y 34 segundos
+la salida pero no una función no lineal como estamos acostumbrados a utilizar en los perceptores multicapa otro detalle que podemos mencionar es que por
+10:42
+10 minutos y 42 segundos
+supuesto como siempre acá tenemos una entrada menos 1 y un wv sub 0 en definitiva esto que tenemos acá al
+10:50
+10 minutos y 50 segundos
+final es un percepción simple con salida lineal y las neuronas de base radial no
+10:58
+10 minutos y 58 segundos
+requieren ese sesgo o bayas esta es la arquitectura básica después por supuesto hay muchas
+11:06
+11 minutos y 6 segundos
+variantes en general la capa de entrada directamente se ponen todos pesos uno
+11:15
+11 minutos y 15 segundos
+y la relación entre las entradas y la causa no se ajusta sobre todo con los
+11:22
+11 minutos y 22 segundos
+parámetros de la anciana básicamente la media y la desviación estándar vuelvo a resaltar que si ésta cause jana
+11:32
+11 minutos y 32 segundos
+recibe dos entradas por lo tanto está parametrizar la nba lados este vector de media va a tener dos
+11:40
+11 minutos y 40 segundos
+valores hitos piensa que en principio puede tener dos valores pero ya vamos a ver qué es un
+11:49
+11 minutos y 49 segundos
+poquito más complicado entonces ahora podemos empezar a
+11:56
+11 minutos y 56 segundos
+plantear el modelo matemático y un poquito más en detalle están las salidas que aquí tenemos acá
+12:05
+12 minutos y 5 segundos
+porque pueden ser varias salidas diferentes acá están los pesos sinápticos fíjense de la capa de salida o sea que son los dobles que estaban al
+12:14
+12 minutos y 14 segundos
+final recuerdan que habíamos puesto todo uno de los dobles de la capa de entrada acá tenemos la función de base radial y acá
+12:24
+12 minutos y 24 segundos
+tenemos la entrada ese sería el modelito fíjense que es muy sencillo como función de base radial
+12:32
+12 minutos y 32 segundos
+recordarán que hacíamos una distancia la distancia entre la entrada y el
+12:39
+12 minutos y 39 segundos
+vector de medias o sea que estamos viendo la entrada qué tan lejos está de la media de cada una de las ganas
+12:46
+12 minutos y 46 segundos
+y esa distancia era la que entraba realmente a la función radial que era una náusea na observen que tenemos acá j
+12:56
+12 minutos y 56 segundos
+es el índice que indica las distintas neuronas de la capa radial de la capa de
+13:03
+13 minutos y 3 segundos
+base radial o sea que para cada una de j vamos a tener
+13:12
+13 minutos y 12 segundos
+y un vector muy diferente en cada neurona debate radial va a tener su propio vector de medias y acá está un
+13:20
+13 minutos y 20 segundos
+poco simplificado fíjense que hay un solo valor de sigma que es el mismo para
+13:27
+13 minutos y 27 segundos
+todas las dimensiones o sea que es un modelo bastante simple después vamos a analizar un poquito más en detalle eso
+13:35
+13 minutos y 35 segundos
+entonces lo que nos queda ahora es ver cómo podemos hacer para entrenar esta nueva red neuronal

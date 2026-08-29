@@ -4,15 +4,9 @@ subtitle: "Inteligencia Computacional · FICH-UNL · Diego Milone \\newline Diap
 lang: es
 ---
 
-## 0. Cómo usar este apunte
+*Viene de `01-perceptron-simple.md` y sigue en `03-xor-con-tres-neuronas.md`. Para practicar las deducciones, `05-derivaciones-para-pizarra.md`, desarrollos **D1** y **D2**.*
 
-El cuerpo de cada sección explica el tema. Al final de cada sección hay una **tabla de claves**: tapá el cuerpo, leé la clave de la izquierda e intentá responder lo de la derecha en voz alta.
-
-Los recuadros **IDEA DE FONDO**, **OJO** y **PARA LA DEFENSA** son los detalles finos: lo que separa saber el procedimiento de entender el tema.
-
-**Notación:** todos los vectores son columna, $x_0 = -1$ es la entrada de sesgo y $w_0$ el umbral, y $\langle w, x\rangle = w^{T}x$ es el producto interno.
-
-Este apunte es la **unidad 2 del recorrido**: viene de la teoría del perceptrón simple (`01-perceptron-simple.pdf`) y desemboca en `03-xor-con-tres-neuronas.md`. Para practicar las deducciones en la pizarra, la hoja es `05-derivaciones-para-pizarra.md`, desarrollos **D1** y **D2**.
+*Notación: vectores columna, $x_0=-1$ la entrada de sesgo, $w_0$ el umbral, $\langle w,x\rangle = w^{T}x$.*
 
 ---
 

@@ -4,13 +4,7 @@ subtitle: "Inteligencia Computacional · FICH-UNL \\newline El código del TP2 m
 lang: es
 ---
 
-## 0. Para qué es este apunte
-
-Los apuntes `02` y `04` deducen las ecuaciones. Éste toma **el código que ya está en el TP2** y muestra qué línea es cada ecuación, para que en la defensa puedas señalar el renglón y decir la fórmula.
-
-No es una implementación nueva: es **la clase `PerceptronMulticapa` del notebook**, documentada.
-
-**Referencias cruzadas:** las ecuaciones citadas están en `04-perceptron-multicapa.md`; las deducciones para rehacerlas en la pizarra, en `05-derivaciones-para-pizarra.md`.
+*Los apuntes `02` y `04` deducen las ecuaciones. Éste toma **el código que ya está en el TP2** y muestra qué línea es cada ecuación, para que en la defensa puedas señalar el renglón y decir la fórmula.*
 
 ---
 

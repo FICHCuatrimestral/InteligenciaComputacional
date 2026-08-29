@@ -13,9 +13,9 @@ pandoc "$ARCHIVO_MD" \
   --pdf-engine=xelatex \
   --lua-filter="$DIRECTORIO_BUILD/apunte.lua" \
   --include-in-header="$DIRECTORIO_BUILD/estilo.tex" \
-  --variable=geometry:"a4paper,margin=2.3cm" \
-  --variable=fontsize:11pt \
-  --variable=linestretch:1.12 \
+  --variable=geometry:"a4paper,margin=2.0cm" \
+  --variable=fontsize:10pt \
+  --variable=linestretch:1.05 \
   --variable=colorlinks:true \
   --variable=lang:es \
   --variable=fontfamily:"" \
@@ -23,7 +23,6 @@ pandoc "$ARCHIVO_MD" \
   --variable=sansfont:"TeX Gyre Heros" \
   --variable=monofont:"DejaVu Sans Mono" \
   --shift-heading-level-by=-1 \
-  --toc --toc-depth=1 \
   --output="$NOMBRE_BASE.pdf"
 
 echo "generado: $NOMBRE_BASE.pdf"

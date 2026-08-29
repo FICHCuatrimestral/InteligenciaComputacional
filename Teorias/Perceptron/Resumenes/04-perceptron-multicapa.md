@@ -4,16 +4,9 @@ subtitle: "Inteligencia Computacional · FICH-UNL · Diego Milone \\newline Diap
 lang: es
 ---
 
-## 0. Cómo usar este apunte
+*Continúa a `03-xor-con-tres-neuronas.md`, donde se armó a mano una red de tres neuronas. Responde las dos preguntas que quedaron abiertas: qué se puede resolver según cuántas capas tenga la red, y cómo encuentra sola los pesos.*
 
-Continúa a **`03-xor-con-tres-neuronas.md`**, donde se armó a mano una red de tres neuronas que resuelve el XOR. Ahí quedaron dos preguntas abiertas, y son las que esta parte responde:
-
-1. ¿Qué se puede resolver en general, según cuántas capas tenga la red?
-2. ¿Cómo hace la red para encontrar sola los pesos que allá pusimos a mano?
-
-Mismo formato que los apuntes anteriores: al final de cada sección hay una **tabla de claves** para taparse el cuerpo y responder en voz alta, y los recuadros **IDEA DE FONDO**, **OJO** y **PARA LA DEFENSA** son los detalles finos.
-
-Notación: vectores columna, $x_0 = -1$ como entrada de sesgo, $\langle w, x\rangle = w^{T}x$. A partir de acá se agregan **negritas para matrices y vectores** ($\mathbf{W}$, $\mathbf{y}$) y **superíndices romanos para la capa** ($\mathbf{W}^{I}$, $\mathbf{y}^{II}$).
+*Notación: vectores columna, $x_0=-1$; **negritas** para matrices y vectores ($\mathbf{W}$, $\mathbf{y}$) y **superíndices romanos** para la capa ($\mathbf{W}^{I}$, $\mathbf{y}^{II}$).*
 
 ---
 

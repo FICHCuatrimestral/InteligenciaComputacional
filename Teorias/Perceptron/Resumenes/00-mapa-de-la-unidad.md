@@ -31,7 +31,7 @@ Si podés contestar estas ocho, tenés la estructura. Los detalles están en los
 
 | Tema | Archivo | Sección |
 |---|---|---|
-| Neurona biológica, modelo, activaciones, geometría, sesgo, corrección de error | `01-perceptron-simple.pdf` | 1 a 5 |
+| Neurona biológica, modelo, activaciones, geometría, sesgo, corrección de error | `01-perceptron-simple.md` | 1 a 6 |
 | Método del gradiente y LMS, ejemplo numérico, el límite del XOR | `02-metodos-de-gradiente.md` | todo |
 | XOR con tres neuronas: rectas, pesos, tabla de verdad, arquitectura | `03-xor-con-tres-neuronas.md` | 1 a 11 |
 | Regiones de decisión y arquitectura general | `04-perceptron-multicapa.md` | 1 a 3 |
