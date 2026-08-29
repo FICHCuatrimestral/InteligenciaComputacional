@@ -1,0 +1,139 @@
+bueno vamos a ver nuestras primeras novedades recurrentes son estas son unas redes que tienen una importancia
+0:11
+11 segundos
+histórica porque fueron las primeras en desarrollarse con estas características y también datan de la
+0:18
+18 segundos
+época de los perceptores multicapas nada más que iban en paralelo desarrolladas por otros investigadores
+0:26
+26 segundos
+scofield tienen esta arquitectura que estamos viendo acá fíjense que estamos
+0:35
+35 segundos
+haciendo recurrencias ahora sí a través de la salida
+0:42
+42 segundos
+esta conexión que pasa por un retardo temporal y en este caso alimenta
+0:49
+49 segundos
+a la neurona 2 y a la neurona 3 una cosa para observar acá es que las redes de hosting no hay realimentación
+0:57
+57 segundos
+es a la misma neurona se observan cada neurona cada una de estas tres neuronas en este ejemplo sencillo alimenta o
+1:05
+1 minuto y 5 segundos
+realimenta hacia atrás a las otras dos neuronas correspondientes tenemos las entradas observen que en
+1:13
+1 minuto y 13 segundos
+este caso hay tres entradas y tres neuronas en estas redes siempre hay la misma cantidad de neuronas que entradas y también la misma cantidad de salidas
+1:21
+1 minuto y 21 segundos
+no hay capas ahí o se podría decir que hay una sola capa hay una relación directa entre la
+1:30
+1 minuto y 30 segundos
+cantidad de entradas la cantidad de salida y la cantidad de neuronas y luego lo que tenemos son los pesos sinápticos como les comentaba recién que
+1:38
+1 minuto y 38 segundos
+vinculan la salida de las neuronas y la realimentan como entradas nuevamente
+1:45
+1 minuto y 45 segundos
+vamos a ver entonces como se modela en esta red neuronal acá
+1:53
+1 minuto y 53 segundos
+tenemos algo conocido acá es la sumatoria de los pesos por las salidas
+2:00
+2 minutos
+recuerden que las entradas a la red son las mismas salidas estas redes reciben un estímulo de entradas equis y luego
+2:09
+2 minutos y 9 segundos
+empiezan a funcionar y cada entrada es la salida del inss tanto anterior no vuelven a entrar de nuevo las entradas
+2:17
+2 minutos y 17 segundos
+originales entonces tenemos los pesos que pesan a las entradas que vendrían a
+2:25
+2 minutos y 25 segundos
+ser las salidas del instante anterior acá un umbral que ustedes ya conocen un sesgo como el que teníamos en
+2:33
+2 minutos y 33 segundos
+neuronas anteriores acá también tenemos la función signo estas redes se definen como redes binarias que dan más uno o
+2:42
+2 minutos y 42 segundos
+menos uno en la salida y en principio también en el caso más elemental sólo pueden resolver recibir más uno o menos
+2:51
+2 minutos y 51 segundos
+uno en cada una de las entradas fíjense que en el caso de que la sumatoria de esta función signo de que acá llamamos x
+2:59
+2 minutos y 59 segundos
+simplemente como una variable muda sea mayor que 0 la salida va a dar 0 eso es lo mismo que teníamos para un perceptor
+3:07
+3 minutos y 7 segundos
+simple en el caso que sea menor que cero la salida va a ser menos 1 y en el caso en que sea cero que se
+3:16
+3 minutos y 16 segundos
+puede dar también la salida va a permanecer en el mismo valor que estaba en el instante anterior si estaba en menos uno va a quedar al menos uno si
+3:24
+3 minutos y 24 segundos
+está dos más uno va a quedar en más una algunas observaciones acá tenemos qué
+3:31
+3 minutos y 31 segundos
+los pesos sinápticos son simétricos o sea el peso que conecta a la salida de la neurona 1 con la entrada de la
+3:39
+3 minutos y 39 segundos
+neurona 2 es igual al peso que conecta a la salida de la neurona 2 con la entrada en la neurona 1 y que no hay realimentación es como yo
+3:48
+3 minutos y 48 segundos
+ya había anticipado cuando vimos la arquitectura es decir no hay un peso entre la neurona 1 la salida de la
+3:57
+3 minutos y 57 segundos
+neurona 1 y la entrada a la misma neurona 1 o dicho de otra manera ese peso cinético vale 0 siempre 0 y no
+4:05
+4 minutos y 5 segundos
+cambia ni se entrena ni nada estas son las observaciones generales como dijimos
+4:12
+4 minutos y 12 segundos
+recién hay un conexionado simétrico y otra de las observaciones es que las neuronas tienen un disparo
+4:19
+4 minutos y 19 segundos
+probabilístico eso lo vamos a ver ahora cuando veamos cómo aprenden y cómo se
+4:27
+4 minutos y 27 segundos
+utiliza una vez que ya aprendió esta red neuronal tiene disparo probabilístico quiere decir que hay una variable aleatoria y que se elige al azar a cuál
+4:36
+4 minutos y 36 segundos
+le toca disparar en cada momento lo otro que tenemos que considerar como
+4:43
+4 minutos y 43 segundos
+generalidad de estas redes es que el entrenamiento es no supervisado ya vamos a ver en detalle cómo se entrena pero
+4:51
+4 minutos y 51 segundos
+nuevamente estamos ante una arquitectura que se entrena de manera no autorizada es decir recuerdan que no hay una
+4:58
+4 minutos y 58 segundos
+referencia o una salida correcta contra la cual por ejemplo medir es un error y otra característica interesante que es
+5:08
+5 minutos y 8 segundos
+cómo nacieron estas redes es que pueden ser utilizadas como memorias asociativas
+5:14
+5 minutos y 14 segundos
+en lugar de ser memorias por dirección como son las memorias de una computadora o como es un disco rígido que uno accede
+5:22
+5 minutos y 22 segundos
+a tal dirección y le devuelve el contenido estas redes se pueden utilizar como memorias accesibles por contenidos
+5:30
+5 minutos y 30 segundos
+uno le puede dar algo que quiere encontrar y le devuelve lo más parecido que encuentra a eso uno por ejemplo
+5:39
+5 minutos y 39 segundos
+podría tener en la memoria rostros de distintas personas y uno le da la
+5:46
+5 minutos y 46 segundos
+foto de una persona que a lo mejor tiene algún nivel de ruido o tiene una bufanda
+5:53
+5 minutos y 53 segundos
+o saco con poca luz o lo que sea y la red neuronal le devuelve el rostro
+6:00
+6 minutos
+original en limpio que tenía almacenado como memoria o sea que yo es una memoria que la puedo acceder por el contenido
+6:08
+6 minutos y 8 segundos
+porque tiene y dándole algo me devuelve lo que tiene memorizado parecido no por una dirección

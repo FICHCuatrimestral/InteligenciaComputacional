@@ -1,0 +1,196 @@
+recuperación como recuperamos las memorias fundamentales que almacenamos se acuerdan que dijimos que estas redes
+0:14
+14 segundos
+podrían hacer accedidas por contenido quiere decir que yo le daba una imagen parecida ya sea de la misma persona pero
+0:22
+22 segundos
+tomada de otro ángulo con distinta iluminación o con algún ruido o alguna distorsión y quiero recuperar la imagen
+0:29
+29 segundos
+limpia la imagen sin ningún ruido sin ninguna distorsión este proceso se hace
+0:37
+37 segundos
+como voy a explicar a continuación lo primero que hacemos es inicializar la salida en el instante cero fíjense
+0:46
+46 segundos
+kaká la n que usamos como indicador del tiempo toma el valor cero me pongo exactamente la entrada sobre la
+0:55
+55 segundos
+entrada podría ser como les decía una imagen distorsionada no es esta x ninguna de las fundamentales ninguna de
+1:02
+1 minuto y 2 segundos
+las memorias que almacenamos lo primero que hacemos es elegir al azar algunas de las neuronas
+1:09
+1 minuto y 9 segundos
+elegimos por ejemplo la 1 la 3 las 5 simplemente tiramos un número entre 1 y n y elegimos la neurona sar para esa
+1:18
+1 minuto y 18 segundos
+neurona calculamos su salida como calculamos su salida bueno se acuerda que teníamos esta
+1:26
+1 minuto y 26 segundos
+fórmula multiplicamos los pesos por todas las entradas y las entradas son el
+1:33
+1 minuto y 33 segundos
+valor de las salidas en el instante anterior acá hasta el -1 como esta s menos 1 ahí es que podremos realmente
+1:40
+1 minuto y 40 segundos
+calcular la salida del instante actual instante n luego volvemos al paso 1
+1:49
+1 minuto y 49 segundos
+o sea que fíjense qué sencillo este al mismo y volvemos a elegir otra neuronas a cualquiera y calculamos su salida
+1:58
+1 minuto y 58 segundos
+y así seguimos hasta cuándo hasta cuándo podemos considerar que se estabilizaron las salidas de la neurona como sabemos
+2:06
+2 minutos y 6 segundos
+como cuando decimos que se estabilizó la salida fíjense si nosotros tomamos la neurona
+2:14
+2 minutos y 14 segundos
+acá calculamos las salidas antes valía menos 1 y sigue valiendo
+2:21
+2 minutos y 21 segundos
+menos 1 después resulta que sale al azar la neurona 1 calculamos la salida en función de las entradas y valía más 1 y
+2:30
+2 minutos y 30 segundos
+ahora pasa a valer menos 1 agua entonces no se estabiliza todavía cuando hayamos recorrido al azar todas
+2:38
+2 minutos y 38 segundos
+las posibles neuronas y ninguna cambie quiere decir que de ahí en adelante no podemos esperar que cambie nada todos se
+2:45
+2 minutos y 45 segundos
+quedaron quietas no hay ningún cambio por más que hagamos 50.000 iteraciones más no va a cambiar nada porque van a
+2:54
+2 minutos y 54 segundos
+seguir entrando las mismas cosas cada neurona y saliendo la misma cosa de carne dolor entonces ahí podemos decir que una vez que hicimos una pasada completa de todas las neuronas ninguna
+3:03
+3 minutos y 3 segundos
+cambio la salida se está admito y la red convergió a un patrón fundamental oa una
+3:10
+3 minutos y 10 segundos
+memoria fundamental de las que tenía se supone que si todo funcionó bien el valor de las salidas estabilizado
+3:18
+3 minutos y 18 segundos
+cuando ya no hay cambios es una de las memorias fundamentales que teníamos almacenadas en esa red neuronal
+3:26
+3 minutos y 26 segundos
+entonces vamos a repasar un poquito algunas observaciones sobre este proceso de recuperación o prueba de la red
+3:35
+3 minutos y 35 segundos
+neuronal fíjense que nuevamente a diferencia de todas las redes neuronales que vimos antes ahora el proceso de
+3:42
+3 minutos y 42 segundos
+recuperación de obtención de la salida es un proceso interactivo no es como el perceptor o multicapa que
+3:49
+3 minutos y 49 segundos
+metíamos una entrada hacíamos el cálculo nos daba la salida acá no acá tenemos que meter una entrada hacer muchas
+3:57
+3 minutos y 57 segundos
+pasadas hasta que se estabilice la red neuronal y recién cuando se estabilizó podemos decir que nos dio una salida cuánto va a tardar en estabilizarse no
+4:06
+4 minutos y 6 segundos
+lo sabemos dependerá del caso algunas en tres inspiraciones y se estabilizarán otras a lo mejor se pasan 500 interacciones hasta que lleguen a
+4:13
+4 minutos y 13 segundos
+estabilizarse por lo tanto hay una diferencia fundamental y acá se ve el comportamiento dinámico de la red
+4:21
+4 minutos y 21 segundos
+neuronal para darnos una salida tiene que haber una interacción tiene que haber un proceso dinámico que transcurre
+4:29
+4 minutos y 29 segundos
+en el tiempo hasta que se estabiliza y ahí se puede considerar que la red nos está dando la salida final a diferencia de un par centro no por
+4:38
+4 minutos y 38 segundos
+ejemplo que nosotros le damos una entrada simplemente calculaba la salida y se acabó no había ningún proceso dinámico por eso que a esas redes les
+4:46
+4 minutos y 46 segundos
+llamamos estáticas porque entra una entrada sale la salida y se acabó cambio estas redes son dinámicas porque van
+4:54
+4 minutos y 54 segundos
+cambiando o sea para dar una salida tiene una dinámica como que la calcula en la y terán hasta que se estabilizan y
+5:02
+5 minutos y 2 segundos
+ahí dan la salida ese es un concepto muy importante y fíjense que estas redes tanto en el entrenamiento como la prueba
+5:09
+5 minutos y 9 segundos
+son justo lo inverso de lo que veníamos viendo antes de las redes estáticas lo otro otra observación un poquito más
+5:17
+5 minutos y 17 segundos
+de carácter práctico es que generalmente esos umbrales no se necesitan en la mayoría de los problemas prácticos
+5:25
+5 minutos y 25 segundos
+y otra característica es este proceso que yo les expliqué por el cual hay que esperar que se estabilice la salida es
+5:34
+5 minutos y 34 segundos
+un proceso importante y bastante diferente a lo que veníamos acostumbrados a hacer o sea que hay que ir controlando llevando un registro para
+5:42
+5 minutos y 42 segundos
+asegurarse de que ya no hay más cambios y no va a pasar más nada en las salidas de la neurona y una cuestión ahora vienen los
+5:49
+5 minutos y 49 segundos
+problemas no todo es perfecto estas redes neuronales and aliens' y aseguramos esas
+5:59
+5 minutos y 59 segundos
+condiciones básicas se acuerdan acerca de cuántos patrones fundamentales se podían almacenar pero pueden darse
+6:06
+6 minutos y 6 segundos
+estados estudios y la red puede quedar oscilando o sea que nunca se cumple que
+6:13
+6 minutos y 13 segundos
+se estabiliza que convergen la salida y nos quedamos en un ciclo eterno en que por ejemplo hay dos salidas que van siempre pasan dos más uno menos uno más
+6:22
+6 minutos y 22 segundos
+uno menos uno más uno menos uno y nunca termina eso puede pasar cuando le queremos hacer aprender o bien más
+6:30
+6 minutos y 30 segundos
+memorias fundamentales de las que puede almacenar eso puede pasar o bien memorias fundamentales que son muy parecidas y la
+6:38
+6 minutos y 38 segundos
+red se puede quedar oscilando en esas entre esas dos y nunca convencerse o asegurarse de que una la correcta
+6:46
+6 minutos y 46 segundos
+esto se estudió en detalle a través de los campos energéticos de hot field
+6:53
+6 minutos y 53 segundos
+y estos campos energéticos son unas distribuciones que podemos imaginar en una dimensión como zonas de picos y de
+7:01
+7 minutos y 1 segundo
+valles donde en los valles se almacenan las memorias fundamentales por ejemplo acá podría estar la memoria fundamental uno
+7:10
+7 minutos y 10 segundos
+acá podría estar la memoria fundamental 2 y acá por ejemplo podría estar la 3a
+7:19
+7 minutos y 19 segundos
+carácter y dibujando en una dimensión pero son podrían ser muchas más nos s durante el almacenamiento se genera esa
+7:28
+7 minutos y 28 segundos
+superficie esos valles y si todo salió bien en esos valles se almacenan las
+7:35
+7 minutos y 35 segundos
+mejoras fundamentales cuando yo quiero hacer la recuperación inició con un acá se acuerdan que hacíamos sub zero igual
+7:44
+7 minutos y 44 segundos
+a equis estos son dos trocitos en algún punto con una memoria o con un valor sucio distorsionado y el proceso de
+7:53
+7 minutos y 53 segundos
+recuperación lo que hace es ir bajando por este valle hasta llegar a la memoria fundamental
+8:01
+8 minutos y 1 segundo
+más parecida a ese patrón de entrada que le di pero en caso de que esto no haya estado
+8:09
+8 minutos y 9 segundos
+bien entrenado o no tengamos la capacidad de almacenar todas las memorias fundamentales puede que se generen algunos valles estudios por
+8:17
+8 minutos y 17 segundos
+ejemplo algo así que estoy dibujando en rojo y que cuando viene bajando en lugar de caer al base fundamental caiga a un
+8:26
+8 minutos y 26 segundos
+pequeño valle que hay ahí de una memoria que no es una memoria fundamental o una memoria que es una
+8:34
+8 minutos y 34 segundos
+memoria totalmente es curia y no esté dando por ejemplo un rostro que nunca hace lo almacenado que va a ser un poco
+8:42
+8 minutos y 42 segundos
+parecido al 1 y un poco parecido al 2 pero no va a ser ni el uno ni el dos entonces esas cosas pueden pasar y esos
+8:49
+8 minutos y 49 segundos
+mínimos locales de los campos energéticos pueden estar presentes y nos pueden complicar la convergencia

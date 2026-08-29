@@ -1,0 +1,281 @@
+3 segundos
+bueno vamos a ver ahora la segunda parte del entrenamiento recuerden que primero que hemos entrenado la capa radial
+0:11
+11 segundos
+habíamos encontrado el vector de medias las causadas y ahora nos quedaría
+0:19
+19 segundos
+entrenar la capa de salida o en definitiva el perceptor simple que está a la salida
+0:27
+27 segundos
+el entrenamiento es bastante sencillo y se basa en una simplificación elemental
+0:34
+34 segundos
+habíamos dicho que entrenamos la capa base radial la dejábamos fija dejamos
+0:41
+41 segundos
+los valores de las medias sin modificar y luego entrenamos con con la capa
+0:48
+48 segundos
+radial fija la segunda capa esa es la simplificación importante en este entrenamiento y nos va a permitir
+0:55
+55 segundos
+obtener un algoritmo bastante bastante elemental tenemos las entradas habíamos supuesto y
+1:03
+1 minuto y 3 segundos
+que eran dos entradas x1 y x2 teníamos la capa radial con supongamos cuatro
+1:11
+1 minuto y 11 segundos
+neuronas con sus gaussianos ya entrenadas ya fijas se acuerdan que los pesos entre la entrada de la capa radial
+1:19
+1 minuto y 19 segundos
+también quedaban fijos y lo habíamos dejado todo con valor 1 y ahora lo que tenemos que entrenar es
+1:28
+1 minuto y 28 segundos
+la segunda parte pero nosotros podemos pensar que si todo esto va a estar fijo
+1:34
+1 minuto y 34 segundos
+tanto la capa radial con sus neuronas como la capa de entrada esto mismo lo
+1:43
+1 minuto y 43 segundos
+podríamos dibujar así como qué acá tenemos algo que no nos interesa que
+1:50
+1 minuto y 50 segundos
+es que cuando entran dos entradas nos da cuatro valores podemos pensar ahora que
+1:58
+1 minuto y 58 segundos
+directamente esos cuatro valores son las nuevas entradas
+2:05
+2 minutos y 5 segundos
+nuestra neurona de salida o sea que para cada entrada que venga lo
+2:14
+2 minutos y 14 segundos
+que vamos a hacer es pasarlo por la función radial y obtener como si fueran cuatro entradas nuevas y esas entradas las podemos considerar
+2:22
+2 minutos y 22 segundos
+que son simplemente las entradas al perceptor simple que tenemos en la salida de esa manera nos podemos olvidar
+2:31
+2 minutos y 31 segundos
+de todo esto imagínense que todo este proceso previo te lo hacen parte de un archivo de texto que tenía x1 y x2
+2:40
+2 minutos y 40 segundos
+generan otro archivo de texto que tiene x prima 1 x prima 2x prima 3 prima 4 y
+2:48
+2 minutos y 48 segundos
+con ese otro archivo de texto es que entrenamos la capa de salida nos olvidamos de que hubo un entrenamiento previo de la parte
+2:57
+2 minutos y 57 segundos
+inicial eso simplifica mucho las cosas porque ahora lo único que tenemos que hacer es entrenar a un perceptor a un simple como ya sabíamos entrenarlos desde antes
+3:05
+3 minutos y 5 segundos
+entonces acá está representado matemáticamente esa salida y lo que
+3:12
+3 minutos y 12 segundos
+estamos fijando es este pedacito de acá delante eso queda fijo en una función fija que se aplica a las entradas que
+3:19
+3 minutos y 19 segundos
+viene una entrada en helados y da una proyección de esa entrada en el real a 4 y con esa entrada es con la que tenemos
+3:27
+3 minutos y 27 segundos
+que entrenar entonces hay varios métodos para entrenar obtener esa matriz de pesos
+3:34
+3 minutos y 34 segundos
+un método es el de la pseudo inversa es decir muy resumidamente poder pasar esto para que el lado y obtener esos
+3:44
+3 minutos y 44 segundos
+valores esa matriz w y el otro es el método que ya conocemos es un método de gradiente basado en el rol cuadrática
+3:51
+3 minutos y 51 segundos
+igual que el que utilizamos para entregar un personal tan simple vamos a suponer que tenemos este error
+3:59
+3 minutos y 59 segundos
+fíjense que acá aparece nuevamente acá que no es la k de la cantidad de neuronas o de centro de saca es la k de
+4:07
+4 minutos y 7 segundos
+la capa de salida podría haber más de una neurona en la capa de salida entonces acá puede tomar valor 1 2 3 y 4
+4:14
+4 minutos y 14 segundos
+hasta la cantidad de salidas que tengamos vamos a medir el error como lo medimos siempre la resta entre lo que sale de la
+4:23
+4 minutos y 23 segundos
+red y lo que debería salir fíjense que acá volvemos al esquema de entrenamiento supervisado sea necesitamos la salida
+4:32
+4 minutos y 32 segundos
+correcta para hacer este entrenamiento igual como la necesitábamos para el patrón simple no entonces si ponemos eso en términos de
+4:41
+4 minutos y 41 segundos
+lo que ya conocemos fíjense que acá está el promedio ponderado de las salidas de
+4:50
+4 minutos y 50 segundos
+la capa radial recuerden que estas salidas las consideramos fijas metíamos una entrada
+4:58
+4 minutos y 58 segundos
+en el ejemplo de dos elementos y nos salía un retro citó de cuatro elementos no importa como pero eso era algo fijo
+5:07
+5 minutos y 7 segundos
+y este es el peso que pondera cada una de esas dimensiones y que se va
+5:14
+5 minutos y 14 segundos
+acumulando en la capa de salida y acá vuelve a estar e salida correcta a la salida deseada y
+5:23
+5 minutos y 23 segundos
+volvemos a construir un criterio como hicimos antes de rojo atlántico medio en cuadrado se acuerdan que era para que
+5:30
+5 minutos y 30 segundos
+no se compense las salidas positivas con las salidas negativas por hay una neurona ha dado un error positivo la
+5:37
+5 minutos y 37 segundos
+otra neurona ha dado un error negativo y como acá estamos sumando sobre todas las eventuales neuronas de salida se podría
+5:44
+5 minutos y 44 segundos
+estar comenzar compensando me dicen que hay error cero cuando en realidad todas se están equivocando pero una palabra de atrás para el otro entonces por eso es
+5:53
+5 minutos y 53 segundos
+que ponemos este cuadrado como pasado antes también este cuadrado podría haber sido una función valor absoluto o
+5:59
+5 minutos y 59 segundos
+cualquier función hay muchísimas funciones no lineales que pueden cumplir con esta función o con este objetivo
+6:08
+6 minutos y 8 segundos
+pero el cuadrado tenía algunas ventajas adicionales particular nos interesa para ver lo simple y práctico la
+6:17
+6 minutos y 17 segundos
+facilidad para encontrar la derivada que es lo que vamos a tener que hacer a continuación así que para sacar la
+6:23
+6 minutos y 23 segundos
+derivada de una función teníamos la función tal cual como está en fíjense que ésta tenemos esto acá y la derivada
+6:30
+6 minutos y 30 segundos
+de lo que está dentro que es lo que nos queda acá y fíjense que acá este cuadrado para eso
+6:39
+6 minutos y 39 segundos
+estaba los medios en el simplificó ahí y ahora nos queda sacar la derivada de eso que está dentro
+6:46
+6 minutos y 46 segundos
+que es muy simple porque estamos derivando con respecto a los pesos o sea que esta sumatoria como hacíamos antes
+6:56
+6 minutos y 56 segundos
+para todos los valores de jotas que no sean exactamente el jota contra el cual estamos derivando va a ser una constante
+7:03
+7 minutos y 3 segundos
+esto también es una constante o sea que se va y nos queda
+7:11
+7 minutos y 11 segundos
+la variable contra la cual estamos derivando por una constante ya que va a quedar esa constante directamente así que
+7:20
+7 minutos y 20 segundos
+acá esto era el error y simplemente lo volvemos a poner como y acá fíjense que queda ni más ni menos
+7:29
+7 minutos y 29 segundos
+que la salida de la capa radial a la salida de la neurona j encima en la capa
+7:37
+7 minutos y 37 segundos
+radial así que nos quedó muy sencillo esto es casi igual a lo que hicimos en una de las primeras clases con el perfecto
+7:45
+7 minutos y 45 segundos
+simple con salida lineal fíjense que este es un patrón simple que no tiene signo de diálisis no ninguna cosa rara en directamente es la salida de la
+7:53
+7 minutos y 53 segundos
+sumatoria de los el promedio ponderado de las entradas que reciben así que con
+8:01
+8 minutos y 1 segundo
+eso encontramos una regla de actualización acá hay un pequeño cambio de notación al respecto a lo que habíamos encontrado al presentar un
+8:09
+8 minutos y 9 segundos
+simple pero es lo mismo no tenemos que el peso en la iteración siguiente va a ser igual al peso
+8:17
+8 minutos y 17 segundos
+en la integración actual menos una velocidad de aprendizaje por todo
+8:25
+8 minutos y 25 segundos
+esto que es el error por la entrada al perceptor simple que vendría a ser la
+8:31
+8 minutos y 31 segundos
+salida de la capa radial vamos a ver para cerrar esta parte cita
+8:38
+8 minutos y 38 segundos
+algunas ventajas de ventajas comparativas entre con funciones de base radial y los
+8:46
+8 minutos y 46 segundos
+percepciones multi capas fíjense que el presentaron multicapa necesita más de una capa oculta se puede
+8:55
+8 minutos y 55 segundos
+decir que la red de base radial tiene una capa oculta o casi podríamos decir que tiene una capa de entrada que es la
+9:02
+9 minutos y 2 segundos
+capa radial y una capa de salida así que la arquitectura es mucho más
+9:09
+9 minutos y 9 segundos
+sencilla y no necesita tener más capas ocultas como habíamos visto en
+9:16
+9 minutos y 16 segundos
+ese en ese gráfico de las regiones de decisión para poder resolver ciertos problemas más complejos con cabos
+9:24
+9 minutos y 24 segundos
+convexos etcétera con una capa oculta no más porque es la capa radial puede resolver
+9:30
+9 minutos y 30 segundos
+cualquier tipo de problemas porque porque básicamente puede partir el espacio con las causas ubicando la donde
+9:38
+9 minutos y 38 segundos
+quiera puede partir el espacio como quiera y puede formar regiones incluso
+9:45
+9 minutos y 45 segundos
+muy complejas de la forma que quiera y aumentando la cantidad de gau sean la experiencia que acá estoy formando una
+9:53
+9 minutos y 53 segundos
+región bastante compleja poniéndole más ancianas en la capa oculta tantas como
+9:59
+9 minutos y 59 segundos
+necesite para darle forma a las regiones otra de las características distintivas
+10:07
+10 minutos y 7 segundos
+es que en el caso de las funciones va a ser radial tenemos justamente las funciones va a ser radial en nuestro caso
+10:14
+10 minutos y 14 segundos
+gaussianos para los ejemplos que vimos y en el otro caso tenemos que hacer esta combinación de hiper planos sino vídeos
+10:21
+10 minutos y 21 segundos
+que se acuerdan los papeles doblados que decíamos al principio esa es otra diferencia importante entre ambas arquitecturas
+10:30
+10 minutos y 30 segundos
+otra característica es que las representaciones las redes con funciones de más en
+10:37
+10 minutos y 37 segundos
+realidad son locales o sea yo tengo un círculo una esfera enero la 3 o lo que
+10:44
+10 minutos y 44 segundos
+sea en la dimensión que sea pero que abarca una zona del espacio no más una zona acotada en cambio cuando
+10:52
+10 minutos y 52 segundos
+teníamos los híper planos siempre un híper plano cubría justamente la mitad
+10:59
+10 minutos y 59 segundos
+de el espacio siempre separaba la mitad que sí y la mitad que no
+11:05
+11 minutos y 5 segundos
+o sea que no eran localizadas funciones que estábamos acumulando por su manta
+11:14
+11 minutos y 14 segundos
+y otras particularidades también son que la convergencia es más simple está
+11:22
+11 minutos y 22 segundos
+fíjense que no tenemos una retro propagación con este método de comedias y ajuste de pesos en la capa de salida
+11:32
+11 minutos y 32 segundos
+el entrenamiento es muy rápido la arquitectura también es muy simple no tenemos múltiples capas como ya dijimos
+11:40
+11 minutos y 40 segundos
+y otra particularidad interesante que tiene esta red neuronal es que combina distintos paradigmas de aprendizaje como
+11:49
+11 minutos y 49 segundos
+vimos en una primera instancia hacemos aprendizaje no supervisado es como que exploramos el espacio de soluciones pero
+11:57
+11 minutos y 57 segundos
+signan sin la necesidad de conocer cuáles son las salidas correctas que estamos explorando la distribución de
+12:05
+12 minutos y 5 segundos
+los patrones no importa de qué clase son en todo el espacio y luego si en la capa de salida hacemos un aprendizaje
+12:13
+12 minutos y 13 segundos
+supervisado y ahí si corregimos para que se minimice el error de clasificaciones de aproximación

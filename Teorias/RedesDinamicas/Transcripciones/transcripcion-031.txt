@@ -1,0 +1,217 @@
+a ver ahora otro tipo de redes dinámicas que pueden servir para modelar dinámicas tanto temporales como espaciales de
+0:12
+12 segundos
+cualquier tipo y son las redes neuronales con retardos en el tiempo vamos a ver la arquitectura de estas
+0:19
+19 segundos
+redes neuronales vamos a suponer que con este cuadradito sombreado negro vamos a
+0:28
+28 segundos
+representar a la entrada en un instante n recuerden que estoy poniendo acá con
+0:34
+34 segundos
+este simbólico en negro un vector ahí está x 1 x 2 y 3 y 4 x la que sea todas
+0:41
+41 segundos
+el instante actual el instante n y vamos a representar acá con un rectángulo también
+0:49
+49 segundos
+sombreado de negro una capa ahí hay muchas neuronas las que se en la cantidad que sea
+0:57
+57 segundos
+entonces simplificando como si esto fuera un per center o multicapa nada nada nada nuevo acá vamos a tener los
+1:05
+1 minuto y 5 segundos
+pesos esto es una matriz de la capa 1 y le vamos a agregar una anotación más
+1:14
+1 minuto y 14 segundos
+que es del instante cero vamos a ver más en detalle eso de la
+1:21
+1 minuto y 21 segundos
+misma manera acá podemos tener otra capa que hay muchas neuronas acá adentro y una matriz de pesos que será de tanto
+1:29
+1 minuto y 29 segundos
+por tanto se hacía que hay días y acá y diez bueno será una matriz de 10 por 10 no así que tenemos los pesos de la capa
+1:37
+1 minuto y 37 segundos
+2 y así podemos seguir hasta que tengamos una capa de salida
+1:46
+1 minuto y 46 segundos
+y acá vas a tener las salidas finales eso es puesto de una manera muy
+1:54
+1 minuto y 54 segundos
+simplificada un perceptor multicat o lo que ya conocemos pero ahora vamos a considerar además que vamos a tener acá
+2:00
+2 minutos
+un retardo temporal muchas veces lo van a haber notado cómo se está en la menos 1 en donde acá tenemos otro cuadradito que
+2:09
+2 minutos y 9 segundos
+son las mismas entradas pero en un instante anterior x en n menos 1
+2:16
+2 minutos y 16 segundos
+es un vector que también tiene 14 pero lo que valían un tiempo atrás
+2:23
+2 minutos y 23 segundos
+y vamos a también poner como entrada eso a través de otra
+2:29
+2 minutos y 29 segundos
+matriz de pesos de la capa 1 pero con retardo 1 de la misma manera podemos seguir
+2:39
+2 minutos y 39 segundos
+retardando acá se trata menos 1 obtenemos
+2:45
+2 minutos y 45 segundos
+otro x nn 2 y le vamos a poner sus pesos
+2:53
+2 minutos y 53 segundos
+2 de la capa 1 así podemos seguir hasta una determinada cantidad 2 374 de
+3:02
+3 minutos y 2 segundos
+retardos que queramos podemos poner x nn menos n si recuerdan cuando comenzamos toda esta
+3:11
+3 minutos y 11 segundos
+unidad vimos que este era un tipo particular de forma de reconocer o de incorporar a la red neuronal
+3:20
+3 minutos y 20 segundos
+la información de la historia de las entradas acá lo único que estamos metiendo son entradas retardadas
+3:28
+3 minutos y 28 segundos
+pero consideren que también podemos hacer lo mismo para las salidas de cada una de las capas podríamos poner acá un
+3:36
+3 minutos y 36 segundos
+zeta la menos 1 y tener también como si fuera una capa pero es
+3:42
+3 minutos y 42 segundos
+un montón de salidas que son las salidas de la capa 1 un instante de tiempo anterior si acá
+3:52
+3 minutos y 52 segundos
+teníamos seis salidas de la capa 1 vector en el instante en lo que vamos a tener
+4:01
+4 minutos y 1 segundo
+acá es que de la capa 1 en instante n menos uno y vamos a tener que tener un conjunto de
+4:09
+4 minutos y 9 segundos
+pesos asociados en la segunda caja de la misma manera podemos poner más retardos
+4:18
+4 minutos y 18 segundos
+y armar muchos casos de
+4:24
+4 minutos y 24 segundos
+salidas anteriores que tuvo la capa 1 también podemos hacer esto para la capa 2 y poner retardos
+4:33
+4 minutos y 33 segundos
+y estimulará la capa 3 no solo con las salidas actuales de la capa 2
+4:41
+4 minutos y 41 segundos
+sino con las salidas pasadas también de la capa 2 y así no podemos seguir hacia atrás todo
+4:50
+4 minutos y 50 segundos
+lo que queramos esta arquitectura se conoce como red neuronal con retardos en el tiempo
+4:58
+4 minutos y 58 segundos
+tdn del inglés time delay general network y puede ser entrenada como se imaginarán
+5:06
+5 minutos y 6 segundos
+también con un va propagación con una retro propagación como el perceptor multicapa solo que ahora en vez de tener
+5:12
+5 minutos y 12 segundos
+el conjunto de pesos estándar tenemos estos nuevos conjuntos de pesos qué sirven para tener en cuenta la
+5:22
+5 minutos y 22 segundos
+historia de lo que fue pasando a lo largo del tiempo o sea que esta es una nuevo nuevo tipo
+5:29
+5 minutos y 29 segundos
+de red neuronal que también nos permite modelar cosas que varían en el tiempo si es que es tiempo lo que tenemos acá no
+5:37
+5 minutos y 37 segundos
+también puede ser espacio en el caso de una imagen una representación común de cómo
+5:46
+5 minutos y 46 segundos
+funciona esto es esta que tenemos acá donde tenemos la primera capa o entrada la capa intermedia y la capa de salida y
+5:55
+5 minutos y 55 segundos
+lo que podemos ver es que acá en la capa tenemos las entradas acá en la entrada más pequeña que la entrada
+6:03
+6 minutos y 3 segundos
+más grande otra más grande positivas y negativas acá tenemos el vector x nn
+6:09
+6 minutos y 9 segundos
+menos uno sería y éste xn menos dos y como vemos estas tres versiones están entrando a
+6:19
+6 minutos y 19 segundos
+la capa 2 que también tiene sus salidas y también tiene sus salidas en un
+6:26
+6 minutos y 26 segundos
+instante anterior que entra a la capa 3 que en este caso en la capa salida si nosotros vamos de atrás para delante
+6:33
+6 minutos y 33 segundos
+podemos ver que cuando la capa 3 está dando la salida final de la red neuronal está tomando en consideración
+6:43
+6 minutos y 43 segundos
+información anterior o sea de la capa anterior que tiene a su
+6:51
+6 minutos y 51 segundos
+vez distintos instantes de tiempo de lo que entró antes o sea que esta primera
+7:00
+7 minutos
+memoria es una memoria más inmediata que en el ejemplo que hacíamos puede tener en cuenta tres instante de tiempo esta
+7:08
+7 minutos y 8 segundos
+memoria ya tiene una memoria un poco más de largo plazo porque es la memoria de la memoria
+7:16
+7 minutos y 16 segundos
+y esta última tiene una memoria de más largo plazo aún porque es la memoria de
+7:24
+7 minutos y 24 segundos
+la memoria de la memoria va incluyendo cosas que pasaron hace mucho más tiempo atrás esto lo que se conoce como
+7:32
+7 minutos y 32 segundos
+clasificación espacio-temporal en el caso de las redes neuronales con retardos en el tiempo las aplicaciones han sido sobre todo en
+7:40
+7 minutos y 40 segundos
+el reconocimiento del habla pero también en el reconocimiento de caracteres manuscritos donde hay que acordarse de
+7:48
+7 minutos y 48 segundos
+cuáles fueron las letras que fueron que pasaron antes o los trazos que pasaron antes para determinar cuál es el trazo
+7:55
+7 minutos y 55 segundos
+actual y a qué letra corresponde oa qué palabra corresponde vamos a ver muy rápidamente otras dos
+8:01
+8 minutos y 1 segundo
+arquitecturas muy conocidas que son un poquito más complicada que la anterior fíjense que en este caso lo que
+8:10
+8 minutos y 10 segundos
+tenemos es un retardo de la capa intermedia hacia sí misma o sea que
+8:20
+8 minutos y 20 segundos
+la salida de la capa intermedia de la capa oculta se guarda y en un instante de tiempo siguiente se vuelve a ingresar
+8:29
+8 minutos y 29 segundos
+en esa capa estas se conocen como redes neuronales de el mar que fue quien
+8:37
+8 minutos y 37 segundos
+las propuso originalmente y para generalizarlo a muchos retardos temporales acá podríamos tener un primer
+8:46
+8 minutos y 46 segundos
+retardo un segundo un tercero retardo todos realimentando a la misma capa
+8:52
+8 minutos y 52 segundos
+fíjense que a diferencia de las redes y las que vimos antes estas no son y
+8:59
+8 minutos y 59 segundos
+forward completamente hay una realimentación hay algo que va hacia atrás y las últimas que vamos a ver son
+9:07
+9 minutos y 7 segundos
+las redes de jordan que a diferencia de las anteriores la realimentación la toman de la salida como una
+9:15
+9 minutos y 15 segundos
+realimentación en la salida actual me la guardo y la vuelvo a meter como entrada en la capa anterior
+9:21
+9 minutos y 21 segundos
+si tengo mucho retardo de tiempo puedo ir guardando un instante anterior dos instante anterior tres instante anterior
+9:28
+9 minutos y 28 segundos
+las salidas no y las voy incorporando junto con las entradas a la red para que
+9:34
+9 minutos y 34 segundos
+tenga memoria de lo que fue sucediendo

@@ -1,0 +1,260 @@
+5 segundos
+a ver cómo podemos entrenar y utilizar estas redes o si vamos a hablar de almacenar patrones o estructuras o datos
+0:14
+14 segundos
+en la memoria se acuerdan que veníamos diciendo que se podía utilizar como una memoria asociativa o una memoria
+0:21
+21 segundos
+accesible por contenido y luego vamos a ver cómo recuperar esos patrones fundamentales o datos limpios el proceso
+0:30
+30 segundos
+de almacenamiento es lo que vamos a denominar entrenamiento de la red y la recuperación va a ser el uso o prueba de
+0:38
+38 segundos
+la red supongamos que tenemos las memorias fundamentales es decir son aquellos
+0:46
+46 segundos
+patrones o datos o imágenes en el caso del reconocimiento rostro que yo les comentaba que queremos que se almacenen
+0:53
+53 segundos
+en esa memoria que queremos que queden guardadas o codificadas en los pesos de la red eso van a hacer los x asterisco
+1:02
+1 minuto y 2 segundos
+sub k donde esa x como ven está en negrita quiere decir que es un vector si fuera
+1:09
+1 minuto y 9 segundos
+una imagen serán los valores de los píxeles de la imagen en el caso estricto de la red de hosting tendría que ser mi
+1:16
+1 minuto y 16 segundos
+imagen blanco y negro se tenía que ser píxeles blancos y negros pero bueno se puede extender esto a escalas de grises
+1:23
+1 minuto y 23 segundos
+y colores es tan error a él le quiere decir que hay en píxeles por ejemplo si fuera una imagen de cien por cien
+1:32
+1 minuto y 32 segundos
+tendría que haber 10.000 sn sería 10.000 sería un vector de 10.000 puntos esos patrones fundamentales son los que
+1:39
+1 minuto y 39 segundos
+queremos que guarde o almacene garrett y el proceso de almacenamiento es muy sencillo fíjense en esta ecuación con
+1:47
+1 minuto y 47 segundos
+esto aprende la red este tipo de aprendizaje se llama o se denomina aprendizaje viano y ahora vamos
+1:55
+1 minuto y 55 segundos
+a ver por qué simplemente estamos haciendo una especie de promedio de los patrones fíjense que el peso y jota o
+2:04
+2 minutos y 4 segundos
+sea que es el peso que vincula el pixel y con el pixel j imagínense 2 píxeles cualquiera de la imagen que
+2:12
+2 minutos y 12 segundos
+estamos queriendo reconocer que también vendría a ser la neurona y con la neurona j dentro de la red
+2:20
+2 minutos y 20 segundos
+fíjense que lo que hace es promediar esas dos dimensiones la iv y la j acá está la jota y acá
+2:29
+2 minutos y 29 segundos
+estar ahí para todos los patrones haciendo un producto
+2:36
+2 minutos y 36 segundos
+sobre todos los patrones que como podemos interpretar esto como podemos pensar que eso tiene algo que ver con el
+2:45
+2 minutos y 45 segundos
+entrenamiento de la red luego vamos a hacer una interpretación también de por qué es un aprendizaje que viano
+2:53
+2 minutos y 53 segundos
+supongamos que tenemos un patrón distintos valores
+3:02
+3 minutos y 2 segundos
+acá tenemos un caso muy simplificado en el que tenemos 1 2 3 4 5 6 7 la
+3:10
+3 minutos y 10 segundos
+dimensión sería la n sería 7 como si tuviéramos una imagen es nada más de 7 píxeles píxeles o lo que sea supongamos
+3:19
+3 minutos y 19 segundos
+que en la posición 1 vale 1 y en la posición 3 vale 1
+3:27
+3 minutos y 27 segundos
+qué va a pasar cuando esté j valga 1 y esté y valga 3 o sea en la red
+3:36
+3 minutos y 36 segundos
+neuronal estoy tratando de averiguar qué va a pasar acá están todas las neuronas
+3:41
+3 minutos y 41 segundos
+con la conexión que hay entre la neurona
+3:49
+3 minutos y 49 segundos
+y la neurona 1 este es el peso que estoy tratando de averiguar
+3:56
+3 minutos y 56 segundos
+si siempre encuentro que este vale 1 y este vale uno o sea los dos las dos posiciones en todas las memorias
+4:05
+4 minutos y 5 segundos
+fundamentales que tengo recuerden que voy recorriendo para todas las cajas esa sumatoria va a dar un valor grande
+4:12
+4 minutos y 12 segundos
+quiere decir que acá está simplemente dividido por 7 este peso va a tener un valor grande
+4:19
+4 minutos y 19 segundos
+en el caso de que en lugar de los 21 valgan los dos menos 1 va a pasar lo mismo porque me va a quedar acá en el
+4:27
+4 minutos y 27 segundos
+producto menos 1 x menos 1 más 1 y también esa sumatoria va a tomar valores muy grandes
+4:34
+4 minutos y 34 segundos
+también podría pasar que uno valga más uno y el otro valga menos uno en la
+4:43
+4 minutos y 43 segundos
+mayoría de los casos siempre estamos pensando que tomamos muchas memorias fundamentales y estamos haciendo ese promedio eso va a dar siempre menos uno
+4:52
+4 minutos y 52 segundos
+y eso indica que esas dos neuronas o esas dos entradas están siempre sincronizadas a la inversa
+5:00
+5 minutos
+qué va a pasar esta sumatoria va a acumular muchos menos unos quiere
+5:08
+5 minutos y 8 segundos
+decir que el valor del psoe se va a ser negativo y grande vimos dos casos entonces en el caso en
+5:16
+5 minutos y 16 segundos
+el que los dos valen menos uno entonces se hace positivo grande el peso y el caso en el que uno vale más uno y el
+5:23
+5 minutos y 23 segundos
+otro vale menos uno y el peso se hace negativo y grande también vimos el caso en el que los dos valen menos uno que se hacía positivo
+5:32
+5 minutos y 32 segundos
+porque estaban sincronizadas o sea que este método está detectando que neuronas
+5:38
+5 minutos y 38 segundos
+se activan a la vez si bien pueden ser las dos sincronizadas en positivo las dos sincronizadas del
+5:48
+5 minutos y 48 segundos
+negativo o las dos siempre de sincronizada pero siempre igual un amago una y la otra menos uno así que tenemos
+5:56
+5 minutos y 56 segundos
+dos casos que los pesos sean grandes positivos que los pesos sean grandes negativos pero hay un caso más que el caso en que
+6:04
+6 minutos y 4 segundos
+las neuronas estén de sincronizadas cuando a veces las dos tan es más uno a
+6:10
+6 minutos y 10 segundos
+veces las dos están en menos uno a veces están cruzadas más uno menos uno otras veces tan cruzado al revés menos
+6:18
+6 minutos y 18 segundos
+uno más uno que va a pasar con esta sumatoria va a sumar igual cantidad de casos
+6:25
+6 minutos y 25 segundos
+positivos que casos negativos por ejemplo si hubiera mil patrones va a ser 500 veces más uno y quinientas veces
+6:32
+6 minutos y 32 segundos
+menos uno lo cual le va a dar cero eso quiere decir que las neuronas no actúan sincronizadas en ningún sentido ni
+6:40
+6 minutos y 40 segundos
+siempre igual ni siempre al revés sino que y con igual probabilidad puede estar sincronizados de sincronizadas y eso
+6:48
+6 minutos y 48 segundos
+quiere decir que esas neuronas no tienen nada que ver entre ellas por lo tanto el peso peso sináptico va a valer cero o un
+6:56
+6 minutos y 56 segundos
+número muy cercano a cero volvemos un paso más atrás recordando que esto lo calculamos sobre las
+7:03
+7 minutos y 3 segundos
+memorias fundamentales o sea en el ejemplo que dábamos si nosotros detectamos que entre el pixel 1 y el
+7:09
+7 minutos y 9 segundos
+pixel 3 no hay ninguna relación quiere decir que no hay vínculo cuando uno se
+7:17
+7 minutos y 17 segundos
+ilumina el otro está apagado o pueden estar los dos apagados o los iluminado o al revés el primero apagado del segundo iluminado
+7:24
+7 minutos y 24 segundos
+sin ninguna coordinación por lo tanto no hay relación entre esos dos pixeles esta la forma que se entrena y como ven
+7:32
+7 minutos y 32 segundos
+los distintos pesos que vayamos calculando gastará el 32
+7:39
+7 minutos y 39 segundos
+acá estará el otro peso entre la neurona 2 y la 1 bala en definitiva guardar una
+7:45
+7 minutos y 45 segundos
+memoria de qué relación hay qué tipo de relación hay entre los puntos o los
+7:52
+7 minutos y 52 segundos
+excel es o se quieren las dimensiones de las entradas que yo les voy mostrando esto es un aprendizaje que viano porque
+8:00
+8 minutos
+si recuerdan el aprendizaje de gen aumentaban los pesos sinápticos no por una corrección de rodador ni nada por el
+8:08
+8 minutos y 8 segundos
+estilo sino simplemente fijándose cuando había dos neuronas que se activan juntos entonces ahí se empezaban a generar
+8:15
+8 minutos y 15 segundos
+sinapsis entre esas neuronas entonces este es un típico aprendizaje de g porque cuando estas entradas están
+8:24
+8 minutos y 24 segundos
+coordinadas y por lo tanto las neuronas correspondientes tienen que activarse juntas los pesos sinápticos
+8:31
+8 minutos y 31 segundos
+correspondientes a esas entradas se van a ir incrementando y van a ir aprendiendo esa información
+8:38
+8 minutos y 38 segundos
+vamos a ver ahora algunas observaciones generales sobre este proceso de aprendizaje pero en qué
+8:46
+8 minutos y 46 segundos
+a diferencia de todos los que vimos antes no es un aprendizaje iterativo simplemente les mostramos una vez todos
+8:54
+8 minutos y 54 segundos
+los patrones y hacemos un simple cálculo sobre los patrones que esa sumatoria y no tenemos que ir ajustando de a
+9:02
+9 minutos y 2 segundos
+poquito los pesos con cada patrón que llega lo vamos cambiando un poquito acá es simplemente hacemos ese promedio en
+9:10
+9 minutos y 10 segundos
+las dimensiones que nos interesan y listo ya tenemos el peso saber podemos saber exactamente cuándo va a terminar
+9:17
+9 minutos y 17 segundos
+el proceso de aprendizaje hay una cantidad de iteraciones que es la cantidad de dimensiones que tenemos y
+9:24
+9 minutos y 24 segundos
+listo otra observación resumidamente lo que acabamos de contar
+9:33
+9 minutos y 33 segundos
+recién sobre el aprendizaje que viana cuanto más vínculos haya entre la neurona y la j
+9:40
+9 minutos y 40 segundos
+cuanto más sincronizada estén ya sea porque van las dos para el mismo lado o porque siempre van cruzadas pero cruzadas igual más grande serán los
+9:50
+9 minutos y 50 segundos
+pesos el típico aprendizaje liviano y nosotros que tenemos que observar es que hay un límite teórico para la
+9:59
+9 minutos y 59 segundos
+capacidad de almacenamiento que fue demostrado cuando se propusieron originalmente estas redes neuronales y
+10:07
+10 minutos y 7 segundos
+ese límite teórico nos dice que la cantidad máxima de memorias
+10:14
+10 minutos y 14 segundos
+fundamentales que podemos almacenar se acuerdan las memorias fundamentales eran por ejemplo las imágenes
+10:22
+10 minutos y 22 segundos
+supongo que queremos almacenar la cara de tres personas sería acá un p de 3 es la cantidad de
+10:30
+10 minutos y 30 segundos
+memorias fundamentales si queremos almacenar 200 personas bueno serían 200 memorias memorias fundamentales esa cantidad
+10:38
+10 minutos y 38 segundos
+máxima de memorias fundamentales está limitada como podemos sospechar va a estar limitada por la cantidad de neuronas porque la cantidad de neuronas
+10:47
+10 minutos y 47 segundos
+nos da en definitiva la cantidad de pesos que son los que guardan la información en una red neuronal y esas limitaciones la siguiente
+10:56
+10 minutos y 56 segundos
+se calcula la cantidad de neuronas divididos por el logaritmo natural de la cantidad de neuronas y el número que me da
+11:05
+11 minutos y 5 segundos
+es la cantidad máxima de memorias fundamentales que puede almacenar
+11:11
+11 minutos y 11 segundos
+esto está asegurado para un error de aproximadamente un 1% para que la red
+11:18
+11 minutos y 18 segundos
+luego cuando tenga que recuperarla se equivoque solo en un 1% de los casos

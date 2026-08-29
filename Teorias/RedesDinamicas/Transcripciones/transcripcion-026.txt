@@ -1,0 +1,266 @@
+5 segundos
+hoy vamos a ver la últimas redes neuronales al menos las últimas que vemos en esta asignatura que son las redes neuronales dinámicas son
+0:14
+14 segundos
+redes que tienen internamente un comportamiento dinámico que evoluciona a lo largo del tiempo
+0:21
+21 segundos
+vamos a ver en esta primera parte una introducción en donde vamos a tratar de distinguir a qué les llamamos dinámicos
+0:29
+29 segundos
+vamos a comenzar con una primera aproximación vamos a suponer que en la
+0:36
+36 segundos
+red neuronal hay entradas que no sólo contemplan el momento actual sino lo que
+0:44
+44 segundos
+valieron esas mismas entradas en instantes anteriores se hace una primera aproximación a tratar de clasificar a
+0:52
+52 segundos
+partir de datos que no solamente entran a la red neuronal en el instante
+0:58
+58 segundos
+actual sino que tienen alguna historia o sea que la historia que llevan esos datos o los datos pasados que ingresaron
+1:06
+1 minuto y 6 segundos
+también influyen sobre la decisión que hay que tomar o la clase que hay que dar como salida fíjense que en esta ecuación
+1:12
+1 minuto y 12 segundos
+marque una equis con negrita que quiere decir que es un vector en ese vector tenemos muchas entradas se acuerdan
+1:20
+1 minuto y 20 segundos
+teníamos por ejemplo ese vector podría tener x 1 x 2 x 3 cada una de esas entradas podría ser una de las variables
+1:29
+1 minuto y 29 segundos
+de interés temperatura humedad velocidad del viento si estuviéramos tratando de predecir el clima por ejemplo
+1:37
+1 minuto y 37 segundos
+y acá en la salida simplemente marque una salida unidimensional pero que también podríamos generalizar
+1:46
+1 minuto y 46 segundos
+para el caso como ustedes saben de redes neuronales que tienen muchas salidas otra cosa que tienen que observar es que acá incorpore una n estã n es el tiempo
+1:55
+1 minuto y 55 segundos
+el tiempo discreto no le llamamos t porque en general se usa la t para tiempo continuo y está n a veces la
+2:03
+2 minutos y 3 segundos
+usábamos como iteración en el entrenamiento no se sabe le puede valer cero si estamos en el instante actual 1
+2:09
+2 minutos y 9 segundos
+2 3 4 y así ir avanzando en el primer caso de entradas desplazadas lo que vamos a plantear es que tenemos una red
+2:19
+2 minutos y 19 segundos
+neuronal cualquiera red podría ser un perceptor multicapa podría ser una red con funciones de base radial como vimos antes
+2:27
+2 minutos y 27 segundos
+y vamos a tener acá vector de n como entrada x vector le hice una rayita abajo para que se note
+2:36
+2 minutos y 36 segundos
+quiere decir que hay adentro de ese sector 1 x 2 x 3 y todas las que haya no y vamos a tener la salida así
+2:44
+2 minutos y 44 segundos
+en el instante de tiempo n cualquiera pero además si nosotros queremos que ingresen las entradas desplazadas
+2:51
+2 minutos y 51 segundos
+también vamos a tener otra entrada que es lo que valía el vector s en el instante anterior
+2:58
+2 minutos y 58 segundos
+o sea x nl - 1 esto también es un vector pero va a ser x1 en n 1 x 2 en el número 1 x 3 en 1
+3:07
+3 minutos y 7 segundos
+de una manera podríamos tener muchas muestras de lo que fue
+3:14
+3 minutos y 14 segundos
+las entradas supongamos hasta n hasta en instantes pasados de tiempo y
+3:22
+3 minutos y 22 segundos
+tenemos de esa manera una entrada expandida no sólo está la entrada actual sino que están las entradas que también
+3:32
+3 minutos y 32 segundos
+ingresaron a la red en tiempos pasados entonces si la entrada actual por ejemplo tiene tres elementos y
+3:39
+3 minutos y 39 segundos
+temperatura habíamos dicho humedad y velocidad del viento cuando expandimos hasta supongamos n
+3:46
+3 minutos y 46 segundos
+igual a 5 vamos a tener los tres actuales en n 1 n menos dos elementos 3 ene 14
+3:53
+3 minutos y 53 segundos
+l menos 5 o sea que vamos a tener 6 veces es el vector de tres entradas el
+4:00
+4 minutos
+actual y 5 instantes anteriores por lo tanto va la red neuronal cualquiera que hayamos elegido en lugar de tener
+4:08
+4 minutos y 8 segundos
+simplemente tres entradas va a tener seis post 318 entradas la salida queda como ésta una
+4:16
+4 minutos y 16 segundos
+observación importante es que lo único que hicimos es darle en la entrada más información acerca de la historia de las
+4:24
+4 minutos y 24 segundos
+entradas pero la red sigue siendo lo que llamamos una red estática no hay una dinámica en interna la red
+4:33
+4 minutos y 33 segundos
+sigue viendo un patrón de entrada cada vez que le pedimos una salida
+4:39
+4 minutos y 39 segundos
+determinada la red sigue siendo estática y lo que hicimos fue ingresar entradas
+4:46
+4 minutos y 46 segundos
+desplazadas para simular o para dar la información de esa dinámica temporal que tiene el problema que queremos resolver
+4:54
+4 minutos y 54 segundos
+vamos a ver una segunda aproximación en esta segunda aproximación además de tener las entradas
+5:04
+5 minutos y 4 segundos
+también tenemos un vector de salida fíjense que hay un sub uno acá porque evidentemente este vector de salida no
+5:13
+5 minutos y 13 segundos
+puede ser exactamente el mismo que la salida actual porque todavía no la calculamos o sea que mínimamente tiene que ser las salidas en el instante
+5:20
+5 minutos y 20 segundos
+anterior o en dos instantes anteriores o en tres instantes anteriores y así o sea que en este caso tendríamos que tener
+5:28
+5 minutos y 28 segundos
+las entradas en las entradas siempre tienen que estar en algún momento tienen que entrar pero al lugar de poner las
+5:36
+5 minutos y 36 segundos
+entradas pasadas como hicimos antes lo que vamos a hacer es realimentar
+5:43
+5 minutos y 43 segundos
+las entradas en un instante anterior ese cuadradito que dibujé ahí podemos
+5:49
+5 minutos y 49 segundos
+suponer que retarda la entrada así ahí teníamos cnn acá tenemos jamie n menos 1
+5:57
+5 minutos y 57 segundos
+y también una entrada retardada la podríamos retardar un instante más hacia atrás
+6:06
+6 minutos y 6 segundos
+con ese cuadradito le podríamos agregar otro cuadradito retardo y tener una
+6:12
+6 minutos y 12 segundos
+entrada ahora va a ser en n menos y bueno de esa manera podemos retardar todas las veces que queramos ir poniendo
+6:21
+6 minutos y 21 segundos
+como entradas los valores que tomó la salida en instantes anteriores esa también es una aproximación en la cual
+6:31
+6 minutos y 31 segundos
+se observan estrictamente la red sigue siendo la misma que teníamos antes
+6:39
+6 minutos y 39 segundos
+el mismo sector multicapa o una función de base radial o por ejemplo un simple o cualquiera estática no tiene una dinámica propia
+6:48
+6 minutos y 48 segundos
+vamos a ver otra aproximación esta aproximación consiste en
+6:54
+6 minutos y 54 segundos
+nuevamente tenemos la salida la entrada que siempre tenemos acá x de n en
+7:02
+7 minutos y 2 segundos
+realimentar ni la entrada en instantes anteriores ni la salida en instantes anteriores sino algún estado interno
+7:12
+7 minutos y 12 segundos
+siempre que le vamos a llamar zeta ceta en n menos 1 por ejemplo vamos
+7:19
+7 minutos y 19 segundos
+a suponer que acá las salidas de las neuronas internas le llamamos zeta y esas salidas un instante anterior las
+7:28
+7 minutos y 28 segundos
+vamos a realimentar en la entrada siempre estamos re alimentando en la entrada cierto también podríamos pensar como un caso más general
+7:36
+7 minutos y 36 segundos
+en que esas salidas zetas se realimentan con un retardo siempre necesitamos el
+7:42
+7 minutos y 42 segundos
+bloque citó de retardo en las capas internas las capas ocultas de la neurona y ahí ya vamos empezando a
+7:51
+7 minutos y 51 segundos
+tener la idea de que la red neuronal en sí misma puede tener una dinámica se
+7:58
+7 minutos y 58 segundos
+pueden comportar de forma dinámica fíjense que en este caso la salida
+8:04
+8 minutos y 4 segundos
+actual cdn va a depender no solo de la entrada actual sino de los estados anteriores de la red o sea de las
+8:13
+8 minutos y 13 segundos
+salidas internas anteriores de la red que indirectamente dependen de las entradas anteriores de la red o sea que
+8:20
+8 minutos y 20 segundos
+ya la red empezó a trabajar o empezó a considerar cierta memoria no responde sólo la que está entrando en este
+8:28
+8 minutos y 28 segundos
+instante de tiempo sino que también responde a la historia de las entradas en el caso que yo ponía de predecir la
+8:36
+8 minutos y 36 segundos
+temperatura está claro que es interesante tener la historia y es interesante que la red se comporte de esta manera porque yo puedo predecir
+8:44
+8 minutos y 44 segundos
+bien o con cierto grado de acierto la temperatura de mañana conociéndolo de hoy pero si conozco la historia de los
+8:52
+8 minutos y 52 segundos
+últimos siete días 15 días de temperatura seguramente tengo más información para hacer una predicción más exacta de la temperatura que va a
+9:01
+9 minutos y 1 segundo
+ser mañana finalmente para el caso más general podemos considerar que estas redes pueden tener realimentación es de las
+9:10
+9 minutos y 10 segundos
+entradas en instantes anteriores realimentación es de las salidas e instantes anteriores realimentación es de los estados
+9:18
+9 minutos y 18 segundos
+internos e instantes anteriores todas estas realimentación es van a hacer que cuando construyamos se
+9:26
+9 minutos y 26 segundos
+comporte de una manera diferente y vamos a tener que también pensar cómo la vamos a entrenar cómo vamos a poder ajustar
+9:34
+9 minutos y 34 segundos
+los pesos sin áticos para que aprenda determinado problema vamos a ver un poquito ahora una breve clasificación de las redes dinámicas
+9:43
+9 minutos y 43 segundos
+vamos a primero considerar las redes con retardos en el tiempo vamos a ver una generalización de estas
+9:51
+9 minutos y 51 segundos
+redes de estos cuadraditos que estuvimos viendo antes las redes correctas en el tiempo tienen
+9:59
+9 minutos y 59 segundos
+como un comportamiento dinámico aunque tiene la propiedad de que las podemos seguir entrenando con los algoritmos que ya conocemos luego vamos a ver las redes
+10:08
+10 minutos y 8 segundos
+realmente recurrentes son aquellas que tienen realimentación es hacia atrás no como vimos hasta ahora que siempre las
+10:16
+10 minutos y 16 segundos
+sinapsis iban hacia adelante en la red ahora vamos a permitir que haya realimentación es de una neurona a sí
+10:25
+10 minutos y 25 segundos
+misma oa otras de la misma capa o a neuronas de las capas anteriores y en esa clasificación vamos a
+10:33
+10 minutos y 33 segundos
+considerar dos casos las redes totalmente recurrentes y las redes parcialmente recurrentes dentro de las
+10:40
+10 minutos y 40 segundos
+redes totalmente recurrentes vamos a considerar las redes de coffee el que las vamos a ver con un poquito
+10:47
+10 minutos y 47 segundos
+más detalle a continuación y acá se mencionan dos pero hay muchas otras arquitecturas que son completamente
+10:55
+10 minutos y 55 segundos
+recurrentes en las unas muy conocidas son las redes de volman y hay otras redes basadas la teoría de la resonancia
+11:02
+11 minutos y 2 segundos
+adaptativa que también son muy utilizadas en el caso de las redes parcialmente
+11:09
+11 minutos y 9 segundos
+recurrentes vamos a considerar la retro propagación a través del tiempo que es una forma de convertir una red
+11:17
+11 minutos y 17 segundos
+recurrente en parcialmente recurrente y de esa manera expandirla a una red que
+11:25
+11 minutos y 25 segundos
+solamente tenga conexiones hacia adelante vamos a ver cómo podemos hacer eso y vamos a considerar dos casos más
+11:32
+11 minutos y 32 segundos
+que son las redes de elman y jordan que son también muy utilizadas y vamos a ver cómo es la arquitectura si bien en estos últimos casos nos vamos a ver en detalle
+11:40
+11 minutos y 40 segundos
+el algoritmo de entrenamiento por lo menos vamos a dejar un panorama de cómo son las distintas arquitecturas y conexiones

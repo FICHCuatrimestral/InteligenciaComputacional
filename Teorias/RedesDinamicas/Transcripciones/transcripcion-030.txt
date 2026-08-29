@@ -1,0 +1,169 @@
+ahora vamos a ver otra alternativa para tratar con una red recurrente qué es lo que se denomina retro para la
+0:14
+14 segundos
+nación a través del tiempo vamos a suponer que tenemos una regla recurrente como la que vamos a definir
+0:21
+21 segundos
+ahora solamente dos entradas fíjense que acá nuevamente aparece el n
+0:31
+31 segundos
+y tenemos además dos salidas muy parecidos a lo que teníamos antes pero nada más que acá a los fines de
+0:39
+39 segundos
+simplificar el ejemplo en este caso vamos a poder considerar cualquier cantidad de entradas cualquier cantidad de salidas
+0:47
+47 segundos
+y la arquitectura que sea acá tenemos las conexiones entre las entradas y las neuronas fíjense acá está la primera
+0:56
+56 segundos
+capa sería como teníamos con el perceptor multicapa no hay nada nuevo este de hecho sería
+1:02
+1 minuto y 2 segundos
+serían dos percepciones simples pero además vamos a considerar que hay pesos sin áticos
+1:11
+1 minuto y 11 segundos
+entre las neuronas todas con todas en esa capa están todas conectadas con todas y además también
+1:19
+1 minuto y 19 segundos
+hay conexiones a sí misma esto sería realmente una red completamente recurrente en una red que
+1:28
+1 minuto y 28 segundos
+tiene recurrencias totales como podemos hacer para entrenar este reto vamos a ver la idea de un algoritmo
+1:36
+1 minuto y 36 segundos
+que se llama nuestra propagación a través del tiempo para eso lo que vamos a hacer es expandir esta red neuronal la vamos a
+1:45
+1 minuto y 45 segundos
+expandir a lo largo del tiempo vamos a suponer que empezamos
+1:52
+1 minuto y 52 segundos
+en un instante n y acá vamos a tener las dos neuronas que vimos recién
+2:00
+2 minutos
+que tienen como salida y uno de n
+2:07
+2 minutos y 7 segundos
+2 dn estas neuronas que reciben como entradas lo que van a recibir como entradas son por supuesto
+2:16
+2 minutos y 16 segundos
+las entradas propiamente dichas o sea que podríamos dibujar acá el costado
+2:23
+2 minutos y 23 segundos
+dos cuadraditos que son x1 de n y x2 de n
+2:30
+2 minutos y 30 segundos
+y esto con sus correspondientes pesos entran
+2:38
+2 minutos y 38 segundos
+ambas neuronas simplemente hemos dibujado de manera diferente lo que ya teníamos antes pero
+2:45
+2 minutos y 45 segundos
+qué más va a entrar a esas neuronas van a entrar las salidas
+2:52
+2 minutos y 52 segundos
+de ellas mismas en un instante anterior entonces vamos a suponer que acá
+2:59
+2 minutos y 59 segundos
+tenemos las salidas de 2 nm 1 y por supuesto que tendremos de uno en
+3:08
+3 minutos y 8 segundos
+uno si tenemos calculada esa salida vamos a suponer que las conocemos podemos
+3:15
+3 minutos y 15 segundos
+conectar con el peso 11 es el que tenemos remarcado acá a la salida actual con el
+3:25
+3 minutos y 25 segundos
+peso 22 pero también podemos conectar
+3:32
+3 minutos y 32 segundos
+las conexiones cruzadas que son las que están marcadas en azul entre las dos neuronas
+3:39
+3 minutos y 39 segundos
+bien tenemos cómo calcular la salida en el instante n ahora tendríamos que pensar cómo hacemos para calcularlo en
+3:47
+3 minutos y 47 segundos
+el instante en el -1 porque decimos que las necesitamos y bueno podemos pensar de la misma manera podemos ir un paso para atrás
+3:56
+3 minutos y 56 segundos
+poner acá las entradas x 1 nn 1 x 2
+4:03
+4 minutos y 3 segundos
+nn 1 tienen que entrar a las dos neuronas
+4:13
+4 minutos y 13 segundos
+y acá ponemos esta y ponemos ésta y para calcular esas también vamos a
+4:19
+4 minutos y 19 segundos
+necesitar las salidas en dos instantes antes en n 2 que vendría a ser un instante
+4:27
+4 minutos y 27 segundos
+antes de el n menos 1 que teníamos antes y jesús 2 entiende menos 2
+4:35
+4 minutos y 35 segundos
+con esas podemos pasan los pesos tenemos de nuevo los cruzados y podemos calcular el menor se
+4:44
+4 minutos y 44 segundos
+imaginan que esto lo podemos hacer hasta en instante inicial de podemos retroceder retroceder retroceder hasta
+4:52
+4 minutos y 52 segundos
+el instante inicial en donde directamente yo podría inicializar
+4:58
+4 minutos y 58 segundos
+con x 1 en 0 y x2 en 0 entonces acá puedo poner esto
+5:09
+5 minutos y 9 segundos
+y de la misma manera puedo poner las entradas
+5:16
+5 minutos y 16 segundos
+que hicimos con todo esto lo que hicimos fue desplegar la red a lo largo del tiempo y en definitiva nos quedó una red mucho
+5:25
+5 minutos y 25 segundos
+más grande que tiene muchas capas pero que ahora es solamente hacia adelante no tiene realimentación es
+5:33
+5 minutos y 33 segundos
+quiere decir que la podríamos entrenar por nuestra propagación como han tenido un perfecto muy multicapa el perceptor multicapa
+5:41
+5 minutos y 41 segundos
+tiene 234 capas pero ahora podemos decir bueno tiene n mayúscula n capas las que
+5:50
+5 minutos y 50 segundos
+sean 10 15 20 pero hay que observar una cosa fíjense que hay que entrenar con ciertos cuidados porque estos pesos que
+6:00
+6 minutos
+están en esta capa son los mismos que estos pesos que están en esa capa es decir son el único conjunto de pesos que
+6:08
+6 minutos y 8 segundos
+tenemos y acá tenemos 4 pesos más 48 bueno son estos 8 pesos son estos mismos 8 no son
+6:17
+6 minutos y 17 segundos
+nuestros pesos diferentes porque en definitiva la red que nosotros tenemos que entrenar al final del proceso es esta chiquitita que tenemos de este lado
+6:24
+6 minutos y 24 segundos
+así que con esa salvedad con la salvedad de que vamos a tener que hacer alguna especie de pro mediación ponderada de
+6:31
+6 minutos y 31 segundos
+los pesos luego de la pasada hacia atrás con esta arquitectura con esta expansión podemos utilizar el algoritmo de retro
+6:39
+6 minutos y 39 segundos
+por acción que ya tenemos para entrenar una red recurrente total en general si nosotros tocamos por ejemplo podemos
+6:49
+6 minutos y 49 segundos
+decir vamos a retro propagar hasta el nivel 2 o sea hasta dos entradas anteriores
+6:56
+6 minutos y 56 segundos
+él se le llama esto retro propagación a través del tiempo truncada se corta porque no podemos ir hasta el infinito o
+7:05
+7 minutos y 5 segundos
+si tenemos entradas de 10.000 casos no podemos hacer esto hasta 10.000 hacia
+7:12
+7 minutos y 12 segundos
+atrás sino que podemos elegir tomar una memoria de dos de dos instantes el actual el anterior y hacer la expansión
+7:21
+7 minutos y 21 segundos
+son los gastados instantes de esta manera podemos entrenar una red neuronal en principio totalmente recurrente con
+7:29
+7 minutos y 29 segundos
+un algoritmo que ya sabíamos y que conocemos bien es para una red neuronal sin recurrencia de ningún tipo una y forward o de
+7:38
+7 minutos y 38 segundos
+propagación hacia adelante

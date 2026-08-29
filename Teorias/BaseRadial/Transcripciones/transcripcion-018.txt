@@ -1,0 +1,262 @@
+bueno vamos a ver algunos detalles algunas anotaciones sobre estas bausch llanas unidimensionales que necesitamos
+0:13
+13 segundos
+utilizar en la capa oculta de la red con funciones de base radial vamos a comenzar por analizar el caso general
+0:20
+20 segundos
+vamos a suponer que tenemos un vector x en ere a la n por supuesto el vector de
+0:28
+28 segundos
+media va a tener que estar general aire o sea que la gauss jana va a tener que estar en el adn
+0:34
+34 segundos
+si es igual a 1 podemos imaginarnos que tenemos una simple cause anita así con
+0:43
+43 segundos
+una media que es un único valor de mu estos serían los valores de x
+0:50
+50 segundos
+en cambio si n es igual a 2 tenemos que imaginarnos que tenemos
+0:56
+56 segundos
+ahora algo un poco más complejo de ese acuerdo que habíamos dibujado alguna especie de campana
+1:05
+1 minuto y 5 segundos
+y el centro de esa campana va a tener dos coordenadas 1 y 1 2
+1:14
+1 minuto y 14 segundos
+que estudiamos x2 y acá tendremos aquí por el caso general podemos pasar a n dimensiones y
+1:22
+1 minuto y 22 segundos
+tendremos una hiper esfera en esa dimensión l y también teníamos algo que un poco
+1:31
+1 minuto y 31 segundos
+dejamos de lado en las explicaciones anteriores que era la desviación desviación estándar la varianza
+1:39
+1 minuto y 39 segundos
+que hacía que esta canción y está recordaran se haga mucho más fina o se desparrame mucho más lo mismo
+1:48
+1 minuto y 48 segundos
+pasará con la campana se hará una campana más grande en una campana más pequeña más localizada
+1:57
+1 minuto y 57 segundos
+pero en el caso general es esa desviación estándar es una matriz que se
+2:06
+2 minutos y 6 segundos
+llama matriz de covarianza y que es de n por n tiene n por n donde n es recuerdan la
+2:14
+2 minutos y 14 segundos
+dimensión de la entrada vamos a analizar un poco esta la ecuación para el caso general para el caso general la ecuación es un poco más
+2:23
+2 minutos y 23 segundos
+compleja que lo que veíamos pero conceptualmente la podemos ver analizar rápido esto que tenemos acá es la parte
+2:31
+2 minutos y 31 segundos
+fundamental de la cause anna fíjense que tenemos acá la recta y acá nuevamente la
+2:38
+2 minutos y 38 segundos
+recta entre la entrada x y el vector de medias en el centro hoy d
+2:46
+2 minutos y 46 segundos
+y si tenemos la multiplicación de las dos rectas es lo mismo que tuviéramos esa recta al cuadrado recuerdan que en
+2:53
+2 minutos y 53 segundos
+el numerador de la oxidada teníamos la recta al cuadrado en la norma de la recta al cuadrado así que básicamente esto que
+3:01
+3 minutos y 1 segundo
+tenemos acá es lo que antes habíamos puesto como x menos muy al cuadrado y esto que tenemos en el medio
+3:10
+3 minutos y 10 segundos
+en la matriz de covarianza que estará menos 1 o sea que es la inversa
+3:17
+3 minutos y 17 segundos
+secretaria dividiendo y que si tuviéramos enero a la 1 sería simplemente sigma
+3:24
+3 minutos y 24 segundos
+o sea sin más un jota porque porque sin más de la neurona jota nada más que por eso pero sería un escalar o sea que esto
+3:33
+3 minutos y 33 segundos
+sería uno sobre sigma sub j en el caso más general será una matriz
+3:40
+3 minutos y 40 segundos
+de n por n que tiene las correlaciones entre las distintas dimensiones ahora lo
+3:47
+3 minutos y 47 segundos
+vamos a ver un poquito más en detalle y esto que tenemos acá en definitiva es una constante así que no nos
+3:57
+3 minutos y 57 segundos
+conceptualmente no nos trae mayor problema vamos a ir analizando desde el caso más simple al más completo
+4:06
+4 minutos y 6 segundos
+vamos a suponer primero que esta matriz de ccoo varianza es la matriz identidad o sea que tiene
+4:15
+4 minutos y 15 segundos
+uno de la diagonal y cero el resto de todos los valores vamos a suponer que
+4:23
+4 minutos y 23 segundos
+y estamos enrolados tenemos uno y uno qué quiere decir esto que acá fíjense
+4:30
+4 minutos y 30 segundos
+directamente en la ecuación no me quedo nada en el denominador o sea que tenemos supongamos que
+4:39
+4 minutos y 39 segundos
+el mundo sub j está acá acá tenemos el mundo de la neurona uno en la dimensión
+4:47
+4 minutos y 47 segundos
+uno y acá tenemos el mundo de la neurona uno en la dimensión uno
+4:53
+4 minutos y 53 segundos
+y si la varianza 1 sera un círculo perfecto
+5:02
+5 minutos y 2 segundos
+con el radio constante en esa zona podemos tener
+5:08
+5 minutos y 8 segundos
+muchas otras neuronas para cada neurona lo que vamos a poder lograr en un
+5:14
+5 minutos y 14 segundos
+círculo en distintos lugares siempre del mismo tamaño porque la desviación estándar no nos deja mover eso sin
+5:25
+5 minutos y 25 segundos
+embargo a pesar de que este modelo parece muy elemental y restringido como nosotros tenemos los pesos de salida
+5:32
+5 minutos y 32 segundos
+podemos luego a cada una de estas gaussianos y darle una distinta importancia en la salida final con lo
+5:41
+5 minutos y 41 segundos
+cual nos evita el problema de tener que calcular las desviaciones para hacer que sean más pequeñas o más grandes de
+5:50
+5 minutos y 50 segundos
+acuerdo a la distribución de los datos esa es una facilidad y en general como lo vamos a ver en la práctica con este
+5:57
+5 minutos y 57 segundos
+modelo podemos hacer una red neuronal con funciones base de radial que funcionan muy bien
+6:05
+6 minutos y 5 segundos
+hay veces que tenemos problemas un poco más complejos y vamos a ver un segundo
+6:11
+6 minutos y 11 segundos
+caso vamos a ver un caso en donde varianzas sean las mismas pero no
+6:18
+6 minutos y 18 segundos
+necesariamente 1 eso nos va a permitir fíjense que acá está el sigma que simplemente
+6:27
+6 minutos y 27 segundos
+salió afuera de ahí porque es un escalar no depende de acá que es la variable que está moviendo ahí cada una de las
+6:35
+6 minutos y 35 segundos
+dimensiones que tiene la entrada y recordemos que j es cada una de
+6:44
+6 minutos y 44 segundos
+las distintas neuronas que está la capa radial que nos permite esto esto nos permite lo
+6:52
+6 minutos y 52 segundos
+que yo comentaba un poco antes nos permite que si tengo un sigma muy grande
+6:59
+6 minutos y 59 segundos
+lo que voy a tener es un círculo grande y si tengo un signo pequeño lo que voy a poder tener es un círculo más pequeño
+7:08
+7 minutos y 8 segundos
+esto nos ayuda en que si por ejemplo yo tenía patrones muy desparramados
+7:15
+7 minutos y 15 segundos
+todos parados por el espacio voy a poder armar una opción a grande grande para ellos en cambio en caso de que yo tuviera los
+7:24
+7 minutos y 24 segundos
+patrones muy acumulados voy a poder armar una canción muy chiquita y como cálculo s s sigma bueno fácil si yo
+7:34
+7 minutos y 34 segundos
+tengo el centro y de calculado por el método de k medias simplemente tengo que calcular la desviación entre ese centro
+7:43
+7 minutos y 43 segundos
+y de todos los puntos que están adentro del conjunto sé que no tiene mayor complejidad vamos a un paso más
+7:52
+7 minutos y 52 segundos
+tenemos menos simplificaciones y vamos a ver que acá tenemos fíjense sigma
+8:01
+8 minutos y 1 segundo
+cuadrado qué depende de cada una de las neuronas y también
+8:09
+8 minutos y 9 segundos
+depende de cada una de las dimensiones o sea que es un sigma
+8:15
+8 minutos y 15 segundos
+de jk o sea que podríamos pensar que tenemos
+8:22
+8 minutos y 22 segundos
+sigma j 1 sigma j 2 y así hasta sigma j
+8:31
+8 minutos y 31 segundos
+n en toda esa zona seguimos manteniendo 0 y esto que me permite
+8:39
+8 minutos y 39 segundos
+me permite qué cada una de las dimensiones a cada neurona diferente pero cada una
+8:47
+8 minutos y 47 segundos
+de las dimensiones dentro de una misma neurona tenga una varianza distinta
+8:54
+8 minutos y 54 segundos
+que podría ser yo con esto antes yo tenía que eran totalmente esféricas estás causadas pero ahora si yo puedo hacer que una
+9:03
+9 minutos y 3 segundos
+dimensión tenga menos varianza que la otra puedo generar este tipo de elipses
+9:10
+9 minutos y 10 segundos
+o sea que efectivamente fíjense que ahora el cambio no es menor porque si realmente yo tengo patrones distribuidos
+9:18
+9 minutos y 18 segundos
+de esta forma estoy haciendo un dibujo muy sencillo y
+9:26
+9 minutos y 26 segundos
+me conviene poner una opción a que esté acostada y que tenga esa forma de elipse que los abarque mejor porque si pongo
+9:34
+9 minutos y 34 segundos
+una esférica como las que teníamos antes quizás voy a estar incluyendo otros patrones que realmente no me interesaba
+9:42
+9 minutos y 42 segundos
+incluir en esa categoría o en ese conjunto así que básicamente lo que me va a permitir esto es que cada dimensión
+9:49
+9 minutos y 49 segundos
+tenga su varianza independiente de las otras y por supuesto siempre como ésta jk cada dous ya nava puede estar en el
+9:57
+9 minutos y 57 segundos
+lugar que quiere con la apariencia que quiera así que yo lo que puedo hacer es tener para una neurona algo así para otra
+10:07
+10 minutos y 7 segundos
+neurona algo así para otra algo mucho más angosto puedo tener cada neurona con su propia varianza acá estamos en dos
+10:16
+10 minutos y 16 segundos
+dimensiones en x 1 y el x2 no pero si en el caso general tenemos muchas dimensiones para todas las dimensiones
+10:23
+10 minutos y 23 segundos
+que sea pero fíjense en detalle que sólo las podemos poner o vertical horizontal nos está quedando la posibilidad de
+10:32
+10 minutos y 32 segundos
+tener gaussianos inclinadas rotadas con lo cual ya cubriríamos todas las formas posibles
+10:40
+10 minutos y 40 segundos
+así que ese es el caso general realmente donde hay correlación entre las dimensiones o sea las dimensiones no son
+10:47
+10 minutos y 47 segundos
+independientes una de las otras y en ese caso es donde tendríamos la matriz completa de la matriz
+10:56
+10 minutos y 56 segundos
+que tiene todos los elementos vamos a tener ahí
+11:02
+11 minutos y 2 segundos
+una sub j 11 y vamos a suponer que estamos en dos dimensiones
+11:09
+11 minutos y 9 segundos
+j 2 2 pero también va a estar el sigma sub j 1 2 y el sigma sub j 2 1
+11:19
+11 minutos y 19 segundos
+qué función cumplen estos dos lo acabamos de ver recién y estos otros dos los que aparecen ahora
+11:27
+11 minutos y 27 segundos
+para completar la matriz contienen la varianza en las dimensiones cruzadas en
+11:35
+11 minutos y 35 segundos
+la dimensión 1 contra la 2 y entre las 2 contra la 1 osea qué relación hay entre las dimensiones y nos permiten como yo les
+11:43
+11 minutos y 43 segundos
+decía poner una anciana en esta forma

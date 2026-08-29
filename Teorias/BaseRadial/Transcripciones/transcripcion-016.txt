@@ -1,0 +1,325 @@
+vamos a ver el entrenamiento de las redes neuronales con funciones de base radial en dos partes esta va a ser la primera parte
+0:10
+10 segundos
+el entrenamiento tiene básicamente dos etapas esta es una particularidad de las redes
+0:18
+18 segundos
+con funciones de base radial que tienen un entrenamiento mixto en parte no supervisado y en parte
+0:25
+25 segundos
+supervisado es decir en una parte del entrenamiento le vamos a decir cuáles son las salidas correctas en la segunda
+0:33
+33 segundos
+parte pero la primera parte vamos a entrenar sin decirle cuáles son las salidas correctas vamos a estimar o calcular
+0:42
+42 segundos
+principalmente los parámetros de las ganas sin necesidad de conocer cuál es la salida correcta ahora van a ver cómo
+0:49
+49 segundos
+lo vamos a hacer básicamente esto es lo que les acabo de comentar una primera parte y una segunda parte la segunda
+0:57
+57 segundos
+parte va a ser muy similar porque ha sido igual al entrenamiento un perfecto simple y hay otro método que se inicializa con
+1:07
+1 minuto y 7 segundos
+el método 1 con este método híbrido en parte no supervisado en parte supervisado y luego se hace una
+1:14
+1 minuto y 14 segundos
+adaptación supervisada de todos los parámetros de la red osea también se actualizan no sólo los pesos sin áticos
+1:23
+1 minuto y 23 segundos
+de la capacidad sino se hacen ajustes de manera supervisada también a los vectores de medias y desviaciones de
+1:31
+1 minuto y 31 segundos
+cada neurona de la capa radial entonces vamos a ver que en general se
+1:39
+1 minuto y 39 segundos
+hacen dos etapas por separado vamos a dar más detalles sobre el método 1
+1:47
+1 minuto y 47 segundos
+en una primera etapa se entregan los parámetros de la base radial independientemente de lo que valgan los
+1:54
+1 minuto y 54 segundos
+pesos de las salidas sólo se entrena eso y en una segunda etapa se deja fijo
+2:02
+2 minutos y 2 segundos
+todo lo que obtuvimos para la capa radial no tocamos las medias no tocamos la varianza nada y solamente entrenamos
+2:10
+2 minutos y 10 segundos
+los parámetros de la capa de salida que sería el percepción simple vamos a ver primero cómo entrenar esa
+2:20
+2 minutos y 20 segundos
+capa radial como les anticipaba acá hay una característica muy importante y va a ser
+2:28
+2 minutos y 28 segundos
+el primer método de entrenamiento no supervisado que vamos a ver en la asignatura esta capa se entrena sin necesidad de
+2:37
+2 minutos y 37 segundos
+conocer la salida correcta la salida deseada y la de o la gestión de que utilizábamos antes
+2:44
+2 minutos y 44 segundos
+y vamos si bien hay muchos algoritmos para hacer este tipo de entrenamiento vamos a aplicar uno de los más sencillos y de los más utilizados que es el método
+2:52
+2 minutos y 52 segundos
+de comedias básicamente el objetivo es encontrar conjuntos
+3:01
+3 minutos y 1 segundo
+datos de entrada de patrones de entrada a esos conjuntos les vamos a llamar se sub j fíjense qué
+3:10
+3 minutos y 10 segundos
+esa jota tiene que ver con la jota de las neuronas en la capa oculta o en la
+3:17
+3 minutos y 17 segundos
+capa radial si tengo 10 neuronas en la capa radial voy a tener que encontrar 10 conjuntos o
+3:26
+3 minutos y 26 segundos
+sea que esté acá va a valer 10 en 10 conjuntos uno para cada una de las neuronas
+3:33
+3 minutos y 33 segundos
+cada conjunto 6 j tiene que ser lo más diferente posible
+3:41
+3 minutos y 41 segundos
+a los demás conjuntos y por otro lado la idea es que los patrones que están adentro estos son los patrones de
+3:49
+3 minutos y 49 segundos
+entrada se acuerdan aquellos con los que entrenamos y los patrones que están adentro de cada uno de esos conjuntos tienen que ser
+3:58
+3 minutos y 58 segundos
+entre ellos lo más parecidos posible o sea que la idea es que los conjuntos sean bien consigo que tengan todas las cosas
+4:07
+4 minutos y 7 segundos
+muy parecidas adentro y entre ellos entre los distintos conjuntos sean lo más diferentes posibles
+4:14
+4 minutos y 14 segundos
+entonces nuestro objetivo es encontrar los centros de los centros desde esos conjuntos que como ustedes se imaginarán
+4:23
+4 minutos y 23 segundos
+cada uno de esos centros va a ser luego el centro de de la galiana en la neurona correspondiente entonces lo que tenemos
+4:32
+4 minutos y 32 segundos
+que obtener con este método es los vectores muy sujeta en la dimensión que corresponda que van a ser en
+4:41
+4 minutos y 41 segundos
+definitiva las medias de esas gaussianos y que van a hacer también el promedio de
+4:50
+4 minutos y 50 segundos
+todos los patrones que hayan quedado en cada uno de los conjuntos se sub costa
+4:57
+4 minutos y 57 segundos
+entonces si queremos plantear esto como una optimización podemos pensar que lo que estamos buscando es minimizar este
+5:05
+5 minutos y 5 segundos
+criterio j que está compuesto de la siguiente forma fíjense
+5:12
+5 minutos y 12 segundos
+esto que está acá es la distancia entre los patrones que corresponden al centro y d
+5:20
+5 minutos y 20 segundos
+o al conjunto se corta menos el vector de medias de ese conjunto o
+5:29
+5 minutos y 29 segundos
+sea que estamos si nosotros imaginamos que ese conjunto está acá y agrupa a todos estos patrones
+5:36
+5 minutos y 36 segundos
+todos estos patrones en este espacio de dos dimensiones están agrupados ahí y decimos que acá está el centro hoy de
+5:44
+5 minutos y 44 segundos
+el centro del mundo de eso nosotros lo que estamos haciendo con esta ecuación es medir esta distancia más en esta
+5:52
+5 minutos y 52 segundos
+distancia más esta distancia más esta distancia más estas estancias más esta distancia y eso lo hacemos para un conjunto este
+6:00
+6 minutos
+por ejemplo es de una para otro conjunto de datos tendremos otros patrones
+6:08
+6 minutos y 8 segundos
+también tenemos su centro hoy de y también medimos la distancia este podría ser sub 2
+6:15
+6 minutos y 15 segundos
+estos que están acá adentro son los x los patrones que pertenecen a él se sube
+6:24
+6 minutos y 24 segundos
+2 vamos sumando todo eso o sea que estamos haciendo la acumulación de las distancias entre todos los patrones y su
+6:32
+6 minutos y 32 segundos
+centro hoy de en definitiva acá está la sumatoria para todos los centros des eaux todos los conjuntos que
+6:40
+6 minutos y 40 segundos
+tengamos y lo que dijimos es que queremos que esa acumulación sea mínima o sea queremos minimizar ese criterio el
+6:48
+6 minutos y 48 segundos
+criterio de la suma de todas las distancias entre los patrones y los centros es como se imaginará si logramos
+6:55
+6 minutos y 55 segundos
+ubicar los centro del es que en definitiva el objetivo de esta parte del algoritmo ubicar los entroidos si no
+7:04
+7 minutos y 4 segundos
+logramos ubicar justo en el medio de cada grupito de patrones vamos a obtener el mínimo posible de esa instancia voy a
+7:13
+7 minutos y 13 segundos
+hacer otro ejemplo acá si por ejemplo tenemos estos patrones acá y no no somos capaces de buscar el
+7:21
+7 minutos y 21 segundos
+centro del medio sino que por error lo ubicamos acá la distancia a todos sus patrones
+7:31
+7 minutos y 31 segundos
+va a ser más grande que si hubiéramos sabido la distancia acumulada no ubicarlo en donde tiene que ir porque
+7:38
+7 minutos y 38 segundos
+hubiéramos sumado todos estos pedacitos chiquititos entonces ese es el objetivo de esta parte del algoritmo ubicarnos en
+7:48
+7 minutos y 48 segundos
+troy des que viene en el medio de manera que la suma de las distancias sean mínimas entonces para eso es que utilizamos el
+7:56
+7 minutos y 56 segundos
+algoritmo k medias es uno de los algoritmos posibles que va a consistir en los siguientes pasos primero hacemos
+8:03
+8 minutos y 3 segundos
+una inicialización y ya no les extrañará que utilizamos nuevamente la victoria
+8:10
+8 minutos y 10 segundos
+edad elegimos aleatoriamente fíjense que acá están todos los patrones que tenemos
+8:17
+8 minutos y 17 segundos
+para entrenar los elegimos aleatoriamente y formamos cada conjuntos donde acá es la cantidad de neuronas que
+8:24
+8 minutos y 24 segundos
+tenemos en la capa de base radial con eso inicializa mos el primer
+8:32
+8 minutos y 32 segundos
+conjunto de conjunto sociedad vamos a tener acá conjuntos y en cada conjunto vamos a ver puesto supongamos que eran
+8:40
+8 minutos y 40 segundos
+cinco conjuntos porque teníamos cinco neuronas y teníamos cien patrones bueno agarramos al azar 20 los metemos en el primero para amos lanzar otros 20 lo
+8:49
+8 minutos y 49 segundos
+metemos en el segundo y así con hasta que nos quedemos sin patrones y luego lo que hacemos es calcular los
+8:58
+8 minutos y 58 segundos
+entroidos de cada conjunto simplemente hacemos un promedio fíjense qué es
+9:04
+9 minutos y 4 segundos
+tomamos solamente los patrones de el conjunto j y los sumamos
+9:13
+9 minutos y 13 segundos
+recuerden que esto que está acá en negrita es un vector o sea que estamos sumando vectores acá por lo tanto si
+9:22
+9 minutos y 22 segundos
+este vector estaba en r a las 7 acá vamos a tener como salida como resultado un vector de medias también en
+9:31
+9 minutos y 31 segundos
+algar a 7 y dividimos por la cantidad de elementos que tenga en conjunto j simplemente hicimos un promedio de todo
+9:39
+9 minutos y 39 segundos
+lo que estaba dentro un promedio vectorial pero un promedio el fin es un promedio no ponderado un promedio directo
+9:46
+9 minutos y 46 segundos
+luego lo que hacemos es reasignar reasignar patrones hacen troy de patrones a conjuntos
+9:55
+9 minutos y 55 segundos
+como nos resignamos cuál es el criterio bueno lo que vamos a hacer es que cada junto tomé a los patrones que tiene más
+10:05
+10 minutos y 5 segundos
+cerca es decir cada patrón dicho de otra manera que se vaya al conjunto cuyos in
+10:13
+10 minutos y 13 segundos
+troy d tenga más cerca imagínense que tenemos muchos patrones distribuidos en
+10:21
+10 minutos y 21 segundos
+distintos lugares del espacio y tenemos un centro de acá y otro centro
+10:29
+10 minutos y 29 segundos
+hoy de acá entonces lo que vamos a hacer es vamos a ir viendo este patrón a quién le toca bueno el que tiene más cerca es éste le
+10:36
+10 minutos y 36 segundos
+toca este este patrón a quien le toca a éste este patrón está acá parece que está más cerca de este éste está más cerca de
+10:43
+10 minutos y 43 segundos
+este más cerca de este esté más cerca de este esté más cerca de este y esté más cerca de éste así que este se quedó con
+10:51
+10 minutos y 51 segundos
+cinco y éste se quedó con tres eso escrito un poquito más formalmente es así vamos a decir que el enésimo
+11:00
+11 minutos
+patrón pertenece al conjunto j si solo si la distancia entre
+11:10
+11 minutos y 10 segundos
+el décimo patrón y el centro del conjunto j es menor que la distancia
+11:16
+11 minutos y 16 segundos
+entre el patrón y los centros de todos los demás conjuntos posibles
+11:23
+11 minutos y 23 segundos
+sé que la distancia al que yo elijo tiene que ser menor que la distancia que tiene a todos los demás que es exactamente lo que hicimos acá de manera
+11:31
+11 minutos y 31 segundos
+intuitiva entonces finalmente este algoritmo vuelve al paso 2
+11:39
+11 minutos y 39 segundos
+se vuelven a calcular los centros se vuelven a asignar los patrones
+11:46
+11 minutos y 46 segundos
+en algunas pocas iteraciones quedan todos los patrones siempre asignados a los mismos centro hoy des y el algoritmo
+11:56
+11 minutos y 56 segundos
+convergen o sea que cuando no se realicen las reasignaciones o sea cuando los conjuntos queden iguales quede fijo
+12:04
+12 minutos y 4 segundos
+quiere decir que el algoritmo ya no tiene necesidad de seguir integrando en el paso 2 y ya obtuvo la mejor forma de
+12:13
+12 minutos y 13 segundos
+asociar patrones de centro y de iu obtuvo lo que nosotros queríamos que
+12:20
+12 minutos y 20 segundos
+eran los vectores de medias para las asociadas de la neurona en la capa oculta
+12:28
+12 minutos y 28 segundos
+otro criterio es en lugar de hacer este proceso por lotes o sea hacer con
+12:37
+12 minutos y 37 segundos
+todos los patrones y ajustar los centro deshacer con todos los patrones y ajustarlos en troy des lo que se puede hacer es un ajuste patrón a patrón uno a
+12:46
+12 minutos y 46 segundos
+uno por eso se lo denomina online y acá lo que se hace básicamente es dado un patrón lo que se hace es tratar
+12:55
+12 minutos y 55 segundos
+de minimizar este criterio general para cada patrón que va llegando entonces
+13:03
+13 minutos y 3 segundos
+obtenemos una regla muy similar a otras que hemos visto antes calculando sea gradiente igualando a 0
+13:12
+13 minutos y 12 segundos
+en donde tenemos acá el patrón que acaba de entrar acá el valor actual acá y acá
+13:19
+13 minutos y 19 segundos
+no el valor actual del centro y de y acá tenemos una velocidad de aprendizaje con
+13:25
+13 minutos y 25 segundos
+lo cual calculamos el valor en la interacción siguiente de ese centro
+13:35
+13 minutos y 35 segundos
+para este algoritmo lo que vamos a hacer es hacer una asignación inicial se asignan directamente llamamos a cada
+13:43
+13 minutos y 43 segundos
+centro de la acción amos un patrón de los disponibles al azar
+13:50
+13 minutos y 50 segundos
+vamos a seleccionar cuáles el centro y de ganador
+13:58
+13 minutos y 58 segundos
+en el centro del ganador vendría a ser aquel que tiene la menor distancia posible al patrón que acaba de entrar en
+14:05
+14 minutos y 5 segundos
+este patrón y luego vamos a adaptar el peso de ese centro hoy de ganador fíjense que esto
+14:14
+14 minutos y 14 segundos
+por supuesto se hace también hasta no encontrar mejoras significativas en el criterio de este criterio de error que habíamos obtenido que como se imaginarán
+14:22
+14 minutos y 22 segundos
+va bajando bajando bajando hasta que se estabiliza y lo que hay que notar acá es que en este ciclo cada vuelta de este ciclo es
+14:32
+14 minutos y 32 segundos
+para un patrón no es como antes que cada vuelta del ciclo era para todo el conjunto de entrenamiento acá lo hacemos
+14:40
+14 minutos y 40 segundos
+patrón por patrón le vamos presentando 1 2 el tercero el cuarto y quinto y así
