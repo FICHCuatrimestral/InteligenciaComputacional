@@ -20,12 +20,37 @@ $$
 
 Así el algoritmo no depende de cuántas capas haya: los bucles recorren la lista. Es la traducción directa de la fórmula general del apunte `02` §13, que vale para una capa $p$ cualquiera.
 
-Con `neuronas_por_capa=[2, 4, 1]` quedan:
+> **OJO — `neuronas_por_capa` son tamaños, no capas de pesos**
+> `[2, 4, 1]` son **tres niveles de neuronas**: 2 entradas, 4 ocultas, 1 salida. Y entre tres niveles
+> hay **dos** juegos de cables. Por eso el `-1` del `range`: siempre hay **una matriz menos** que
+> números en la lista.
+
+Cada matriz es una tabla **desde × hacia**, con forma `(neuronas_por_capa[k], neuronas_por_capa[k+1])`.
+Con `[2, 4, 1]`:
 
 ```
-capa 1: pesos (2, 4), umbrales (4,)
-capa 2: pesos (4, 1), umbrales (1,)
+pesos[0]  (2, 4)     hacia:  oculta1  oculta2  oculta3  oculta4
+   desde x1:                    0.13     0.40     0.28    -0.27
+   desde x2:                   -0.20     0.37    -0.49     0.32
+
+pesos[1]  (4, 1)     hacia:   salida
+   desde oculta1:              0.30
+   desde oculta2:             -0.03
+   desde oculta3:             -0.20
+   desde oculta4:             -0.22
 ```
+
+Los **umbrales son vectores**, no matrices, porque el umbral pertenece a la neurona **que recibe**, no
+al cable: `umbrales[0]` tiene 4 valores (uno por neurona oculta) y `umbrales[1]` tiene 1.
+
+En total: $8 + 4 + 4 + 1 = 17$ parámetros.
+
+> **PARA LA DEFENSA — por qué una lista y no `W1`, `W2`, `W3`**
+> Con variables sueltas el código quedaría atado a tres capas para siempre: cada método tendría que
+> nombrarlas una por una. Con la lista se escribe `for capa in range(len(self.pesos))` y **eso funciona
+> con 2 capas, con 5 o con 20**. Es literalmente lo que pide la consigna del ejercicio 1: *"que se pueda
+> elegir libremente la cantidad de capas"*. Pasás `[2, 4, 1]` o `[4, 10, 6, 3]` y no tocás una línea del
+> algoritmo.
 
 Notá el orden de los índices: **`pesos[capa][i, j]` es el peso de la neurona $i$ de la capa anterior hacia la neurona $j$ de la capa actual.** Es la traspuesta de la convención $w_{ji}$ del apunte, y eso es a propósito: permite escribir la propagación como `activacion @ pesos`, que es lo natural en NumPy.
 
@@ -90,23 +115,42 @@ class PerceptronMulticapa:
         return 0.5 * (1 - salida ** 2)
 
     def propagar(self, entradas):
-        activaciones = [entradas]
+        activaciones = [entradas]        # la entrada tambien es activacion: la del nivel 0
         for pesos_capa, umbral_capa in zip(self.pesos, self.umbrales):
+            #      v_j = SUMA_i w_ji * y_i - w_j0        (apunte 02 seccion 3)
             entrada_neta = activaciones[-1] @ pesos_capa + umbral_capa
+            #              |-- y de la capa --|            |-- el umbral, SUMANDO: b = -w_j0 --|
+            #                   anterior
+
+            #      y_j = phi(v_j)                         (seccion 4)
             activaciones.append(self.activacion(entrada_neta))
-        return activaciones
+        return activaciones              # la lista COMPLETA: el paso 4 las necesita todas
 
     def entrenar_un_patron(self, entradas, salida_deseada):
+        # ---- PASO 1: hacia adelante  (apunte 02 seccion 3)
         activaciones = self.propagar(entradas)
+
+        # ---- PASO 2: el error, solo en la capa de salida  (seccion 5)
+        #      e_j = d_j - y_j
         error_salida = salida_deseada - activaciones[-1]
 
+        # ---- PASO 3: hacia atras  (secciones 11 y 12)
+        #      capa de salida:  delta_j = e_j * phi'(v_j)
         deltas = [error_salida * self.derivada_activacion(activaciones[-1])]
+
+        #      capas ocultas:   delta_j = ( SUMA_k delta_k * w_kj ) * phi'(v_j)
         for capa in range(len(self.pesos) - 1, 0, -1):
             delta_propagado = self.derivada_activacion(activaciones[capa]) * (self.pesos[capa] @ deltas[0])
-            deltas.insert(0, delta_propagado)
+            #                 |---------- phi'(v_j) ----------|              |-- SUMA_k delta_k w_kj --|
+            deltas.insert(0, delta_propagado)   # al principio: la lista queda en orden de capa
 
+        # ---- PASO 4: mover los pesos, con TODOS los deltas ya calculados  (seccion 10)
+        #      Delta w_ji = mu * delta_j * y_i
         for capa in range(len(self.pesos)):
             self.pesos[capa] = self.pesos[capa] + self.tasa_aprendizaje * np.outer(activaciones[capa], deltas[capa])
+            #                                     |----- mu -----|       |-- y_i --|  |-- delta_j --|
+
+            #      el umbral cuelga de la entrada fija -1:  Delta w_j0 = mu * delta_j
             self.umbrales[capa] = self.umbrales[capa] + self.tasa_aprendizaje * deltas[capa]
 
         return error_salida
@@ -187,15 +231,153 @@ Y los tres métodos que faltan, que no son algoritmo pero sí hacen falta para l
 
 ---
 
-## 4. El recorrido de un patrón
+## 4. El recorrido de un patrón, con números
 
-Los tres pasos del apunte `02` §14, en el orden en que los hace el código:
+Acá está el código corriendo sobre **el mismo ejemplo del apunte `02` §15**: red 2 → 3 → 2 → 1,
+patrón $\mathbf{x} = (1,\,-1)$, $d = 1$, $\mu = 0{,}5$. Los números son los mismos, así que podés leer
+las dos cosas en paralelo.
 
-**1. Hacia adelante** (`propagar`). Devuelve una **lista con las activaciones de todas las capas**, no sólo la salida. Eso no es un capricho: los pasos 2 y 3 las necesitan.
+> **OJO — el ejemplo del apunte hay que cargarlo traspuesto**
+> El apunte escribe $\mathbf{W}^{I}$ de $3\times2$ (fila = neurona que recibe) y **resta** el umbral.
+> El código guarda `pesos[0]` de $2\times3$ (fila = de dónde viene) y lo **suma**. Es la misma red:
+> `pesos[k] = W.T` y `umbrales[k] = -u`. La traspuesta está puesta a propósito para poder escribir
+> `activaciones[-1] @ pesos_capa` y que las dimensiones cierren solas.
 
-**2. Hacia atrás.** Se calcula primero $\delta$ de la salida, y después el bucle va de la anteúltima capa hacia la primera insertando cada delta al principio de la lista (`deltas.insert(0, ...)`), para que al final el índice de `deltas` coincida con el de `pesos`.
+### 4.1 `propagar`, vuelta por vuelta
 
-**3. Ajuste.** Recién acá se tocan los pesos, en un bucle aparte.
+```python
+activaciones = [entradas]
+for pesos_capa, umbral_capa in zip(self.pesos, self.umbrales):
+    entrada_neta = activaciones[-1] @ pesos_capa + umbral_capa
+    activaciones.append(self.activacion(entrada_neta))
+return activaciones
+```
+
+**Antes del bucle** la lista tiene un solo elemento, la entrada. Sí: la entrada cuenta como activación,
+porque es la salida del nivel 0.
+
+**Vuelta 1** — `zip` entrega `pesos[0]` de forma `(2,3)` y `umbrales[0]` de forma `(3,)`. Y
+`activaciones[-1]`, el último elemento, es todavía la entrada:
+
+```
+[1, −1] @ pesos[0]     = [ 0.9000, −0.9000,  0.0000]
+        + umbrales[0]  = [ 0.8000, −0.7000, −0.3000]     <- los v de la §15
+        activacion(…)  = [ 0.3799, −0.3364, −0.1489]     <- los y de la §15
+```
+
+**Vuelta 2** — ahora `pesos[1]` de forma `(3,2)`, y `activaciones[-1]` **ya no es la entrada**: es lo
+que se acaba de agregar.
+
+```
+[0.3799, −0.3364, −0.1489] @ pesos[1]  = [ 0.0731, −0.3779]
+                           + umbrales[1] = [−0.1269, −0.2779]
+                           activacion(…) = [−0.0634, −0.1381]
+```
+
+**Vuelta 3** — `pesos[2]` de forma `(2,1)`:
+
+```
+[−0.0634, −0.1381] @ pesos[2]  = [ 0.0183]
+                   + umbrales[2] = [−0.0817]
+                   activacion(…) = [−0.0408]     <- la salida de la red
+```
+
+Cómo va creciendo la lista:
+
+| | contenido de `activaciones` |
+|---|---|
+| antes del bucle | `[ (2,) ]` |
+| tras la vuelta 1 | `[ (2,), (3,) ]` |
+| tras la vuelta 2 | `[ (2,), (3,), (2,) ]` |
+| tras la vuelta 3 | `[ (2,), (3,), (2,), (1,) ]` |
+
+> **IDEA DE FONDO — todo el método vive en `activaciones[-1]`**
+> Es "el último elemento de la lista". Como cada vuelta agrega uno al final, la vuelta siguiente lo
+> encuentra ahí sin necesidad de ninguna variable auxiliar. **Ése es el motivo de que el bucle sea
+> idéntico para todas las capas y funcione con la profundidad que sea.**
+
+### 4.2 El error, y los deltas
+
+```python
+error_salida = salida_deseada - activaciones[-1]        # 1.0408
+
+deltas = [error_salida * self.derivada_activacion(activaciones[-1])]
+for capa in range(len(self.pesos) - 1, 0, -1):
+    delta_propagado = self.derivada_activacion(activaciones[capa]) * (self.pesos[capa] @ deltas[0])
+    deltas.insert(0, delta_propagado)
+```
+
+La lista arranca con **un** elemento, el $\delta$ de la capa de salida:
+
+```
+1.0408 × 0.4992 = 0.5195
+```
+
+Y con tres matrices de pesos, `range(2, 0, -1)` da `[2, 1]` — dos vueltas, de atrás para adelante:
+
+```
+capa = 2:  pesos[2] (2,1) @ deltas[0] (1,)   = [ 0.4156, −0.2598]
+           × derivada_activacion(activaciones[2]) = [0.4980, 0.4905]
+           = [ 0.2070, −0.1274]
+
+capa = 1:  pesos[1] (3,2) @ deltas[0] (2,)   = [ 0.1720, 0.0780, −0.1624]
+           × derivada_activacion(activaciones[1]) = [0.4278, 0.4434, 0.4889]
+           = [ 0.0736, 0.0346, −0.0794]
+```
+
+| | contenido de `deltas` |
+|---|---|
+| al arrancar | `[ 0.5195 ]` |
+| tras `capa = 2` | `[ (0.2070, −0.1274), 0.5195 ]` |
+| tras `capa = 1` | `[ (0.0736, 0.0346, −0.0794), (0.2070, −0.1274), 0.5195 ]` |
+
+> **IDEA DE FONDO — `append` contra `insert(0, …)`**
+> `propagar` agrega **al final** porque avanza; este bucle inserta **al principio** porque retrocede.
+> Gracias a eso, aunque los $\delta$ se calculen del último al primero, la lista queda **en orden de
+> capa**, y en el ajuste `deltas[capa]` se corresponde con `pesos[capa]` sin ninguna cuenta de índices.
+
+> **OJO — el bucle llega hasta 1, no hasta 0**
+> `range(len(self.pesos) - 1, 0, -1)` se detiene **antes** del 0. La capa 0 es la **entrada**, y la
+> entrada no tiene $\delta$ porque no aprende nada: no tiene pesos que corregir ni activación que
+> derivar. Si pusieras `-1` como límite, el código reventaría al pedir `pesos[0] @ deltas[0]` con
+> formas que no cierran.
+
+### 4.3 El ajuste
+
+```python
+for capa in range(len(self.pesos)):
+    self.pesos[capa] = self.pesos[capa] + self.tasa_aprendizaje * np.outer(activaciones[capa], deltas[capa])
+    self.umbrales[capa] = self.umbrales[capa] + self.tasa_aprendizaje * deltas[capa]
+```
+
+`np.outer(a, b)[i, j] = a[i] * b[j]`, que es exactamente $\Delta w_{ji} = \mu\,\delta_j\,y_i$ para
+**todos los pesos de la capa de una sola vez**. Y las formas cierran solas:
+
+```
+capa 0: outer(activaciones[0] (2,), deltas[0] (3,))  ->  (2, 3)   = forma de pesos[0]
+capa 1: outer(activaciones[1] (3,), deltas[1] (2,))  ->  (3, 2)   = forma de pesos[1]
+capa 2: outer(activaciones[2] (2,), deltas[2] (1,))  ->  (2, 1)   = forma de pesos[2]
+```
+
+> **PARA LA DEFENSA — el control de formas es el control de índices**
+> Si `np.outer` te da una matriz con la forma exacta de la que hay que corregir, es porque pusiste bien
+> qué es "la neurona que recibe" y qué es "lo que entró por la conexión". **Si las formas no cierran,
+> los índices están al revés.** Es el chequeo más rápido que hay sobre esta implementación.
+
+El umbral no necesita `outer` porque su entrada es el $-1$ fijo: queda sólo $\mu\,\delta_j$.
+
+> **OJO — está escrito `x = x + …` y no `x += …`, y no es lo mismo**
+> `+=` sobre un array de NumPy modifica el array **en su lugar**. Si `historial` guardara referencias a
+> esos mismos arrays, todas las épocas terminarían apuntando al estado final y la animación mostraría
+> siempre lo mismo. Con la reasignación se crea un array nuevo en cada actualización.
+
+### 4.4 El resultado, contra el apunte
+
+Los pesos nuevos, traspuestos de vuelta a la convención del apunte, dan exactamente los de la §15:
+
+$$\mathbf{W}^{III}: (0{,}8,\ -0{,}5) \longrightarrow (0{,}7835,\ -0{,}5359)$$
+
+y la salida pasa de $-0{,}0408$ a $0{,}1465$, con $\xi$ de $0{,}5416$ a $0{,}3642$.
 
 > **PARA LA DEFENSA — por qué el ajuste está en un bucle separado**
 > Es el punto fino de la clase (apunte `02` §14). Las activaciones y los deltas **ya están calculados con los pesos viejos**, así que el bucle de ajuste puede recorrer las capas en cualquier orden y da lo mismo.
@@ -204,11 +386,36 @@ Los tres pasos del apunte `02` §14, en el orden en que los hace el código:
 > **IDEA DE FONDO — es entrenamiento estocástico**
 > `entrenar_un_patron` ajusta los pesos **después de cada patrón**, no al final de la época. Eso es coherente con el criterio de error **instantáneo** $\xi(n)$ del apunte `02` §5: nunca se promedia sobre el conjunto. Es lo que justifica usar $\mu$ chico.
 
+### 4.5 Los dos errores más fáciles de cometer al transcribirlo
+
+> **OJO — `*` en vez de `@` no da error: entrena mal en silencio**
+> En la línea del delta propagado va `self.pesos[capa] @ deltas[0]`, con **arroba**. Si ponés `*`,
+> NumPy no se queja: hace *broadcasting* y sigue.
+>
+> ```
+> pesos[2] (2,1) @ deltas[0] (1,) -> [0.4156, -0.2597]      forma (2,)   correcto
+> pesos[2] (2,1) * deltas[0] (1,) -> [[0.4156], [-0.2597]]  forma (2,1)  MAL
+> ```
+>
+> Y en la línea siguiente, la derivada de forma `(2,)` por esa matriz `(2,1)` devuelve una **matriz
+> $2\times2$** en vez de un vector de 2. La red sigue corriendo y aprende cualquier cosa.
+> **El control:** después de cada vuelta, `deltas[0]` tiene que tener **tantos elementos como neuronas
+> tiene esa capa**. Si te quedó una matriz, pusiste `*`.
+
+> **OJO — `self.umbral` contra `self.umbrales`**
+> El atributo se llama `umbrales`, en plural. `self.umbral[capa] = ...` no actualiza nada: tira
+> `AttributeError`. Éste al menos se nota enseguida; el anterior no.
+
 ### Claves de la sección 4
 
 | Clave | Qué tenés que poder responder |
 |---|---|
+| `activaciones[-1]` | Por qué es lo único que hace falta para encadenar las capas |
 | Qué devuelve `propagar` | Por qué la lista completa y no sólo la salida |
+| `append` vs `insert(0,…)` | Por qué uno crece por atrás y el otro por adelante |
+| El límite del `range` | Por qué el bucle de deltas para en 1 y no en 0 |
+| `np.outer` | Qué forma da y por qué eso verifica los índices |
+| `@` contra `*` | Por qué el error no se ve, y cómo detectarlo |
 | El bucle al revés | Por qué los deltas se calculan de atrás para adelante |
 | Dos bucles | Por qué el ajuste está separado del cálculo de deltas |
 | Estocástico | Cuándo se actualizan los pesos y con qué criterio de error se corresponde |

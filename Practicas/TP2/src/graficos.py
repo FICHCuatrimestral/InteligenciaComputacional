@@ -133,3 +133,119 @@ def graficar_y_animar_regiones(
     plt.close(fig)
 
     display(Image(filename=str(ruta_gif)))
+
+
+# =====================================================================
+# Ejercicio 2: el resultado de la clasificacion, con colores
+# =====================================================================
+
+def graficar_clasificacion(red, entradas, deseadas, normalizar, ruta_png=None,
+                           resolucion=300, titulo="Clasificación"):
+    """Dos paneles: las clases reales y lo que contesto la red.
+
+    En el panel derecho se pinta ademas la region de decision evaluando la red sobre una
+    grilla que cubre el plano, y se marcan con un circulo negro los patrones mal clasificados.
+    """
+    figura, (izquierda, derecha) = plt.subplots(1, 2, figsize=(11, 5))
+
+    # --- region de decision: se evalua la red en cada punto de una grilla
+    x1_rango, x2_rango = _rango_ejes(entradas, margen=0.05)
+    malla_x1, malla_x2 = _grilla(x1_rango, x2_rango, resolucion)
+    puntos = np.column_stack([malla_x1.ravel(), malla_x2.ravel()])
+    region = red.clasificar(normalizar(puntos)).reshape(malla_x1.shape)
+
+    predicciones = red.clasificar(normalizar(entradas))
+    acertados = predicciones == red.clase_deseada(deseadas)
+
+    _graficar_patrones(izquierda, entradas, deseadas)
+    izquierda.set_title("Clases reales")
+
+    derecha.contourf(malla_x1, malla_x2, region, levels=[-1.5, 0, 1.5],
+                     colors=["#f4b6b6", "#b6c8f4"], alpha=0.6)
+    _graficar_patrones(derecha, entradas, predicciones)
+    derecha.scatter(entradas[~acertados, 0], entradas[~acertados, 1],
+                    facecolors="none", edgecolors="k", s=70, linewidths=1.2,
+                    label=f"mal clasificados ({int((~acertados).sum())})")
+    derecha.set_title("Clasificación de la red, sobre su región de decisión")
+
+    for eje in (izquierda, derecha):
+        eje.set_xlim(*x1_rango); eje.set_ylim(*x2_rango)
+        eje.set_xlabel("x₁"); eje.set_ylabel("x₂")
+        eje.legend(loc="upper right", fontsize=8)
+    figura.suptitle(titulo)
+    figura.tight_layout()
+
+    if ruta_png is not None:
+        ruta_png.parent.mkdir(parents=True, exist_ok=True)
+        figura.savefig(ruta_png, dpi=120, bbox_inches="tight")
+    plt.show()
+
+
+# =====================================================================
+# Ejercicio 3: las curvas de error por epoca, una serie por tasa
+# =====================================================================
+
+def graficar_curvas_por_tasa(curvas_por_tasa, cantidad_patrones, ruta_png=None):
+    """Dos paneles: error cuadratico total y error de clasificacion, contra la epoca.
+
+    `curvas_por_tasa` es un diccionario {tasa: (error_cuadratico_por_epoca, errores_por_epoca)}.
+    """
+    figura, (izquierda, derecha) = plt.subplots(1, 2, figsize=(12, 4.5))
+
+    for tasa, (error_cuadratico, errores) in sorted(curvas_por_tasa.items()):
+        epocas = np.arange(1, len(error_cuadratico) + 1)
+        izquierda.plot(epocas, error_cuadratico, linewidth=1.4, label=f"μ = {tasa}")
+        derecha.plot(epocas, 100 * np.array(errores) / cantidad_patrones,
+                     linewidth=1.4, label=f"μ = {tasa}")
+
+    izquierda.set_yscale("log")
+    izquierda.set_xlabel("época"); izquierda.set_ylabel("error cuadrático total  Σ ξ(n)")
+    izquierda.set_title("Error cuadrático total (escala logarítmica)")
+
+    derecha.set_xlabel("época"); derecha.set_ylabel("error de clasificación [%]")
+    derecha.set_title("Error de clasificación")
+
+    for eje in (izquierda, derecha):
+        eje.grid(alpha=0.3); eje.legend(fontsize=8)
+    figura.tight_layout()
+
+    if ruta_png is not None:
+        ruta_png.parent.mkdir(parents=True, exist_ok=True)
+        figura.savefig(ruta_png, dpi=120, bbox_inches="tight")
+    plt.show()
+
+
+# =====================================================================
+# Comparacion de arquitecturas e inicializaciones, en una grilla
+# =====================================================================
+
+def graficar_comparacion(casos, entradas, deseadas, ruta_png=None, resolucion=200):
+    """Grilla de regiones de decision: una fila por arquitectura, una columna por semilla.
+
+    `casos` es una lista de filas, y cada fila una lista de diccionarios con las claves
+    'red', 'titulo' y 'pie'.
+    """
+    filas, columnas = len(casos), len(casos[0])
+    figura, ejes = plt.subplots(filas, columnas, figsize=(5.0 * columnas, 4.6 * filas),
+                                squeeze=False)
+
+    x1_rango, x2_rango = _rango_ejes(entradas)
+    malla_x1, malla_x2 = _grilla(x1_rango, x2_rango, resolucion)
+
+    for indice_fila, fila in enumerate(casos):
+        for indice_columna, caso in enumerate(fila):
+            eje = ejes[indice_fila][indice_columna]
+            red = caso["red"]
+            _dibujar_region(eje, malla_x1, malla_x2, red.pesos, red.umbrales)
+            _graficar_patrones(eje, entradas, deseadas)
+            eje.set_xlim(*x1_rango); eje.set_ylim(*x2_rango)
+            eje.set_xlabel("x₁"); eje.set_ylabel("x₂")
+            eje.set_title(caso["titulo"], fontsize=11)
+            eje.text(0.5, -0.16, caso["pie"], transform=eje.transAxes, ha="center",
+                     fontsize=10, color=caso.get("color", "black"))
+
+    figura.tight_layout()
+    if ruta_png is not None:
+        ruta_png.parent.mkdir(parents=True, exist_ok=True)
+        figura.savefig(ruta_png, dpi=120, bbox_inches="tight")
+    plt.show()
