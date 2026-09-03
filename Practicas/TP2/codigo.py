@@ -1,87 +1,157 @@
-from pathlib import Path
 import pandas as pd
 import numpy as np
+from graficos import dispersion
+from graficos import curvas
 
-DIRECTORIO_DATASET = Path(__file__).resolve().parent / "Dataset"
-
-# lo unico que cambio respecto de su codigo: los dos nombres de archivo
-tr = pd.read_csv(DIRECTORIO_DATASET / "concent_trn.csv", header=None)
-X  = tr.iloc[:, 0:2].values
-yd = tr.iloc[:, 2].values
-
+#carga de datos-------------------------------------
+archivo = "iris81"
+entradas = 4
+salidas = 3
 alpha = 0.1
+capas = [entradas,4,4,salidas]
 
-# la arquitectura, de entrada a salida:
-#   [2, 2, 1]      -> una capa oculta de 2   (lo que habia antes)
-#   [2, 8, 1]      -> una capa oculta de 8
-#   [2, 8, 6, 1]   -> dos capas ocultas, de 8 y de 6
-CAPAS = [2, 8, 1]
-
-n = len(CAPAS) - 1        # capas de conexiones
-
-W = []
-b = []
-for k in range(n):
-    W.append(np.random.uniform(-0.5, 0.5, (CAPAS[k], CAPAS[k + 1])))
-    b.append(np.random.uniform(-0.5, 0.5, CAPAS[k + 1]))
-
+#funciones------------------------------------------
 def sigmoide(v):
     return 2 / (1 + np.exp(-v)) - 1
 
 def derivada_sigmoide(y):
     return 0.5 * (1 - y**2)
 
+#definiciones---------------------------------------
+
+positivos = []
+negativos = []
+incorrectos = []
+
+print('Tasa:', alpha)
+print('Estructura: ',end="")
+for i in range(len(capas)):
+    print(capas[i],end=" ")
+print()
+
+w = []
+b = []
+
+for i in range(len(capas)-1):
+    w.append(np.random.uniform(-0.5, 0.5, (capas[i], capas[i+1])))
+    b.append(np.random.uniform(-0.5, 0.5, capas[i+1]))
+
+
 # train ---------------------------------------
+datos = pd.read_csv(archivo + "_trn.csv", header=None)
+X = datos.iloc[:, 0:entradas].values
+yd = datos.iloc[:, entradas:entradas+salidas].values
+
+errores_cuadraticos = []
+cant_errores = []
 epocas = 0
-for epoca in range(200):
-    epocas = epocas + 1
+
+for epoca in range(1000):
+
     errores = 0
+    error_cuadratico = 0
+
     for i in range(len(X)):
-        entrada = X[i]
+
+        a = X[i]
 
         # propagacion
-        a = [entrada]
-        for k in range(n):
-            z = np.dot(a[k], W[k]) + b[k]
-            a.append(sigmoide(z))
-        y = a[-1][0]
+        activaciones = [a]
 
-        error = yd[i] - y
+        for j in range(len(capas)-1):
+            salida = np.dot(a, w[j]) + b[j]
+            a = sigmoide(salida)
+            activaciones.append(a)
+
+        error = yd[i] - a
+        error_cuadratico = error_cuadratico + np.sum(error ** 2)
+
 
         # retro propagacion
-        delta = [None] * n
-        delta[-1] = error * derivada_sigmoide(a[-1])
-        for k in range(n - 2, -1, -1):
-            delta[k] = derivada_sigmoide(a[k + 1]) * np.dot(W[k + 1], delta[k + 1])
+        deltas = [None] * (len(capas)-1)
+
+        # ultima capa
+        deltas[-1] = error * derivada_sigmoide(activaciones[-1])
+
+        # capas anteriores
+        for j in range(len(deltas)-2, -1, -1):
+            deltas[j] = derivada_sigmoide(activaciones[j+1]) * np.dot(w[j+1], deltas[j+1])
+
 
         # actualizacion pesos
-        for k in range(n):
-            W[k] = W[k] + alpha * np.outer(a[k], delta[k])
-            b[k] = b[k] + alpha * delta[k]
+        for j in range(len(w)):
 
-        if abs(error) > 0.1:
+            w[j] = w[j] + alpha * np.outer(activaciones[j],deltas[j])
+
+            b[j] = b[j] + alpha * deltas[j]
+
+
+        # Contar errores ---------------------------------
+
+        if np.any(abs(error) > 0.1):
+
             errores = errores + 1
+
+    epocas = epocas + 1
+    errores_cuadraticos.append(error_cuadratico)
+    cant_errores.append(errores)
     if errores == 0: break
 
+
+print('Epocas:', epocas)
+
+
 # test -------------------------------------------------
-te = pd.read_csv(DIRECTORIO_DATASET / "concent_tst.csv", header=None)
-X_test  = te.iloc[:, 0:2].values
-yd_test = te.iloc[:, 2].values
+
+datos = pd.read_csv(archivo + "_tst.csv", header=None)
+X = datos.iloc[:, 0:entradas].values
+yd = datos.iloc[:, entradas:entradas+salidas].values
 
 C = 0
-for i in range(len(X_test)):
-    a = X_test[i]
-    for k in range(n):
-        a = sigmoide(np.dot(a, W[k]) + b[k])
-    y = a[0]
-    y = 1 if y >= 0 else -1
-    if y == yd_test[i]:
-        C = C + 1
 
-piso = 100 * (yd_test > 0).mean()
+for i in range(len(X)):
 
-print("arquitectura:", CAPAS)
-print("épocas:", epocas, "de 1000")
-print("aciertos:", C, "de", len(X_test))
-print("%:", 100 * C / len(X_test))
-print("piso (contestar siempre la clase mayoritaria):", round(piso, 2), "%")
+    a = X[i]
+
+    #propagacion
+    for j in range(len(capas)-1):
+        salida = np.dot(a, w[j]) + b[j]
+        a = sigmoide(salida)
+  
+
+    # clasificacion-----------------------
+
+    # 1 salida-------------
+    if len(a) == 1:
+
+        if a[0] >= 0:
+            y = 1
+        else:
+            y = -1
+
+        if y == yd[i][0]:
+            C = C + 1
+            if yd[i][0] == 1:
+                positivos.append(X[i])
+            else:
+                negativos.append(X[i])
+        else:
+            incorrectos.append(X[i])
+
+    # +2 salidas-------------
+    else:
+        y = np.full(len(a), -1)
+        y[np.argmax(a)] = 1
+
+        if np.array_equal(y, yd[i]):
+            C = C + 1
+ 
+
+
+print('Aciertos:',C)
+print(C / len(X) * 100, '%')
+
+if salidas == 1:
+    dispersion(positivos,negativos,incorrectos)
+else:
+    curvas(errores_cuadraticos, cant_errores)
