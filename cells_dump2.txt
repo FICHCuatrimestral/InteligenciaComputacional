@@ -1,0 +1,191 @@
+=== CELL 0 id=a1415d0c ===
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from IPython.display import display
+
+from sklearn.datasets import load_digits
+from sklearn.model_selection import train_test_split
+from sklearn.neural_network import MLPClassifier
+from sklearn.model_selection import KFold
+from sklearn.datasets import load_wine
+from sklearn.ensemble import BaggingClassifier, AdaBoostClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.svm import SVC
+
+=== CELL 1 id=84c54182 ===
+def resultados_a_df(nombres, datos):
+    """Arma un DataFrame comparativo (mínimo, máximo, media y varianza) a partir
+    de los resultados de evaluar_kfold para uno o más modelos/ensambles."""
+
+    filas = []
+    for nombre, resultados in zip(nombres, datos):
+        aciertos = np.array(resultados) * 100
+        filas.append({
+            'Modelo': nombre,
+            'Particiones': len(resultados),
+            'Mínimo (%)': aciertos.min(),
+            'Máximo (%)': aciertos.max(),
+            'Media (%)': aciertos.mean(),
+            'Varianza': np.var(resultados),
+        })
+
+    df = pd.DataFrame(filas).set_index('Modelo')
+    df = df.sort_values('Media (%)', ascending=False)
+
+    return (
+        df.style
+        .format({
+            'Mínimo (%)': '{:.2f}',
+            'Máximo (%)': '{:.2f}',
+            'Media (%)': '{:.2f}',
+            'Varianza': '{:.6f}',
+        })
+        .highlight_max(subset=['Media (%)'], color='#c6f6d5')
+        .highlight_min(subset=['Varianza'], color='#bee3f8')
+    )
+
+=== CELL 2 id=6dfdfa6a ===
+def evaluar_kfold(k, modelo):
+
+    kf = KFold(n_splits=k, shuffle=True, random_state=2077)
+
+    resultados = []
+
+    for train, test in kf.split(X):
+
+        X_train = X[train]
+        y_train = y[train]
+
+        X_test = X[test]
+        y_test = y[test]
+
+    
+        modelo.fit(X_train, y_train)
+
+        aciertos = modelo.score(X_test, y_test)
+
+        resultados.append(aciertos)
+
+    return resultados
+
+=== CELL 3 id=e7971da6 ===
+def graficar(nombres, resultados, titulo = 'Aciertos por modelo en KFold', xlabel = 'Modelos'):
+
+    plt.figure(figsize=(10, 6))
+
+    for i in range(len(nombres)):
+        aciertos = np.array(resultados[i]) * 100
+        x = np.full(len(aciertos), i)
+
+        plt.scatter(x, aciertos)
+
+    plt.xticks(range(len(nombres)), nombres)
+    plt.xlabel(xlabel)
+    plt.ylabel('Porcentaje de aciertos')
+        
+    plt.title(titulo)
+    plt.grid(axis='y')
+
+    plt.show()
+
+=== CELL 5 id=8b6f3e03 ===
+digits = load_digits()
+
+X = digits.data
+y = digits.target
+
+# Partición 80/20 con train_test_split
+modelo = MLPClassifier(hidden_layer_sizes=(10,10), max_iter=1000, random_state=2077)
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=2077)
+
+modelo.fit(X_train, y_train)
+aciertos = modelo.score(X_test, y_test) * 100
+
+resumen_split = pd.DataFrame([{
+    'Modelo': 'Perceptrón multicapa',
+    'Método de evaluación': 'Partición 20% (train_test_split)',
+    'Train': X_train.shape[0],
+    'Test': X_test.shape[0],
+    'Total': X_train.shape[0] + X_test.shape[0],
+    'Aciertos (%)': round(aciertos, 2),
+}]).set_index('Modelo')
+
+display(resumen_split)
+
+# Particiones con KFold (5 y 10)
+ks = [5, 10]
+
+nombre = 'Perceptrón multicapa'
+
+titulo = 'Aciertos en Perceptrón multicapa con KFold'
+
+xlabel = 'Particiones de KFold'
+
+etiquetas = ['KFold = 5', 'KFold = 10']
+
+modelos = [MLPClassifier(hidden_layer_sizes=(10,10), max_iter=1000, random_state=2077), 
+           MLPClassifier(hidden_layer_sizes=(10,10), max_iter=1000, random_state=2077)]
+
+datos = []
+for i in range(len(ks)):
+    resultados = evaluar_kfold(ks[i], modelos[i])
+    datos.append(resultados)
+
+tabla_ex1_kfold = resultados_a_df(etiquetas, datos)
+display(tabla_ex1_kfold)
+
+graficar(etiquetas, datos, titulo, xlabel)
+
+=== CELL 8 id=7ff79e37 ===
+nombres = ['Naive Bayes', 
+           'Análisis discriminante lineal (ADL)', 
+           'K vecinos mas cercanos (KNN)', 
+           'Árbol de decision', 
+           'Máquina de soporte vectorial (MSV)']
+
+modelos = [GaussianNB(), 
+           LinearDiscriminantAnalysis(), 
+           KNeighborsClassifier(), 
+           DecisionTreeClassifier(random_state=2077), 
+           SVC(random_state=2077)]
+
+etiquetas = ['NaiveBayes', 'ADL', 'KNN', 'Árbol', 'MSV']
+
+datos = []
+for i in range(len(nombres)):
+    resultados = evaluar_kfold(5, modelos[i])
+    datos.append(resultados)
+
+tabla_ex2 = resultados_a_df(nombres, datos)
+display(tabla_ex2)
+
+graficar(etiquetas, datos)
+
+=== CELL 11 id=6d4fa502 ===
+nombres = ['Bagging', 'AdaBoost']
+
+titulo = 'Aciertos por ensamble en KFold'
+
+xlabel = 'Ensambles'
+
+modelos = [BaggingClassifier(random_state=2077), AdaBoostClassifier(random_state=2077)]
+
+wine = load_wine()
+X = wine.data
+y = wine.target
+
+datos = []
+for i in range(len(nombres)):
+    resultados = evaluar_kfold(5, modelos[i])
+    datos.append(resultados)
+
+tabla_ex3 = resultados_a_df(nombres, datos)
+display(tabla_ex3)
+
+graficar(nombres, datos, titulo, xlabel)
+

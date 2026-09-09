@@ -1,0 +1,155 @@
+1 segundo
+vamos a ver algunas formas básicas de cómo se pueden organizar estas neuronas habíamos dicho recién que armamos un
+0:08
+8 segundos
+plano que era un cuadrado con neuronas pero también en una simplificación y en algunas aplicaciones
+0:15
+15 segundos
+se utiliza uno puede armar simplemente una línea de neuronas una capa similar a la que teníamos antes que sólo consiste
+0:24
+24 segundos
+en una línea y que una neurona cuando se activa puede afectar a su entorno de el
+0:33
+33 segundos
+entorno por ejemplo ahí tenemos un entorno de radio uno la neurona roja vamos a suponer que es la neurona que se activó y las dos neuronas azules se ven
+0:42
+42 segundos
+afectadas por esa activación vamos a ver más adelante cómo se afecta esto a veces se dibuja simplemente como
+0:51
+51 segundos
+una línea en donde tenemos una neurona otra neurona y otra neurona en otro caso es el que vimos recién en
+1:00
+1 minuto
+donde tenemos una cuadrícula o sea una forma rectangular esta forma rectangular
+1:07
+1 minuto y 7 segundos
+eso también podría dibujarla en forma plana como algo así donde en el centro
+1:14
+1 minuto y 14 segundos
+está la neurona que se activo que es la neurona roja en esta
+1:21
+1 minuto y 21 segundos
+forma estimula también o actualiza también a sus vecinas ese sería un radio
+1:29
+1 minuto y 29 segundos
+de vecindad 1 y si yo quisiera ampliar el rango de vecindad podría considerar
+1:37
+1 minuto y 37 segundos
+todas las neuronas que están alrededor y para cada una de las neuronas
+1:46
+1 minuto y 46 segundos
+de alrededor considerarse y pertenece al radio supongamos si queremos ahora un radio dos yo voy a sombrear considerando esta
+1:54
+1 minuto y 54 segundos
+neurona también las que son afectadas por esas neuronas considerando esta neurona las que serían afectadas por esa
+2:03
+2 minutos y 3 segundos
+neurona considerando ésta también tengo que sombrear acá y considerando de esta también tengo sombrear hay ahí tengo un
+2:11
+2 minutos y 11 segundos
+radio 2 de la neurona ganadora que siempre la roja que tiene el medio finalmente hay una arquitectura que a
+2:19
+2 minutos y 19 segundos
+veces usa mucho porque es la que propuso originalmente que la arquitectura hexagonal se considera que
+2:27
+2 minutos y 27 segundos
+una neurona tiene forma hexagonal y por supuesto tiene su vecindad
+2:34
+2 minutos y 34 segundos
+conformada por neuronas hexagonales entonces de esa manera yo puedo definir
+2:43
+2 minutos y 43 segundos
+una vecindad y cada neurona ganadora va a tener a su alrededor 6
+2:51
+2 minutos y 51 segundos
+neuronas que conforman su vecindad terminando de dibujarla supongamos que esta es la ganadora y cuando gana va a
+2:59
+2 minutos y 59 segundos
+estimular a todas las de su vecindad ese sería un mapa de forma o de arquitectura hexagonal que también es bastante
+3:08
+3 minutos y 8 segundos
+utilizado estas arquitecturas permiten que estos entornos que se definen entre las
+3:16
+3 minutos y 16 segundos
+neuronas y que tienen una importancia muy grande en cómo funcionan los mapas botones activos
+3:23
+3 minutos y 23 segundos
+a lo largo del entrenamiento estos entornos pueden tener un tamaño fijo o pueden ir variando en general lo que
+3:31
+3 minutos y 31 segundos
+utilizamos son entornos variables que al principio por ejemplo tienen un radio muy grande y después se van reduciendo
+3:40
+3 minutos y 40 segundos
+vamos a ver cuál es la función de eso y las neuronas del entorno pueden estar relacionadas de diferentes formas con la
+3:48
+3 minutos y 48 segundos
+neurona ganadora puede que se existen pueden que se inhiban al ganar la ganadora o puede que haya alguna función más general de excitación en la misión
+3:57
+3 minutos y 57 segundos
+dependiendo de la distancia que está una neurona del entorno hacia la neurona ganadora vamos a ver este tipo de excitación es
+4:05
+4 minutos y 5 segundos
+acá tenemos un primer esquema de excitación inhibición básicamente fíjense qué
+4:13
+4 minutos y 13 segundos
+por ejemplo para un entorno 2 en un entorno de distanciados o de radio
+4:20
+4 minutos y 20 segundos
+2 si la distancia entre la neurona ganadora y una de neurona cualquiera del mapa es menor que 2 entonces
+4:29
+4 minutos y 29 segundos
+voy a decir que se va a excitar o inhibir depende del existe un valor positivo negativo con esa constante beta
+4:39
+4 minutos y 39 segundos
+en cambio si la neurona está más lejos está más lejos de la ganadora directamente
+4:46
+4 minutos y 46 segundos
+la función de excitación y diversión va a haber cero o sea que digamos no va a estar afectada en ningún sentido este
+4:54
+4 minutos y 54 segundos
+sería un entorno uniforme o a veces les llamamos rectangular o constante
+5:01
+5 minutos y 1 segundo
+para la función de indivisión otra alternativa es utilizar una gauss jana
+5:07
+5 minutos y 7 segundos
+en este caso si exista o inhibe va a depender de lo que valga la gauss jana
+5:16
+5 minutos y 16 segundos
+esto sería la distancia en este eje y en este eje tendríamos ese valor beta que habíamos definido antes que era
+5:24
+5 minutos y 24 segundos
+constante ahora va a ser una función de la distancia es decir cuando más lejos esté la neurona de la neurona ganadora
+5:31
+5 minutos y 31 segundos
+que sería el centro en el centro a cáncer o cuanto más lejos t menos la va a influenciar en este caso siempre
+5:39
+5 minutos y 39 segundos
+positivo pero bueno podría ser todo inverso en el caso negativo de inhibición y por último una función que
+5:46
+5 minutos y 46 segundos
+también es muy utilizada es la llamada sombrero mexicano que es en particular la que se ha demostrado
+5:53
+5 minutos y 53 segundos
+que funciona en la retina del ojo humano y que tiene una pequeña zona de inhibición
+6:01
+6 minutos y 1 segundo
+una zona central para las que están bien cerca de la neurona ganadora que es de excitación y luego al final empieza a no
+6:11
+6 minutos y 11 segundos
+tener ningún efecto si ustedes hacen en el ejercicio de mirar mucho por ejemplo
+6:17
+6 minutos y 17 segundos
+un tubo presente o una lámpara y de pronto cierran los ojos van a notar que
+6:25
+6 minutos y 25 segundos
+en la imagen que les queda viendo cuando cierran los ojos van a ver como si fuera el borde del objeto luminoso que estaban
+6:33
+6 minutos y 33 segundos
+observando ese fenómeno de detección de bordes y que al ver un objeto con mucha
+6:41
+6 minutos y 41 segundos
+luminosidad deja estimulada las neuronas de la retina es la demostración de cómo hace la retina para detectar bordes justamente con este fenómeno de
+6:50
+6 minutos y 50 segundos
+excitación inhibición lateral a partir de una función similar al sombrero mexicano

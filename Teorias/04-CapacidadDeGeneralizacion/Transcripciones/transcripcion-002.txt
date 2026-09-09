@@ -1,0 +1,175 @@
+está esta idea que veníamos hablando sobre qué un modelo en particular se ajuste
+0:12
+12 segundos
+demasiado a los datos de entrenamiento y pierda la capacidad de funcionar bien con datos que nunca vio se conoce como
+0:20
+20 segundos
+sobreentrenamiento es un concepto también muy importante como el de mínimos locales y el de superficies de
+0:26
+26 segundos
+error que vimos y que hay que ver la forma de evitar el sobreentrenamiento
+0:33
+33 segundos
+como también veíamos que había formas de evitar los mínimos locales tenemos que tratar de evitar ese sobre entrenamiento
+0:41
+41 segundos
+porque va a ser que lo que hicimos o el modelo que armamos funcione muy bien para los datos que teníamos para entrenar pero que después en la realidad
+0:49
+49 segundos
+a la práctica que es lo que más nos interesa funcione muy pobremente entonces vamos a hacer acá una curva
+0:57
+57 segundos
+donde tenemos por ejemplo la cantidad de épocas de entrenamiento
+1:05
+1 minuto y 5 segundos
+el número de veces que le mostramos reiteradamente los datos durante el entrenamiento y vamos a hacer en esta
+1:14
+1 minuto y 14 segundos
+gráfica alguna medida el error nuevamente después vamos a hacer dar más detalle acerca de que podemos estar
+1:21
+1 minuto y 21 segundos
+midiendo como error pero podríamos ver la cantidad de casos bien clasificados por ejemplo
+1:28
+1 minuto y 28 segundos
+y vamos a ver que como ya habrán experimentado con mayor o menor ondulaciones durante el entrenamiento
+1:38
+1 minuto y 38 segundos
+tengo una medida de error que siempre baja siempre que le voy mostrando más y más por ejemplo acá le mostré 10 veces
+1:47
+1 minuto y 47 segundos
+los datos 20 30 40 de hasta 200 300 4000 las que sean siempre vamos a mejorar el
+1:55
+1 minuto y 55 segundos
+error vamos a llamar el error de entrenamiento
+2:01
+2 minutos y 1 segundo
+eso está bien en principio nos demuestra que el algoritmo de entrenamiento funciona que se ajusta cada vez mejor a
+2:09
+2 minutos y 9 segundos
+los datos que le estamos mostrando pero sin embargo no necesariamente quiere decir que va a funcionar bien con los
+2:17
+2 minutos y 17 segundos
+datos reales si nosotros tuviéramos otro conjunto como habíamos dicho el conjunto de prueba nos guardamos unos datos que
+2:26
+2 minutos y 26 segundos
+no le mostramos durante el entrenamiento estos datos no se los mostramos para buscar el ingrediente y para hacer todo
+2:33
+2 minutos y 33 segundos
+el entrenamiento del tipo que sea pero sí sí nos vamos mostrando cada tanto para ver que también está funcionando el
+2:42
+2 minutos y 42 segundos
+algoritmo en datos nunca vistos o sean no vistos durante el entrenamiento en definitiva vamos a obtener alguna curva que va a
+2:51
+2 minutos y 51 segundos
+tener esta forma sea naturalmente este sería el error medido sobre los datos de prueba naturalmente va a bajar a medida que eso
+2:59
+2 minutos y 59 segundos
+es lo esperado a medida que le mostramos de nuevo y le mostramos de nuevo los aprendiendo por
+3:06
+3 minutos y 6 segundos
+lo tanto se espera que tanto el error entrenamiento como el de pruebas sigan bajando pero lo que va a pasar es que a partir de determinado punto ese error se
+3:15
+3 minutos y 15 segundos
+va a estancar y luego sorprendentemente o no tanto va a empezar a subir que pasó
+3:22
+3 minutos y 22 segundos
+acá acá lo que pasó en este punto es que el algoritmo se empezó a aprender
+3:29
+3 minutos y 29 segundos
+detalles de los datos de entrenamiento que no son detalles generales de lo que tiene que aprenderse realmente se empezó
+3:38
+3 minutos y 38 segundos
+a aprender por ejemplo si los datos de entrenamiento tenían algún tipo de ruido que no tenía nada que ver con las clases
+3:45
+3 minutos y 45 segundos
+o con el problema que yo quería resolver a partir de acá el modelo se empezó a aprender esos
+3:54
+3 minutos y 54 segundos
+detalles eso ruido que es un ruido propio de la medición o que es un ruido propio que se incorporó a los datos
+4:02
+4 minutos y 2 segundos
+posteriormente pero que no es propio del problema que queremos resolver por lo tanto cuando yo estoy probando con los
+4:11
+4 minutos y 11 segundos
+datos que nunca vio empieza a funcionar cada vez peor porque se está sobre ajustando en esta zona
+4:19
+4 minutos y 19 segundos
+esto está sobre aprendiendo se está sobre entrenando con detalles con particularidades
+4:26
+4 minutos y 26 segundos
+de los datos de entrenamiento que no son generalidades del problema que quiero resolver entonces
+4:33
+4 minutos y 33 segundos
+la pregunta que surge naturalmente en este punto es que puedo hacer para
+4:40
+4 minutos y 40 segundos
+evitar el sobreentrenamiento y alguien dirá naturalmente no cortemos acá
+4:49
+4 minutos y 49 segundos
+no sigamos entrenando no sigamos dándole roscas más y más y más y más sino que cortemos
+4:57
+4 minutos y 57 segundos
+un punto antes esa es una idea se llama corte temprano del entrenamiento y la
+5:04
+5 minutos y 4 segundos
+vamos a desarrollar un poquito más adelante estas son las dos curvas las mismas que vimos recién acá en rojo está
+5:11
+5 minutos y 11 segundos
+el error durante el entrenamiento y acá está el error durante la prueba y acá
+5:19
+5 minutos y 19 segundos
+habíamos dicho recién que teníamos la cantidad de épocas podemos hacer un análisis similar
+5:28
+5 minutos y 28 segundos
+pero no con la cantidad de épocas sino con otra variable que también contribuyó el sobreentrenamiento supongamos ahora
+5:38
+5 minutos y 38 segundos
+que dejamos una cantidad de épocas fija siempre la misma pero lo que vamos aumentando es la cantidad de parámetros
+5:46
+5 minutos y 46 segundos
+libres que tiene el modelo sea la cantidad de pesos o el tamaño de la red neuronal vamos aumentando la cantidad de neuronas
+5:55
+5 minutos y 55 segundos
+y por lo tanto la complejidad del modelo lo que sucede en ese caso es algo muy similar acá está representado con las mismas curvas digamos que acá teníamos
+6:04
+6 minutos y 4 segundos
+una red neuronal de un peso o dos acá tenemos de 46 10 15 y
+6:12
+6 minutos y 12 segundos
+vamos aumentando acá teníamos una red neuronal bastante más compleja que tenía a lo mejor 50 neuronas y con todos sus
+6:20
+6 minutos y 20 segundos
+pesos y seguimos aumentando lo que pasa es que cuanto más parámetros libres tiene para entrenarse la red más
+6:29
+6 minutos y 29 segundos
+capacidad tiene para modelar todos los detalles finos que tengan los datos de entrenamiento entonces llegado un punto
+6:39
+6 minutos y 39 segundos
+en conceptos el mismo que el que vimos antes ahora con la complejidad del sistema no con la cantidad de épocas de
+6:46
+6 minutos y 46 segundos
+entrenamiento el sistema tiene una complejidad que es suficiente para modelar digamos bastante
+6:55
+6 minutos y 55 segundos
+bien los datos de entrenamiento y en ese punto es donde mejor funciona sobre los datos por ahora quiere decir que es el
+7:03
+7 minutos y 3 segundos
+punto donde se maximiza la capacidad de generalización ese punto d el punto clave nuevamente en
+7:10
+7 minutos y 10 segundos
+donde no nos conviene seguir teniendo un modelo cada vez más complejo con más parámetros libres porque le estamos dando la posibilidad de aprenderse
+7:19
+7 minutos y 19 segundos
+detalles particularidades de los datos de entrenamiento que no son importantes al problema general y que encima no sólo
+7:26
+7 minutos y 26 segundos
+eso no es solo que no son importantes sino que después va a ser que funcione mal con los datos nunca vistos
+7:34
+7 minutos y 34 segundos
+por otro lado en este otro extremo de la curva lo que vamos a tener un modelo demasiado elemental y este modelo
+7:43
+7 minutos y 43 segundos
+demasiado elemental no va a tener la capacidad de aprenderse los detalles ni los no detalles ni siquiera las cosas
+7:51
+7 minutos y 51 segundos
+gruesas de los datos entrenamientos ni mucho menos generalizar nada

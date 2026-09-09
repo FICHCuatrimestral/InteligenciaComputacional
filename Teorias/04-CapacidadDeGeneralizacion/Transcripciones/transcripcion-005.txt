@@ -1,0 +1,108 @@
+0 segundos
+hay algunas alternativas con esto este caso que dimos como ejemplo se llama o
+0:07
+7 segundos
+se suele llamar en la bibliografía dejar acá afuera porque yo lo que hago es dejar acá en este caso acá vale 10
+0:14
+14 segundos
+afuera y eso lo uso para probar algo similar pero que es similar pero no es
+0:21
+21 segundos
+exactamente lo mismo es el otro método que se llama kfor que
+0:30
+30 segundos
+traducido literalmente se llama ka pliegues es hacer que a veces particiones pero que no necesariamente
+0:38
+38 segundos
+tienen que ser dejando que fuera por ejemplo si yo tengo cien casos y dejó
+0:45
+45 segundos
+hago dejar diez afuera bueno naturalmente me van a quedar diez particiones o sea diez fall ahí coincide
+0:54
+54 segundos
+con el otro acá pero si yo decido dejar por ejemplo 20 en lugar de tomar 10 acá
+1:01
+1 minuto y 1 segundo
+tomo 20 en cada una en realidad me van a quedar 5 fotos y me van a quedar 5 particiones porque dejó los primeros 20
+1:10
+1 minuto y 10 segundos
+los segundos 20 los terceros 20 cuartos y los quintos 20 o sea que si yo hablo de cajón estoy
+1:16
+1 minuto y 16 segundos
+diciendo cuántas particiones en cambio si dijo digo dejar acá afuera están relacionados pero hay bibliografía
+1:25
+1 minuto y 25 segundos
+que usa cajón el otro que usa lic que out y otro método relacionado con
+1:32
+1 minuto y 32 segundos
+este que es el caso extremo de dejar acá afuera es el de dejar uno afuera el método de dejar uno afuera consiste
+1:40
+1 minuto y 40 segundos
+en solamente uno de estos datos por ejemplo el primero lo dejo para prueba y entreno con todos los demás con los 99
+1:48
+1 minuto y 48 segundos
+más después dejó el segundo afuera y entreno con los 99 que quedan y así y
+1:55
+1 minuto y 55 segundos
+eso lo hago en este caso daría 100 veces el problema que tiene este método es que como se imaginarán tengo que entrenar mi
+2:03
+2 minutos y 3 segundos
+algoritmo 100 veces en cada una de las 100 veces probar con un solo ejemplo es
+2:09
+2 minutos y 9 segundos
+bastante pesado pero como ventaja para los casos aunque se puede hacer tiene un sesgo el sesgo del error que estima es
+2:18
+2 minutos y 18 segundos
+bastante más pequeño que cualquiera de los otros algoritmos otra estrategia que hay para cuando
+2:24
+2 minutos y 24 segundos
+tengo pocos datos generalmente o que se puede aplicar en caso general es no
+2:31
+2 minutos y 31 segundos
+hacer particiones excluyentes sino utilizar algunos datos en común entre
+2:39
+2 minutos y 39 segundos
+dos particiones fíjense que yo acá tomo del 1 al 10 pero acá ya estoy tomando algunos
+2:48
+2 minutos y 48 segundos
+solapados de estos primeros cinco y estos cinco nuevos entonces de esta manera yo solapando las particiones
+2:58
+2 minutos y 58 segundos
+pierdo la independencia estadística de los experimentos no son totalmente independientes ahora este experimento de
+3:05
+3 minutos y 5 segundos
+este experimento que hago pero ganó la posibilidad de tener muchas más particiones que promediar entonces
+3:12
+3 minutos y 12 segundos
+pierdo por un lado y gano por el otro lado yo en este caso moviendo media 5 voy a poder tomar muchas más que 10
+3:22
+3 minutos y 22 segundos
+particiones que era que podía tomar hoy moviendo media 10 este caso con solapamiento también se
+3:29
+3 minutos y 29 segundos
+utiliza mucho hay un tercer caso es que simplemente para comentarlos pero que es muy utilizado que es tomar
+3:39
+3 minutos y 39 segundos
+particiones y elegir patrones con reposición o sea con reposición significa que yo puedo elegir un patrón
+3:47
+3 minutos y 47 segundos
+una vez y volver a elegir el mismo patrón y también ponerlo afuera de la partición o sea que un patrón puede
+3:55
+3 minutos y 55 segundos
+aparecer más de una vez dentro de una partición esto permite sacar aún muchos más
+4:03
+4 minutos y 3 segundos
+particiones imagínense que cada uno de estos muestreos yo lo puedo hacer tomando 10 patrones cualquiera
+4:12
+4 minutos y 12 segundos
+después en otra tomo otros 10 cualquiera no importa los que tome ante en absoluto incluso cuando tomo estos 10 primero puede ser que salgan dos veces el mismo
+4:21
+4 minutos y 21 segundos
+número que salgan dos veces el 3 entonces en esta partición en la prueba me va a quedar repetido el 3
+4:27
+4 minutos y 27 segundos
+eso permite obtener muchísimas más particiones hay un fundamento teórico que soporta esta técnica que se conoce
+4:36
+4 minutos y 36 segundos
+como bus tracking
+Sincronizar con el tiempo del vídeo

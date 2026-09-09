@@ -1,0 +1,101 @@
+vamos a ver en esta sección pequeña cómo podemos usar a un mapa autonomiza tivo
+0:09
+9 segundos
+como clasificador voy a hacer acá la observación de que hasta ahora hemos utilizado al mapa auto organizativo como
+0:17
+17 segundos
+un método agrupamiento no supervisado como erc a medias no lo usamos con un clasificador
+0:25
+25 segundos
+nosotros no le decíamos que queríamos como salida ni tampoco le pedíamos que ante una entrada
+0:32
+32 segundos
+de un país medirá ese país o cosas por el estilo simplemente lo usamos de manera no supervisada sin darle una
+0:40
+40 segundos
+referencia para que agrupe las cosas que se parecen entre sí es decir para que encuentre una estructura en ese espacio
+0:47
+47 segundos
+n dimensional en el cual de otra manera mirando no nos podíamos meter ni hacer nada pero en algunos casos es interesante que
+0:56
+56 segundos
+el sol también pueda funcionar como un clasificador y hay muchas alternativas una alternativa sencilla es la que vamos
+1:03
+1 minuto y 3 segundos
+a ver ahora para hacer que elson funcione como un clasificador lo que podemos hacer es
+1:12
+1 minuto y 12 segundos
+dos pasos muy sensation primero entrenamos de forma no supervisada lo cual hay que reconocer que en principio es una desventaja porque no le damos
+1:21
+1 minuto y 21 segundos
+cuál es la salida correcta pero bueno es son tiene capacidad de agrupar cosas similares en zonas diferentes o en neuronas
+1:30
+1 minuto y 30 segundos
+diferentes y luego lo que hacemos es etiquetar las neuronas este etiquetado puede hacerse de diversas formas y una
+1:39
+1 minuto y 39 segundos
+forma sencilla es la que yo ilustre rápidamente en el ejemplo anterior lo que podemos hacer es mostrarle al mapa
+1:47
+1 minuto y 47 segundos
+todos los patrones y contar ahora vamos a suponer que si tenemos la clase a la
+1:53
+1 minuto y 53 segundos
+que corresponde cada patrón y contar una neurona con qué clase mayoritariamente
+2:01
+2 minutos y 1 segundo
+se activo supongamos que las clases son los fonemas o sea las letras que se pronunciaban en esa
+2:10
+2 minutos y 10 segundos
+fonética writer de que hablamos antes entonces yo todas las veces que se pronuncia una lo que voy a hacer es veo
+2:18
+2 minutos y 18 segundos
+la neurona que se activó con la y cuento una vez se activó con la otra vez bien otras se activó neuronas la voy contando
+2:27
+2 minutos y 27 segundos
+ahí por ahí viene una voz y también se activa esa neurona porque resulta que era una bomba de aparecida a la y cuento uno
+2:35
+2 minutos y 35 segundos
+al final de mostrarle todas me fijo en cada neurona cuántas veces se activó la das cuántas veces activó la tabla y la l la
+2:43
+2 minutos y 43 segundos
+j late y digo bueno supongamos siempre es ese activo con una 30 veces con una o
+2:50
+2 minutos y 50 segundos
+cinco con una y ninguna con todas las otras por lo tanto a esa neurona le pongo la etiqueta
+2:57
+2 minutos y 57 segundos
+y digo que de ahora en más cuando entré un patrón desconocido cuando entré un dato del cual yo no sé si es una hebra
+3:05
+3 minutos y 5 segundos
+si se activa esa neurona voy a decir que es una si yo es etiquetado lo hice para todas las neuronas a cada neurona le puse la
+3:14
+3 minutos y 14 segundos
+etiqueta de la clase con la que más se activa voy a tener la neurona o la neurona la neurona y la que sea yo luego
+3:23
+3 minutos y 23 segundos
+cuando vengan patrones desconocidos o sea cuando vengan ejemplos que yo no conozco les puedo les puedo decir que son de la clase de la neurona que se
+3:31
+3 minutos y 31 segundos
+activo de la etiqueta de la lona receptivo y estoy de esa manera convirtiendo a un sol que era un método
+3:39
+3 minutos y 39 segundos
+no supervisado era un método de agrupamiento lo estoy convirtiendo en un mapa capaz de clasificar también con
+3:47
+3 minutos y 47 segundos
+esos pasos básicos yo puedo hacer de un son un clasificador
+3:54
+3 minutos y 54 segundos
+mido simplemente la distancia que hay entre una entrada desconocida y todas las neuronas me fijo cuál es la ganadora y digo que
+4:04
+4 minutos y 4 segundos
+la clase de salida de este clasificador que estamos haciendo es la etiqueta de la neurona ganadora
+4:12
+4 minutos y 12 segundos
+finalmente acá les dejo algunas direcciones web en la que pueden encontrar unos ejemplos muy interesantes acerca de los mapas topológicos de cómo
+4:20
+4 minutos y 20 segundos
+se despliega ese pañuelo que habíamos hablado de cómo se forman estructuras
+4:27
+4 minutos y 27 segundos
+dos de 3d y más complejas y en definitiva muchas aplicaciones de cómo se puede utilizar un mapa organizativo
+Sincronizar con el tiempo del vídeo

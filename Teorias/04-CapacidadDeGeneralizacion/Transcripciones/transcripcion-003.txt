@@ -1,0 +1,212 @@
+fíjense ahora en este ejemplo que tenemos el caso de un modelo muy elemental es simplemente una recta
+0:09
+9 segundos
+que separa las dos clases como es natural comete muchos errores fíjense todos estos rojos están quedando en la misma clase que los azules
+0:18
+18 segundos
+entonces en este caso estamos acá de donde el modelo es muy simple sería como
+0:26
+26 segundos
+si fuera un par centro simple con dos pesos y un sesgo y que no es capaz de modelar adecuadamente el espacio de soluciones
+0:35
+35 segundos
+para separar esas dos clases si avanzamos y le vamos dando la posibilidad de tener un modelo más
+0:42
+42 segundos
+complejo acá en este caso tenemos ya un modelo que se para bien fíjense que
+0:51
+51 segundos
+mayormente todos los azules quedando un lado y los rojos del otro lado aunque no es perfecto no es cierto acá quedan
+0:58
+58 segundos
+algunos azules de este lado y algunos rojos del otro lado pero en un modelo que ya bajó mucho
+1:07
+1 minuto y 7 segundos
+el error durante el entrenamiento y que si lo probamos con algún dato de prueba en alguno de esos puntitos los dejamos afuera para probar va a andar bastante
+1:16
+1 minuto y 16 segundos
+bien si seguimos aumentando la cantidad de parámetros en la complejidad del modelo o en lo que teníamos antes para
+1:24
+1 minuto y 24 segundos
+un modelo complejo seguir aumentando la cantidad de época de entrenamiento eso podría ser equivalente
+1:31
+1 minuto y 31 segundos
+vamos a seguir dándole la posibilidad con más peso con más estructura de que se aprendan más detalles y podemos
+1:38
+1 minuto y 38 segundos
+obtener una situación como esta me acaba con un modelo muy complejo fíjense que la región de decisión la curva separa
+1:47
+1 minuto y 47 segundos
+perfectamente da la vuelta alrededor de cada uno de los puntitos rojos y azul para alejarlos del lado que corresponden
+1:55
+1 minuto y 55 segundos
+pero fíjense que este modelo este modelo ya es muy complejo y probablemente si yo
+2:02
+2 minutos y 2 segundos
+traigo nuevos datos que sean representativos de la clase azul o de la clase roja no va a funcionar también
+2:09
+2 minutos y 9 segundos
+porque la verdad era que el hecho de que esté rojo esté del lado de arriba era un ruido
+2:17
+2 minutos y 17 segundos
+o era un artefacto o era una mala medición de los datos del entrenamiento no era que realmente en esta zona haya
+2:24
+2 minutos y 24 segundos
+que clasificar los ejemplos como rojo entonces ahí hay un ejemplo en donde la complejidad del modelo está sobre
+2:32
+2 minutos y 32 segundos
+aprendiendo donde el error de entrenamiento bajo mucho es muy pequeño
+2:39
+2 minutos y 39 segundos
+pero cuando yo pruebe con datos que nunca vio durante el entrenamiento
+2:45
+2 minutos y 45 segundos
+va a tener un error mucho mayor entonces nuevamente la clave es saber detenerse en este punto en el punto donde la
+2:54
+2 minutos y 54 segundos
+capacidad de generalización del modelo es máxima acá hay un ejemplo similar pero con un
+3:03
+3 minutos y 3 segundos
+problema no de clasificación sino de regresión un problema en donde yo tengo que predecir el valor en futuro de una
+3:11
+3 minutos y 11 segundos
+variable y no tengo que decir esto es clase 1 clase 2 sino que tengo que predecir cuánto va a llover mañana a partir de datos previos que tengo o de
+3:20
+3 minutos y 20 segundos
+otras variables climáticas por ejemplo fíjense en este caso acá la línea azul esta recta que está
+3:28
+3 minutos y 28 segundos
+acá es el modelo que estoy tratando de ajustar y la otra línea la que tiene una
+3:37
+3 minutos y 37 segundos
+pequeña curva es la línea con la que el modelo con la que se generaron los puntos del ejemplo este esos puntitos
+3:45
+3 minutos y 45 segundos
+están bastante mal ajustados por esta acá hay grandes errores cierto acá se pueden medir los errores que es la
+3:52
+3 minutos y 52 segundos
+distancia hasta la recta en cambio cuando yo voy aumentando la cantidad de parámetros del modelo yo puedo hacer un
+4:01
+4 minutos y 1 segundo
+ajuste mucho mejor fíjense acá qué bien que ajusta la línea del modelo que es una de las si
+4:09
+4 minutos y 9 segundos
+no soy des a la otra que es la línea con la que se generan los puntos en este ejemplo artificial
+4:15
+4 minutos y 15 segundos
+y fíjense que en el caso de sobre ajuste ya yo tengo la capacidad de qué
+4:23
+4 minutos y 23 segundos
+la línea del modelo o sea la predicción sea para los datos de entrenamiento exacta fíjense qué pasa exactamente por
+4:31
+4 minutos y 31 segundos
+todos los puntitos por la gran mayoría por los puntitos que están disponibles
+4:38
+4 minutos y 38 segundos
+para entrenar pero fuera de esa zona está obligado a tener esas excursiones
+4:44
+4 minutos y 44 segundos
+que claramente se alejan muchísimo de lo que era el modelo original de los datos este es un caso de sobre ajustes en
+4:53
+4 minutos y 53 segundos
+donde se ve que el sesgo el error que se comete con respecto a los puntos que
+5:01
+5 minutos y 1 segundo
+tiene para entrenar es muy bajo se reduce desde esta situación donde el sesgo era enorme a esta situación donde
+5:08
+5 minutos y 8 segundos
+hay un sesgo intermedio o un error a esta situación donde pasa prácticamente por todos los puntos o sea que el error
+5:16
+5 minutos y 16 segundos
+es cero casi así que en esta situación reducimos ese sesgo ese error pero
+5:23
+5 minutos y 23 segundos
+aumentamos mucho la varianza que genera este modelo y como vemos claramente malo porque se aleja del modelo
+5:32
+5 minutos y 32 segundos
+real con que está atrás de los datos de esos no entonces este otro caso visto desde la perspectiva de la regresión o de la
+5:40
+5 minutos y 40 segundos
+predicción de podrían ser series temporales o series de cual de cualquier tipo en donde también se ve claramente que pasa cuando yo tengo demasiados
+5:48
+5 minutos y 48 segundos
+parámetros en el modelo o podría ser repito para algunos algoritmos interactivos el equivalente conceptual a
+5:57
+5 minutos y 57 segundos
+tener demasiados ejemplos o demasiados casos de repetición de la etapa de
+6:05
+6 minutos y 5 segundos
+entrenamiento ahora bien como evitamos el sobreentrenamiento es una pregunta clave
+6:16
+6 minutos y 16 segundos
+y la idea que surge como yo anticipaba naturalmente es decir bueno vayamos midiendo qué pasa con estos datos de
+6:24
+6 minutos y 24 segundos
+prueba que nunca avión y cuando vemos que el error de prueba empieza a aumentar cortamos ahí o sea
+6:30
+6 minutos y 30 segundos
+que podemos seguir un poquito para adelante tenemos que ir guardando nos las particularidades del modelo en cada
+6:39
+6 minutos y 39 segundos
+punto cada punto de esta curva pero cuando vemos que ésta empieza a subir decimos bueno no no sigo más entrenando me quedo
+6:48
+6 minutos y 48 segundos
+con lo mejorcito que obtuve para los datos de prueba acá hay un problema implícito que es que
+6:57
+6 minutos y 57 segundos
+no estaremos ajustando es un parámetro que es la cantidad de
+7:03
+7 minutos y 3 segundos
+parámetros libres o la cantidad de épocas de entrenamiento no lo estamos ajustando a los datos de prueba
+7:11
+7 minutos y 11 segundos
+es decir si bien ahora los pesos no se están sobre ajustando a los datos entrenamiento la cantidad de pesos la
+7:21
+7 minutos y 21 segundos
+estamos sobre ajustando a los dato de prueba desde otra perspectiva también uno podría ser pero no era que los datos de
+7:28
+7 minutos y 28 segundos
+prueba no los vamos usar para nada no lo estamos usando ahora para encontrar la cantidad de épocas óptimas
+7:36
+7 minutos y 36 segundos
+para la capacidad de generalización o la cantidad o la complejidad del modelo la cantidad de parámetros entonces la
+7:45
+7 minutos y 45 segundos
+respuesta claramente sí es si usamos los datos de prueba estamos metiendo la pata los datos el programa se puede usar para nada absolutamente para nada es como que
+7:54
+7 minutos y 54 segundos
+para ponernos en una situación le tenemos que dar un algoritmo entrenado a alguien un cliente que no nos pide un
+8:03
+8 minutos y 3 segundos
+método para detectar spam o para detectar los rostros o para lo que sea y le tenemos que dar un método entrenado
+8:11
+8 minutos y 11 segundos
+y él nos manda solamente nos da tu entrenamiento los datos de prueba se nos queda el estos son los
+8:19
+8 minutos y 19 segundos
+entrenamientos estos son los de prueba y directamente nosotros no tenemos no lo tenemos en nuestro disco no lo tenemos a ningún lado así que no se
+8:28
+8 minutos y 28 segundos
+puede usar absolutamente para nada se nos guarda el este cliente o esta otra persona con la que estoy trabajando y él
+8:35
+8 minutos y 35 segundos
+los va a probar por lo tanto tendremos que tener una estrategia para medir esta capacidad de generalización aunque sea
+8:44
+8 minutos y 44 segundos
+con los datos del entrenamiento y ahí la idea es guardarse dentro de los datos del entrenamiento un subconjunto de
+8:51
+8 minutos y 51 segundos
+datos de monitoreo monitoreo algunos le llaman de validación la idea es poder monitorear el error
+9:00
+9 minutos
+sobre datos nunca vistos osea monitorear la capacidad de generalización así que la solución a este pequeño problema que
+9:08
+9 minutos y 8 segundos
+teníamos con los datos del problema es que realmente no hay que usarlos nunca es crear este subconjunto de monitoreo
+9:16
+9 minutos y 16 segundos
+suele pasar que a veces no tenemos muchos datos para entrenar y se complica ya que teníamos poco sacarle algunos para monitorear pero bueno este es otro
+9:24
+9 minutos y 24 segundos
+problema y tiene otras formas de solucionarlo
+Sincronizar con el tiempo del vídeo

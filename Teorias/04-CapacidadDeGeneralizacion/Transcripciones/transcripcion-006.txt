@@ -1,0 +1,274 @@
+algo importante que nos queda para ver es que medimos habíamos hablamos de medimos el error acá medimos en la rodilla pero
+0:13
+13 segundos
+exactamente como medimos ese error así que esta parte de la clase va a tratar de distintas alternativas tratando de
+0:21
+21 segundos
+hacer un poco una comparativa comparativa no va a ser una cuestión exhaustiva pero vamos a ver las distintas medidas más utilizadas para la
+0:30
+30 segundos
+clasificación y para predicción también así que lo primero que vamos a encarar es la clasificación y un concepto muy
+0:39
+39 segundos
+importante que es el de matriz de confusión nuevamente acá lo vamos a centrar en dos clases en una clase
+0:46
+46 segundos
+positiva y una negativa se podría decir 1 y 0 o 1 - 1 o normal y
+0:55
+55 segundos
+patológico o spam no es spam web etcétera etcétera no en este caso vamos a hacer esta tablita
+1:03
+1 minuto y 3 segundos
+que es la que denominamos matriz de confusión vamos a tomar acá en las filas las clases correctas o sea las que sabemos
+1:12
+1 minuto y 12 segundos
+efectivamente que son en los ejemplos positivos y los negativos tenemos acá los positivos y los negativos
+1:18
+1 minuto y 18 segundos
+y en las columnas vamos a poner las que dijo él
+1:25
+1 minuto y 25 segundos
+clasificador o sea las que acertó o equivoco ahora vamos a ver cómo lo hacemos en primer lugar
+1:33
+1 minuto y 33 segundos
+vamos a poner los verdaderos positivos y los falsos
+1:39
+1 minuto y 39 segundos
+negativos estates the truck que se usan generalmente con la letra en inglés y live the falls
+1:47
+1 minuto y 47 segundos
+los verdaderos positivos es aquellos casos en donde la correcta era un positivo y la que dijo el clasificador
+1:56
+1 minuto y 56 segundos
+era un positivo o sea que era positivo y lasarte o sea que es un verdadero positivo
+2:04
+2 minutos y 4 segundos
+los falsos negativos son aquellos casos en las que era positivo o sea
+2:11
+2 minutos y 11 segundos
+efectivamente en un mail de spam pero el clasificador dijo que era negativo o sea se equivocó o no o sea
+2:19
+2 minutos y 19 segundos
+que los que están en rojos son errores era un positivo y se equivocó dijo no no es spam
+2:26
+2 minutos y 26 segundos
+entonces acá en esta primera columna vamos a poner en ésta verdaderos positivos la cantidad de
+2:34
+2 minutos y 34 segundos
+casos en 10 15 20 veces que efectivamente era positivo y dijo positivo y acá también va a ir un número
+2:44
+2 minutos y 44 segundos
+en un número entero 5 10 15 50 de casos de los que era positivo pero clasificador se equivocó y dijo negativo
+2:53
+2 minutos y 53 segundos
+sumando en los casos en que era positivo y dijo positivo y los casos en que era positivo y dijo negativo se equivocó
+3:01
+3 minutos y 1 segundo
+vamos a tener la cantidad del total de casos positivos que tenía ese conjunto de datos
+3:08
+3 minutos y 8 segundos
+muy similar acá vamos a tener los casos negativos ahora lo correcto lo
+3:16
+3 minutos y 16 segundos
+que hay que decir se para no equivocarse es negativo fíjense acá están los falsos positivos los falsos positivos son los
+3:25
+3 minutos y 25 segundos
+casos en que la clase verdadera la real era negativo pero clasificado se equivocó dijo
+3:32
+3 minutos y 32 segundos
+positivo son positivos pero falsos equivocados vamos decir y acá están los verdaderos negativos
+3:41
+3 minutos y 41 segundos
+es decir la cantidad de veces que eran negativos y el clasificador acertó efectivamente dijo si son negativos
+3:49
+3 minutos y 49 segundos
+entonces bueno parecido como teníamos antes si sumamos los falsos positivos la cantidad de veces que era negativo pero
+3:57
+3 minutos y 57 segundos
+dijo positivo y los verdaderos negativos vamos a tener el total de casos negativos que había en mi conjunto y por
+4:06
+4 minutos y 6 segundos
+supuesto si sumamos los casos positivos y los casos negativos vamos a tener n que es el total de casos que tenemos que
+4:13
+4 minutos y 13 segundos
+clasificar ya sea para entrenar para aprobar o para lo que sea que estemos haciendo con esta matriz de confusión generalmente cuando se presenta una
+4:22
+4 minutos y 22 segundos
+matriz de confusión acá se ponen números acá se pone que son 28 3
+4:29
+4 minutos y 29 segundos
+2 y 52 este sería un clasificador que anda bastante bien uno se fija en la diagonal
+4:36
+4 minutos y 36 segundos
+en la diagonal ve que los números son mucho más grandes que afuera por lo tanto es un clasificador bastante bueno
+4:44
+4 minutos y 44 segundos
+había 28 positivos que efectivamente dijo que era positivo había 52 negativos que la pego también y solamente había 3
+4:53
+4 minutos y 53 segundos
+positivos que dijo que eran negativos y 2 negativos que dijo que era positivo se
+5:01
+5 minutos y 1 segundo
+equivocó en estos cinco casos en todos los otros la pego generalmente las matrices de confusión se presentan así y en base a esta definición de materia
+5:10
+5 minutos y 10 segundos
+confusión es que vamos a definir todos los índices de medidas de
+5:16
+5 minutos y 16 segundos
+desempeño en primer lugar vamos a definir la sensibilidad acá yo les dejé en inglés que es como muchas veces se
+5:25
+5 minutos y 25 segundos
+encuentra en la bibliografía o en internet nombres alternativos que se le da a la sensibilidad y la sensibilidad
+5:32
+5 minutos y 32 segundos
+también se llama tasa de verdaderos positivos hit rate tasa de éxito récord o potencia
+5:42
+5 minutos y 42 segundos
+este récord es la capacidad de recuperarse llamar a los casos positivos fíjense que esta definición sólo tiene
+5:51
+5 minutos y 51 segundos
+en cuenta los positivos y básicamente lo que hace es dividir la cantidad de positivos de verdaderos
+5:59
+5 minutos y 59 segundos
+positivos aquellos que hacer todos que eran positivos y el clasificador dijo que lo eran dividido la cantidad total de positivos que habían en la base de
+6:07
+6 minutos y 7 segundos
+datos acá no importan los negativos pero sé que acá yo tengo falsos negativos o sea casos que eran positivos pero dijo
+6:16
+6 minutos y 16 segundos
+que eran negativos equívocos pero en realidad eran positivos o sea que siempre acá en el denominador acá tengo
+6:23
+6 minutos y 23 segundos
+todos los positivos totales esto el problema que tiene es que si por más que yo diga muy bien hacer acierte
+6:32
+6 minutos y 32 segundos
+bien con los positivos podría estar cometiendo errores terribles con los negativos por ejemplo yo podría hacer un clasificador muy elemental que diga
+6:40
+6 minutos y 40 segundos
+siempre positivo no importa lo que entren hacia un positivo positivo positivo positivo positivo no importa sea lo que sea entre positivo esto me
+6:47
+6 minutos y 47 segundos
+daría una sensibilidad 100% y sin embargo obviamente cuando vengan los negativos también digan que son positivos están dando horrible así que
+6:55
+6 minutos y 55 segundos
+hay que tener cuidado siempre con estas medidas porque miden un aspecto de el sistema de la clasificación una muy
+7:03
+7 minutos y 3 segundos
+similar especificidad o tasa de verdaderos
+7:10
+7 minutos y 10 segundos
+negativos es muy similar por qué lo que hace es contar lo mismo pero para el caso de los negativos estos son los
+7:17
+7 minutos y 17 segundos
+verdaderos negativos / el total de negativos y por supuesto si yo utilizará solamente esta medida también tendría el
+7:26
+7 minutos y 26 segundos
+mismo problema que contaba antes a un clasificador que dice siempre negativo y ésta me va a dar 100% pero bueno esta me va a dar 0
+7:34
+7 minutos y 34 segundos
+sé que en realidad cualquiera de las dos por separado es bastante engañoso y hay que tener cuidado
+7:42
+7 minutos y 42 segundos
+ahora vamos a ver alguna un poquito más interesante está la medida se llama precisión a ver a
+7:51
+7 minutos y 51 segundos
+veces se se le denomina valor predictivo positivo y fíjense que ahora si tiene en cuenta
+7:59
+7 minutos y 59 segundos
+si bien en el numerador siguen estando los positivos acá abajo aparecen los falsos positivos en realidad los falsos
+8:08
+8 minutos y 8 segundos
+positivos son todos aquellos negativos que el clasificador dijo que eran positivos que son falsos positivos
+8:16
+8 minutos y 16 segundos
+o sea que si yo hago es el clasificador que decía siempre dice positivo siempre dice es positivo siempre es positivo
+8:24
+8 minutos y 24 segundos
+va a haber un montón de negativos que los va a clasificar como positivos y por lo tanto este número acá abajo en el
+8:30
+8 minutos y 30 segundos
+denominador va a subir mucho por lo tanto si sube este número acá abajo la precisión va a bajar o sea que está una
+8:38
+8 minutos y 38 segundos
+medida más interesante está enfocada en los positivos pero no descarta por completo el hecho de que le pueda estar
+8:46
+8 minutos y 46 segundos
+diciendo siempre positivo a casos que realmente son negativos una medida relacionada es el valor predictivo de
+8:56
+8 minutos y 56 segundos
+negativos y casi con la misma definición de antes nada más que ahora enfocado en
+9:02
+9 minutos y 2 segundos
+los negativos en cuenta de la cantidad de verdaderos negativos se adquieren negativos y dijo que era negativo pero
+9:11
+9 minutos y 11 segundos
+el denominador aparecen los falsos negativos o sea son positivos pero el clasificador está diciendo que son
+9:19
+9 minutos y 19 segundos
+negativos o sea que tampoco podría ser gracias a esta medida es decir a todo negativo todo negativo todo negativo porque se va a venir va a subir esto es
+9:28
+9 minutos y 28 segundos
+sobre los falsos negativos y con estos falsos negativos me va a bajar esta tasa así que estas dos medidas de precisión y
+9:37
+9 minutos y 37 segundos
+otra que sería una precisión para los negativos ya son bastante más completas y más interesantes que las anteriores y
+9:43
+9 minutos y 43 segundos
+ya por sí solas ya dan más información otra tasa ya combinada o compuesta más
+9:51
+9 minutos y 51 segundos
+interesante es la medida de exactitud está cada vez vamos complejizando un poquito más
+9:58
+9 minutos y 58 segundos
+las mediciones ésta seguramente es la más intuitiva y la más utilizada fíjense qué
+10:06
+10 minutos y 6 segundos
+en este caso yo en el numerador sumo los verdaderos positivos y los verdaderos negativos o sea cuantas veces eran
+10:14
+10 minutos y 14 segundos
+positivos y las hartos cuantas veces en el negativo y la acierto y dividido por la cantidad total de casos
+10:21
+10 minutos y 21 segundos
+está bastante más intuitiva y por supuesto contempla ambas clases en lo puedo hacer clasificadores que digan
+10:29
+10 minutos y 29 segundos
+siempre lo mismo o cosas elementales por otra medida muy conocida muy utilizada
+10:35
+10 minutos y 35 segundos
+que también busca combinar distintas mediciones es la medida de f1 el score
+10:43
+10 minutos y 43 segundos
+f1 hay algunas otras mediciones está focalizada en los positivos en general van a ver que la
+10:52
+10 minutos y 52 segundos
+mayoría de las medidas están focalizada en los positivos porque en realidad los positivos las clases de interés siempre cuando yo doy positivo algo quiere decir
+10:59
+10 minutos y 59 segundos
+por ejemplo si estoy buscando enfermos de tal enfermedad y todo es positivo pero digo tiene la enfermedad si estoy
+11:06
+11 minutos y 6 segundos
+buscando spam soy positivo digo esto es un español porque están enfocadas en lo positivo por supuesto todo se podría dar
+11:14
+11 minutos y 14 segundos
+vuelta y enfocarse en los negativos pero bueno en general uno enfoca los positivos qué es lo que quiere buscar y
+11:20
+11 minutos y 20 segundos
+en este caso fíjense que combina con una media armónica se combina la sensibilidad con la precisión entonces
+11:30
+11 minutos y 30 segundos
+tengo una buena medición de qué tanto estoy acertando con los positivos pero
+11:36
+11 minutos y 36 segundos
+pero no dejó de tener acá los falsos positivos aquellos que eran negativos pero clasificador dijo que eran
+11:44
+11 minutos y 44 segundos
+positivos entonces en esta combinación esta es muy utilizada también estoy teniendo en cuenta sensibilidad y
+11:51
+11 minutos y 51 segundos
+precisión por último una bastante relacionada que también tiene en cuenta sensibilidad y precisión es la media
+12:00
+12 minutos
+geométrica de esas dos medidas y también es un índice ya en un solo número al igual que
+12:07
+12 minutos y 7 segundos
+f1 y de que también está funcionando este clasificador

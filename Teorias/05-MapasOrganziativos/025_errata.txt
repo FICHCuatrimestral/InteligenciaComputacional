@@ -1,0 +1,7 @@
+025_Cuantizacion_vectorial_con_aprendizaje
+7'58"
+
+Donde dice c(n)=d(n) debería decir \mathcal{C}(c(n))=d(n)
+Lo mismo para el caso de c(n) \neq d(n)
+
+Esto es porque en realidad lo que tiene que coincidir con la clsae del patrón, d(n), es la clase del prototipo ganador \mathcal{C}(c(n)), y no el prototimo en sí mismo (que es un vector en R^N como los datos de entrenamiento)

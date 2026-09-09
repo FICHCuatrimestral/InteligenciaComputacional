@@ -1,0 +1,389 @@
+aprendizaje supervisado vamos a ver un método muy relacionado con los mapas out organizativos 1 porque está inspirado en
+0:15
+15 segundos
+los mapas organizativos y porque también lo propuso en allá por los fines de los años 80 que se llama cuantización
+0:22
+22 segundos
+vectorial con aprendizaje vamos a ver un poquito que es la cuantificación cuántica para los que
+0:30
+30 segundos
+hayan cursado o señales les sonará a los que no cruzaron señales muy brevemente
+0:36
+36 segundos
+es tomar una señal una función por ejemplo podría
+0:43
+43 segundos
+ser una función del tiempo y cuán tizar la significa separarla en cuantos en los sistemas digitales
+0:51
+51 segundos
+especialmente uno no puede tener infinitos valores en la memoria de la computadora uno puede
+0:59
+59 segundos
+tener 8 bits 16 bits 32 bits lo que se aprende definitiva uno puede tener una resolución infinita por lo tanto necesita a los valores numéricos quant
+1:08
+1 minuto y 8 segundos
+izarlos para poder digitalizar los en este caso que yo ejemplificó acá estoy definiendo entre 0 y 1 para esa pared
+1:17
+1 minuto y 17 segundos
+ese no estoy definiendo en cuanto en cero podría ser acá otro cuanto uno y dos
+1:23
+1 minuto y 23 segundos
+cuantos más yo la cuántica en el eje en la parte positiva en cuatro cuantos y la parte negativa tendré que
+1:32
+1 minuto y 32 segundos
+hacer lo mismo eso es cuántica en el caso general pero en particular nosotros nos interesa también poder cuantificar
+1:40
+1 minuto y 40 segundos
+espacios no necesariamente de una dimensión es decir en lugar de cuántica el eje de esa
+1:49
+1 minuto y 49 segundos
+señal de esa función seno que estábamos quant izando yo podría querer quant izar un espacio bidimensional
+1:56
+1 minuto y 56 segundos
+qué sería quant izar un espacio bidimensional bueno es lo que se hace cuando se saca una foto de cada región
+2:04
+2 minutos y 4 segundos
+del espacio se cuántica en un píxel entonces yo tengo una especie de rejilla uniforme en este caso
+2:14
+2 minutos y 14 segundos
+en donde cada zona del espacio queda representada por un píxel es una típica cuantización en este caso no de una
+2:22
+2 minutos y 22 segundos
+función del tiempo sino de una función del espacio que sería la imagen en cuando uno dice que la imagen está pixelada es porque tiene cuantos
+2:30
+2 minutos y 30 segundos
+demasiado grandes de la misma manera se puede cuantificar espacios n dimensionales pero interesantes que quizás yo no siempre
+2:39
+2 minutos y 39 segundos
+tengo que cuantificar de manera uniforme porque en algunas regiones del espacio hay más detalles que en otras entonces me gustaría poder cuantificar ciertas
+2:48
+2 minutos y 48 segundos
+zonas del espacio con más detalle y otras zonas directamente ni cotizar las o dejar un píxel o un valor para un
+2:56
+2 minutos y 56 segundos
+montón de valores distintos que nunca aparecen o que aparecen muy poco en la señal que yo tengo entonces ahí viene la
+3:04
+3 minutos y 4 segundos
+idea de cuantización vectorial con aprendizaje en tratar de cuantificar de manera adaptada a las necesidades del
+3:12
+3 minutos y 12 segundos
+espacio que yo necesito para hacer esta cotización vectorial y en el caso particular de la cotización vectorial
+3:19
+3 minutos y 19 segundos
+con aprendizaje hay una terminología que vamos a revisar y que viene a llamar
+3:26
+3 minutos y 26 segundos
+muchas veces distintas formas las mismas cosas que venimos manejando antes sin embargo como para que ustedes puedan acceder a la bibliografía vamos a hacer un pequeño repaso de ese término
+3:36
+3 minutos y 36 segundos
+yo ya he utilizado el término centro hoy de que es el vector de pesos es el centro de un grupo de patrones podría
+3:44
+3 minutos y 44 segundos
+ser un grupo de ejemplos y muchas veces también se habla de prototipos de prototipos
+3:52
+3 minutos y 52 segundos
+cuando yo hablaba de neuronas yo tenía para cada neurona un vector de pesos que
+3:59
+3 minutos y 59 segundos
+era un prototipo o un centro hoy de pero también yo puedo pensar en que tengo muchas neuronas
+4:07
+4 minutos y 7 segundos
+y que tengo un diccionario de prototipos o core book que ese es el término que se
+4:14
+4 minutos y 14 segundos
+usa en el área de cotización vectorial pues no se habla de neuronas sino se habla de prototipos y un conjunto de
+4:22
+4 minutos y 22 segundos
+prototipos hace un diccionario de que vendría a ser el equivalente a un conjunto de neuronas para el caso del
+4:30
+4 minutos y 30 segundos
+mapa organizativo entonces la idea es que yo pueda recibir
+4:38
+4 minutos y 38 segundos
+unos vectores en rn y transmitir o guardar un archivo comprimido solamente el índice del prototipo que es más
+4:46
+4 minutos y 46 segundos
+parecido yo podría descomponer una imagen por ejemplo y de hecho esto es lo que hacen los algoritmos de compresión en un
+4:54
+4 minutos y 54 segundos
+montón de retículas de zonas y tener para cada una de esas zonas un prototipo
+5:02
+5 minutos y 2 segundos
+entonces yo lo que puedo hacer es de antemano calcular cuáles son los prototipos de esas imágenes y en lugar
+5:09
+5 minutos y 9 segundos
+de guardar todos los píxeles de la imagen para cada zona guardar solamente aquel prototipo le es más parecido
+5:17
+5 minutos y 17 segundos
+luego cuando quiero descomprimir lo que voy a tener que hacer es poner en esa zona de la imagen el prototipo es por
+5:25
+5 minutos y 25 segundos
+supuesto voy a tener un error no no es lo mismo que poner los píxeles originales de esa zona voy a poner un prototipo que es una especie del promedio de todas las cosas que son
+5:34
+5 minutos y 34 segundos
+parecidas por ejemplo un prototipo podría ser una curva una zona de un borde que tenga una curva podría ser un prototipo de ese
+5:42
+5 minutos y 42 segundos
+diccionario entonces puede haber curvas un poquito más aplastada un poquito más larga que yo voy a aceptar que son aproximadamente como el prototipo que lo
+5:51
+5 minutos y 51 segundos
+que me permite hacer una compresión por supuesto en este caso con pérdida de información entonces con este marco de lo que es un cuantificador vectorial y
+5:59
+5 minutos y 59 segundos
+de las aplicaciones que tiene vamos a ver como aprender un cuantificador vectorial y cómo utilizarlo también como
+6:07
+6 minutos y 7 segundos
+clasificador las ideas que hay detrás de esta idea de cómo entrenarlos son cosas que ya
+6:15
+6 minutos y 15 segundos
+conocemos uno podría decir que los cuantos los centros de soft prototipos en ese
+6:22
+6 minutos y 22 segundos
+espacio n dimensional son los androides que habíamos encontrado con un algoritmo de k medias o sea que la media podría
+6:31
+6 minutos y 31 segundos
+servirnos para este fin un algoritmo no supervisado que no utiliza las clases el sol una vez que tenemos un sol lo
+6:39
+6 minutos y 39 segundos
+podemos etiquetar y también tenemos en cada neurona un prototipo o un cuanto de esta continuación vectorial y por último
+6:48
+6 minutos y 48 segundos
+vamos a ver un algoritmo que directamente es supervisado desde el entrenamiento o sea no es como
+6:56
+6 minutos y 56 segundos
+k media o como son que lo tenemos que etiquetar después y la supervisión aparece posterior al entrenamiento
+7:03
+7 minutos y 3 segundos
+evidentemente en esos casos durante el entrenamiento estamos perdiendo información que es la información de la clase el algoritmo de n bq que es el de
+7:13
+7 minutos y 13 segundos
+este de aprendizaje vectorial con cuantización utilicé la información de clase durante el entrenamiento
+7:21
+7 minutos y 21 segundos
+vamos a ver como siempre que partimos de una iniciación aleatoria o sea que
+7:27
+7 minutos y 27 segundos
+asignamos a los cuantos podría ser como en el caso del son valores pequeños al azar o esos centros podrían ser
+7:37
+7 minutos y 37 segundos
+parcializarse iguales algunos de los patrones que tenemos para entrenamiento muy parecido al son en la primera etapa
+7:45
+7 minutos y 45 segundos
+lo que vamos a hacer es buscar dado un patrón cuál es el centro hoy de que más se parece ese patrón y vamos a decir
+7:53
+7 minutos y 53 segundos
+este es el centro hoy de o el prototipo ganador
+7:56
+7 minutos y 56 segundos
+[Música]
+7:58
+7 minutos y 58 segundos
+y luego vamos a hacer un ajuste de ese prototipo cómo vamos a ajustar acá hay un pequeño cambio en relación al son
+8:05
+8 minutos y 5 segundos
+fíjense quienes son nosotros teníamos esta parte nada más que mdm se llamaba w
+8:13
+8 minutos y 13 segundos
+pero en definitiva era el error entre la entrada y el vector de pesos ahora va a ser el error entre la entrada y el
+8:21
+8 minutos y 21 segundos
+prototipo teníamos también una velocidad de aprendizaje y acá aparece un término nuevo en un factor nuevo
+8:28
+8 minutos y 28 segundos
+este factor es el que dice si acertó a la clase o no suponga que nosotros inicialmente
+8:37
+8 minutos y 37 segundos
+tenemos distintos prototipos etiquetados para las clases de nuestro problema las
+8:45
+8 minutos y 45 segundos
+clases de nuestro problema podrían ser para el problema de las plantitas se acuerdan de la irish teníamos tres clases y podríamos decir para
+8:54
+8 minutos y 54 segundos
+simplificar tenemos la clase a la clase b y la clase c entonces podríamos nosotros en principio tener un prototipo por clase podríamos tener más
+9:02
+9 minutos y 2 segundos
+generalmente se utilizan varios por otro tipo por clase en el caso de que las clases sean tengan una distribución más complicada y lo que vamos a verificar es
+9:11
+9 minutos y 11 segundos
+sí neurona o prototipo ganador es el prototipo de la clase o no en el caso de
+9:20
+9 minutos y 20 segundos
+que no sea va a ser este caso lo que vamos a hacer es acercar
+9:28
+9 minutos y 28 segundos
+el prototipo el vector de pesos como le llamamos antes a el patrón que acaba de entrar en el caso que no lo sea lo que
+9:38
+9 minutos y 38 segundos
+vamos a hacer es cambiar ese signo vamos a poner un -1 y lo vamos a alejar fíjense que esto es casi igual que el sol
+9:46
+9 minutos y 46 segundos
+sí utilizamos sólo esta parte de la parte de acercar el son siempre acercaba porque no había una referencia de qué
+9:54
+9 minutos y 54 segundos
+clase pertenecía el patrón que acababa de ingresar siempre acercado al vector de pesos a ese patrón en cambio acá
+10:02
+10 minutos y 2 segundos
+tenemos dos opciones si le pegó si hacer todo lo acercamos y si no acertó lo alejamos la otra diferencia importante
+10:10
+10 minutos y 10 segundos
+que tenemos con el sol es que acá no hay un concepto de vecindad no hay neuronas vecinas y prototipos vecinos simplemente se actualiza el ganador y nada más
+10:19
+10 minutos y 19 segundos
+entonces con esto tenemos un algoritmo nuevamente muy sencillo en el paso 4 volvemos al pasado y le
+10:27
+10 minutos y 27 segundos
+volvemos a mostrar otro patrón y así vamos acercando o alejando de acuerdo si acertó o no acertó
+10:35
+10 minutos y 35 segundos
+vamos a ver alguna pequeña interpretación gráfica vamos a suponer que estamos en dos dimensiones que acá
+10:42
+10 minutos y 42 segundos
+tenemos un conjunto de patrones que tenemos como antes un conjunto de patrones de una clase y acá tenemos un conjunto de
+10:51
+10 minutos y 51 segundos
+patrones de otra clase vamos a suponer que inicialmente podemos tener dos
+10:57
+10 minutos y 57 segundos
+prototipos o dos elementos uno es el elemento este vamos a poner que está
+11:05
+11 minutos y 5 segundos
+inicialmente acá y otro es este otro que le asignamos que va a ser el prototipo
+11:11
+11 minutos y 11 segundos
+de la clase círculo blanco cuando llega un patrón vamos a suponer que llega este patrón que está acá medimos la distancia
+11:20
+11 minutos y 20 segundos
+y evidentemente va a ganar este prototipo que hemos propuesto para
+11:27
+11 minutos y 27 segundos
+esa clase entonces qué va a ser va a medir el doctor de ar de error y lo
+11:34
+11 minutos y 34 segundos
+que va a hacer es alejar el prototipo de ese patrón que va a ir a pasar acá
+11:41
+11 minutos y 41 segundos
+vamos a suponer que ahora viene otro patrón vamos a poner que viene un patrón de este grupo el ganador va a ser este
+11:51
+11 minutos y 51 segundos
+entonces como la clase está bien va a pasar el la s va a valer más uno y lo
+11:58
+11 minutos y 58 segundos
+que va a hacer es acercarlo o sea que va a ir en esta distancia y va a pasar acá como ven cada prototipo se va a ir
+12:07
+12 minutos y 7 segundos
+acercando al centro de la clase que representa rápidamente porque no solo lo acercamos
+12:15
+12 minutos y 15 segundos
+cuando aciertas sino que también cuando leer lo alejamos entonces esta es la ventaja que nos da la supervisión
+12:23
+12 minutos y 23 segundos
+ahí mismo qué pasa cuando la entrada incorrecta y cuando la entrada es clasificada correctamente
+12:31
+12 minutos y 31 segundos
+otra observación que vuelvo a retirar acá no de vecindad no hay una arquitectura neuronal acá hay prototipos que están sueltos en
+12:40
+12 minutos y 40 segundos
+el espacio no hay una relación entre uno y otro acá no hablamos de neuronas importante para diferenciarlo del somos
+12:47
+12 minutos y 47 segundos
+así que en general podemos pensar que esto es como si fuera un son lineal que no tiene ningún tipo de entorno ni de relación entre las neuronas es como que
+12:55
+12 minutos y 55 segundos
+cada neurona está suelta en el espacio y puede ir para donde quiera pero por supuesto tenemos la supervisión
+13:02
+13 minutos y 2 segundos
+una cuestión que aparece acá es el tema de la velocidad de realizar la velocidad
+13:09
+13 minutos y 9 segundos
+de aprendizaje no puede ser exactamente la misma durante todo el entrenamiento en el sol ya habíamos visto que le
+13:17
+13 minutos y 17 segundos
+habíamos reduciendo lineal o exponencialmente y acá vamos a encontrar para el caso de cotización vectorial en
+13:23
+13 minutos y 23 segundos
+caso particular la versión 1 de las propuestas de el lb con 1 se llama como optimizar esa velocidad de
+13:32
+13 minutos y 32 segundos
+aprendizaje vamos a analizar primero la situación vamos a suponer que entre un patrón el
+13:40
+13 minutos y 40 segundos
+patrón x acá está el centro y de acá medimos el error y vamos a hacer esta actualización
+13:48
+13 minutos y 48 segundos
+o sea que ese centro hoy de en la integración siguiente va a tomar el valor actual en la integración actual más esta corrección
+13:57
+13 minutos y 57 segundos
+vamos a ver qué pasa si separamos un poquito esto fíjense que acá lo único que hice fue hacer distributiva
+14:05
+14 minutos y 5 segundos
+district el factor s acá junte esta parte me junte el ms
+14:14
+14 minutos y 14 segundos
+fíjense que está este mc y este ms que los junte acá lo otro que es el último pedacito quedó igual
+14:23
+14 minutos y 23 segundos
+y esto lo hago con la intención de expandir fíjense esta parte es la misma
+14:30
+14 minutos y 30 segundos
+esta última parte también es la misma lo mismo está acá lo mismo está acá pero este valor este este centro hoy de lo
+14:38
+14 minutos y 38 segundos
+que hice fue ponerlo en función de cómo se calculó el anterior como fue calculado en la integración anterior
+14:46
+14 minutos y 46 segundos
+cuando entró un patrón anterior eso es simplemente aplicar la misma ecuación que tenemos acá arriba pero
+14:53
+14 minutos y 53 segundos
+ahora con menos uno menos uno acá está ese por alfa por el error o sea que el centro y de menos uno más
+15:02
+15 minutos y 2 segundos
+ese por alfa por el error ya que no había una ecuación pero un instante atrás que se puede observar acá acá lo
+15:11
+15 minutos y 11 segundos
+importante para observar es que este alfa tenemos una alpaca que está multiplicando y tenemos otro alfa que
+15:20
+15 minutos y 20 segundos
+está multiplicando o sea que como que a la influencia que tiene el patrón anterior que entró la estamos reduciendo
+15:28
+15 minutos y 28 segundos
+porque si pensamos que se alza menor que 1 estamos multiplicando la influencia de ese patrón dos veces por alfa es decir
+15:35
+15 minutos y 35 segundos
+la alfarera 05 al final este patrón va a terminar influyendo 025 esto también
+15:43
+15 minutos y 43 segundos
+quiere decir que el último patrón que le mostremos va a estar multiplicado solamente por una alfa y todos los anteriores van a estar multiplicados por
+15:51
+15 minutos y 51 segundos
+dos al fas por tres alfa por cuatro alfa quiere decir que se olvide rápido o sea las cosas que primero les mostramos van a tener muy poca influencia en la
+15:59
+15 minutos y 59 segundos
+posición final del centro lo que tendremos que hacer entonces y tendríamos que ir cambiando el alfa tendríamos que tener un alfa grande al
+16:07
+16 minutos y 7 segundos
+principio y al final un alfa pequeño de manera de que todos los patrones que le mostré pesen por igual en el valor final
+16:16
+16 minutos y 16 segundos
+que va a tomar el centro d con ese criterio lo que se debe cumplir
+16:23
+16 minutos y 23 segundos
+es que el alfa en dos iteraciones consecutivas valga lo mismo fíjense este es el alfa que aplicaba al
+16:31
+16 minutos y 31 segundos
+n menos 1 y este es el alfa que aplicaban n yo puedo dejar despejar cuanto debería valer alfa en cada
+16:39
+16 minutos y 39 segundos
+inspiración para que el peso que tengan los patrones o la influencia que tengan los patrones sean lo mismo a lo largo de
+16:46
+16 minutos y 46 segundos
+todo el entrenamiento por lo tanto si yo deduzco de esa ecuación cosa que les voy a dejar para tarea lo que encuentro es que el
+16:54
+16 minutos y 54 segundos
+alfa tiene que valer esto si yo voy modificando el alfa según esta regla me
+17:01
+17 minutos y 1 segundo
+puedo arrancar de un alfa 0 9 y el próximo alfa lo calculó con esta fórmula lo que voy a lograr es que todos los
+17:09
+17 minutos y 9 segundos
+patrones a lo largo del entrenamiento tengan la misma influencia el mismo peso en el valor final de los centrales
+Sincronizar con el tiempo del vídeo

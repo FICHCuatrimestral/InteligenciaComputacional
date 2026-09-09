@@ -1,0 +1,314 @@
+vamos a suponer ahora que tenemos dos entradas como fue en el ejemplo anterior pero el mapa es un poco diferente vamos
+0:12
+12 segundos
+a suponer que tenemos un mapa así que tiene cuatro neuronas en un plano no están ubicadas linealmente sino que
+0:19
+19 segundos
+están ubicadas en el plano entonces como antes vamos a tener que los pesos sin áticos unen a todas las
+0:28
+28 segundos
+entradas con todas las neuronas y vamos a tener por ejemplo lo que se acostumbra a enumerar
+0:34
+34 segundos
+es neurona 1 neurona 2 neurona 3 neurona 4 además vamos a considerar también que podemos tener las neuronas
+0:43
+43 segundos
+interconectadas por ejemplo la neurona 1 con la 3 la 1 con la 2 las tres con la 4
+0:50
+50 segundos
+3 con la 2 también podrían existir uniones entre la 14 y 3 y la 2 eso por supuesto dependiendo
+0:59
+59 segundos
+del tamaño de la vecindad esta sería una vecina de tamaño 1 pero si aumentamos a ver sin dados también tendríamos la unión completa
+1:08
+1 minuto y 8 segundos
+vamos a suponer nuevamente que tenemos dos dimensiones son las dos intenciones de entrada que también son las dos
+1:14
+1 minuto y 14 segundos
+intenciones de los vectores de pesos para cada una de las neuronas en cada neurona tiene un vector de pesos con dos
+1:22
+1 minuto y 22 segundos
+elementos y vamos a suponer que tenemos alguna distribución
+1:29
+1 minuto y 29 segundos
+nuevamente cualquiera sea de patrones de entrada tenemos un montón de patroncitos que están acá un montón que están acá y
+1:38
+1 minuto y 38 segundos
+así como ya vimos antes si nosotros no tuviéramos ningún tipo de relación o
+1:46
+1 minuto y 46 segundos
+vecindad entre las neuronas sea cual sea el punto de partida de los vectores de
+1:53
+1 minuto y 53 segundos
+peso naturalmente van a ir acercándose a un centro y de hacia el otro
+2:02
+2 minutos y 2 segundos
+para caracterizar los tres grupos de patrones pero hay algún poco más interesante
+2:08
+2 minutos y 8 segundos
+pensemos que realmente tenemos una vecindad y un entorno entonces podemos
+2:15
+2 minutos y 15 segundos
+pensar de que si esta es neurona 1 vamos a suponer que estás en
+2:21
+2 minutos y 21 segundos
+la neurona 23 y la neurona 4 podría estar de cualquier forma en los números
+2:29
+2 minutos y 29 segundos
+vamos a suponer que tanto la neurona 1 como la neurona 2 al principio cuando empieza el
+2:36
+2 minutos y 36 segundos
+entrenamiento como hay una vecindad de radio distinto de cero se estimulan de forma conjunta es decir
+2:45
+2 minutos y 45 segundos
+cuando un determinado patrón que está acá estimula la 1 como la 1 está
+2:52
+2 minutos y 52 segundos
+conectada con la neurona 2 también se estimula la 2 o sea que la 1 se va a
+3:01
+3 minutos y 1 segundo
+correr a lo mejor hacia allá pero bueno la 2 también se va a correr
+3:10
+3 minutos y 10 segundos
+lo mismo pasa que cuando viene un patrón y estimular a dos a la vez también va a estar estimulando a uno por lo tanto que
+3:18
+3 minutos y 18 segundos
+si algún patrón de los que está acá hace que la neurona 2 se corra hacia allá
+3:27
+3 minutos y 27 segundos
+la 1 también se va a correr esa cantidad de ella que podemos observar de esto
+3:34
+3 minutos y 34 segundos
+si suponemos en principio que tanto en este conjunto de la izquierda como de la derecha a igual cantidad de puntos
+3:43
+3 minutos y 43 segundos
+ambas neuronas van a estar traccionadas o atraídas hacia la derecha o hacia la izquierda por igual
+3:51
+3 minutos y 51 segundos
+pero siempre las dos van a estar traccionadas hacia arriba en ese esquema nosotros podemos pensar de que al
+3:58
+3 minutos y 58 segundos
+principio cuando hay un entorno estas neuronas van a ir subiendo juntas hacia arriba y luego cuando se elimine el
+4:08
+4 minutos y 8 segundos
+entorno en las etapas finales del aprendizaje estas neuronas van a si realmente empezar a tomar un camino hacia
+4:16
+4 minutos y 16 segundos
+el centro del grupo que le corresponde por cercanía realmente esto hace que
+4:24
+4 minutos y 24 segundos
+sea como sea que hayan iniciado sus posiciones la neurona 1 y la neurona
+4:32
+4 minutos y 32 segundos
+2 el hecho de que estén conectadas por la vecindad va a ser que se vayan en este caso a la zona de arriba del
+4:42
+4 minutos y 42 segundos
+espacio de soluciones las dos se van a mover juntas o sea van a ir hacia una misma región del espacio
+4:50
+4 minutos y 50 segundos
+eso es interesante porque quiere decir que estas conexiones las conexiones que hay topológicas entre las neuronas
+4:58
+4 minutos y 58 segundos
+tiene una importancia dado que van a ser que neuronas que están cercanas en este caso estamos tomando el ejemplo de la 1
+5:06
+5 minutos y 6 segundos
+y la 2 representen regiones cercanas también del espacio de soluciones y claramente para este ejemplo en la
+5:15
+5 minutos y 15 segundos
+neurona 4 que no está conectada con la neurona 1 no va a ir a esas regiones del espacio o no va a estar cerca en las
+5:23
+5 minutos y 23 segundos
+regiones del espacio de la neurona 1 así que acá encontramos una cuestión fundamental en los mapas out
+5:30
+5 minutos y 30 segundos
+organizativos que es cómo se genera el ordenamiento topológico cómo se da qué
+5:37
+5 minutos y 37 segundos
+neuronas que están cerca en el mapa 2 d representan
+5:46
+5 minutos y 46 segundos
+patrones que están cerca en el espacio n dimensional de entrada quizás en un espacio en helados es obvio y por eso lo
+5:55
+5 minutos y 55 segundos
+elegimos porque lo podemos graficar pero imagínense que para el caso general este espacio
+6:02
+6 minutos y 2 segundos
+está en el ala l podría estar en el real a 200 jóvenes relación y nosotros vamos a saber que las neuronas que están cerca
+6:11
+6 minutos y 11 segundos
+en este espacio de la erre lados que siempre vamos a poder visualizar van a estar representando patrones que también van a estar cerca en ese espacio en
+6:20
+6 minutos y 20 segundos
+relación o ere la 200 una forma de graficar el resultado de
+6:26
+6 minutos y 26 segundos
+esto es poner las neuronas de acuerdo a sus pesos acá estaría el w 2 con sus dos
+6:34
+6 minutos y 34 segundos
+coordenadas coordenadas una coordenada 2 acá podría estar el w 1 acá el doble de
+6:40
+6 minutos y 40 segundos
+4 dijimos y acá el w 3 estos son todos doctorcitos
+6:48
+6 minutos y 48 segundos
+y podríamos trazar líneas que denotan las conexiones habíamos dicho que la 1 está conectada con la 2 esa que está
+6:55
+6 minutos y 55 segundos
+marcada ahí la 2 está conectada con la 4 entonces lo podemos dibujar acá
+7:02
+7 minutos y 2 segundos
+la 4 está conectada con la 3 lo podemos dibujar acá y la 1 también está conectada con la 3
+7:11
+7 minutos y 11 segundos
+nosotros podríamos observar con este esta forma de graficar lo como ese
+7:18
+7 minutos y 18 segundos
+ordenamiento topológico va evolucionando a lo largo del tiempo como se imaginan que esto evoluciona a lo largo del
+7:26
+7 minutos y 26 segundos
+tiempo al principio se acuerdan que teníamos valores pequeños al azar entonces de
+7:33
+7 minutos y 33 segundos
+acuerdo a las condiciones que hicimos tendríamos algo así habíamos dicho
+7:40
+7 minutos y 40 segundos
+sería como una pequeña malla que a medida que se van organizando se va desplegando
+7:50
+7 minutos y 50 segundos
+como si yo estuviera abriendo un pañuelo hasta que cubre todo el espacio que tiene que cubrir
+8:01
+8 minutos y 1 segundo
+esto es como se van organizando todo lógicamente en las neuronas en el espacio de soluciones que acá tienen dos
+8:08
+8 minutos y 8 segundos
+dimensiones que por eso lo podemos visualizar de esto se han hecho muchos ejemplos y como yo les anticipaba es la verdadera
+8:18
+8 minutos y 18 segundos
+razón por la cual los mapas out organizativos tienen un interés práctico es decir que yo pueda representar un
+8:26
+8 minutos y 26 segundos
+espacio general a n en dimensiones que no puedo visualizar que no me las puedo imaginar y proyectarlo en un mapa bidimensional
+8:35
+8 minutos y 35 segundos
+de neuronas donde las neuronas que están cerca agrupan o representan patrones que
+8:43
+8 minutos y 43 segundos
+también están cerca en el espacio es bidimensional que no puedo visualizar y sobre esto hay algunas aplicaciones
+8:49
+8 minutos y 49 segundos
+tradicionales que fue el que propuso originalmente estas arquitecturas hizo un espacio de
+8:57
+8 minutos y 57 segundos
+una organización o arquitectura hexagonal en el cual puso los distintos fonemas para este caso es para el caso
+9:06
+9 minutos y 6 segundos
+del finlandés los distintos problemas del idioma y grabó un registro sonoro
+9:13
+9 minutos y 13 segundos
+con cada fonema distinto varias veces de hecho por distintas personas y esos vectores imagínense los vectores que
+9:22
+9 minutos y 22 segundos
+tienen cada fonema que un montón de elementos que devienen de la grabación y algún análisis en frecuencia en
+9:29
+9 minutos y 29 segundos
+definitiva es el patrón el dato todos esos vectores sin decirle
+9:36
+9 minutos y 36 segundos
+cuál es la a o cuál es la cual al ave larga la j se nos mostró al mapa auto
+9:43
+9 minutos y 43 segundos
+organizativo lo que observo es que este mapa con esta capacidad de ordenamiento topológico a grupo todos los fonemas
+9:51
+9 minutos y 51 segundos
+parecidos a la exigencia que hasta la h en una región del mapa todos los fonemas
+10:00
+10 minutos
+fíjense acá están las p las que son fonemas explosivos porque es el pp tiene
+10:07
+10 minutos y 7 segundos
+un sonido distinto los grupos en otra zona el mapa lo mismo que acá y así con las distintas acá están las
+10:16
+10 minutos y 16 segundos
+dos acá están las y las se agruparon a distintas regiones bien identificadas aquellos fonemas que eran parecidos
+10:24
+10 minutos y 24 segundos
+el nuevo lo que hizo es para cada neurona fijarse cuál era la mayoría de patrones que ganaban para esa neurona
+10:32
+10 minutos y 32 segundos
+por ejemplo en la esa la mayoría la nada y le puso como etiqueta esas neuronas la neurona que representa a la a
+10:40
+10 minutos y 40 segundos
+entonces con esto él demostró que sin supervisar sin decirle esta es una está una o ésta una vez el mapa organizativo
+10:49
+10 minutos y 49 segundos
+tenía la capacidad de proyectar un espacio n dimensional en un espacio bidimensional
+10:57
+10 minutos y 57 segundos
+donde las neuronas cercanas representaban los mismos patrones o la misma clase de patrones cercanos esto
+11:06
+11 minutos y 6 segundos
+luego lo que hacía era pronunciar una palabra y ir marcando a medida que se
+11:15
+11 minutos y 15 segundos
+pronunciaba una palabra cuáles eran las neuronas que se activaban entonces se podía hacer un camino el inicio de la palabra hasta el
+11:22
+11 minutos y 22 segundos
+final que identificaba qué palabra era la que se había pronunciado por ejemplo a lo mejor acá dijimos ao
+11:30
+11 minutos y 30 segundos
+[Música]
+11:33
+11 minutos y 33 segundos
+y es ahora cualquier cosa acá por ejemplo queremos decir hola entonces hola sería
+11:42
+11 minutos y 42 segundos
+algo así va desde la hoja la l y después vuelve la entonces cada palabra tenía su camino en el mapa si permitía
+11:50
+11 minutos y 50 segundos
+identificar las de las demás en también en sus trabajos originales propuso otras aplicaciones muy
+11:58
+11 minutos y 58 segundos
+interesantes en este caso lo que hizo fue tomar un montón de características de
+12:05
+12 minutos y 5 segundos
+distintos países como la cantidad de habitantes la superficie la cantidad de
+12:13
+12 minutos y 13 segundos
+la renta per cápita que es la cantidad de la producción el pp y total montones
+12:20
+12 minutos y 20 segundos
+de características de los países y las puso en un vector de entrada un vector x donde en x1 tenía la cantidad de
+12:29
+12 minutos y 29 segundos
+instante en x2 el ingreso per cápita en x 3 la cantidad de proteínas que se consumían etcétera etcétera ese vector
+12:38
+12 minutos y 38 segundos
+de entrada sin decirle de qué país era en los puso todos en un archivo sin poner qué país era si no mostró una parte administrativo y el mapa
+12:47
+12 minutos y 47 segundos
+organizativo al grupo de forma no supervisada a los países lo que se encontró en ese mapa y acá
+12:55
+12 minutos y 55 segundos
+están los distintos países por zonas cada zona amarilla acá están pintados con distintos colores para agruparlos y
+13:03
+13 minutos y 3 segundos
+si luego ponemos los países en el mapa de todo el mundo pintado con el color
+13:10
+13 minutos y 10 segundos
+correspondiente encontramos este mapa que como verán tiene algunas similitudes muy particulares fíjense que
+13:18
+13 minutos y 18 segundos
+prácticamente todo áfrica está pintado el mismo color canadá y eeuu están tentados el mismo color quiere decir que cayeron en la
+13:25
+13 minutos y 25 segundos
+misma neurona argentina y méxico están pintados también del mismo color o sea que es claramente el mapa sin que
+13:34
+13 minutos y 34 segundos
+le digamos qué país es supo group a los países de acuerdo a sus características
+13:41
+13 minutos y 41 segundos
+finalmente pueden ver de estos ejemplos muchos en el demo que trae matlab pueden ver muchos ejemplos de aplicaciones muy
+13:49
+13 minutos y 49 segundos
+interesantes con los mapas auto organizativos
+Sincronizar con el tiempo del vídeo

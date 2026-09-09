@@ -1,0 +1,244 @@
+entonces estamos hablando de cómo podemos medir la capacidad de generalización es decir yo quiero saber
+0:12
+12 segundos
+cuando estoy desarrollando un sistema inteligente que también va a funcionar en la realidad en definitiva que también
+0:19
+19 segundos
+va a funcionar obtener una estimación por lo menos de que también va a funcionar con datos que no son estrictamente los que yo tengo para
+0:27
+27 segundos
+entrenarlo y en realidad esa es la verdadera tasa de error o tasa de aciertos que yo quiero conocer no la que
+0:35
+35 segundos
+logró con los datos que tengo para entrenar porque esa como vimos antes la puedo puede llegar a ser el error cero con un modelo lo suficientemente
+0:44
+44 segundos
+complejo con esos datos ahora la pregunta es que también va a funcionar con datos que nunca vio entonces ahora
+0:51
+51 segundos
+lo que vamos a ver en esta parte es estrategias para tratar de medir de estimar y hacer una estimación de que también va a funcionar vamos a suponer
+1:00
+1 minuto
+que tenemos patrones de este tipo este es un ejemplo didáctico simplemente podría ser que
+1:08
+1 minuto y 8 segundos
+a un determinado paciente le medimos distintas variables como podría ser la
+1:15
+1 minuto y 15 segundos
+frecuencia respiratoria en algún tipo de unidad o la frecuencia cardíaca o la cantidad de tal molécula en la sangre o
+1:24
+1 minuto y 24 segundos
+etcétera etcétera podría ser algo relacionado con la altura del peso
+1:30
+1 minuto y 30 segundos
+la masa corporal y tenemos algunos casos que podemos decir son enfermos que
+1:39
+1 minuto y 39 segundos
+tienen una determinada enfermedad que estamos estudiando queremos clasificar y otros que son sanos entonces a los enfermos les vamos a poner por ejemplo
+1:47
+1 minuto y 47 segundos
+uno es que son los que queremos detectar y a los sanos en este último valor es las clases que queremos hacer que
+1:55
+1 minuto y 55 segundos
+nuestro sistema prenda entonces eso pueden ser datos insisto de cualquier cosa podrían ser datos de queremos hacer
+2:03
+2 minutos y 3 segundos
+un detector de spam entonces tiene que ver con las palabras que tienen la extensión del mensaje etcétera etcétera
+2:10
+2 minutos y 10 segundos
+etcétera y acá tenemos nuevamente es spam no es estamos haciendo un clasificador binario o sea que tienen
+2:17
+2 minutos y 17 segundos
+dos clases nomás para simplificar el ejemplo pero por supuesto todo esto que vamos a ver se puede extender a clasificadores de muchas
+2:26
+2 minutos y 26 segundos
+bueno así que tenemos ahí un caso un patrón un ejemplo y por supuesto lo que vamos a tener nosotros un archivo con
+2:33
+2 minutos y 33 segundos
+montones de casos cada línea cada fila de este archivo es un ejemplo
+2:40
+2 minutos y 40 segundos
+que tenemos para entrenar y cada ejemplo tiene asociada su clase
+2:48
+2 minutos y 48 segundos
+este ejemplo que acá vemos de forma numérica lo vamos a representar gráficamente con esto que es simplemente
+2:55
+2 minutos y 55 segundos
+poner en color las distintas intensidades que tenga cada una de las dimensiones o mediciones que hicimos de
+3:03
+3 minutos y 3 segundos
+cada caso y acá en las filas uno por uno en cada fila tenemos un caso si está
+3:11
+3 minutos y 11 segundos
+pintado negro será porque es 1 habíamos dicho por ejemplo patológico o tiene spam
+3:19
+3 minutos y 19 segundos
+y si está pintado de blanco acá la última columna es porque es 0 entonces con esta representación gráfica es que
+3:28
+3 minutos y 28 segundos
+vamos a hacer los ejemplos siguientes vamos a suponer que este es generalmente el data set el conjunto de datos que
+3:37
+3 minutos y 37 segundos
+tenemos para entrenar nuestro sistema vamos a decir más que para entrenarlo para desarrollarlo en definitiva
+3:45
+3 minutos y 45 segundos
+y como vemos acá todos estos son de clase 1 todos estos son de clase 2 case zero 10 son las dos clases que tenemos
+3:54
+3 minutos y 54 segundos
+generalmente los datos suelen estar así ordenados y esto es un problema porque supongamos
+4:01
+4 minutos y 1 segundo
+que yo decido dejar todos estos primeros para la prueba y como hacíamos antes
+4:08
+4 minutos y 8 segundos
+todos los restantes para el entrenamiento fíjense que voy a dejar en la prueba solamente escasos de la clase
+4:16
+4 minutos y 16 segundos
+1 e incluso podrían ser casos más fáciles más difíciles porque está en el principio entonces lo primero que vamos a hacer para un poco romper esta
+4:25
+4 minutos y 25 segundos
+estructura natural que tiene los datos y que es totalmente artificiosa en el sentido de que la organizan organizado
+4:32
+4 minutos y 32 segundos
+así porque alguien los puso así nada más vamos a desordenar esto estos son exactamente los mismos datos nada más
+4:40
+4 minutos y 40 segundos
+que están re ordenados al azar entonces ahora sí podemos tomar un bloque citó acá y dejarlo para prueba y vamos a
+4:49
+4 minutos y 49 segundos
+tener más o menos igual representada la clase 1 y la clase 0 así que el primer paso
+4:56
+4 minutos y 56 segundos
+que esto se puede hacer fácilmente generando un vector en memoria con los índices del 1 por ejemplo acá si hubiera
+5:05
+5 minutos y 5 segundos
+100 datos del 1 al 100 desordenados y después indexando los datos con eso de una manera sencilla no hay necesario
+5:11
+5 minutos y 11 segundos
+regenerar todos los datos entonces primer paso que tenemos esto desordenado y luego lo que vamos a hacer es en lo
+5:19
+5 minutos y 19 segundos
+que vimos antes de decir bueno me tomo por ejemplo 10 casos y los dejo para la
+5:28
+5 minutos y 28 segundos
+prueba mientras que los otros 90 que están acá los uso para entrenar así que yo lo que voy a hacer es
+5:37
+5 minutos y 37 segundos
+medir el error de prueba fíjense que a mí lo que me interesa es el error que se
+5:44
+5 minutos y 44 segundos
+comete con estos datos por supuesto durante el entrenamiento si yo quiero ir haciendo el monitoreo puedo ir viendo
+5:51
+5 minutos y 51 segundos
+qué va pasando con un sub set que yo defina acá que sea para monitoreo y también voy a ir midiendo con los datos
+6:00
+6 minutos
+de entrenamiento propiamente dicho si el algoritmo va funcionando bien si converge si va bajando el error durante tiene que bajar siempre tiene que bajar
+6:09
+6 minutos y 9 segundos
+no pero el dato que me interesa definitivamente después de todo esto es que también funciona con estos que están
+6:17
+6 minutos y 17 segundos
+acá los que son de prueba yo podría preguntarme en este punto si justo no vaya a ser que tuve la mala
+6:25
+6 minutos y 25 segundos
+suerte de que estos diez primeros que agarré eran casos difíciles entonces este error me va a dar muy bajo pero en
+6:34
+6 minutos y 34 segundos
+realidad porque justo me tocó que era muy difícil o al revés justo por el azar la mayoría de esos diez siete ocho de los diez eran unos casos muy triviales
+6:43
+6 minutos y 43 segundos
+muy elementales y acabé va a dar una tasa de error muy baja pero en realidad no es muy creíble entonces lo que lo que
+6:53
+6 minutos y 53 segundos
+se hace para evitar que esta selección esté sesgada esté a favor o en contra
+7:00
+7 minutos
+pero sesgada es repetir este mecanismo muchas veces entonces yo lo que voy a
+7:05
+7 minutos y 5 segundos
+hacer ahora en esta segunda prueba lo que voy a hacer es separar otros 10 distintos
+7:13
+7 minutos y 13 segundos
+y eso la cantidad que sea los voy a dejar para prueba esta sería la segunda prueba esto sería la prueba 1 y voy a
+7:22
+7 minutos y 22 segundos
+entrenar con todos los otros estos más estos con todos los otros vendrán y eso lo pueden hacer muchas veces por ejemplo en
+7:32
+7 minutos y 32 segundos
+el caso de que tenga 100 casos sin ejemplos en mí en mi base de datos en inmediata se podría ir tomando de a 10 y
+7:40
+7 minutos y 40 segundos
+muy puedo hacer 10 particiones a cada una de estas se le llama partición de
+7:47
+7 minutos y 47 segundos
+los datos y para cada una de esas 10 particiones inicio desde cero arrancó como si no sé
+7:56
+7 minutos y 56 segundos
+nada no es que me guardo lo que ya tengo entrenado ni nada por el estilo sino que vuelvo a iniciar por ejemplo en el caso de una red neuronal al azar
+8:03
+8 minutos y 3 segundos
+completamente todos los pesos entre no hago el entrenamiento completo con el algoritmo que sea con monitoreo sin
+8:11
+8 minutos y 11 segundos
+monitoreo como como sea que yo esté entrenando y después mido el error de prueba 1
+8:17
+8 minutos y 17 segundos
+después mido el error de prueba 2 y eso lo voy a hacer muchas veces acá está el
+8:25
+8 minutos y 25 segundos
+error de prueba 3 y seguiré seguiré seguiré hasta que obtengo acá el error de prueba
+8:33
+8 minutos y 33 segundos
+en este caso para este ejemplo sería el error de prueba 10 entonces qué hago después con todo eso bueno ahí yo tengo
+8:40
+8 minutos y 40 segundos
+una estimación un poquito más global y yo podría decir que acá tengo el error de prueba 1 que me di con estos después
+8:47
+8 minutos y 47 segundos
+tengo el error de prueba 2 que me di con estos por acá en el medio tendré el error de prueba y estimo
+8:55
+8 minutos y 55 segundos
+hasta que llegaría a tener error de prueba en que supongamos que es el total de particiones que yo hice y después qué
+9:04
+9 minutos y 4 segundos
+puedo hacer y bueno sacó un promedio de eso pongo uno sobre n acá de con y desde uno hasta n y promedió los errores de
+9:13
+9 minutos y 13 segundos
+pruebas útil y tengo ahí una estimación de que también va a funcionar mi algoritmo con
+9:22
+9 minutos y 22 segundos
+datos que nunca vio y este es el verdadero error que a mí me interesa y poder decirle a alguien mira este
+9:31
+9 minutos y 31 segundos
+algoritmo que yo hice de entrenamiento con este modelo neuronal o el modelo que sea se espera que tenga con datos nunca
+9:38
+9 minutos y 38 segundos
+vistos un error del tanto por ciento esta es una metodología por supuesto hay
+9:44
+9 minutos y 44 segundos
+cosas más complejas tiene sus falencias por ejemplo lo que podría pasar es que
+9:51
+9 minutos y 51 segundos
+yo vea que la diferencia entre estos errores sea muy grande por ejemplo que éste me dé el 1 por ciento de error y
+10:00
+10 minutos
+éste me dé el 40 por ciento de error y éste me dé el 0,5 por ciento de error y éste me dé el 80 por ciento de error ahí
+10:08
+10 minutos y 8 segundos
+tengo eso que me está diciendo que acá hay algo raro con los datos porque estas particiones que estoy haciendo yo son muy diferentes entre sí entonces ahí
+10:17
+10 minutos y 17 segundos
+tengo algún problema con los datos por eso una recomendación es medir la varianza ósea no sólo medir la media del error
+10:25
+10 minutos y 25 segundos
+que es lo que estábamos haciendo acá el error promedio sino también por las dudas medir la varianza de error y asegurarse de que no sea tan grande
+10:33
+10 minutos y 33 segundos
+si es chica entonces quiere decir que estas particiones son bastante buenas y no tengo que preocuparme más pero si
+10:41
+10 minutos y 41 segundos
+grabar si me da un error del 5% pero con una variante del 20 o una cosa así entonces hay un problema la varianza
+10:49
+10 minutos y 49 segundos
+mucho más grande que el error quiere decir que acá estoy teniendo un problema en la forma tradicional

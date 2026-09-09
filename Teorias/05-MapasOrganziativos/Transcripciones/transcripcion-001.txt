@@ -1,0 +1,229 @@
+vamos a comenzar con un nuevo tipo de redes neuronales ya vamos a dejar los perceptores multicapa y las otras que
+0:12
+12 segundos
+eran un poco parecidas a las de las funciones de base radial y vamos a ver un tipo de red neuronal bastante
+0:19
+19 segundos
+diferente a las anteriores estas son los denominados mapas auto organizativos
+0:26
+26 segundos
+y vamos a primero decidir un poco de qué hablamos con autoorganización decimos
+0:33
+33 segundos
+que hay procesos que se auto organizan hay estructuras que se auto organizan y
+0:41
+41 segundos
+la idea general es que hay algunas interacciones locales que hacen de un comportamiento global mucho más complejo
+0:50
+50 segundos
+a partir de la definición de cómo se relacionan algunos elementos de la estructura hace que mirando la
+0:59
+59 segundos
+estructura en general se vean comportamientos bastante complejos que van más allá en principio de la simple
+1:07
+1 minuto y 7 segundos
+regla de cómo se comporta cada uno de los elementos este concepto de autoorganización lo vamos a usar hoy pero también lo vamos a ver más adelante
+1:16
+1 minuto y 16 segundos
+en la tercera parte de la asignatura cuando veamos los métodos de inteligencia colectiva
+1:24
+1 minuto y 24 segundos
+un caso muy ejemplar de autoorganización es por ejemplo el de las hormigas donde las
+1:30
+1 minuto y 30 segundos
+hormigas no tienen un cerebro general que les dice a todos a dónde ir sino que
+1:38
+1 minuto y 38 segundos
+cada una sigue algunas reglas muy elementales pero si uno mira toda la estructura del hormiguero como recolecta
+1:45
+1 minuto y 45 segundos
+el alimento y todo eso uno ve que hay una organización muy compleja sin embargo no hay un cerebro que las gobierna todo ese proceso por el cual
+1:52
+1 minuto y 52 segundos
+los elementos que componen la estructura tienen un comportamiento sencillo y unas reglas elementales pero emerge un
+2:00
+2 minutos
+comportamiento global complejo se le llama autoorganización este concepto de autoorganización fue definido hace
+2:07
+2 minutos y 7 segundos
+muchos años que por supuesto intuitivamente se conocen desde hace mucho más otros ejemplos que podemos dar
+2:15
+2 minutos y 15 segundos
+para completar la idea es la ubicación de los alumnos en el curso por ejemplo cuando iniciamos el cruzado
+2:25
+2 minutos y 25 segundos
+todos se agrupan sin ninguna estructura en particular y a medida que va avanzando el cruzado hay algunos que se
+2:34
+2 minutos y 34 segundos
+unen con otros para hacer grupo en la práctica otros se conocían de antes y empiezan a estudiar juntos y de esa
+2:43
+2 minutos y 43 segundos
+manera de a poco se van organizando se van estructurando y probablemente cuando
+2:48
+2 minutos y 48 segundos
+lleguemos cerca del final del cruzado ya haya grupos bien definidos que siempre se sientan juntos o más o menos juntos
+2:57
+2 minutos y 57 segundos
+en la misma zona del aula esa organización no fue generada porque yo vine y dije bueno vos te sentás acá
+3:05
+3 minutos y 5 segundos
+votes está vallada etcétera etcétera no vino alguien de afuera y dijo dónde se tiene que sentar cada uno sino que cada
+3:13
+3 minutos y 13 segundos
+uno de acuerdo algunas reglas particulares se pues se fue poniendo de acuerdo con otros y fueron armando se
+3:20
+3 minutos y 20 segundos
+grupos estables que después siguieron a lo mejor desde la mitad del cuatrimestre en adelante otro caso
+3:27
+3 minutos y 27 segundos
+típico de autoorganización y que es el origen de estas redes neuronales que vamos a ver hoy es el caso de las
+3:35
+3 minutos y 35 segundos
+células del cerebro o sea de las neuronas que en determinadas regiones se organizan de acuerdo a la información o
+3:43
+3 minutos y 43 segundos
+al estímulo que reciben por ejemplo todas las neuronas que tienen relación con el sentido del tacto en la mano el
+3:52
+3 minutos y 52 segundos
+cerebro la corteza cerebral están ubicados en una misma zona y por qué eso porque a medida que se fueron
+3:58
+3 minutos y 58 segundos
+organizando estructuralmente aquellas neuronas que recibían información similar iban comenzando a funcionar de
+4:07
+4 minutos y 7 segundos
+manera similar entonces en regiones cercanas del cerebro se iba generando una zona por ejemplo asociada al tacto
+4:15
+4 minutos y 15 segundos
+en la mano otra asociada al tacto en el pie otra a funciones motoras que tienen que ver también con las mismas zonas y
+4:24
+4 minutos y 24 segundos
+así otro ejemplo de órganos de autoorganización del cerebro son las células de la vista y particularmente
+4:32
+4 minutos y 32 segundos
+vamos a hablar de la retina y de las células nerviosas que están en la retina que se llaman conos y bastones unos son
+4:39
+4 minutos y 39 segundos
+para ver los bordes principalmente las formas y los otros nos permiten distinguir los colores se han hecho
+4:46
+4 minutos y 46 segundos
+experimentos en alguna etapa temprana del análisis de cómo funcionaba la retina y se demostró que en gran medida
+4:54
+4 minutos y 54 segundos
+las células de la retina también se entrenan no es que nacemos sabiendo ver sino que aprendemos a ver con el tiempo
+5:02
+5 minutos y 2 segundos
+entonces es un ejemplo típico de estos experimentos que se hacían con gatos a
+5:09
+5 minutos y 9 segundos
+un gato se lo apenas nacía se lo ponía en una habitación donde había solo barras horizontales entonces a otro gatito en las mismas
+5:17
+5 minutos y 17 segundos
+condiciones se lo pone en una habitación donde había sólo columnas óseas barras verticales el gato que estaba en las
+5:25
+5 minutos y 25 segundos
+barras horizontales aprendía a saltar a esquivar las barras y se los dejaba crecer en ese ambiente de barras
+5:34
+5 minutos y 34 segundos
+horizontales el otro aprendía a ver los bordes en vertical digamos sean las columnas verticales que él aprendió a
+5:41
+5 minutos y 41 segundos
+esquivar después se lo cruzaban de sala o se lo ponía en el mundo normal y lo que era sorprendente es que el gasto que
+5:50
+5 minutos y 50 segundos
+había nacido y vivido dentro de la habitación con barras horizontales se chocaba las columnas verticales porque
+5:57
+5 minutos y 57 segundos
+directamente no las veía directamente los bordes verticales su retina no había aprendido a distinguirlos
+6:05
+6 minutos y 5 segundos
+esas estructuras que se auto organizan en el cerebro o en la retina como el ejemplo que recién fueron la fuente de
+6:14
+6 minutos y 14 segundos
+inspiración para las redes neuronales que vamos a ver hoy insisto hay una autoorganización y nadie le decía al
+6:22
+6 minutos y 22 segundos
+gato vos tenés que aprender que acá son unas cosas horizontales o acá son cosas verticales la retina sola y van aprendiendo a detectar los bordes
+6:30
+6 minutos y 30 segundos
+verticales o los bordes horizontales de acuerdo como eran estimulados por las entradas visuales
+6:37
+6 minutos y 37 segundos
+vamos a ver en primer lugar la arquitectura de estas redes neurales es decir cómo se conectan cómo están
+6:44
+6 minutos y 44 segundos
+organizadas las neuronas en este gráfico tenemos un plano donde cada elemento es
+6:51
+6 minutos y 51 segundos
+una neurona fíjense que tenemos una cantidad de neuronas en lo ancho y a
+6:58
+6 minutos y 58 segundos
+lo largo y que las neuronas están todas una al lado de la otra es decir hay una sola capa
+7:05
+7 minutos y 5 segundos
+primero observación importante y esa capa está organizada en un plano
+7:14
+7 minutos y 14 segundos
+esto del plano tiene que ver con cómo se ubican las neuronas de la retina y fue ahí donde se inspiró principalmente
+7:21
+7 minutos y 21 segundos
+que fue el que propuso en los años 80 esta arquitectura y por eso la hizo con esta forma
+7:30
+7 minutos y 30 segundos
+este plano de neuronas o esta capa de neuronas va a recibir estímulos o entradas como siempre ha sido
+7:38
+7 minutos y 38 segundos
+supongamos que tenemos un vector de entradas que tiene n entradas doctor en
+7:44
+7 minutos y 44 segundos
+el rea la n iv el selector de entrada se va a conectar con todas las neuronas o
+7:52
+7 minutos y 52 segundos
+sea a partir de cada una de las entradas va a haber un peso que conecta a esa
+8:01
+8 minutos y 1 segundo
+entrada con todas todas todas las neuronas de esa capa neuronal con forma de plano de
+8:09
+8 minutos y 9 segundos
+neuronas así que es una conducción todos contra todos esta es la arquitectura básica hay
+8:15
+8 minutos y 15 segundos
+muchísimas variantes que algunas vamos a empezar a analizar más adelante pero lo importante es esto hay un vector de
+8:23
+8 minutos y 23 segundos
+entrada una matriz de pesos como teníamos antes y un plano de neuronas o una capa de
+8:31
+8 minutos y 31 segundos
+neuronas interconectadas esto también lo podemos ver desde otra perspectiva podemos considerar una
+8:39
+8 minutos y 39 segundos
+neurona s sub j esa neurona s sub j podría ser esta que indicamos acá que
+8:48
+8 minutos y 48 segundos
+está sombreada en negro y cada una de las entradas va a tener un peso asociado
+8:58
+8 minutos y 58 segundos
+a esa neurona j o sea que va a ser el peso de la entrada 1 con la neurona j el peso de entrada 2 con la neurona j y así
+9:06
+9 minutos y 6 segundos
+lo que me va a dar un vector de pesos w sub j o sea que cuando hablemos de w en negritas sub j vamos a estar hablando de
+9:15
+9 minutos y 15 segundos
+todos los pesos que están asociados a la neurona j por supuesto que provienen de cada una de las entradas entonces básicamente lo que sucede
+9:24
+9 minutos y 24 segundos
+cuando un estímulo a esta red neuronal es que hay una de las neuronas que se activa de
+9:33
+9 minutos y 33 segundos
+esta es una primera particularidad de los mapas auto organizativos y que es que son arquitecturas competitivas son
+9:43
+9 minutos y 43 segundos
+redes neuronales de competencia es decir cuando llegue una entrada se hace una comparación entre la entrada
+9:51
+9 minutos y 51 segundos
+y todos los vectores de pesos fíjense que este basso de todos los jotas y aquel que
+10:01
+10 minutos y 1 segundo
+tiene la menor distancia es decir aquel vector de peso que se parece más a la entrada define cuál es la neurona
+10:08
+10 minutos y 8 segundos
+ganador o sea que sólo gana una y le vamos a llamar j asterisco

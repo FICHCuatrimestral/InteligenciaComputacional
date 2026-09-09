@@ -1,0 +1,4 @@
+023_Formacion_de_mapas_topologicos_02
+3'29"
+
+La línea que indica hacia dónde se movería el centroide de la neurona 1 debería ser levemente más horizontal, en la dirección al patrón que acaba de ingresar, y no con la misma inclinación que el cambio que hubo en el centroide de la neurona ganadora.

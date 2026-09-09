@@ -1,0 +1,272 @@
+5 segundos
+vamos a comenzar con esta clase bastante particular acerca de la capacidad de generalización y algunos conceptos que
+0:13
+13 segundos
+vamos a ir viendo muy relacionados con esto de la capacidad que tienen los sistemas inteligentes para digamos
+0:21
+21 segundos
+funcionar bien en aquellos casos o ejemplos que nunca vieron durante el ajuste o el entrenamiento
+0:29
+29 segundos
+lo primero que vamos a repasar un poco algo algo de esto hemos hablado es la idea de superficie de error
+0:37
+37 segundos
+en primer lugar pensemos que hay un único parámetro que ajustar por ejemplo podríamos pensar en algo tan elemental como una red neuronal que tiene una
+0:47
+47 segundos
+entrada una salida y un único peso un único valor que hay que ajustar no
+0:55
+55 segundos
+tienes eso no tiene nada o podría ser cualquier sistema básico que quisiéramos ajustarnos entonces para
+1:03
+1 minuto y 3 segundos
+distintos valores de s w o el parámetro que sea yo voy a poder medir un error un
+1:11
+1 minuto y 11 segundos
+error que comete el sistema una diferencia entre la salida correcta o la salida esperada y la salida que
+1:19
+1 minuto y 19 segundos
+realmente da el sistema vamos a suponer que ese error le llamamos es simplemente y ese error para distintos valores del
+1:27
+1 minuto y 27 segundos
+parámetro para un parámetro de por ejemplo 0 1 podrá tener un error determinado para un
+1:36
+1 minuto y 36 segundos
+parámetro de 0 2 podrá tener otro error y así para cualquier valor continuo de
+1:44
+1 minuto y 44 segundos
+ese parámetro que es un número real yo podría tener una superficie una curva en este caso simplemente en donde hay un
+1:52
+1 minuto y 52 segundos
+valor óptimo para ese parámetro y que por supuesto es el que pretendo que mi algoritmo de
+2:00
+2 minutos
+entrenamiento encuentre así que esto sería más más que una superficie error sería una curva de error
+2:08
+2 minutos y 8 segundos
+en una sola dimensión y podríamos empezar a tratar de pensar en que pasan
+2:14
+2 minutos y 14 segundos
+más dimensiones entonces si tenemos por ejemplo dos dimensiones qué significa que tengamos dos
+2:22
+2 minutos y 22 segundos
+dimensiones bueno significa que tenemos ahora un sistema una reunión hará lo que sea que tiene acá dos ejes donde hay un
+2:31
+2 minutos y 31 segundos
+w 1 y un w 2 podría ser que acá en este eje nuevamente medimos el error
+2:39
+2 minutos y 39 segundos
+podríamos dibujarlo así para dar un ejemplo podríamos pensar que o bien tiene dos entradas o tiene una entrada y
+2:47
+2 minutos y 47 segundos
+el sesgo de ella acá está el w 1 el w 2 y para distintos valores de esos dobles
+2:57
+2 minutos y 57 segundos
+este sistema alimenta al barco va a cometer los errores más altos o errores más bajos y por acá es por donde se supone que
+3:06
+3 minutos y 6 segundos
+partiendo de un punto dado e iremos por ejemplo con el método de gradiente bajando hasta encontrar
+3:14
+3 minutos y 14 segundos
+ahora esto es un vector de dos componentes el w óptimo esto sigue siendo un ejemplo demasiado
+3:24
+3 minutos y 24 segundos
+trivial por supuesto nosotros sabemos que tenemos muchísimos parámetros en los sistemas inteligentes reales pueden ser
+3:31
+3 minutos y 31 segundos
+cientos miles cientos de miles de parámetros no solamente los pesos podemos pensar en que también un
+3:39
+3 minutos y 39 segundos
+parámetro es la cantidad de neuronas ocultas la cantidad de neuronas en la capa oculta la cantidad de capas son parámetros en definitiva no se entrenan
+3:48
+3 minutos y 48 segundos
+o por lo menos no hemos visto cómo entrenarlo automáticamente como el caso de los pesos pero parámetros en general son
+3:55
+3 minutos y 55 segundos
+cualquier número que define la estructura y las conexiones de nuestro sistema inteligente en este caso
+4:04
+4 minutos y 4 segundos
+me parece una cosa muy sencilla una extensión de lo que vimos en una dimensión y parece que hay un único
+4:11
+4 minutos y 11 segundos
+mínimo y bastante fácil de encontrar con cualquier algoritmo de gradiente pero la cosa se puede complicar bastante acá
+4:20
+4 minutos y 20 segundos
+tenemos una superficie nuevamente pensemos en que tenemos dos dimensiones un wv 1 y un w 2 y acá
+4:30
+4 minutos y 30 segundos
+como siempre tenemos alguna medida de error de el algoritmo del sistema el modelo que estamos armando no en este
+4:39
+4 minutos y 39 segundos
+caso tenemos cuatro mínimos y hay quizás un mínimo que es un poquito más bajo que
+4:46
+4 minutos y 46 segundos
+los otros pero claramente si nuestro algoritmo comienza a buscar por acá va a
+4:53
+4 minutos y 53 segundos
+caer en un mínimo que no es el mínimo global o si inicia por acá va a caer en este otro o sea que dependiendo de donde
+5:01
+5 minutos y 1 segundo
+arranque quizá se inicia por acá va a caer en el que tiene que caer así que si empezamos a empezar un
+5:10
+5 minutos y 10 segundos
+poquito en problemas reales vamos a ver que las superficies de error por donde hay que moverse por donde el
+5:18
+5 minutos y 18 segundos
+algoritmo de entrenamiento tiene que moverse no necesariamente son tan lindas y fáciles y de hecho en la práctica
+5:25
+5 minutos y 25 segundos
+ocurre eso entonces es importante tener siempre presente la idea de que puede que el
+5:34
+5 minutos y 34 segundos
+algoritmo no sepa encontrar el mínimo global al menos los algoritmos elementales que vimos nosotros y hay
+5:41
+5 minutos y 41 segundos
+otros algoritmos bastante más complejos que tienen capacidad de salir de los mínimos locales o de explorar varias regiones de
+5:50
+5 minutos y 50 segundos
+la superficie de error al mismo tiempo por ejemplo algo muy elemental que nosotros podríamos hacer decimos bueno
+5:58
+5 minutos y 58 segundos
+inicializa mos esta red neuronal que tiene solo dos pesos la inicializa vamos a lanzar muchas veces en lugar de
+6:05
+6 minutos y 5 segundos
+inicializar la una vez y quedarnos con el mínimo que encontró la iniciamos muchas veces al azar por lo tanto va a arrancar en distintos puntos de la
+6:13
+6 minutos y 13 segundos
+superficie y nos quedamos con aquel que haya logrado el mínimo y mejor el más bajo
+6:23
+6 minutos y 23 segundos
+o sea que estaríamos repitiendo el entreno ese podría ser un método para tratar de sortear el problema este de
+6:30
+6 minutos y 30 segundos
+los mínimos locales lo importante es que tengamos presente de que muchas veces va a pasar esto que cuando encontremos que
+6:38
+6 minutos y 38 segundos
+al volver a correr una red neuronal sobre el mismo conjunto de datos donde todo parece que tendría que dar exactamente igual puede que se
+6:45
+6 minutos y 45 segundos
+encuentren resultados bastante diferentes dependiendo de la complejidad de la superficie de error que estamos
+6:52
+6 minutos y 52 segundos
+navegando o recorriendo acá hay otros ejemplos fíjense de estos son los ejemplos que teníamos primero el de los
+7:00
+7 minutos
+4 mínimos y acá hay otro ejemplo que también es particularmente está pensado para mostrar las limitaciones algoritmos
+7:07
+7 minutos y 7 segundos
+basados en gradiente que impone otra dificultad que en estos escalones que hay acá hay en gradiente
+7:16
+7 minutos y 16 segundos
+de acero entonces el algoritmo no sabe para dónde ir no sabe para dónde seguir buscando si bien globalmente nosotros podemos decir que hay un único mínimo es
+7:25
+7 minutos y 25 segundos
+fíjense que esta superficie no tiene el problema de los múltiples mínimos locales hay un solo mínimo y el mínimo
+7:32
+7 minutos y 32 segundos
+global igual el algoritmo gradiente puede tener este problema de quedarse en una receta donde no sabe bien para dónde
+7:38
+7 minutos y 38 segundos
+ir así que nuevamente se complica y acá yo muchos ejemplos en realidad podríamos
+7:46
+7 minutos y 46 segundos
+poner muchísimos más se podría decir que cada vez más realistas acá nuevamente tenemos el problema de las mesetas
+7:55
+7 minutos y 55 segundos
+acá tenemos nuevamente el problema de los mínimos locales acá hay un mínimo local claramente y acá hay un mínimo
+8:01
+8 minutos y 1 segundo
+global y dependiendo de donde yo inicié el descenso por gradiente en caso que esté trabajando con este tipo de
+8:09
+8 minutos y 9 segundos
+algoritmos voy a caer en uno o en otro acá hay una superficie ya más compleja más cercana a la realidad donde hay
+8:16
+8 minutos y 16 segundos
+varios mínimos locales de los cuales es más difícil salir y acá bueno otra superficie no es de las más complejas
+8:25
+8 minutos y 25 segundos
+pero una superficie de un caso real en donde hay muchos mínimos locales la superficie es muy irregular no es fácil
+8:33
+8 minutos y 33 segundos
+decidir hacia dónde ir para lograr llegar al mínimo global que está ahí abajo esto hay que pensar que si bien lo
+8:41
+8 minutos y 41 segundos
+podemos visualizar en dos dimensiones como yo decía antes difícilmente trabajemos en dos dimensiones en los
+8:49
+8 minutos y 49 segundos
+problemas reales así que a este problema hay que sumar el hecho de que generalmente estamos en relación o n
+8:57
+8 minutos y 57 segundos
+real a mil ong la 10.000 donde hay una cantidad de parámetros enormes y donde esas superficies de error están en un
+9:07
+9 minutos y 7 segundos
+espacio tan grande que ni siquiera podemos imaginarnos la complejidad de ese espacio los huecos que habrá en las
+9:14
+9 minutos y 14 segundos
+zonas que habrá vacías cuando más grandes son los espacios en cuanto a dimensiones más zonas vacías hay donde
+9:21
+9 minutos y 21 segundos
+no hay datos donde no está representada donde no podemos medir así que este es un problema importante hay que tenerlo
+9:28
+9 minutos y 28 segundos
+siempre presente y en alguna unidad de esta asignatura vamos a ver algunas formas de poder encarar el problema de
+9:37
+9 minutos y 37 segundos
+evitar saltearse los mínimos locales eso se llaman métodos de entrenamiento con
+9:45
+9 minutos y 45 segundos
+búsqueda global no con búsqueda puntual como es el método basado en gradiente
+9:52
+9 minutos y 52 segundos
+y un paso más para seguir entendiendo la complejidad del problema de las superficies de error en cuanto al
+10:00
+10 minutos
+entrenamiento es pensar que toda esta superficie de error la estamos midiendo durante el entrenamiento y por lo tanto
+10:08
+10 minutos y 8 segundos
+con los datos de entrenamiento pero acá surge otra pregunta más interesante que
+10:17
+10 minutos y 17 segundos
+complica más aún este problema que es qué va a pasar cuando le mostremos nuevos datos al sistema al modelo que no
+10:26
+10 minutos y 26 segundos
+haya visto durante el entrenamiento datos que son por supuesto dentro del mismo problema que estamos resolviendo
+10:33
+10 minutos y 33 segundos
+el problema sea de clasificación de lo que sea pero son datos que no vio es estrictamente un ente en el entrenamiento o sea que le van a mostrar
+10:41
+10 minutos y 41 segundos
+algunos aspectos nuevos y va a funcionar bien ahí o por el contrario va a funcionar muy bien con
+10:50
+10 minutos y 50 segundos
+los datos de entrenamiento pero cuando le mostremos a los datos de prueba va a fallar acá entramos en el concepto de capacidad
+10:58
+10 minutos y 58 segundos
+de generalización qué capacidad tiene nuestro sistema inteligente para funcionar bien en situaciones no
+11:06
+11 minutos y 6 segundos
+previstas en situaciones que nunca vio y esa es la clave y esa es la clave del entrenamiento porque nosotros no nos
+11:15
+11 minutos y 15 segundos
+sirve de nada que el sistema funcione bien con los datos de entrenamiento porque en la realidad no van a estar esos datos va a haber otros datos
+11:24
+11 minutos y 24 segundos
+parecidos por supuesto dentro de la misma población de datos pero van a ser
+11:30
+11 minutos y 30 segundos
+otros entonces de poco nos sirve que se ajuste perfectamente que reconozca perfectamente todos los entrenamientos y
+11:38
+11 minutos y 38 segundos
+después no va a ser capaz de reconocer ejemplos similares cuando esté durante la prueba entonces acá tenemos que
+11:46
+11 minutos y 46 segundos
+pensar de que nosotros del conjunto de datos que tenemos generalmente
+11:52
+11 minutos y 52 segundos
+tenemos todo esto para entrenar vamos a llamarle y tenemos otro conjunto de datos para probar
+12:00
+12 minutos
+vamos a usar ese conjunto de prueba para medir que también o para tratar de medir que también funciona el algoritmo en
+12:10
+12 minutos y 10 segundos
+datos que nunca vio

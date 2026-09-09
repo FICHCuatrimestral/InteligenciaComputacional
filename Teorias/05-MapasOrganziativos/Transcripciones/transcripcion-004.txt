@@ -1,0 +1,232 @@
+vamos a ver ahora cómo se forman estos mapas auto organizativos y cómo se
+0:10
+10 segundos
+organizan internamente en lo que denominamos mapas topológicos vamos a ver en acción digamos con unos ejemplos
+0:20
+20 segundos
+muy sencillos cómo es que va evolucionando la red neuronal a lo largo del entrenamiento vamos a empezar con un
+0:28
+28 segundos
+primer ejemplo muy elemental porque por supuesto no tiene sentido práctico no vamos a tratar de resolver ninguna
+0:36
+36 segundos
+aplicación del mundo real con solamente dos neuronas y con una entrada en el a1 y fíjense que acá es como que tenemos un
+0:45
+45 segundos
+solo valor de entrada o sea una equis que un escalar de un número real es un vector y vamos a suponer que la red
+0:54
+54 segundos
+neuronal es o sea que tiene dos neuronas una al alto la otra nada más que eso es muy
+1:01
+1 minuto y 1 segundo
+elemental entonces podemos pensar qué tenemos acá el eje real acá son las
+1:08
+1 minuto y 8 segundos
+posibles entradas pero también vamos a dibujar acá los posibles valores de los pesos
+1:15
+1 minuto y 15 segundos
+y vamos a suponer que tenemos en nuestro archivo de entrenamiento vamos a tener
+1:21
+1 minuto y 21 segundos
+que acá en -1 y en más uno un montón de valores o sea que tenemos un patrón por
+1:28
+1 minuto y 28 segundos
+ejemplo ahí ese que acabo de dibujar que vale menos 13 otro patrón que vale menos 0 9 es decir
+1:38
+1 minuto y 38 segundos
+que en ese archivo que nos imaginábamos de entradas tendríamos por cada línea un solo valor el primer valor vale menos 13
+1:45
+1 minuto y 45 segundos
+el segundo 0,9 después tenemos un 1.1 109 107 y así tenemos un montón de
+1:54
+1 minuto y 54 segundos
+patrones que están distribuidos acá en algún entorno de más 1 y de menos 1
+2:01
+2 minutos y 1 segundo
+en toda esta zona si yo los gráficas me aparecen un montón de puntitos ahí vamos a suponer ahora qué
+2:10
+2 minutos y 10 segundos
+tiramos al azar algunos valores de peso se acuerdan que habíamos dicho entre más y menos 05 el mundo nazar vamos a
+2:19
+2 minutos y 19 segundos
+suponer que sale un peso sale acá y el otro peso sale acá podrían salir los dos positivos a los fines de esto es lo
+2:27
+2 minutos y 27 segundos
+mismo entonces que hacíamos al principio en el entrenamiento entraba un patrón vamos a
+2:34
+2 minutos y 34 segundos
+poner que entre un patrón acá un 10 9 y nos fijamos cuál era la neurona ganadora como nos fijamos colega la
+2:42
+2 minutos y 42 segundos
+neurona ganadora veríamos la distancia a los pesos esas serían las dos distancias la
+2:49
+2 minutos y 49 segundos
+distancia al peso 1 y la distancia el peso 2 o sea hay una sola entrada y este es el
+2:59
+2 minutos y 59 segundos
+peso de la entrada con la neurona 1 y este otro es el peso de la entrada con la neurona 2 evidentemente supongamos
+3:06
+3 minutos y 6 segundos
+que esta neurona 1 es esta que estaba el peso ahí y esta neurona 2 es esta que está el peso acá acá ganó la neurona 1
+3:15
+3 minutos y 15 segundos
+por lo tanto qué vamos a hacer vamos a ajustar y los pesos de la neurona 1 que en
+3:22
+3 minutos y 22 segundos
+realidad en un solo peso acá no porque no son la entrada y qué sentido lo vamos a contar vamos a partir de este error
+3:29
+3 minutos y 29 segundos
+acercarlo o sea que lo vamos a acercar un poquito para allá este peso que estaba acá en la próxima
+3:37
+3 minutos y 37 segundos
+iteración ahora va a estar acá eso es lo que corrimos el peso de la
+3:43
+3 minutos y 43 segundos
+neurona ahora vamos a considerar que no tenemos entorno en este ejemplo elemental por lo tanto a la neurona 2 no
+3:50
+3 minutos y 50 segundos
+la tocaba queda como estaba con esta misma lógica piensen que a medida que sigan viniendo casos de este
+3:59
+3 minutos y 59 segundos
+grupo de patrones que tenemos en esta zona más y más casos con cada patrón el
+4:07
+4 minutos y 7 segundos
+peso se va a ir acercando de a poquito un poquito más en cambio cuando lleguen patrones de este grupo
+4:15
+4 minutos y 15 segundos
+el peso que va a ganar va a ser el peso 2 iba a ser el peso 2 el que se va a ir corriendo hacia ese grupo que va a pasar
+4:23
+4 minutos y 23 segundos
+al final que si esta distribución de patrones estaba centrada en 1 y esta distribución estaba centrada en menos 1
+4:30
+4 minutos y 30 segundos
+naturalmente la neurona 1 y su peso que ahora unos solos se va a ir corriendo y
+4:38
+4 minutos y 38 segundos
+va a quedar en el centro de la distribución acá acá va a quedar el doble uve 1 al final y acá va a quedar
+4:44
+4 minutos y 44 segundos
+el doble uve 2 por lo tanto se terminó el aprendizaje que aprendió a la red neural fíjense que aprendió
+4:54
+4 minutos y 54 segundos
+porque ahora cuando venga un patrón del grupo uno se va a estimular siempre la neurona uno cuando venga un patrón del
+5:01
+5 minutos y 1 segundo
+grupo dos se va a estimular la neurona 2 descubrió sola sin que nosotros le dijéramos que está bien y que está mal
+5:10
+5 minutos y 10 segundos
+sola descubrió los dos grupos de patrones que había en ese conjunto de datos por eso que este es un aprendizaje no supervisado y fíjense que tiene utilidad
+5:19
+5 minutos y 19 segundos
+como lo habíamos visto para el k medias que es algo muy parecido a lo que estamos haciendo ahora por la simplicidad de la de la red que quisimos
+5:28
+5 minutos y 28 segundos
+aprender aprende la estructura de los datos vamos a ver un ejemplo un poco más
+5:36
+5 minutos y 36 segundos
+complejo un poco nomás vamos a suponer ahora que los patrones de entrada están
+5:42
+5 minutos y 42 segundos
+en error a dos o sea que tenemos un x1 y x2 acá están x1 y x2
+5:50
+5 minutos y 50 segundos
+o sea que ahora vamos a tener que dibujar la situación que se plantea en una dimensión 1
+5:58
+5 minutos y 58 segundos
+y la dimensión dos que serán xy también van a ser w porque también van a manejar los valores de las pesos vamos a suponer que en este ejemplo
+6:07
+6 minutos y 7 segundos
+también tenemos grupos de patrones se acuerdan cómo teníamos grupos de patrones en el caso de la función org o
+6:14
+6 minutos y 14 segundos
+cualquier función entonces podemos pensar que hay un grupo de patrones que están por acá son todos estos puntitos que estoy dibujando hay otro grupo de
+6:22
+6 minutos y 22 segundos
+patrones que están por acá hay otro grupo de patrones que están por acá simétricos o no no importa no viene
+6:31
+6 minutos y 31 segundos
+el caso tenemos cuatro grupos de patrones entonces qué pasará acá si yo inicio con
+6:40
+6 minutos y 40 segundos
+cualquier configuración inicial de pesos esos cuatro circulitos que dice
+6:47
+6 minutos y 47 segundos
+ahí son los pesos fíjense que los presos tienen dos dimensiones en los pesos de la neurona
+6:54
+6 minutos y 54 segundos
+uno son este y este es un vector citó de pesos
+7:02
+7 minutos y 2 segundos
+vector pesos de la neurona 1 que tiene en este caso 22 menciones o sea que supongamos que este sea el que le
+7:10
+7 minutos y 10 segundos
+corresponde a la neurona uno va a tener su xy suyo o su xv unos x2 o sus dos valores en las dos coordenadas que de
+7:17
+7 minutos y 17 segundos
+hecho va a ser wc1 wv2 doble sub 11 y w sub 12 iniciemos esos valores al azar como
+7:25
+7 minutos y 25 segundos
+siempre van a tomar algún valor pequeño cerca del origen y qué va a pasar cuando se empieza a
+7:33
+7 minutos y 33 segundos
+entrenar va a venir un patrón de por ejemplo este grupo está en el archivo
+7:40
+7 minutos y 40 segundos
+que usted le tocó primero y que va a ser va a traer a los pesos de alguna neurona se va a
+7:48
+7 minutos y 48 segundos
+fijar cuál es la neurona ganadora cuál sería la neurona ganadora acá la que tiene este peso que está acá
+7:55
+7 minutos y 55 segundos
+porque es la que tiene si medimos todas las distancias tiene la menor distancia
+8:04
+8 minutos y 4 segundos
+y esa neurona ganadora se va a acercar un poquito al patrón cuánto se va a acercar y bueno dependerá de lo que
+8:12
+8 minutos y 12 segundos
+valga la velocidad de aprendizaje la tasa de aprendizaje ese eta que estaba delante de x - w
+8:20
+8 minutos y 20 segundos
+o sea que básicamente yo calculo el vector de error x w se acuerdan y en la dirección del
+8:29
+8 minutos y 29 segundos
+vector de error corro un poco el vector de pesos de esa neurona luego va a venir
+8:37
+8 minutos y 37 segundos
+supongamos patrón de este conjunto vamos a ver quién está más cerca acá pueden llegar a
+8:44
+8 minutos y 44 segundos
+competir estos 2 podría ser que supongamos gana este que no es el que esperábamos pero piensen lo
+8:52
+8 minutos y 52 segundos
+siguiente de todos los puntos de este conjunto para la mayoría va a ganar
+9:02
+9 minutos y 2 segundos
+esa neurona o sea que esa neurona se va a acercar muchas veces a este conjunto puede que alguna vez gane esta otra
+9:11
+9 minutos y 11 segundos
+neurona algunas pocas las que justo están los patrones más cerca pero realmente esta otra neurona va a ganar
+9:19
+9 minutos y 19 segundos
+la mayoría de las veces para este conjunto o sea que ese centro y de ese vector de peso esa neurona
+9:26
+9 minutos y 26 segundos
+en su mayoría se va a acercar a este conjunto y esta otra en su mayoría se va a acercar al otro
+9:34
+9 minutos y 34 segundos
+conjunto una vez que le muestre todos los patrones ya van a estar cada una más cerca de su centro hoy de iban a ganar siempre para su centro de simplemente se
+9:42
+9 minutos y 42 segundos
+van a ajustar se van a ir hasta bien el centro del centro desde que le corresponde el centro de esa cantidad de
+9:50
+9 minutos y 50 segundos
+puntos que tenemos ahí pero ya va a ser un ajuste fino por eso es que están definidas estas etapas también en la
+9:57
+9 minutos y 57 segundos
+organización del sol al principio le dejamos que se muevan con bastante flexibilidad porque realmente tiene que generarse en movimientos importantes en
+10:05
+10 minutos y 5 segundos
+las neuronas sin embargo al final lo único que necesitamos es que se haga un ajuste fino de la neurona a un conjunto
+10:13
+10 minutos y 13 segundos
+de patrones que representan

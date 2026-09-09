@@ -1,0 +1,130 @@
+vamos a ver ahora algunas medidas de desempeño así como vimos para el caso del clasificador y para simplificar los
+0:12
+12 segundos
+ejemplos lo hicimos con un clasificador binario vamos a ver algunas medidas desempeño para el caso de la predicción de series
+0:19
+19 segundos
+puede ser que yo tenga la cantidad de lluvia en milímetros de
+0:26
+26 segundos
+mercurio a lo largo del tiempo y que yo tenga los datos hasta cierto día y
+0:34
+34 segundos
+quiera predecir qué es lo que va a venir cuánto va a llover o cuándo va a llegar mañana o lo que sea es un caso típico de
+0:42
+42 segundos
+predicción hay muchísimas cosas por supuesto que uno puede predecir pero para ubicarnos en un ejemplo
+0:49
+49 segundos
+tendríamos que ver qué pasa en estos casos cómo se puede medir el error claramente no podemos decir hacer tonos
+0:57
+57 segundos
+altos porque puede haber errado pero por muy poco y puede haber ahorrado por mucho entonces en este caso
+1:07
+1 minuto y 7 segundos
+supongamos que la curva roja que está acá es la predicción de lo que dice que
+1:13
+1 minuto y 13 segundos
+nuestro modelo ya ha entrenado durante el entrenamiento lo que sea y la curva negra como yo decía antes es el valor
+1:21
+1 minuto y 21 segundos
+correcto acá yo podría decir bueno voy a definir el error como la recta entre
+1:29
+1 minuto y 29 segundos
+lo que dijo el modelo y lo que era realmente esa distancia que hay
+1:36
+1 minuto y 36 segundos
+es esto que está acá bueno esa es una definición de error pero yo quiero tener una definición en global cuanto al error
+1:43
+1 minuto y 43 segundos
+esto esto me sirve para un punto y un valor y un instante de tiempo y pero quiero tener en globalmente cuánto se
+1:52
+1 minuto y 52 segundos
+está equivocando lo primero que yo podría tratar de pensar es en hacer una sumatoria y hacer algún promedio o alguna cosa así pero fíjense que el
+2:01
+2 minutos y 1 segundo
+problema de esto es que los errores positivos se van a compensar con los errores negativos entonces puede ser que
+2:09
+2 minutos y 9 segundos
+esta sumatoria de cero y sin embargo se está equivocando un montón incluso podrían ser errores mucho
+2:18
+2 minutos y 18 segundos
+más grandes pero si la cantidad de errores positivos se compensa con los negativos en definitiva esta sumatoria me daría
+2:27
+2 minutos y 27 segundos
+como que hubiera un error cero cuando en realidad no lo baje entonces claramente hay que hacer algo más y las medidas
+2:34
+2 minutos y 34 segundos
+tradicionales se basan en tratar de calcular el área que hay sin importar si
+2:42
+2 minutos y 42 segundos
+ese área está por arriba de la referencia o por abajo fíjense acá hay dos casos este
+2:49
+2 minutos y 49 segundos
+se equivoca más digamos y toda la zona pintada en azul es un área mucho más
+2:57
+2 minutos y 57 segundos
+grande que esta que está acá entonces quiere decir que este predictor es mucho más malo que este otro predictor eso
+3:06
+3 minutos y 6 segundos
+queremos verlo reflejado en una medida en y para calcular el área bueno simplemente uno podría decir y sumó los errores pero primero le
+3:14
+3 minutos y 14 segundos
+aplicó el valor absoluto esto se conoce como error medio absoluto y es una de las medidas más utilizadas otra forma de
+3:24
+3 minutos y 24 segundos
+hacer esto mismo es con el error cuadrática medio fíjense que elevando al cuadrado también evitó
+3:33
+3 minutos y 33 segundos
+el problema de que se compensen positivos con negativos este se llama o es conocido como error
+3:40
+3 minutos y 40 segundos
+cuadrática medio se usa mucho más porque como esta función es más tratable analíticamente
+3:48
+3 minutos y 48 segundos
+generalmente para deducir algoritmos de entrenamiento o de ajuste de lo que sea este es un error mucho más amigable en
+3:56
+3 minutos y 56 segundos
+ese sentido y algo derivado del error cuadrática medio y que se usa mucho es la raíz cuadrada del error cuadrática
+4:05
+4 minutos y 5 segundos
+medio que lo que hace bueno es poner agregar simplemente esta raíz cuadrada acá están los acrónimos en inglés por si
+4:12
+4 minutos y 12 segundos
+lo encuentra en la bibliografía este es el error absoluto medio a veces
+4:19
+4 minutos y 19 segundos
+se le llama desviación absoluta media acá está el error cuadrática medio y acá
+4:26
+4 minutos y 26 segundos
+está la raíz del error cuadrática medio que lo que hace es volver a la escala normal en este cuadrado que habíamos
+4:35
+4 minutos y 35 segundos
+introducido acá vuelve el error a una escala en lineal aplicando la raíz cuadrada
+4:42
+4 minutos y 42 segundos
+esto es un enfoque muy elemental y muy básico de este tipo de errores hay muchísimos errores muchas formas de
+4:50
+4 minutos y 50 segundos
+medir error en algunos casos conviene usar cosas como la correlación en otros casos hay definiciones como la de
+4:57
+4 minutos y 57 segundos
+concordancia que son un poquito más complejas hay algunos casos en donde interesa por ejemplo si hay picos por
+5:07
+5 minutos y 7 segundos
+ejemplo que nuestro predictor tuviera ese pico o sea anda muy lindo en todo pero en una parte tiene un pico quizás para algunas
+5:16
+5 minutos y 16 segundos
+aplicaciones ese pico aislado no importa pero en otros casos esos errores de pico pueden ser muy relevantes porque pueden
+5:24
+5 minutos y 24 segundos
+por ejemplo hacer saltar una alarma o alguna cosa grave cuando en realidad es un error del proyector en realidad no es
+5:32
+5 minutos y 32 segundos
+que realmente aumento tanto la variable entonces se usan otras definiciones de errores por ejemplo además del error
+5:41
+5 minutos y 41 segundos
+cuadrática medio o cualquiera de las que vimos antes se usa el error máximo de pico entonces una idea nos da de cuánto
+5:51
+5 minutos y 51 segundos
+se sería en el máximo en el peor de los casos cuánto se desvía de lo que tiene que dar realmente

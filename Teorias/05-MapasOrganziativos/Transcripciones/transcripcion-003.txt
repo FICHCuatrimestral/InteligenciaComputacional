@@ -1,0 +1,241 @@
+amos a ver ahora cómo entrenar cómo hacer que aprenda esta red neuronal
+0:10
+10 segundos
+vamos a ver en general que este es un proceso totalmente no supervisado recuerdan que cuando vimos las funciones de las redes con funciones de base
+0:19
+19 segundos
+radial teníamos una primera etapa no supervisada una segunda etapa supervisada donde se acuerda que usábamos el k medias pero ahora en el
+0:27
+27 segundos
+caso de los mapas auto organizativos entramos de lleno en las redes neuronales no supervisadas o sea que no
+0:34
+34 segundos
+reciben una salida correcta se acuerdan cómo era recibimos la correcta veíamos lo que nos daba y de acuerdo al error
+0:42
+42 segundos
+corregíamos los pesos sino que acá no hay referencia ya vamos a ver que aunque parezca en
+0:51
+51 segundos
+principio extraño esto tiene una utilidad práctica muy clara y lo otro que tenemos que tener en mente es que el
+0:59
+59 segundos
+aprendizaje es de tipo competitivo ya lo vimos un poquito en la parte anterior acá aprende la neurona ganadora y
+1:08
+1 minuto y 8 segundos
+eventualmente un entorno cercano a esa neurona ganadora pero en cada interacción del entrenamiento no se ajustan los pesos de toda la red
+1:16
+1 minuto y 16 segundos
+neuronal sólo en principio la de ganadora y algún entorno de esa neurona ganadora
+1:24
+1 minuto y 24 segundos
+y lo primero que hacemos como siempre es inicializar con valores de peso pequeño
+1:32
+1 minuto y 32 segundos
+al azar con distribución uniforme todos los pesos de acá tenemos la neurona j
+1:41
+1 minuto y 41 segundos
+y conectada con la entrada y a veces también en lugar de elegir
+1:50
+1 minuto y 50 segundos
+valores al azar simplemente se elige un ejemplo uno de los patrones de entradas que supongan tenemos en nuestro archivo de
+1:58
+1 minuto y 58 segundos
+entrenamiento y directamente se le pone ese valor a los valores de ese patrón y el peso de esa neurona completamente al
+2:06
+2 minutos y 6 segundos
+azar también luego en el segundo paso hacemos algo que ya habíamos visto antes que es
+2:14
+2 minutos y 14 segundos
+mostrarle un primer patrón de entrada acá está en función de la variable n que vendría a ser la
+2:22
+2 minutos y 22 segundos
+iteración paso a paso con la que vamos mostrándole todos los patrones o los ejemplos de entradas
+2:29
+2 minutos y 29 segundos
+le mostramos uno y vemos a qué neurona se parece más aquella que distancia de menor decimos
+2:37
+2 minutos y 37 segundos
+esta es la ganadora y en función de eso vamos a adaptar los pesos
+2:44
+2 minutos y 44 segundos
+el tercer paso es muy parecido a lo que hacemos siempre es ajustar los pesos o sea cambiar levemente cuánto valen esos
+2:54
+2 minutos y 54 segundos
+pesos fíjense que la ecuación de ajuste de pesos es muy sencilla y consiste simplemente en acercar un poco el valor
+3:02
+3 minutos y 2 segundos
+de los pesos a los valores que trajo el patrón de entrada que tampoco que están mucho es
+3:11
+3 minutos y 11 segundos
+la variable esta que va a ser la velocidad de aprendizaje como ya se deben haber imaginado
+3:17
+3 minutos y 17 segundos
+y acá lo que hacemos es restamos el patrón de entrada el vector fíjense que son vectores están todas negrita el
+3:26
+3 minutos y 26 segundos
+vector del patrón de entrada con los pesos de la neurona ganadora de esa diferencia debería ser el vector de
+3:33
+3 minutos y 33 segundos
+error por lo tanto le sumamos a lo que tenían los pesos actualmente ese vector de error con lo cual vamos a
+3:43
+3 minutos y 43 segundos
+reducir el error que hay entre el vector de pesos y el pacto de entrada o sea que
+3:51
+3 minutos y 51 segundos
+vamos a acercar un poco está con esta diferencia con ese error vamos a acercar
+3:58
+3 minutos y 58 segundos
+un poco los pesos al patrón de entrada y eso es todo lo que hacemos para el entrenamiento acercamos un poquito
+4:07
+4 minutos y 7 segundos
+depende de la tasa de aprendizaje el vector de la neurona ganadora hacia el doctor un patrón de entrada
+4:15
+4 minutos y 15 segundos
+esto es para cualquier neurona que se encuentre en el entorno de la ganadora y por supuesto para la ganadora también si
+4:22
+4 minutos y 22 segundos
+la neurona no se encuentra en el entorno de influencia de la ganadora directamente no hacemos nada dejamos el peso como estaba
+4:31
+4 minutos y 31 segundos
+finalmente se terminó el algoritmo y volvemos a 2 volvemos al paso 2 o sea le
+4:40
+4 minutos y 40 segundos
+volvemos a mostrar otro patrón y hasta que no tengamos ningún cambio significativo en el mapa es decir que le mostramos un patrón
+4:48
+4 minutos y 48 segundos
+buscamos la ganadora ajustamos los pesos de la ganadora y algún entorno de la ganadora en las neuronas que están cerca le volvemos a mostrar otro buscamos la
+4:57
+4 minutos y 57 segundos
+ganadora ajustamos los pesos y así hasta que le mostramos todos los patrones y probablemente le mostremos varias veces el conjunto completo de patrones si
+5:07
+5 minutos y 7 segundos
+teníamos un archivo en el cual había mil patrones supongan cada patrón con 10 dimensiones o sea que va a ser en el
+5:15
+5 minutos y 15 segundos
+caso de ser un archivo de texto un archivo con 10 números por fila y mil filas podríamos estar mostrándole
+5:23
+5 minutos y 23 segundos
+esas mil filas 10 veces 50 veces 100 veces hasta que el mapa termine de aprenderse y la neurona la red neuro
+5:32
+5 minutos y 32 segundos
+al que entre nada algunas consideraciones prácticas respecto al entrenamiento
+5:41
+5 minutos y 41 segundos
+uno que generalmente utilizamos mapas cuadrados a pesar de que hay lineales hexagonales tridimensionales hay de todo
+5:49
+5 minutos y 49 segundos
+un poco es muy común utilizar el mapa cuadrado o cuanto mucho a veces lo que usan en la implementación original de
+5:56
+5 minutos y 56 segundos
+utilizan directamente el mapa hexagonal otra característica es que en general
+6:03
+6 minutos y 3 segundos
+esta función d influencia en el entorno se utiliza la
+6:10
+6 minutos y 10 segundos
+función uniforme es decir que por ejemplo si el radio es 2a contamos dos neuronas a cada lado
+6:17
+6 minutos y 17 segundos
+dependiendo si el mapa es lineal o cuadrado o en el entorno rectangular de esa
+6:25
+6 minutos y 25 segundos
+neurona y a esas actualizamos igual como si hubieran ganado lo mismo que si hubieran sido la ganadora y el resto no
+6:32
+6 minutos y 32 segundos
+las actualizamos sin embargo en general ese entorno no es fijo yo se los había anticipado antes ese entorno va variando
+6:41
+6 minutos y 41 segundos
+a lo largo del entrenamiento o sea que en algún momento puede valer 45 después puede valer 34 30 va a tomar los
+6:51
+6 minutos y 51 segundos
+distintos valores y vamos a ver con qué criterio y para qué sirve es lo otro es que en general la velocidad
+6:59
+6 minutos y 59 segundos
+de aprendizaje tampoco es fija sino que va decreciendo a lo largo del entrenamiento al principio es grande
+7:06
+7 minutos y 6 segundos
+permite que haya ajustes importantes y luego al final ya se hace un ajuste fino por lo cual se dirige una velocidad de
+7:14
+7 minutos y 14 segundos
+aprendizaje pequeña particularmente vamos a ver un poquito más en detalle cómo es que podemos
+7:22
+7 minutos y 22 segundos
+manejar este entorno y esta velocidad
+7:28
+7 minutos y 28 segundos
+taza de aprendizaje se define en tres etapas básicas en el entrenamiento en un mapa auto
+7:36
+7 minutos y 36 segundos
+organizativo una primera etapa es la del ordenamiento topológico es un ordenamiento global
+7:43
+7 minutos y 43 segundos
+un ordenamiento de la estructura neuronal en general y por lo tanto en esta etapa se requiere que los entornos
+7:51
+7 minutos y 51 segundos
+de influencia sean grandes a veces llegan a tomar a la mitad del mapa por ejemplo si tuviéramos un mapa de 10
+7:59
+7 minutos y 59 segundos
+x 10 podría ser un entorno inicial de 5 la velocidad de aprendizaje también son
+8:06
+8 minutos y 6 segundos
+grandes es decir le estamos permitiendo a los vectores de peso modificarse por cada vez que le mostramos un patrón
+8:13
+8 minutos y 13 segundos
+modificarse de manera importante y esta etapa por supuesto son estos son criterios prácticos
+8:20
+8 minutos y 20 segundos
+puede durar entre 500 y 1000 épocas es decir 500 veces que le mostremos el conjunto completo de datos entre 500 y
+8:29
+8 minutos y 29 segundos
+1000 veces una segunda etapa es una etapa de transición entre esta etapa de ordenamiento y la etapa final que va a
+8:37
+8 minutos y 37 segundos
+ser la de ajuste final y en esta etapa de transición lo que vamos haciendo es ir reduciendo el entorno de influencia
+8:45
+8 minutos y 45 segundos
+linealmente en general linealmente aunque hay otras alternativas hasta 1 podríamos haber empezado en el ejemplo
+8:52
+8 minutos y 52 segundos
+que yo les dije con un entorno de 5 supongamos que en esta etapa tenemos 1000 épocas entonces
+9:00
+9 minutos
+usamos el entorno de 5 durante las 200 primeras épocas después reducimos a 4 entre las 200 y la 400 después reducimos
+9:09
+9 minutos y 9 segundos
+a 3 entre los 400 y los 600 producimos a 2 entre las 600 800 y las últimas 200 la dejamos en 1
+9:18
+9 minutos y 18 segundos
+de la misma manera se reduce de forma lineal oa veces con una caída exponencial
+9:25
+9 minutos y 25 segundos
+la velocidad de aprendizaje hasta llegar un valor de 0.1 osea que nuevamente yo lo que puedo hacer es tomar acá la
+9:34
+9 minutos y 34 segundos
+cantidad de épocas de entrenamiento y acá la velocidad de aprendizaje que supongamos se inició en 0,9 como acá
+9:43
+9 minutos y 43 segundos
+como referencia 0.1 y puedo bajar linealmente si esto fueron mil épocas puede hacer la cuenta de cuánto tengo
+9:52
+9 minutos y 52 segundos
+que bajar por época o muchos utilizan una función exponencial decreciente que baja más rápido al principio y después
+10:00
+10 minutos
+se estabiliza un poco más vuelvo a insistir que estos son criterios prácticos que se han mostrado en distintas aplicaciones que funcionan
+10:08
+10 minutos y 8 segundos
+bien y que ayudan a que el mapa quede bien entrenado por último en la última etapa que es que es una etapa de ajuste
+10:16
+10 minutos y 16 segundos
+fino también se la suele llamar etapa de convergencia se utiliza ya una vecindad
+10:23
+10 minutos y 23 segundos
+de cero es decir sólo se actualiza la neurona ganadora no se actualizan los pesos de ninguna de las vecinas
+10:32
+10 minutos y 32 segundos
+se utiliza también una velocidad con un valor muy pequeño puede ser un 0.1 0001
+10:41
+10 minutos y 41 segundos
+y esta etapa de convergencia tiene por objetivo hacer un ajuste fino final de los valores de los pesos
+10:49
+10 minutos y 49 segundos
+y suele durar unas dos o tres mil épocas también muy dependientes de la aplicación de la cantidad de patrones que tengamos para entrenar etcétera

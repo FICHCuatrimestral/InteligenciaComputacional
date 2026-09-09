@@ -1,0 +1,113 @@
+amos a ver ahora una idea sobre los errores relativos e interesante analizar
+0:12
+12 segundos
+casos en donde por ejemplo acá yo utilicé la exactitud pero podría ser cualquiera de las
+0:19
+19 segundos
+medidas que definimos antes que las definimos siempre en términos de tasas de éxitos y no tasas de errores
+0:27
+27 segundos
+fíjense qué pasa supongamos que tenemos dos clasificadores y uno tiene una
+0:34
+34 segundos
+exactitud del 50% o sea que bueno podemos imaginar lo que había 100 casos para clasificar y
+0:42
+42 segundos
+le pegó a 50 el acierto y los otros 50 el error y hay otro que tiene una tasa del 51 por
+0:50
+50 segundos
+ciento es un poquito mejor acertó a 51 de los en casos y en los otros equívocos
+0:57
+57 segundos
+vamos a ver este otro caso en el que tenemos también dos clasificadores pero uno acertó 98 de los 100 casos y otros
+1:07
+1 minuto y 7 segundos
+acertó al 99 de los incas acá parecería ser de que a cuatro es
+1:16
+1 minuto y 16 segundos
+tanto mejor que a 3 como a 2 es mejor que a 1 porque los dos le ganan en un 1% vamos a hacerlo así no es la diferencia
+1:24
+1 minuto y 24 segundos
+que es del 1% en ambos casos sin embargo para un clasificador pensemos así de que
+1:33
+1 minuto y 33 segundos
+de 100 casos acertó a 50 no más quiere decir que un clasificador malísimo que prácticamente no sirve para nada más si
+1:41
+1 minuto y 41 segundos
+estamos pensando en el contexto de un clasificador binario en cambio este otro clasificador el a3
+1:49
+1 minuto y 49 segundos
+prácticamente le acertó a todos con lo cual ganarle a ese es bastante más difícil que ganarle a este ganarle un
+1:58
+1 minuto y 58 segundos
+clasificador que le pega a la mitad nada más es bastante más fácil que ganarle a un clasificador que ya prácticamente
+2:06
+2 minutos y 6 segundos
+tiene problemas resuelto entonces esto claramente no se ve desde el punto de
+2:12
+2 minutos y 12 segundos
+vista de la exactitud y puede ser útil definirlo en términos de el error fíjense podemos definir este error sería
+2:22
+2 minutos y 22 segundos
+un error de exactitud en el grupo de estar asociado a cualquiera de las otras medidas como uno menos a acá acá esto está
+2:31
+2 minutos y 31 segundos
+pensado no porcentual o sea que el 98 por ciento sería 1 - 0 98
+2:38
+2 minutos y 38 segundos
+y podemos definir algo más interesante todavía que es el error relativo
+2:44
+2 minutos y 44 segundos
+este error relativo toma como referencia por ejemplo sería la referencia sería el clasificador 1 o el clasificador 3 y
+2:54
+2 minutos y 54 segundos
+como punto de comparación los clasificador que quiero comparar el otro y 4 o el 2
+3:02
+3 minutos y 2 segundos
+fíjense lo que pasa si yo acá traduzco estos errores acá el error que se comete es del 50% y al caer error que
+3:11
+3 minutos y 11 segundos
+se comete es del 49% si yo traduzco esto a errores el error que se comete acá es
+3:18
+3 minutos y 18 segundos
+del 2% y el error que se comete acá es del 1% yo podría pensar de que acá se redujo
+3:25
+3 minutos y 25 segundos
+muy poco el error se redujo de un 50 a un 49 mientras que acá el error de un 2 a un 1% se redujo a la mitad
+3:34
+3 minutos y 34 segundos
+y esto es justamente lo que me permite ver el error relativo en el caso de ser
+3:40
+3 minutos y 40 segundos
+un error relativo y porcentual en la diferencia de porcentual a el error de referencia veamos qué pasaría con esto si yo tomo
+3:49
+3 minutos y 49 segundos
+el error de referencia el error de referencia acá es 50 de menos 49 sobre
+3:57
+3 minutos y 57 segundos
+50 o sea que esto me queda 1 sobre 50
+4:03
+4 minutos y 3 segundos
+sería un 2% lo que mejoró eso en cambio en este caso si tomó el error de
+4:10
+4 minutos y 10 segundos
+referencia de 2 - el error 1 el error del 4 / 2
+4:18
+4 minutos y 18 segundos
+esto me queda un medio o sea que la mejora relativa de error fue
+4:26
+4 minutos y 26 segundos
+del 50% o sea la reducción relativa de error fue del 50% que bueno es claramente lo que estamos viendo acá es 2 paso a uno o sea que con esta medida
+4:35
+4 minutos y 35 segundos
+de error para errores relativos donde queremos comparar un sistema con otro sistema un clasificador con otro clasificador es interesante y
+4:44
+4 minutos y 44 segundos
+especialmente para los casos en donde uno de los clasificadores entre referencias ya está muy cerca del cien por cien arriba del 90 digamos
+4:53
+4 minutos y 53 segundos
+es interesante tener esta herramienta de medición de la mejora relativa a la reducción relativa del error como una
+5:02
+5 minutos y 2 segundos
+mejor medida de de cuánto estamos mejorando
+Sincronizar con el tiempo del vídeo
