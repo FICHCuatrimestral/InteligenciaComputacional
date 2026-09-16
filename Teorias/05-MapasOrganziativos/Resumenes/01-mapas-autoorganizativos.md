@@ -6,6 +6,8 @@ lang: es
 
 *Notación: $N$ es la dimensión de la entrada, $M$ la cantidad de neuronas del mapa, $L$ la cantidad de patrones de entrenamiento y $n$ la iteración (un patrón por iteración). $\mathbf{w}_j \in \mathbb{R}^N$ es el vector de pesos de la neurona $j$; $G$ o $j^*$ es la ganadora. En la parte de LVQ la cátedra cambia de nombres: el vector de pesos pasa a llamarse **prototipo** $\mathbf{m}_i$ y la velocidad de aprendizaje $\eta$ pasa a llamarse $\alpha$. Es la misma cosa.*
 
+*La implementación de estos algoritmos, con los resultados de las corridas, está en `Practicas/TP4/Resumenes/00-tp4-som-y-kmedias.md`.*
+
 *Las figuras 1, 2, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14 y 15 reconstruyen contenido que en las diapositivas no está: son las láminas que el profesor desarrollaba en el pizarrón (todo el bloque "Formación de mapas topológicos" son siete viñetas sin una sola figura) o simulaciones hechas para verificar lo que la clase afirma. Todos los números que aparecen en el apunte salen de las corridas de `../imagenes/graficos_som.py`.*
 
 ---
@@ -55,6 +57,14 @@ $$j^*(n) = G(\mathbf{x}(n)) = \arg\min_j \left\{ \left\| \mathbf{x}(n) - \mathbf
 
 > **PARA LA DEFENSA — el plano tiene dos espacios y hay que no mezclarlos**
 > Está el **espacio del mapa** (dónde está la neurona respecto de las otras: la cuadrícula, en 1D o 2D) y el **espacio de entrada** $\mathbb{R}^N$ (dónde está su vector de pesos). La vecindad se mide en el **primero**; la distancia que elige a la ganadora, en el **segundo**. Casi todo lo interesante del SOM es la relación entre esos dos espacios, y casi todos los enredos vienen de confundirlos.
+
+> **IDEA DE FONDO — la red de pesca**
+> Una imagen que ordena todo lo que viene después. Pensá en una hoja con los datos dibujados y $M$ **chinches** clavadas en la misma hoja: el peso de una neurona es **dónde está clavada su chinche**. Entrenar es un solo verbo, **mover chinches**: se pincha un dato, se busca la chinche más cercana y se la corre un poco hacia ahí.
+> Lo que hace al SOM distinto de $k$-medias es que las chinches **no están sueltas**: están cosidas entre sí formando una malla, y esa costura **se fija antes de ver un solo dato**. La neurona 0 está atada a la 1 y a la $C$ siempre, aunque hayan quedado lejísimo una de la otra. Cuando se mueve una, los hilos arrastran a las vecinas, y por eso la malla termina desplegada como quien abre un pañuelo en lugar de hecha un ovillo.
+> **La comparación que conviene evitar:** no es el corcho del detective, que clava fotos y *después* decide cuáles están relacionadas y tira el hilo. El SOM hace lo contrario: **impone las relaciones de entrada** y deja que los datos acomoden las posiciones. Que al final los datos de nudos vecinos se parezcan es lo que **emergió**; nadie lo puso.
+
+> **OJO — un peso del SOM y un peso del perceptrón no son la misma clase de cosa**
+> En el perceptrón, $w_{ji}$ era un **coeficiente**: multiplicaba a una entrada, y solo no significaba nada. En el SOM **no multiplica nada** — en una implementación del algoritmo no aparece nunca el producto `pesos * entrada`. Los $N$ pesos de una neurona, juntos, son **un punto de $\mathbb{R}^N$**: una posición. Por eso se pueden dibujar sobre los mismos ejes que los datos, y por eso la pregunta «quién gana» se responde con una regla y no con una cuenta de activación.
 
 ### Claves de la sección 2
 
@@ -453,6 +463,39 @@ Lo interesante es que **no hace falta cuantizar de manera uniforme**. En algunas
 2. **SOM etiquetado.** Ídem, con la ventaja del ordenamiento topológico. Es la sección 8.
 3. **LVQ.** Supervisado **desde el entrenamiento**.
 
+### SOM y $k$-medias, lado a lado
+
+La primera de esas tres formas es $k$-medias, que ya apareció en la unidad de base radial para ubicar los centros de las gaussianas. Conviene tenerlo fresco, porque **es la mejor manera de decir qué agrega el SOM**.
+
+**$k$-medias son dos pasos que se alternan** hasta que nadie se mueve:
+
+$$\text{1. asignar: } \; c(\mathbf{x}) = \arg\min_i \|\mathbf{x} - \mathbf{m}_i\|
+\qquad\qquad
+\text{2. recalcular: } \; \mathbf{m}_i = \frac{1}{|C_i|}\sum_{\mathbf{x} \in C_i} \mathbf{x}$$
+
+Cada dato se anota con el prototipo más cercano; cada prototipo se muda al **promedio de los datos que se le anotaron**; y como los prototipos se movieron, algunos datos cambian de dueño. Cuando una vuelta entera no cambia a nadie, terminó.
+
+| | $k$-medias | SOM |
+|---|---|---|
+| Elegir a quién le toca el dato | $\arg\min$ de la distancia | **la misma ecuación** |
+| Cómo se mueve el ganador | **salta** al promedio de su grupo | se acerca un $\eta$ al dato |
+| Cuándo se mueve | tras ver todos los datos (por lotes) | con cada dato (en línea) |
+| ¿Arrastra a otros? | **no** | sí: el entorno $\Lambda_G$ en el mapa |
+| Cuándo termina | **solo**, cuando nadie cambia de grupo | cuando se acaba el cronograma de épocas |
+| Resultado | $k$ grupos sin relación entre sí | grupos **ordenados** en un mapa |
+
+Tres consecuencias que se preguntan:
+
+- **No hay velocidad de aprendizaje en $k$-medias.** El prototipo salta al promedio, no se acerca una fracción. Por eso converge en pocas vueltas y no necesita etapas ni cronograma.
+- **$k$-medias se detiene solo**, con un criterio propio: si ningún patrón cambió de grupo, la vuelta siguiente daría los mismos promedios. El SOM no tiene ese criterio: la cantidad de épocas la fija quien entrena.
+- **La inicialización pesa mucho más en $k$-medias.** Sin entorno, un prototipo que arranca lejos de todo no gana nunca, nadie lo arrastra y queda muerto; por eso se lo inicializa sobre patrones del propio conjunto y se corren varias inicializaciones. Es la misma razón por la que, sin entorno, un SOM deja neuronas muertas (sección 7).
+
+> **PARA LA DEFENSA — la frase de una línea**
+> **El SOM es $k$-medias con hilos.** No es literal —uno es en línea y el otro por lotes— pero la única diferencia que importa está en la cuarta fila de la tabla: el arrastre de las vecinas. Todo el ordenamiento topológico sale de ahí.
+
+> **OJO — y por eso el entorno no mejora el agrupamiento**
+> Si el SOM sin entorno es $k$-medias, y $k$-medias cuantiza bien, entonces el entorno **no puede** ser lo que hace que el agrupamiento funcione. Está verificado con números en la sección 7 y en el TP4: el error de cuantización con y sin entorno es casi el mismo, mientras que los cruces de la malla pasan de 0 a varios miles. Lo único que agrega el entorno es **el orden** — y, como efecto secundario, **robustez frente a la inicialización**.
+
 ### Claves de la sección 9
 
 | Clave | Qué tenés que poder responder |
@@ -462,6 +505,8 @@ Lo interesante es que **no hace falta cuantizar de manera uniforme**. En algunas
 | Diccionario / *code-book* | El conjunto de prototipos |
 | Para qué sirve | Compresión con pérdida: se guarda el **índice** del prototipo |
 | Tres formas de entrenarlo | $k$-medias etiquetado, SOM etiquetado, LVQ |
+| $k$-medias en dos pasos | Asignar al más cercano / mudar al promedio, hasta que nadie cambie |
+| Qué agrega el SOM | El arrastre de las vecinas: el orden, no el agrupamiento |
 
 ---
 
