@@ -6,7 +6,7 @@ lang: es
 
 *Notación: $N$ es la dimensión de la entrada, $M$ la cantidad de neuronas del mapa, $L$ la cantidad de patrones de entrenamiento y $n$ la iteración (un patrón por iteración). $\mathbf{w}_j \in \mathbb{R}^N$ es el vector de pesos de la neurona $j$; $G$ o $j^*$ es la ganadora. En la parte de LVQ la cátedra cambia de nombres: el vector de pesos pasa a llamarse **prototipo** $\mathbf{m}_i$ y la velocidad de aprendizaje $\eta$ pasa a llamarse $\alpha$. Es la misma cosa.*
 
-*Las figuras 1, 2, 4, 5, 6, 7, 8, 10, 11, 12, 13 y 14 reconstruyen contenido que en las diapositivas no está: son las láminas que el profesor desarrollaba en el pizarrón (todo el bloque "Formación de mapas topológicos" son siete viñetas sin una sola figura) o simulaciones hechas para verificar lo que la clase afirma. Todos los números que aparecen en el apunte salen de las corridas de `../imagenes/graficos_som.py`.*
+*Las figuras 1, 2, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14 y 15 reconstruyen contenido que en las diapositivas no está: son las láminas que el profesor desarrollaba en el pizarrón (todo el bloque "Formación de mapas topológicos" son siete viñetas sin una sola figura) o simulaciones hechas para verificar lo que la clase afirma. Todos los números que aparecen en el apunte salen de las corridas de `../imagenes/graficos_som.py`.*
 
 ---
 
@@ -171,6 +171,48 @@ Cómo leer la ecuación del paso 3: $\mathbf{x}(n) - \mathbf{w}_j(n)$ es el **ve
 
 Y de ahí sale la pregunta que la cátedra deja planteada: **¿cómo varían $\Lambda_G(n)$ y $\eta(n)$?** La respuesta es la sección siguiente.
 
+### Para la pizarra: el algoritmo de entrenamiento del SOM
+
+**Te preguntan:** *"Escribí el algoritmo de entrenamiento del SOM."*
+
+**Arrancás dibujando dos cosas al costado del pizarrón y no las borrás en todo el desarrollo:** la **cuadrícula** del mapa (ahí vive $\Lambda_G$) y unos **ejes de $\mathbb{R}^N$** (ahí viven $\mathbf{x}$ y los $\mathbf{w}_j$). Todo lo que escribas después va a pertenecer a uno de los dos dibujos, y decir a cuál es la mitad de la nota.
+
+**Paso 1.** Inicialización. Decís el rango y la alternativa.
+
+> **Llegás a:** $\;w_{ji}(0) \sim \mathcal{U}[-0{,}5;\,+0{,}5]\;$, o bien $\;\mathbf{w}_j(0) = \mathbf{x}_\ell$ con $\ell$ sorteado en $[1,\ldots,L]$.
+
+**Paso 2.** Se presenta un patrón $\mathbf{x}(n)$ y compiten **todas** las neuronas. Escribís la competencia y **señalás los ejes de $\mathbb{R}^N$**.
+
+> **Llegás a:** $\;G(\mathbf{x}(n)) = \arg\min_{\forall j}\left\{\left\|\mathbf{x}(n)-\mathbf{w}_j(n)\right\|\right\}$
+> **La frase:** *esto es un mínimo de distancia en el espacio de entrada, no un producto interno ni un máximo de activación.*
+
+**Paso 3.** Definís el entorno de la ganadora y **señalás la cuadrícula**.
+
+> **Llegás a:** $\;\Lambda_G(n)$, el conjunto de neuronas a distancia de Chebyshev $\le$ radio **en el mapa**.
+> **La frase:** *la pertenencia se decide acá arriba, en la cuadrícula, sin mirar los pesos.*
+
+**Paso 4.** Escribís la adaptación **con las dos ramas**. La segunda rama es la que se olvida y es la que distingue al SOM de $k$-medias.
+
+> **Llegás a:**
+> $$\mathbf{w}_j(n+1) =
+> \begin{cases}
+> \mathbf{w}_j(n) + \eta(n)\left(\mathbf{x}(n) - \mathbf{w}_j(n)\right) & \text{si } y_j \in \Lambda_G(n) \\[4pt]
+> \mathbf{w}_j(n) & \text{si } y_j \notin \Lambda_G(n)
+> \end{cases}$$
+
+**Paso 5.** Interpretás la primera rama en voz alta señalando los ejes. Esto no es un renglón de más: es lo que demuestra que entendiste que el peso es un punto.
+
+> **La frase:** *$\mathbf{x}-\mathbf{w}_j$ es el vector que va del peso al patrón; le sumo una fracción $\eta$ de ese vector, o sea que muevo la neurona un $\eta$ del trecho que la separa del dato. No hay error contra una salida deseada: es no supervisado.*
+
+**Paso 6.** Cerrás con el bucle y el criterio de corte, y aclarás que $\eta$ y $\Lambda_G$ **no son constantes**.
+
+> **Llegás a:** *volver al paso 2 con el patrón siguiente, hasta que no haya cambios significativos en el mapa*, con $\eta(n)$ y $\Lambda_G(n)$ **decrecientes con $n$** — y eso te deja parado justo en la sección 6, que es la continuación natural si te la piden.
+
+**Trampa 1:** escribir $\arg\max$. Es un **mínimo** de distancia.
+**Trampa 2:** omitir la segunda rama. Sin ella el desarrollo es $k$-medias.
+**Trampa 3:** poner $\eta$ y $\Lambda_G$ sin el argumento $(n)$. Que dependan de $n$ es la sección siguiente entera.
+**Checkpoint:** si en algún renglón no podés decir **en cuál de los dos dibujos** vive lo que escribiste, algo está mal planteado.
+
 ### Claves de la sección 5
 
 | Clave | Qué tenés que poder responder |
@@ -225,6 +267,35 @@ Las dos corridas cuantizan bien el espacio: las 64 neuronas quedan repartidas so
 
 > **PARA LA DEFENSA — el número que conviene tener a mano**
 > "Sin la primera etapa el mapa cuantiza igual de bien pero queda anudado: la malla se cruza a sí misma 1328 veces contra 0." Es la forma más corta de justificar por qué las tres etapas no son un capricho.
+
+### Para la pizarra: armar el cronograma de las tres etapas
+
+**Te preguntan:** *"Tenés un mapa de $10\times10$ y 2000 épocas de transición. ¿Cómo varían $\Lambda_G$ y $\eta$?"* Es una cuenta de regla de tres, pero hay que ordenarla en voz alta.
+
+**Paso 1.** Fijás el entorno inicial: **medio mapa**.
+
+> **Llegás a:** mapa de $10\times10$ $\Rightarrow$ $\Lambda_G(0) = 5$.
+
+**Paso 2.** Contás **cuántos valores distintos** tiene que tomar $\Lambda_G$ hasta llegar a 1.
+
+> **Llegás a:** de 5 a 1 son **5 valores** (5, 4, 3, 2, 1).
+
+**Paso 3.** Repartís las épocas de transición entre esos valores.
+
+> **Llegás a:** $2000 / 5 = 400$ épocas por valor: $\Lambda_G = 5$ hasta la 400, $4$ hasta la 800, $3$ hasta la 1200, $2$ hasta la 1600 y $1$ hasta la 2000.
+> Con las 1000 épocas del apunte el mismo reparto da **200 por valor**, que es el ejemplo que hace la clase.
+
+**Paso 4.** Hacés lo mismo con $\eta$, pero **continuo**: va de su valor al final de la etapa 1 hasta 0,1.
+
+> **Llegás a:** $\;\eta(n) = \eta_{\text{ini}} - (\eta_{\text{ini}} - 0{,}1)\dfrac{n}{N_{\text{transición}}}\;$ — o exponencial, $\eta(n)=\eta_{\text{ini}}\,e^{-n/\tau}$; la cátedra acepta las dos.
+
+**Paso 5.** Cerrás con la etapa 3 y **decís por qué termina así**.
+
+> **Llegás a:** $\Lambda_G = 0$ y $\eta$ constante entre 0,1 y 0,01.
+> **La frase:** *con el entorno apagado cada neurona ya no arrastra a nadie y termina de caer en el centro de su propio grupo; el orden ya lo consiguió la etapa 1 y no se pierde porque los pasos son chicos.*
+
+**Trampa:** decir "de 5 a 1 son 4 valores". Son **5**: hay que contar los dos extremos.
+**Checkpoint:** las duraciones van en **épocas**, no en iteraciones. Con 1000 patrones, 400 épocas son 400 000 presentaciones.
 
 ### Claves de la sección 6
 
@@ -565,11 +636,227 @@ Con $\alpha$ constante el último patrón pesa **mil cuatrocientos millones de v
 
 ---
 
-## 13. Cuatro desarrollos para el pizarrón
+## 13. El algoritmo completo, paso a paso
+
+La sección 5 tiene el algoritmo tal como lo escribe la cátedra, en cuatro pasos. Ésta es la versión **operativa**: lo mismo, pero con todo lo que hay que decidir para que corra de verdad. Cada paso dice de qué sección sale.
+
+### Paso 1 — Definir el mapa
+
+> **Sección 2 y 3.**
+
+Elegir la **forma** (lineal, cuadrada, hexagonal) y el **tamaño** $M$. Con una cuadrícula de $F$ filas por $C$ columnas, la neurona $j$ tiene dos coordenadas de mapa,
+
+$$\text{fila}(j) = \left\lfloor \frac{j-1}{C} \right\rfloor, \qquad \text{columna}(j) = (j-1) \bmod C,$$
+
+que **no se usan nunca para calcular distancias a los patrones**: sirven sólo para el entorno del paso 5.
+
+### Paso 2 — Inicialización
+
+> **Sección 5.**
+
+$$w_{ji}(0) \sim \mathcal{U}[-0{,}5;\,+0{,}5] \qquad j = 1,\ldots,M; \quad i = 1,\ldots,N$$
+
+o bien $\mathbf{w}_j(0) = \mathbf{x}_\ell$ con $\ell$ sorteado. La primera opción arranca con toda la malla apretada cerca del origen — es la maraña del ejemplo 4 — y la segunda ya la reparte sobre los datos.
+
+Se fijan también el cronograma de $\eta(n)$ y $\Lambda_G(n)$ de la sección 6, y $n \leftarrow 0$.
+
+### Paso 3 — Tomar un patrón
+
+> **Sección 5.**
+
+Se recorre el archivo de entrenamiento **en orden aleatorio**, un patrón por iteración. Una pasada completa por los $L$ patrones es una **época**; una iteración $n$ es **un** patrón.
+
+### Paso 4 — Competencia: la ganadora
+
+> **Sección 2.** $\;G(\mathbf{x}(n)) = \arg\min_{\forall j}\left\{\|\mathbf{x}(n)-\mathbf{w}_j(n)\|\right\}$
+
+Se calculan las $M$ distancias y se toma el índice de la menor. **En $\mathbb{R}^N$.** Como sólo interesa cuál es la más chica y la raíz es creciente, se puede comparar $\|\mathbf{x}-\mathbf{w}_j\|^2$ y ahorrarse las $M$ raíces: da la misma ganadora.
+
+### Paso 5 — Cooperación: el entorno
+
+> **Sección 3.** $\;\Lambda_G(n) = \left\{ j : \max\left(|\text{fila}(j)-\text{fila}(G)|,\; |\text{columna}(j)-\text{columna}(G)|\right) \le R(n) \right\}$
+
+**En el mapa.** Es la distancia de Chebyshev: un cuadrado, no un círculo. Con $R=1$ el entorno tiene **9 neuronas si la ganadora está en el interior, 6 si está en un borde y 4 si está en una esquina** — la cuadrícula se recorta, no se envuelve.
+
+### Paso 6 — Adaptación
+
+> **Sección 5.**
+
+$$\mathbf{w}_j(n+1) = \mathbf{w}_j(n) + \eta(n)\left(\mathbf{x}(n)-\mathbf{w}_j(n)\right) \quad \forall j \in \Lambda_G(n)$$
+
+y las demás **no se tocan**. Con excitación lateral uniforme todas las del entorno reciben lo mismo que la ganadora; si se usara la gaussiana, cada una recibiría $h_{G,j}(n)$ en lugar de $\eta(n)$.
+
+### Paso 7 — Avanzar el cronograma
+
+> **Sección 6.**
+
+$n \leftarrow n+1$. Al terminar cada época se actualizan $\eta$ y $R$ según la etapa en curso (ordenamiento, transición o ajuste fino). **Dentro de una época se mantienen fijos**: lo que decrece con las épocas, no con cada patrón.
+
+### Paso 8 — Corte
+
+> **Sección 5.**
+
+Se vuelve al paso 3 hasta agotar el cronograma o hasta que el mapa no cambie de forma significativa, por ejemplo cuando $\frac{1}{M}\sum_j \|\mathbf{w}_j(n+1)-\mathbf{w}_j(n)\|$ cae por debajo de un umbral.
+
+> **OJO — el algoritmo termina acá y todavía no clasifica nada**
+> Al salir del paso 8 hay un mapa ordenado y **ninguna etiqueta**. Etiquetar las neuronas es un procedimiento **posterior** y **supervisado**, y es la sección 8. Confundir las dos cosas es el error típico 3.
+
+### Claves de la sección 13
+
+| Clave | Qué tenés que poder responder |
+|---|---|
+| Coordenadas de mapa | Para qué sirven y para qué **no** |
+| Paso 4 | Se puede comparar la distancia al cuadrado; da la misma ganadora |
+| Paso 5 | 9 / 6 / 4 neuronas según interior, borde o esquina, con $R=1$ |
+| Paso 7 | $\eta$ y $R$ cambian por **época**, no por patrón |
+| Después del paso 8 | El mapa está ordenado pero sin etiquetas |
+
+---
+
+## 14. Un ejemplo numérico completo, paso por paso
+
+Todo lo anterior sobre un mapa de $3\times3$ con entradas en $\mathbb{R}^2$, dos iteraciones a mano. Cada bloque dice **qué fórmula aplica y de qué sección sale**. Es el desarrollo que conviene tener practicado: entra en media pizarra y toca las tres piezas del algoritmo.
+
+![Las dos iteraciones. Izquierda, el mapa: quién gana y a quién arrastra. Derecha, el espacio de entrada: dónde estaban los pesos (gris) y dónde quedaron (color).](../imagenes/15-ejemplo-numerico.png)
+
+### Los datos de partida
+
+Mapa de $3\times3$, numerado por filas, con $N=2$ entradas. Los nueve pesos son un sorteo en $[-0{,}5;\,0{,}5]$ (paso 2 de la sección 13), $\eta = 0{,}5$ y $\Lambda_G = 1$. El $\eta$ es deliberadamente grande para que los movimientos se vean; en una corrida real de la etapa 1 andaría por ahí, y en la etapa 3 sería cien veces menor.
+
+$$
+\begin{array}{ccc}
+\mathbf{w}_1 = (-0{,}4;\; 0{,}3) & \mathbf{w}_2 = (0{,}1;\; 0{,}4) & \mathbf{w}_3 = (0{,}5;\; 0{,}2) \\
+\mathbf{w}_4 = (-0{,}3;\, -0{,}1) & \mathbf{w}_5 = (0{,}0;\; 0{,}0) & \mathbf{w}_6 = (0{,}4;\, -0{,}2) \\
+\mathbf{w}_7 = (-0{,}5;\, -0{,}4) & \mathbf{w}_8 = (-0{,}1;\, -0{,}5) & \mathbf{w}_9 = (0{,}3;\, -0{,}5)
+\end{array}
+$$
+
+Son 18 parámetros: dos por neurona. **No hay umbrales ni sesgos** — el SOM no los tiene, porque el peso no multiplica a nada.
+
+### Iteración $n=1$ — Competencia
+
+> **Fórmula: §2 y §13 paso 4.** $\;G(\mathbf{x}) = \arg\min_j \|\mathbf{x}-\mathbf{w}_j\|$
+
+Entra $\mathbf{x}(1) = (0{,}9;\; 0{,}1)$. Se calculan las nueve distancias:
+
+| $j$ | $\mathbf{x}-\mathbf{w}_j$ | $\|\mathbf{x}-\mathbf{w}_j\|^2$ | $\|\mathbf{x}-\mathbf{w}_j\|$ |
+|---|---|---:|---:|
+| 1 | $(1{,}3;\, -0{,}2)$ | $1{,}69+0{,}04 = 1{,}73$ | 1,3153 |
+| 2 | $(0{,}8;\, -0{,}3)$ | $0{,}64+0{,}09 = 0{,}73$ | 0,8544 |
+| **3** | $(0{,}4;\, -0{,}1)$ | $0{,}16+0{,}01 = \mathbf{0{,}17}$ | **0,4123** |
+| 4 | $(1{,}2;\; 0{,}2)$ | $1{,}44+0{,}04 = 1{,}48$ | 1,2166 |
+| 5 | $(0{,}9;\; 0{,}1)$ | $0{,}81+0{,}01 = 0{,}82$ | 0,9055 |
+| 6 | $(0{,}5;\; 0{,}3)$ | $0{,}25+0{,}09 = 0{,}34$ | 0,5831 |
+| 7 | $(1{,}4;\; 0{,}5)$ | $1{,}96+0{,}25 = 2{,}21$ | 1,4866 |
+| 8 | $(1{,}0;\; 0{,}6)$ | $1{,}00+0{,}36 = 1{,}36$ | 1,1662 |
+| 9 | $(0{,}6;\; 0{,}6)$ | $0{,}36+0{,}36 = 0{,}72$ | 0,8485 |
+
+$$G(\mathbf{x}(1)) = 3$$
+
+Fijate que el orden de la columna de los cuadrados es el mismo que el de la columna de las raíces: **por eso se puede comparar sin sacar raíz**.
+
+### Iteración $n=1$ — Cooperación
+
+> **Fórmula: §3 y §13 paso 5.** Distancia de Chebyshev **en el mapa**, radio 1.
+
+La neurona 3 está en **fila 1, columna 3**: es una **esquina**. Su entorno se recorta contra los dos bordes:
+
+$$\Lambda_G(1) = \{2,\, 3,\, 5,\, 6\} \qquad \text{4 neuronas, no 9}$$
+
+La 9, por ejemplo, tiene el peso a $0{,}8485$ — más cerca del patrón que la 2, que está a $0{,}8544$ — y **no se actualiza**, porque en el mapa está en la esquina opuesta. La 5, que está a $0{,}9055$, sí. Ése es todo el asunto del SOM en una línea.
+
+### Iteración $n=1$ — Adaptación
+
+> **Fórmula: §5 y §13 paso 6.** $\;\mathbf{w}_j \leftarrow \mathbf{w}_j + \eta\,(\mathbf{x}-\mathbf{w}_j)$, con $\eta = 0{,}5$.
+
+Con $\eta = 0{,}5$ cada peso queda **en el punto medio** entre donde estaba y el patrón, que es la forma más rápida de controlar la cuenta en el pizarrón:
+
+$$\begin{aligned}
+\mathbf{w}_2 &= (0{,}1;\, 0{,}4) + 0{,}5\,(0{,}8;\, -0{,}3) = (0{,}1+0{,}40;\; 0{,}4-0{,}15) = \mathbf{(0{,}500;\; 0{,}250)} \\
+\mathbf{w}_3 &= (0{,}5;\, 0{,}2) + 0{,}5\,(0{,}4;\, -0{,}1) = (0{,}5+0{,}20;\; 0{,}2-0{,}05) = \mathbf{(0{,}700;\; 0{,}150)} \\
+\mathbf{w}_5 &= (0{,}0;\, 0{,}0) + 0{,}5\,(0{,}9;\; 0{,}1) = (0{,}0+0{,}45;\; 0{,}0+0{,}05) = \mathbf{(0{,}450;\; 0{,}050)} \\
+\mathbf{w}_6 &= (0{,}4;\, -0{,}2) + 0{,}5\,(0{,}5;\; 0{,}3) = (0{,}4+0{,}25;\; -0{,}2+0{,}15) = \mathbf{(0{,}650;\, -0{,}050)}
+\end{aligned}$$
+
+Las otras cinco quedan **exactamente como estaban**: $\mathbf{w}_1,\mathbf{w}_4,\mathbf{w}_7,\mathbf{w}_8,\mathbf{w}_9$ sin tocar. Ésa es la segunda rama de la ecuación.
+
+> **OJO — la ganadora no es la que más se mueve**
+> La 3 se movió $0{,}206$ y la 5 se movió $0{,}453$: **más del doble**. El paso es proporcional a lo lejos que estaba cada una, y la ganadora es justamente la que estaba más cerca. Lo que gana la ganadora no es un paso más grande, es el derecho a elegir **quiénes** se mueven.
+
+### Iteración $n=2$ — La ganadora queda en el interior
+
+> **Mismas fórmulas, con los pesos ya actualizados.**
+
+Entra $\mathbf{x}(2) = (0{,}3;\; 0{,}0)$:
+
+| $j$ | 1 | 2 | 3 | 4 | **5** | 6 | 7 | 8 | 9 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| $\|\mathbf{x}-\mathbf{w}_j\|$ | 0,7616 | 0,3202 | 0,4272 | 0,6083 | **0,1581** | 0,3536 | 0,8944 | 0,6403 | 0,5000 |
+
+$$G(\mathbf{x}(2)) = 5$$
+
+La 5 está en **fila 2, columna 2**: el interior. Ahora el entorno **no se recorta**:
+
+$$\Lambda_G(2) = \{1,2,3,4,5,6,7,8,9\} \qquad \text{las 9: la ganadora y las 8 de alrededor}$$
+
+**Se actualiza el mapa entero.** Aplicando la regla con $\eta=0{,}5$ a las nueve:
+
+$$
+\begin{array}{ccc}
+\mathbf{w}_1 = (-0{,}050;\; 0{,}150) & \mathbf{w}_2 = (0{,}400;\; 0{,}125) & \mathbf{w}_3 = (0{,}500;\; 0{,}075) \\
+\mathbf{w}_4 = (0{,}000;\, -0{,}050) & \mathbf{w}_5 = (0{,}375;\; 0{,}025) & \mathbf{w}_6 = (0{,}475;\, -0{,}025) \\
+\mathbf{w}_7 = (-0{,}100;\, -0{,}200) & \mathbf{w}_8 = (0{,}100;\, -0{,}250) & \mathbf{w}_9 = (0{,}300;\, -0{,}250)
+\end{array}
+$$
+
+### El control
+
+Cuando el entorno abarca **todo** el mapa, la iteración es una **homotecia de centro $\mathbf{x}$ y razón $(1-\eta)$**: cada peso queda a $(1-\eta)$ de la distancia a la que estaba, y todas las distancias entre pesos se multiplican por $(1-\eta)$. Sale de reescribir la regla en forma de combinación convexa, que es el desarrollo D3 de la sección 15:
+
+$$\mathbf{w}_j(n+1) - \mathbf{x} = (1-\eta)\left[\mathbf{w}_j(n) - \mathbf{x}\right]$$
+
+Con $\eta = 0{,}5$, entonces, **todo se divide exactamente por dos**. Es el control más rápido de la iteración 2:
+
+| | Antes de $n=2$ | Después | Cociente |
+|---|---:|---:|---:|
+| Largo total de la malla | 5,4588 | 2,7294 | **0,500** |
+| Dispersión media respecto del centroide | 0,5206 | 0,2603 | **0,500** |
+
+Si te da otra cosa, te equivocaste en alguna resta.
+
+> **IDEA DE FONDO — acá se ve la contracción de la etapa 1**
+> Esto explica lo que se ve en el segundo cuadro de la figura del despliegue (sección 7): con un entorno grande **casi toda iteración actualiza a casi todo el mapa**, así que casi toda iteración es una contracción hacia el patrón de turno. Por eso la malla primero se apelotona alrededor de la media de los datos y recién se estira cuando el entorno empieza a achicarse. No es un error de implementación: es la etapa 1 haciendo lo que tiene que hacer.
+
+### Qué pasa si se lo deja correr
+
+El mismo mapa de $3\times3$, ahora entrenado de verdad sobre 1500 puntos uniformes en $[-1,1]^2$, 300 épocas con las tres etapas, promediando 8 inicializaciones distintas. Se mide la distancia media $\|\mathbf{w}_a-\mathbf{w}_b\|$ entre **vecinas en el mapa** contra la de **un par cualquiera**:
+
+| Corrida | Vecinas en el mapa | Un par cualquiera |
+|---|---:|---:|
+| Con entorno ($R: 1 \to 0$) | **0,68** | 1,10 |
+| Sin entorno ($R = 0$ siempre) | 1,11 | 1,10 |
+
+Sin entorno, dos neuronas vecinas en la cuadrícula están tan lejos entre sí como dos cualesquiera: la vecindad del mapa **no informa nada** sobre los datos. Es el mismo resultado que la tabla de la sección 7 sobre un mapa de $6\times6$, y es el argumento que conviene tener a mano para el ejercicio de comparación con $k$-medias.
+
+### Claves de la sección 14
+
+| Clave | Qué tenés que poder responder |
+|---|---|
+| Cuántos parámetros | $M \times N$; **no hay umbrales** |
+| Por qué se compara $\|\cdot\|^2$ | La raíz es creciente: no cambia el $\arg\min$ |
+| Entorno en la esquina | 4 neuronas; la cuadrícula se recorta, no se envuelve |
+| Quién se mueve más | La que estaba más lejos, no la ganadora |
+| El control con $\eta=0{,}5$ | Entorno total $\Rightarrow$ todo se divide por dos |
+
+---
+
+## 15. Cuatro desarrollos para el pizarrón
 
 Los cuatro que conviene tener practicados, con los puntos donde uno se traba.
 
 ### D1 — El algoritmo de entrenamiento del SOM, de memoria
+
+*Desarrollo completo: sección 5, “Para la pizarra”. Versión operativa: sección 13.*
 
 **Llegás a:** los cuatro pasos, con la ecuación de adaptación partida en dos casos según el entorno.
 
@@ -587,6 +874,8 @@ Los cuatro que conviene tener practicados, con los puntos donde uno se traba.
 
 ### D3 — La forma "combinación convexa" de la regla de adaptación
 
+*Se usa como control numérico en la sección 14.*
+
 **Llegás a:** $\mathbf{m}_c(n+1) = [1 - s\alpha]\,\mathbf{m}_c(n) + s\alpha\,\mathbf{x}(n)$, distribuyendo y agrupando.
 
 **Trampa:** perder el signo al agrupar los dos términos en $\mathbf{m}_c(n)$. Sale $\mathbf{m}_c(n)(1 - s\alpha)$, con el $1$ del término original.
@@ -603,7 +892,7 @@ Los cuatro que conviene tener practicados, con los puntos donde uno se traba.
 
 ---
 
-## 14. Formulario
+## 16. Formulario
 
 **SOM — ganadora**
 
@@ -654,7 +943,7 @@ $$\alpha_c(n) = \left[1 - s(n)\alpha_c(n)\right]\alpha_c(n-1)
 
 ---
 
-## 15. Errores típicos
+## 17. Errores típicos
 
 1. **Confundir los dos espacios.** La vecindad se mide en el mapa; la distancia que elige la ganadora, en $\mathbb{R}^N$. Es el error número uno de toda la unidad.
 2. **Creer que el entorno sirve para agrupar mejor.** Sirve para **ordenar**. Sin entorno el agrupamiento es igual de bueno (y es $k$-medias).
@@ -665,13 +954,14 @@ $$\alpha_c(n) = \left[1 - s(n)\alpha_c(n)\right]\alpha_c(n-1)
 7. **Mezclar épocas con iteraciones** al citar las duraciones de las tres etapas.
 8. **Decir que $\Lambda_G=2$ son 2 neuronas por lado en diagonal también.** Son las 24 de alrededor: distancia de Chebyshev, un cuadrado.
 9. **Dejar $\alpha$ constante en LVQ y decir que converge al centroide.** Converge a algo dominado por los últimos patrones: relación $1{,}4\times10^9$ entre el último y el primero.
-10. **Olvidar el subíndice $c$ en $\alpha_c$.** Hay uno por prototipo, y sólo avanza cuando ese prototipo gana.
+10. **Recortar mal el entorno en los bordes.** Con $R=1$ son 9 neuronas en el interior, 6 en un borde y 4 en una esquina. La cuadrícula **no** se envuelve sobre sí misma.
+11. **Olvidar el subíndice $c$ en $\alpha_c$.** Hay uno por prototipo, y sólo avanza cuando ese prototipo gana.
 
 ---
 
-## 16. Autoevaluación
+## 18. Autoevaluación
 
-Si podés responder estas doce sin mirar, la unidad está.
+Si podés responder estas catorce sin mirar, la unidad está.
 
 1. Definí auto-organización y dá el ejemplo biológico del que salen estas redes.
 2. Dibujá la arquitectura del SOM. ¿Cuántas capas tiene? ¿Qué es $\mathbf{w}_j$ y en qué espacio vive?
@@ -685,3 +975,5 @@ Si podés responder estas doce sin mirar, la unidad está.
 10. ¿Cómo se usa un SOM para clasificar? ¿En qué paso entran las clases?
 11. Escribí LVQ1 completo. ¿Qué significa $s(c,d,n)$ y cuál es la errata de la diapositiva?
 12. Demostrá que $\alpha_c(n) = \alpha_c(n-1)/[1+s(n)\alpha_c(n-1)]$ y explicá por qué no puede pasar de 1.
+13. Mapa de $3\times3$, $\Lambda_G=1$: ¿cuántas neuronas se actualizan si gana la del centro? ¿Y si gana una de una esquina? ¿Por qué?
+14. Resolvé una iteración completa a mano: nueve pesos, un patrón, $\eta=0{,}5$. Ganadora, entorno y pesos nuevos. Controlá el resultado.

@@ -1054,6 +1054,212 @@ def figura_14_alfa_optimo():
 # ---------------------------------------------------------------------------
 
 
+
+# ---------------------------------------------------------------------------
+# 15. El ejemplo numerico paso a paso (mapa 3x3 en R^2)
+# ---------------------------------------------------------------------------
+
+PESOS_EJEMPLO = {
+    1: (-0.4, 0.3), 2: (0.1, 0.4), 3: (0.5, 0.2),
+    4: (-0.3, -0.1), 5: (0.0, 0.0), 6: (0.4, -0.2),
+    7: (-0.5, -0.4), 8: (-0.1, -0.5), 9: (0.3, -0.5),
+}
+
+PATRONES_EJEMPLO = [(0.9, 0.1), (0.3, 0.0)]
+ETA_EJEMPLO = 0.5
+RADIO_EJEMPLO = 1
+
+
+def posicion_en_el_mapa(numero_de_neurona):
+    """Devuelve (fila, columna) con origen 0 para un mapa de 3x3."""
+    return ((numero_de_neurona - 1) // 3, (numero_de_neurona - 1) % 3)
+
+
+def entorno_cuadrado(numero_ganadora, radio):
+    """Neuronas a distancia de Chebyshev <= radio de la ganadora, en el mapa."""
+    fila_ganadora, columna_ganadora = posicion_en_el_mapa(numero_ganadora)
+    seleccionadas = []
+    for numero in range(1, 10):
+        fila, columna = posicion_en_el_mapa(numero)
+        distancia_en_el_mapa = max(abs(fila - fila_ganadora), abs(columna - columna_ganadora))
+        if distancia_en_el_mapa <= radio:
+            seleccionadas.append(numero)
+    return seleccionadas
+
+
+def elegir_ganadora(patron, pesos):
+    distancias = {n: np.linalg.norm(np.array(patron) - pesos[n]) for n in pesos}
+    return min(distancias, key=distancias.get), distancias
+
+
+def dibujar_mapa_3x3(ejes, numero_ganadora, entorno):
+    apagar_grilla(ejes)
+    for numero in range(1, 10):
+        fila, columna = posicion_en_el_mapa(numero)
+        centro = (columna, 2 - fila)
+        if numero == numero_ganadora:
+            color_relleno, color_borde, grosor = COLOR_GANADORA, COLOR_GANADORA, 2.0
+        elif numero in entorno:
+            color_relleno, color_borde, grosor = "white", COLOR_VECINA, 2.0
+        else:
+            color_relleno, color_borde, grosor = "white", COLOR_INACTIVA, 1.2
+        ejes.add_patch(
+            plt.Rectangle(
+                (centro[0] - 0.34, centro[1] - 0.34), 0.68, 0.68,
+                facecolor=color_relleno, edgecolor=color_borde, linewidth=grosor, zorder=3,
+            )
+        )
+        color_texto = "white" if numero == numero_ganadora else (
+            COLOR_VECINA if numero in entorno else "#9aa0a8")
+        ejes.text(centro[0], centro[1], str(numero), ha="center", va="center",
+                  fontsize=11, fontweight="bold", color=color_texto, zorder=4)
+    for fila in range(3):
+        for columna in range(3):
+            if columna < 2:
+                ejes.plot([columna, columna + 1], [2 - fila, 2 - fila],
+                          color=COLOR_INACTIVA, linewidth=1.0, zorder=1)
+            if fila < 2:
+                ejes.plot([columna, columna], [2 - fila, 1 - fila],
+                          color=COLOR_INACTIVA, linewidth=1.0, zorder=1)
+    ejes.set_xlim(-0.75, 2.75)
+    ejes.set_ylim(-0.75, 2.75)
+    ejes.set_aspect("equal")
+
+
+def dibujar_malla_en_el_plano(ejes, pesos, color, alfa, grosor):
+    for numero in range(1, 10):
+        fila, columna = posicion_en_el_mapa(numero)
+        if columna < 2:
+            vecina = numero + 1
+            ejes.plot([pesos[numero][0], pesos[vecina][0]],
+                      [pesos[numero][1], pesos[vecina][1]],
+                      color=color, alpha=alfa, linewidth=grosor, zorder=2)
+        if fila < 2:
+            vecina = numero + 3
+            ejes.plot([pesos[numero][0], pesos[vecina][0]],
+                      [pesos[numero][1], pesos[vecina][1]],
+                      color=color, alpha=alfa, linewidth=grosor, zorder=2)
+
+
+def figura_15_ejemplo_numerico():
+    pesos = {n: np.array(v, dtype=float) for n, v in PESOS_EJEMPLO.items()}
+    figura, ejes = plt.subplots(2, 2, figsize=(10.4, 9.6))
+    registro = []
+
+    for indice_iteracion, patron in enumerate(PATRONES_EJEMPLO):
+        patron = np.array(patron, dtype=float)
+        numero_ganadora, distancias = elegir_ganadora(patron, pesos)
+        entorno = entorno_cuadrado(numero_ganadora, RADIO_EJEMPLO)
+        pesos_previos = {n: v.copy() for n, v in pesos.items()}
+
+        eje_mapa = ejes[indice_iteracion][0]
+        dibujar_mapa_3x3(eje_mapa, numero_ganadora, entorno)
+        eje_mapa.set_title(
+            f"n = {indice_iteracion + 1} · en el MAPA: gana la {numero_ganadora}; "
+            f"su entorno son {len(entorno)} neuronas", fontsize=10)
+
+        eje_plano = ejes[indice_iteracion][1]
+        dibujar_malla_en_el_plano(eje_plano, pesos_previos, COLOR_INACTIVA, 1.0, 1.3)
+
+        for numero in entorno:
+            pesos[numero] = pesos_previos[numero] + ETA_EJEMPLO * (patron - pesos_previos[numero])
+
+        for numero in range(1, 10):
+            eje_plano.scatter(*pesos_previos[numero], s=26, color=COLOR_INACTIVA,
+                              zorder=4, edgecolor="white", linewidth=0.6)
+            if numero in entorno:
+                eje_plano.annotate(
+                    "", xy=pesos[numero], xytext=pesos_previos[numero],
+                    arrowprops=dict(arrowstyle="->", color=COLOR_ACENTO, linewidth=1.4,
+                                    shrinkA=2, shrinkB=3), zorder=5)
+
+        dibujar_malla_en_el_plano(eje_plano, pesos, COLOR_MALLA, 0.9, 1.7)
+
+        for numero in range(1, 10):
+            color_punto = COLOR_GANADORA if numero == numero_ganadora else (
+                COLOR_VECINA if numero in entorno else COLOR_INACTIVA)
+            eje_plano.scatter(*pesos[numero], s=46, color=color_punto, zorder=6,
+                              edgecolor="white", linewidth=0.8)
+            desplazamiento_x = 0.05 if pesos[numero][0] < 0.55 else -0.11
+            desplazamiento_y = -0.11 if numero == numero_ganadora else 0.05
+            eje_plano.annotate(f"$w_{{{numero}}}$", xy=pesos[numero],
+                               xytext=(pesos[numero][0] + desplazamiento_x,
+                                       pesos[numero][1] + desplazamiento_y),
+                               fontsize=9, color=color_punto, zorder=7)
+
+        eje_plano.scatter(*patron, marker="*", s=300, color=COLOR_NARANJA,
+                          zorder=8, edgecolor="white", linewidth=0.8)
+        eje_plano.annotate(f"$\\mathbf{{x}}$ = ({patron[0]:.1f}; {patron[1]:.1f})",
+                           xy=(patron[0] - 0.14, patron[1] - 0.20),
+                           fontsize=10, color=COLOR_NARANJA, fontweight="bold",
+                           ha="center", zorder=8)
+        eje_plano.set_xlim(-0.80, 1.20)
+        eje_plano.set_ylim(-0.80, 0.68)
+        eje_plano.set_aspect("equal")
+        eje_plano.set_xlabel("$x_1$")
+        eje_plano.set_ylabel("$x_2$")
+        eje_plano.set_title(
+            f"n = {indice_iteracion + 1} · en la ENTRADA: cada peso del entorno "
+            f"camina $\\eta$ = {ETA_EJEMPLO} hacia $\\mathbf{{x}}$", fontsize=10)
+
+        registro.append((numero_ganadora, entorno,
+                         {n: v.copy() for n, v in pesos.items()}, distancias))
+
+    figura.suptitle(
+        "Dos iteraciones del SOM sobre un mapa de 3×3 con entradas en $\\mathbb{R}^2$, "
+        "$\\Lambda_G$ = 1.\nGris: posición y malla ANTES de la iteración. "
+        "Color: DESPUÉS. Rojo: la ganadora.",
+        fontsize=10, y=0.985)
+    figura.tight_layout(rect=[0, 0, 1, 0.93], h_pad=3.0)
+    guardar(figura, "15-ejemplo-numerico.png")
+    return registro
+
+
+def verificacion_mapa_3x3_largo():
+    """El mismo mapa de 3x3, entrenado de verdad, con y sin entorno."""
+    generador = np.random.default_rng(2077)
+    datos = generador.uniform(-1.0, 1.0, size=(1500, 2))
+    resultados = {}
+    for usa_entorno in (True, False):
+        distancias_vecinas = []
+        distancias_cualquiera = []
+        for semilla in range(8):
+            generador_pesos = np.random.default_rng(100 + semilla)
+            pesos = generador_pesos.uniform(-0.5, 0.5, size=(9, 2))
+            total_epocas = 300
+            for epoca in range(total_epocas):
+                avance = epoca / total_epocas
+                if avance < 0.30:
+                    eta = 0.9 - (avance / 0.30) * 0.7
+                    radio = 1 if usa_entorno else 0
+                elif avance < 0.70:
+                    eta = 0.2 - ((avance - 0.30) / 0.40) * 0.15
+                    radio = 1 if usa_entorno else 0
+                else:
+                    eta = 0.05 - ((avance - 0.70) / 0.30) * 0.04
+                    radio = 0
+                orden = generador.permutation(len(datos))
+                for indice in orden:
+                    patron = datos[indice]
+                    ganadora = int(np.argmin(((patron - pesos) ** 2).sum(axis=1)))
+                    fila_g, columna_g = ganadora // 3, ganadora % 3
+                    for numero in range(9):
+                        fila, columna = numero // 3, numero % 3
+                        if max(abs(fila - fila_g), abs(columna - columna_g)) <= radio:
+                            pesos[numero] += eta * (patron - pesos[numero])
+            for numero in range(9):
+                fila, columna = numero // 3, numero % 3
+                if columna < 2:
+                    distancias_vecinas.append(np.linalg.norm(pesos[numero] - pesos[numero + 1]))
+                if fila < 2:
+                    distancias_vecinas.append(np.linalg.norm(pesos[numero] - pesos[numero + 3]))
+            for a in range(9):
+                for b in range(a + 1, 9):
+                    distancias_cualquiera.append(np.linalg.norm(pesos[a] - pesos[b]))
+        resultados["con entorno" if usa_entorno else "sin entorno"] = (
+            float(np.mean(distancias_vecinas)), float(np.mean(distancias_cualquiera)))
+    return resultados
+
 def main():
     figura_01_arquitectura()
     figura_02_vecindades()
@@ -1069,6 +1275,8 @@ def main():
     figura_12_lvq1_grafico()
     error_inicial, error_final = figura_13_lvq1_frontera()
     alfa_optimo, pesos_optimos, pesos_constantes = figura_14_alfa_optimo()
+    registro_ejemplo = figura_15_ejemplo_numerico()
+    resumen_3x3 = verificacion_mapa_3x3_largo()
 
     print()
     print("=" * 62)
@@ -1088,6 +1296,11 @@ def main():
     print(f"pesos efectivos con alfa constante: primero={pesos_constantes[0]:.3e} "
           f"ultimo={pesos_constantes[-1]:.3e} "
           f"(relacion {pesos_constantes[-1]/pesos_constantes[0]:.3e})")
+    for indice, (ganadora, entorno, pesos, distancias) in enumerate(registro_ejemplo):
+        print(f"Ejemplo numerico n={indice+1}: ganadora={ganadora} entorno={entorno}")
+        print("   pesos tras la iteracion: " +
+              "  ".join(f"w{n}=({pesos[n][0]:+.3f},{pesos[n][1]:+.3f})" for n in sorted(pesos)))
+    print(f"Mapa 3x3 entrenado (8 semillas): {resumen_3x3}")
 
 
 if __name__ == "__main__":
