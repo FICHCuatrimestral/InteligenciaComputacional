@@ -247,6 +247,44 @@ Cuatro cosas para leer de esa matriz:
 > **OJO — dos patrones en ocho neuronas ya es mucho**
 > $P_{\max} = 8/(2\ln 8) = 1{,}92$. Guardar dos ya está sobre el límite. Funciona igual **porque los elegí ortogonales**: la cota vale para patrones al azar. Si hubiera tomado dos parecidos, la recuperación fallaría — y eso es exactamente lo que produce los estados espúreos.
 
+### Para la pizarra: armar la matriz de pesos
+
+**Te preguntan:** *"Almacená estos patrones en una red de Hopfield."*
+
+**Antes de escribir una sola cuenta, dibujás la tabla** con los patrones en **filas** y las posiciones numeradas **arriba**. Todo el ejercicio se resuelve leyendo columnas de esa tabla, y sin ella te vas a perder.
+
+**Paso 1.** Fijás el tamaño de la red y lo decís en voz alta: *"cada patrón tiene $N$ componentes, así que hay $N$ neuronas y $\mathbf{W}$ es de $N\times N$"*.
+
+> **Trampa:** entregar una matriz de $P\times P$. Los índices $j$ e $i$ son **neuronas** (posiciones del vector), no patrones. Si te dan 3 patrones de 6 bits, la matriz es de $6\times 6$ con 3 términos por suma, no de $3\times3$.
+
+**Paso 2.** Escribís la fórmula y **señalás qué índice corre**.
+
+> **Llegás a:** $\;w_{ji} = \dfrac{1}{N}\sum_{k=1}^{P} x^*_{kj}\,x^*_{ki}$
+> **La frase:** *"$j$ e $i$ eligen el cable y están fijos; el que corre es $k$, que recorre los patrones."*
+
+**Paso 3.** Para un par $(j,i)$, tapás todo menos **las dos columnas** $j$ e $i$ y bajás fila por fila multiplicando. Como cada producto de $\pm1$ da $\pm1$, la suma es una cuenta de votos:
+
+> **Llegás a:** $\;w_{ji} = \dfrac{(\#\text{ patrones donde coinciden}) - (\#\text{ patrones donde difieren})}{N}$
+> **Decilo así y ganás tiempo:** en vez de multiplicar $P$ veces, contás coincidencias y restás. Es la misma cuenta, tres veces más rápida en el pizarrón.
+
+**Paso 4.** Calculás **sólo la mitad de arriba** de la matriz y completás por reflejo.
+
+> **La frase:** *"$w_{ji} = w_{ij}$ sale gratis, porque es el mismo par de columnas y el producto no distingue el orden. Cables reales hay $N(N-1)/2$, no $N^2$."*
+
+**Paso 5.** Escribís ceros en la diagonal, y **aclarás que es a mano**.
+
+> **Llegás a:** $\;w_{jj} = 0$
+> **La frase:** *"Hebb sola daría $w_{jj} = P/N$, porque la columna de una neurona está perfectamente correlacionada consigo misma. Sería el peso más grande de su fila, la neurona se haría caso a sí misma y quedaría clavada. Se calcula y se tira."*
+> **Ojo con la asimetría de las dos condiciones:** la simetría **se verifica**, la diagonal **se fuerza**. Es una pregunta de seguimiento clásica.
+
+**Paso 6 (el remate).** Leés la matriz en voz alta señalando los tres casos, uno por uno:
+
+> $w_{ji} > 0$ → *"en los patrones guardados estas dos neuronas tienden a coincidir"*.
+> $w_{ji} < 0$ → *"tienden a oponerse"*.
+> $w_{ji} = 0$ → *"no hay relación estable entre ellas, los votos se cancelaron"*. **Marcá alguno de los ceros y decí que no es un error de cuenta, es información.**
+
+**Y cerrás con la frase que ordena todo el método:** *"la matriz no contiene ningún patrón escrito en ninguna parte; sólo guarda relaciones entre pares de posiciones."*
+
 ### Claves de la sección 4
 
 | Clave | Qué tenés que poder responder |
@@ -256,6 +294,8 @@ Cuatro cosas para leer de esa matriz:
 | $N$ vs. $P$ | Se divide por la dimensión; la suma corre sobre los patrones |
 | No iterativo | Una pasada, tiempo conocido de antemano |
 | Capacidad | $P_{\max} = N/(2\ln N)$, y por qué es un problema |
+| Tamaño de $\mathbf{W}$ | Que es $N\times N$ y nunca $P\times P$: los índices son neuronas |
+| Las dos condiciones | La simetría se verifica sola; la diagonal se fuerza a mano |
 
 ### Con esto termina la fase 1 — qué falta
 
@@ -315,6 +355,44 @@ Le doy $\mathbf{x}^*_1$ con **dos bits dados vuelta** (las posiciones 2 y 7), o 
 En el paso 11 ya se recorrieron las ocho neuronas sin un solo cambio: **convergió**, y el resultado es exactamente $\mathbf{x}^*_1$.
 
 Fijate el paso 3: $v_2 = +0{,}75$ es la suma de lo que "opinan" las otras siete neuronas sobre cuánto debería valer la 2. Como la mayoría del resto quedó consistente con $\mathbf{x}^*_1$, la arrastran al valor correcto. Ése es todo el mecanismo de la memoria asociativa.
+
+### Para la pizarra: recuperar un patrón sucio
+
+**Te preguntan:** *"Con esa $\mathbf{W}$, recuperá este patrón con ruido."*
+
+**Arrancás dibujando la tabla de iteraciones vacía**, con estas columnas: **Paso · $j^*$ · $v_{j^*}$ · $y_{j^*}$ nuevo · estado · ¿cambió?**. Es el andamio del ejercicio: si lo armás primero, la cuenta se llena sola.
+
+**Paso 1.** Escribís el estado inicial y **usás el verbo correcto**.
+
+> **Llegás a:** $\;\mathbf{y}(0) = \mathbf{x}$
+> **La frase:** *"el patrón sucio se **fuerza** como estado inicial"* — no se "presenta a la entrada", porque esta red no tiene entrada: tiene estado.
+
+**Paso 2.** Sorteás $j^*$ y lo decís.
+
+> **La frase:** *"la neurona se elige al azar, $j^* = \operatorname{rnd}(N)$"*. Si por comodidad las vas a recorrer en orden en el pizarrón, **aclaralo**: *"las recorro en orden para que se siga la cuenta, pero el algoritmo las sortea"*.
+
+**Paso 3.** Calculás $v_{j^*}$ recorriendo **la fila $j^*$** de la matriz, y salteás los ceros.
+
+> **Llegás a:** $\;v_{j^*} = \sum_{i} w_{j^*i}\,y_i$
+> **Trampa:** incluir el término $i = j^*$. No existe, $w_{jj}=0$.
+> **Atajo de pizarrón:** sólo aportan las $i$ con $w_{j^*i} \neq 0$. Si la fila tiene muchos ceros, la cuenta son dos o tres términos.
+
+**Paso 4.** Aplicás el signo y actualizás **una sola** posición del estado.
+
+> **Llegás a:** $\;y_{j^*} = \operatorname{sgn}(v_{j^*})$, y en la columna «estado» copiás el anterior **cambiando sólo ese lugar**.
+> **Trampa grave:** recalcular todas las neuronas con el estado viejo y actualizarlas juntas. Ése es el modo **sincrónico**, y puede oscilar con período 2. El algoritmo es **asincrónico**: de a una, y la siguiente ya usa el valor nuevo.
+> **Trampa de empate:** si $v_{j^*} = 0$, **no** pongas $+1$: en la convención de la cátedra la neurona se queda como estaba, $y_{j^*}(n) = y_{j^*}(n-1)$ (ver la tabla de errores típicos). Decilo antes de que te lo pregunten.
+
+**Paso 5.** Repetís hasta parar, y **enunciás bien el criterio**.
+
+> **La frase:** *"se termina cuando se recorren las $N$ neuronas sin que ninguna cambie"*.
+> **Trampa:** decir "cuando la neurona que toqué no cambió". No alcanza. Recién con una pasada completa sin cambios sabés que nada puede moverse en el futuro, porque a cada neurona le entra lo mismo que antes. **Y cuánto tarda no se sabe de antemano** — eso también conviene decirlo.
+
+**Paso 6 (el remate).** Volvés sobre **un** paso en el que la neurona se dio vuelta y lo leés como una votación:
+
+> **La frase:** *"$v_{j^*}$ es la suma de lo que opinan las otras neuronas sobre cuánto debería valer ésta, y cada opinión pesa lo que dice su cable. Como la mayoría del resto quedó consistente con la memoria, la arrastran al valor correcto. Ése es todo el mecanismo de la memoria asociativa."*
+
+**Si te preguntan por la diferencia con todo lo anterior, ésta es la respuesta de una línea:** *"el multicapa entrena iterando y se usa de una; Hopfield entrena de una y se usa iterando. Está dado vuelta."*
 
 ### Claves de la sección 5
 
@@ -395,6 +473,64 @@ $$P_{\max} = \frac{N}{2\ln N}$$
 | La memoria correcta | cayó en el valle que corresponde | todo bien |
 | Un **estado espúreo** | cayó en un mínimo local | pasado de capacidad, o memorias parecidas |
 | **Oscilación** | no converge nunca | idem, o pesos no simétricos |
+
+### Para la pizarra: por qué la red tiene que frenar
+
+**Te preguntan:** *"Demostrá que el algoritmo de recuperación converge."*
+
+**Arrancás anunciando la estrategia en una línea:** *"voy a construir una función que baje en cada paso y esté acotada por abajo; con eso la convergencia sale sola."*
+
+**Paso 1.** Escribís la energía y aclarás de dónde viene el $-\tfrac12$.
+
+> **Llegás a:** $\;E(\mathbf{y}) = -\dfrac{1}{2}\sum_{i \neq j} w_{ji}\,y_i\,y_j$
+> **La frase:** *"cada par se cuenta dos veces en la doble suma, y el medio lo compensa; el menos es para que los estados cómodos tengan energía baja."*
+
+**Paso 2.** Actualizás **una sola** neurona $j$ y observás qué términos se mueven.
+
+> **La frase:** *"como sólo cambia $y_j$, los únicos términos que se mueven son los que la contienen, y su aporte total es $-y_j v_j$ con $v_j = \sum_i w_{ji}y_i$."*
+> **Acá se usa la simetría, y hay que decirlo:** el par $(i,j)$ aporta **un solo** término porque $w_{ji} = w_{ij}$. Si los pesos no fueran simétricos aportaría dos distintos, la cuenta de abajo no cerraría y **la energía podría subir**.
+
+**Paso 3.** Supuesto: la neurona **cambió**, o sea $y_j^{\text{nuevo}} = -y_j$.
+
+> **Llegás a:** $\;\Delta E = -\big(y_j^{\text{nuevo}} - y_j\big)\,v_j = -(-2y_j)\,v_j = 2\,y_j\,v_j$
+
+**Paso 4.** El argumento clave, y es una sola observación:
+
+> **La frase:** *"si la neurona cambió, fue porque $\operatorname{sgn}(v_j) \neq y_j$; entonces $y_j$ y $v_j$ tienen signos distintos y su producto es negativo."*
+> **Llegás a:** $\;\Delta E < 0$ si cambió, y $\Delta E = 0$ si no cambió.
+
+**Paso 5 (el cierre).** Encajás las tres piezas y las contás con los dedos:
+
+> **Llegás a:** $\;\boxed{\Delta E \le 0 \text{ en todo paso}}$
+> **La frase:** *"la energía nunca sube, hay una cantidad **finita** de estados ($2^N$) y está acotada por abajo. No puede bajar para siempre: frena en una cantidad finita de pasos."*
+
+**Paso 6 (lo que te van a preguntar después).** Tené preparadas estas tres:
+
+> **¿Frena en el patrón correcto?** No necesariamente: frena en el **primer mínimo local** que encuentra. Si no te pasaste de capacidad, esos mínimos son las memorias; si te pasaste, son estados espúreos.
+> **¿Son los patrones los mínimos globales?** No hace falta que lo sean. Lo que importa es que su cuenca de atracción sea ancha, no que sean el fondo absoluto.
+> **¿Qué significa "mínimo local" acá?** No hay derivadas ni pendientes: el estado vive en los vértices de un hipercubo. Significa exactamente *"dar vuelta cualquiera de las $N$ neuronas, de a una, no baja la energía"*.
+
+### Para la pizarra: desarrollar Hopfield de punta a punta
+
+**Te preguntan:** *"Desarrollá el método de Hopfield."* Sin más datos. Es la consigna más abierta y la más fácil de desordenar, así que conviene tener un guión fijo. Siete movimientos, en este orden:
+
+**1. Partís la pizarra en dos y titulás.** A la izquierda **«Fase 1 — almacenar»**, a la derecha **«Fase 2 — recuperar»**. Debajo del título de cada mitad, una línea: *almacenar es llenar la fórmula; recuperar es hacerla correr.* Con eso ya dijiste la estructura entera del método.
+
+**2. Dibujás la arquitectura** antes de escribir cualquier fórmula: tres o cuatro neuronas, todas unidas con todas, sin flechas de dirección. Y decís las tres cosas que la definen: **una sola capa** que es entrada, proceso y salida al mismo tiempo; **$w_{ji} = w_{ij}$**; **$w_{jj} = 0$**. Aclarás que los umbrales $\theta_j$ en general no se usan.
+
+**3. Escribís el modelo de la neurona**, que es lo único que la red sabe hacer:
+
+> $v_j = \sum_i w_{ji}\,y_i$ &nbsp;y&nbsp; $y_j = \operatorname{sgn}(v_j)$ — *"una votación ponderada: el peso es cuánto vale el voto"*.
+
+**4. Fase 1: Hebb.** La fórmula, los tres casos (coinciden / se oponen / se cancelan), y las dos frases que no hay que olvidar: **no es iterativo** (una pasada, tiempo conocido de antemano, no supervisado) y **la matriz no contiene los patrones**, sólo relaciones entre pares de posiciones. Si te dan números, acá va la tabla de patrones en filas del guión anterior.
+
+**5. Fase 2: recuperar.** Los tres pasos numerados —forzar $\mathbf{y}(0)=\mathbf{x}$, sortear $j^*$, aplicar $\operatorname{sgn}$— y el criterio de parada enunciado como una pasada completa. Si hay números, la tabla de iteraciones.
+
+**6. Por qué funciona.** La energía, $\Delta E \le 0$, y el cierre por finitud. Es el único momento de toda la exposición donde hay una demostración, así que es donde te van a mirar: tres líneas y el recuadro.
+
+**7. El remate honesto.** Los tres finales posibles (memoria correcta, espúreo, oscilación), el negativo de cada memoria como espúreo inevitable porque $E(-\mathbf{y}) = E(\mathbf{y})$, y la capacidad $P_{\max} = N/(2\ln N)$ con el número dicho en voz alta. Cerrás con por qué hoy no se usa en producción: los pesos crecen como $N^2$ y las memorias más lento que $N$.
+
+> **La regla de oro de esta exposición:** cada vez que escribas una fórmula, decí **qué índice corre**. En Hopfield casi todos los errores de pizarrón son confundir $N$ con $P$, o $k$ con $j$.
 
 ### Claves de la sección 6
 
@@ -883,6 +1019,9 @@ Tres lecturas que salen de ese cuadro:
 | ¿Por qué dinámicas? | Los tres bloques con el cuadradito $z^{-1}$, uno al lado del otro |
 | Estático vs. dinámico | La aproximación 1 al lado de la 3, y señalá dónde está la memoria |
 | Arquitectura de Hopfield | Tres neuronas en columna, entradas y salidas, y las flechas cruzadas con el retardo |
+| «Desarrollá Hopfield» (a secas) | La pizarra partida en dos: «Fase 1 — almacenar» / «Fase 2 — recuperar» |
+| Almacenar con números | La tabla de patrones en **filas**, con las posiciones numeradas arriba |
+| Recuperar con números | La tabla de iteraciones vacía: Paso · $j^*$ · $v_{j^*}$ · $y$ nuevo · estado · ¿cambió? |
 | Aprendizaje hebbiano | Dos filas de $\pm1$ y la fila de productos abajo |
 | ¿Por qué falla Hopfield? | El paisaje de energía con tres valles y uno chiquito de más |
 | BPTT | Primero la red chiquita recurrente, después las cuatro copias en fila |
@@ -921,33 +1060,22 @@ Tres lecturas que salen de ese cuadro:
 
 **Cierre hablado:** *"un solo barrido de $T-1$ a 0; el $\delta^*$ ya trae acumulado todo lo que viene después"*.
 
-### D4 — Por qué Hopfield converge
+### Los cuatro guiones de Hopfield
 
-**Te preguntan:** ¿por qué la recuperación termina?
+Los desarrollos completos, con las trampas y las frases para decir en voz alta, están al final de cada sección del bloque de Hopfield:
 
-**Arrancás escribiendo:** $E(\mathbf{y}) = -\frac{1}{2}\sum_j\sum_i w_{ji}\,y_j\,y_i$
+| Guion | Dónde | Consigna que lo dispara |
+|---|---|---|
+| Armar la matriz de pesos | sección 4 | *"Almacená estos patrones en una red de Hopfield"* |
+| Recuperar un patrón sucio | sección 5 | *"Con esa $\mathbf{W}$, recuperá este patrón con ruido"* |
+| Por qué la red tiene que frenar | sección 6 | *"Demostrá que el algoritmo converge"* |
+| Hopfield de punta a punta | sección 6 | *"Desarrollá el método de Hopfield"*, sin más datos |
 
-1. Actualizás una sola neurona $j$: sólo cambian los términos que la contienen.
-   **Llegás a:** $\Delta E = -(y_j^{\text{nuevo}} - y_j)\, v_j$, con $v_j = \sum_i w_{ji}y_i$
-2. Argumentá el signo: la regla es $y_j^{\text{nuevo}} = \operatorname{sgn}(v_j)$, así que los dos tienen el mismo signo.
-   **Llegás a:** si no cambia, $\Delta E = 0$; si cambia, $\Delta E < 0$
-3. Cerrá con el argumento de finitud: $E$ nunca sube y sólo puede tomar $2^N$ valores.
-   **Llegás a:** la red tiene que quedarse quieta
+Las tres cosas que hay que decir **sí o sí** en cualquiera de los cuatro, porque son las preguntas de seguimiento seguras:
 
-**Trampa:** el paso 1 **necesita** que $\mathbf{W}$ sea simétrica, para que el par $(i,j)$ aporte una sola vez. Decilo: es la razón de ser de esa restricción.
-
-**Cierre hablado:** *"converge porque baja una función acotada que sólo puede tomar finitos valores; que converja a la memoria correcta ya es otra cosa"*.
-
-### D3 — Los tres casos de Hebb
-
-**Te preguntan:** justificá por qué $w_{ji} = \frac{1}{N}\sum_k x^*_{kj}x^*_{ki}$ aprende.
-
-1. Dibujá dos filas de $\pm 1$ y la fila de productos.
-2. Caso iguales: todos los productos $+1$ → suma grande positiva.
-3. Caso opuestas: todos $-1$ → suma grande negativa.
-4. Caso sin relación: mitad y mitad → se cancela, $w \approx 0$.
-
-**Cierre hablado:** *"el peso guarda la relación entre dos posiciones, no las posiciones"*.
+1. **$\mathbf{W}$ es de $N\times N$, nunca de $P\times P$.** Los índices $j$ e $i$ son neuronas; el que recorre los patrones es $k$.
+2. **La simetría se verifica sola, la diagonal se fuerza.** $w_{ji}=w_{ij}$ sale gratis del producto punto; $w_{jj}=0$ hay que borrarlo a mano porque Hebb daría $P/N$.
+3. **La simetría es lo que hace existir la energía**, y la energía es lo único que garantiza que la red frene.
 
 ---
 
