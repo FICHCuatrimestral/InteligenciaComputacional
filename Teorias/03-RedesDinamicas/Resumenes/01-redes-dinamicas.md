@@ -112,7 +112,7 @@ Escrito como receta:
 > 7. Ese estado final es la respuesta. Con suerte es la memoria fundamental más parecida al patrón sucio; si no, es un **estado espúreo** (§6).
 
 > **PARA LA DEFENSA — si lo que tenés que hacer es exponer el tema**
-> Las secciones 4, 5 y 6 van por partes porque explican **por qué** funciona cada pieza. Para desarrollarlo **de corrido** —arrancando por la ecuación de la neurona, abriendo qué significa cada símbolo y sobre una retina de $2\times2$ que entra en un renglón— está la sección **Hopfield de corrido**, al final del bloque, con el reparto de los quince minutos.
+> Las secciones 4, 5 y 6 van por partes porque explican **por qué** funciona cada pieza, con los ejemplos numéricos. El algoritmo solo, **ecuación por ecuación y con cada una dicha en palabras**, está en la sección **Hopfield de corrido**, al final del bloque: es lo que hay que poder desarrollar en la pizarra.
 
 > **IDEA DE FONDO — por qué esto se llama "memoria"**
 > La fase 1 *escribe* en la memoria y la fase 2 *lee*. Pero lo que se guarda no está en ninguna posición: está repartido en toda la matriz $\mathbf{W}$, como relaciones entre pares de neuronas. Por eso se lee **por contenido** —le das un pedazo del dato y la red completa el resto— y no por dirección.
@@ -544,235 +544,99 @@ $$P_{\max} = \frac{N}{2\ln N}$$
 | Estado espúreo | Un mínimo local que no es ninguna memoria fundamental |
 | Los tres finales | Memoria correcta, espúreo, oscilación — y qué causa cada uno |
 
-## Hopfield de corrido: cómo exponer el tema en quince minutos
+## Hopfield de corrido: el algoritmo ecuación por ecuación
 
-*Las secciones 3 a 6 van por partes porque explican **por qué** funciona cada pieza. Esta sección hace lo otro: desarrolla el método **de corrido**, arrancando por la ecuación de la neurona y abriendo qué significa cada símbolo antes de usarlo. Todo sobre una retina de $2\times2$ — cuatro neuronas — para que cada cuenta entre en un renglón y se pueda hacer a mano en la pizarra.*
+*Las secciones 3 a 6 explican por qué funciona cada pieza, con los ejemplos numéricos. Ésta es sólo el algoritmo: cada ecuación en orden, y debajo qué dice en palabras. Es lo que hay que poder desarrollar de corrido en la pizarra.*
 
-### El plan, si tenés 10 a 15 minutos
+### Datos de partida
 
-| Minutos | Paso | Qué queda escrito en la pizarra |
-|---|---|---|
-| 0–3 | 1 y 2: la ecuación, símbolo por símbolo | $y_j(n)=\operatorname{sgn}\!\big(\sum_i w_{ji}y_i(n-1)\big)$ y el diccionario |
-| 3–5 | 3: cómo funciona, con números | La red de 4 neuronas y una votación resuelta |
-| 5–6 | 4: las dos restricciones | $w_{ji}=w_{ij}$ y $w_{jj}=0$ |
-| 6–7 | 5: recién acá, las dos fases | La pizarra partida en dos |
-| 7–9 | 6: fase 1, Hebb | La tabla de patrones y tres pesos |
-| 9–11 | 7 y 8: fase 2, iterar y parar | La tabla de iteraciones |
-| 11–14 | 9: la energía y la convergencia | $E$, $\Delta E\le 0$ y el recuadro |
-| 14–15 | Cierre: los tres finales y la capacidad | $P_{\max}=N/(2\ln N)$ |
+$$\mathbf{x}^*_k \in \{-1,+1\}^N, \qquad k = 1,\dots,P$$
 
-> **OJO — el error de ritmo más común**
-> Gastar ocho minutos calculando $\mathbf{W}$ entrada por entrada. **Calculás tres pesos, uno de cada caso, y decís «los demás salen igual»**: lo que se evalúa es que entiendas los tres casos, no que sepas multiplicar. El tiempo que ahorrás ahí va a la energía, que es la única parte con demostración.
+Tenés $P$ patrones para guardar. Cada uno es un vector de $N$ componentes, y cada componente vale $-1$ o $+1$. Esos $N$ lugares son las $N$ neuronas de la red.
 
-### El diccionario de símbolos
+### Fase 1 — Almacenamiento
 
-Conviene dejarlo escrito en un costado de la pizarra desde el principio y no borrarlo: casi todas las repreguntas son sobre qué es cada letra.
+$$w_{ji} = \frac{1}{N}\sum_{k=1}^{P} x^*_{kj}\,x^*_{ki} \qquad \forall\, i \neq j$$
 
-| Símbolo | Qué es | Cuidado |
-|---|---|---|
-| $N$ | cantidad de **neuronas** = largo de cada patrón | es la **dimensión**, no la cantidad de patrones |
-| $P$ | cantidad de **patrones** guardados | sólo aparece en la suma de Hebb, nunca en el tamaño de $\mathbf{W}$ |
-| $j$, $i$ | **neuronas**: $j$ es la que estoy actualizando, $i$ cualquiera de las otras | son posiciones del vector, **no** patrones |
-| $k$ | el **patrón** por el que va la suma de Hebb | es el único índice que recorre patrones |
-| $n$ | el **paso de tiempo** discreto | cada paso toca **una sola** neurona |
-| $y_j(n)$ | el valor de la neurona $j$ **ahora**: $+1$ o $-1$ | es el estado, lo único que se mueve en la fase 2 |
-| $x^*_{kj}$ | el valor que tiene la neurona $j$ **en el patrón $k$** | es un dato fijo, no cambia nunca |
-| $w_{ji}$ | el **peso** del cable entre las neuronas $j$ e $i$ | $\mathbf{W}$ es de $N\times N$, nunca de $P\times P$ |
-| $v_j$ | el **campo local**: lo que le entra a la neurona $j$ | es un número real, no un $\pm1$ |
-| $\theta_j$ | el umbral | **en general no se usa**, por eso desaparece |
+El peso entre la neurona $j$ y la neurona $i$ se calcula recorriendo los patrones: en cada uno se multiplica el valor que tiene $j$ por el valor que tiene $i$, se suman esos $P$ productos y se divide por la cantidad de neuronas. Como los valores son $\pm1$, cada producto da $+1$ si las dos coinciden en ese patrón y $-1$ si se oponen: el peso termina midiendo **en cuántos patrones coincidieron menos en cuántos difirieron**.
 
----
+$$w_{jj} = 0 \qquad \forall\, j$$
 
-### Paso 1 — Escribís la ecuación y la abrís símbolo por símbolo
+Ninguna neurona se conecta consigo misma. No es un resultado de la cuenta: se impone. La fórmula de arriba daría $P/N$ y esa neurona se haría caso a sí misma por encima de todas las demás.
 
-**Lo primero que va a la pizarra es esto, antes que cualquier dibujo:**
+$$w_{ji} = w_{ij} \qquad \forall\, i \neq j$$
 
-$$y_j(n) = \operatorname{sgn}\!\left( \sum_{i=1}^{N} w_{ji}\, y_i(n-1) - \theta_j \right)$$
+La conexión entre dos neuronas es una sola y se usa en ambos sentidos. Con la regla de arriba esto se cumple solo, porque el producto no distingue el orden de los factores.
 
-**Y ahora la leés de adentro hacia afuera, que es el orden en que se calcula.** Señalá cada pedazo con la mano mientras lo decís:
+### Fase 2 — Recuperación
 
-1. **$y_i(n-1)$** — *"el valor que tenían las otras neuronas en el paso anterior. Vale $+1$ o $-1$, nada más."*
-2. **$w_{ji}$** — *"el peso del cable entre la neurona $j$ y la neurona $i$. Es un número real, y es lo único que la red 'sabe'."*
-3. **$w_{ji}\,y_i(n-1)$** — *"el aporte de la neurona $i$: su valor, pesado por cuánto vale su opinión."*
-4. **$\sum_{i=1}^{N}$** — *"se suman los aportes de **todas** las neuronas. Es una sola capa: no hay una capa anterior, están todas al mismo nivel."*
-5. **$-\theta_j$** — *"el umbral, que **en general no se usa**; de acá en más lo dejo en cero y desaparece de la fórmula."*
-6. **$\operatorname{sgn}(\cdot)$** — *"y de todo ese número real me quedo sólo con el signo, así que la salida vuelve a ser $+1$ o $-1$."*
-7. **$y_j(n)$** — *"y eso es el nuevo valor de la neurona $j$."*
+$$\mathbf{y}(0) = \mathbf{x}$$
 
-**Le ponés nombre a la suma, porque la vas a usar todo el tiempo:**
+El patrón que querés recuperar —incompleto o con ruido— se escribe directamente como estado inicial de las neuronas.
 
-$$v_j = \sum_{i} w_{ji}\, y_i \qquad\Longrightarrow\qquad y_j = \operatorname{sgn}(v_j)$$
+$$j^* = \operatorname{rnd}(N)$$
 
-*"$v_j$ se llama **campo local**: es lo que le entra a la neurona $j$."*
+Se elige al azar cuál de las $N$ neuronas se va a actualizar en este paso.
 
-> **OJO — el caso $\operatorname{sgn}(0)$, acá, no es el del perceptrón**
-> $$\operatorname{sgn}(x) = \begin{cases} +1 & x > 0 \\ y_j(n-1) & x = 0 \\ -1 & x < 0 \end{cases}$$
-> En el empate **la neurona se queda como estaba**. Tiene sentido: si el estímulo neto es nulo, no hay razón para cambiar de estado. Es exactamente el tipo de detalle que se pregunta.
+$$v_{j^*}(n) = \sum_{i=1}^{N} w_{j^*i}\,y_i(n-1)$$
 
-### Paso 2 — Mostrás qué hace esa ecuación, con números
+Se calcula el campo local de esa neurona: se toma el valor actual de cada una de las demás, se lo multiplica por el peso que la une con la elegida, y se suman todos esos aportes. Los términos con peso nulo no aportan nada, y el término de la propia neurona tampoco, porque $w_{j^*j^*}=0$.
 
-**Dibujás la red:** cuatro neuronas —una retina de $2\times2$— todas unidas con todas, sin capas y sin flechas de dirección. Numeradas $1$ y $2$ arriba, $3$ y $4$ abajo, y esa numeración no cambia nunca.
+$$y_{j^*}(n) = \operatorname{sgn}\big(v_{j^*}(n)\big), \qquad \operatorname{sgn}(x) = \begin{cases} +1 & x > 0 \\ y_{j^*}(n-1) & x = 0 \\ -1 & x < 0 \end{cases}$$
 
-**Y resolvés una votación a mano.** Supongamos que ya tenemos los pesos y el estado actual es $\mathbf{y} = (+1,\,+1,\,+1,\,-1)$. Actualizamos la neurona 3:
+El nuevo valor de la neurona elegida es el signo de ese total. Si el total es exactamente cero, no hay motivo para moverse y la neurona conserva el valor que tenía.
 
-$$v_3 = w_{31}y_1 + w_{32}y_2 + w_{34}y_4 = (-0{,}25)(+1) + (-0{,}25)(+1) + (+0{,}25)(-1) = -0{,}75$$
+$$y_j(n) = y_j(n-1) \qquad \forall\, j \neq j^*$$
 
-$$y_3 = \operatorname{sgn}(-0{,}75) = -1$$
+Todas las demás quedan como estaban. En cada paso se toca **una sola** neurona.
 
-**Lo que decís:** *"Es una **votación ponderada**. Cada neurona opina sobre cuánto debería valer la 3, y **el peso es cuánto vale el voto**: positivo significa 'tienen que coincidir', negativo 'tienen que oponerse', y cero 'no tengo opinión'. Gana la mayoría ponderada, y la neurona se acomoda."*
+$$\mathbf{y}(n) = \mathbf{y}(n-1) = \cdots = \mathbf{y}(n-N) \quad\Longrightarrow\quad \text{fin}$$
 
-> **OJO — la suma no incluye a la propia neurona**
-> En $v_3$ no aparece ningún término con $y_3$. Es por la segunda restricción, que viene en el paso siguiente.
+Se corta cuando pasaron $N$ actualizaciones seguidas sin que el estado cambie. Recién ahí se sabe que ninguna neurona puede moverse en el futuro, porque a cada una le entraría lo mismo que ya le entró.
 
-### Paso 3 — Las dos restricciones sobre los pesos
+$$\mathbf{y}(M)$$
 
-$$w_{ji} = w_{ij}\ \ \forall\, i \neq j \qquad\qquad w_{jj} = 0$$
+El estado en que quedó la red es la respuesta.
 
-**Qué dice cada una, y por qué está:**
+### Convergencia
 
-- **$w_{ji} = w_{ij}$ (simetría).** El cable entre dos neuronas es **uno solo**, y se usa en las dos direcciones. *"No es un resultado: es una condición de diseño, y es la que va a hacer que exista la función de energía del paso 9. Sin ella la red puede quedar oscilando para siempre."* **Anunciala acá**, así en el paso 9 sólo tenés que señalarla.
-- **$w_{jj} = 0$ (diagonal nula).** *"Una neurona no se vota a sí misma. Si pudiera, se haría caso a sí misma por encima de todos los demás y quedaría clavada donde está, sorda al resto — cada estado sería un punto fijo y la red no haría nada."*
+$$E(\mathbf{y}) = -\frac{1}{2}\sum_{j=1}^{N}\sum_{i=1}^{N} w_{ji}\,y_i\,y_j$$
 
-**Consecuencia de contabilidad que conviene decir:** $\mathbf{W}$ tiene $N^2$ casilleros, pero cables distintos hay $N(N-1)/2$. Con cuatro neuronas: **16 casilleros, 6 cables**, porque cuatro son la diagonal y los otros seis están repetidos por simetría.
+A cada estado posible se le asigna un número. Cada par de neuronas aporta un término, y ese término baja la energía cuando el par está como su peso "quiere": las dos iguales si el peso es positivo, opuestas si es negativo. El $\tfrac12$ compensa que la doble suma cuenta cada par dos veces.
 
-### Paso 4 — Recién ahora: el método tiene dos fases
+$$\Delta E = -\big(y_{j^*}(n) - y_{j^*}(n-1)\big)\,v_{j^*}(n)$$
 
-**Lo que decís:** *"Todo lo anterior supone que los pesos ya existen. La pregunta es de dónde salen, y ahí aparece la estructura del método: **dos fases que no se mezclan**."*
+Al actualizar una sola neurona, los únicos términos que se mueven son los que la contienen, y su variación total queda escrita así. **Esta expresión vale porque los pesos son simétricos:** si no lo fueran, el par $(i,j)$ aportaría dos términos distintos.
 
-**Partís la pizarra en dos y escribís:**
+$$y_{j^*}(n) = -y_{j^*}(n-1) \;\Longrightarrow\; \Delta E = 2\,y_{j^*}(n-1)\,v_{j^*}(n)$$
 
-| | **Fase 1 — Almacenamiento** | **Fase 2 — Recuperación** |
-|---|---|---|
-| Cuándo | una sola vez, al principio | cada vez que consultás la memoria |
-| Qué le das | los $P$ patrones limpios | un patrón sucio |
-| Qué hace | calcula $\mathbf{W}$ con Hebb | itera con la ecuación del paso 1 |
-| Iterativo | **no** — una cuenta y listo | **sí** — hasta que nada cambie |
+Si la neurona se dio vuelta, la diferencia entre el valor nuevo y el viejo vale $-2\,y_{j^*}(n-1)$, y reemplazando queda esto.
 
-**La frase que ordena el resto de la exposición:** *"Almacenar es llenar la fórmula; recuperar es hacerla correr. Y cuando arranca la fase 2, $\mathbf{W}$ ya está fija y no se toca más."*
+$$\operatorname{sgn}(v_{j^*}) \neq y_{j^*}(n-1) \;\Longrightarrow\; y_{j^*}(n-1)\,v_{j^*}(n) < 0 \;\Longrightarrow\; \Delta E < 0$$
 
-### Paso 5 — Fase 1: construís $\mathbf{W}$ con Hebb
+Pero si se dio vuelta fue justamente porque su valor viejo no coincidía con el signo del campo. Entonces el valor viejo y el campo tienen signos distintos, su producto es negativo, y la energía bajó.
 
-**Escribís los patrones en filas, con las posiciones numeradas arriba.** Guardamos **uno** solo, la franja de arriba prendida:
+$$y_{j^*}(n) = y_{j^*}(n-1) \;\Longrightarrow\; \Delta E = 0$$
 
-$$\mathbf{x}^*_1 = (+1,\,+1,\,-1,\,-1)$$
+Y si la neurona no cambió, la diferencia es cero y la energía quedó igual.
 
-**La fórmula, y la abrís igual que la primera:**
+$$\boxed{\;\Delta E \le 0 \;\;\forall n\;}$$
 
-$$w_{ji} = \frac{1}{N}\sum_{k=1}^{P} x^*_{kj}\,x^*_{ki}$$
+Juntando los dos casos: la energía **nunca sube**, en ningún paso.
 
-1. **$x^*_{kj}$** — *"el valor de la neurona $j$ en el patrón $k$."*
-2. **$x^*_{kj}\,x^*_{ki}$** — *"el producto de lo que valen las neuronas $j$ e $i$ **en ese patrón**. Como son $\pm1$, da $+1$ si coinciden y $-1$ si se oponen."*
-3. **$\sum_{k=1}^{P}$** — *"se suma sobre los **patrones**. Ojo: $j$ e $i$ eligen el cable y están fijos; el que corre es $k$."*
-4. **$1/N$** — *"se divide por la **dimensión**, no por la cantidad de patrones. Es sólo escala: no cambia ningún signo, así que no cambia la dinámica."*
+$$E \text{ acotada} \;\wedge\; |\{-1,+1\}^N| = 2^N < \infty \;\Longrightarrow\; \exists\, M < \infty : \mathbf{y}(M) \text{ estable}$$
 
-**Y decís qué mide el resultado:** *"$w_{ji}$ es, en el fondo, **coincidencias menos diferencias**: en cuántos patrones esas dos neuronas tuvieron el mismo valor, menos en cuántos tuvieron valores distintos, dividido $N$."*
+Como la energía sólo puede bajar o quedarse igual, está acotada por abajo y hay una cantidad finita de estados posibles, no puede bajar indefinidamente. La red se detiene en una cantidad finita de pasos.
 
-**Calculás tres pesos y parás:**
+### Propiedades
 
-| Peso | Qué pasa con ese par | Cuenta | Caso |
-|---|---|---|---|
-| $w_{12}$ | las neuronas 1 y 2 valen las dos $+1$ | $(+1)(+1)/4 = +0{,}25$ | **positivo**: que coincidan |
-| $w_{13}$ | la 1 vale $+1$ y la 3 vale $-1$ | $(+1)(-1)/4 = -0{,}25$ | **negativo**: que se opongan |
-| $w_{34}$ | las dos valen $-1$ | $(-1)(-1)/4 = +0{,}25$ | **positivo**: los dos apagados también cuenta |
+$$E(-\mathbf{y}) = E(\mathbf{y})$$
 
-$$\mathbf{W} = \begin{pmatrix} 0 & +0{,}25 & -0{,}25 & -0{,}25 \\ +0{,}25 & 0 & -0{,}25 & -0{,}25 \\ -0{,}25 & -0{,}25 & 0 & +0{,}25 \\ -0{,}25 & -0{,}25 & +0{,}25 & 0 \end{pmatrix}$$
+Dar vuelta todas las neuronas a la vez no cambia la energía, porque en cada término los dos factores cambian de signo. Si un patrón es estable, su negativo también: por cada memoria guardada queda un estado espúreo garantizado.
 
-**Las tres afirmaciones con las que cerrás la fase 1:**
+$$P_{\max} = \frac{N}{2\ln N}$$
 
-- **No es iterativo.** Una pasada, se sabe de antemano cuánto tarda, no hay épocas, ni error, ni $\mu$. Es **no supervisado**: nunca hubo una salida deseada.
-- **La simetría salió gratis** (el producto $x_j x_i$ no distingue el orden); **la diagonal se forzó a mano** (Hebb daría $w_{jj} = P/N$, porque cada término sería $x_{kj}^2 = +1$).
-- **$\mathbf{W}$ no contiene el patrón escrito en ninguna parte.** Guarda relaciones entre pares de posiciones, no las posiciones.
-
-> **OJO — el tercer caso de Hebb hay que provocarlo**
-> Con un solo patrón no aparecen ceros. Si te preguntan por el caso $w_{ji}=0$, contalo así: *"con dos patrones donde ese par coincide en uno y se opone en el otro, los votos se cancelan y el peso da cero: esas dos neuronas no tienen relación estable, y la red no opina sobre ellas"*. Si querés mostrarlo con números sin pasarte de capacidad, subí a una retina de $3\times3$ ($N=9$, $P_{\max}=2{,}05$) y guardá dos patrones.
-
-### Paso 6 — Fase 2: forzás el estado inicial
-
-Le damos el patrón guardado **con un píxel mal**: el de abajo a la izquierda quedó prendido.
-
-$$\mathbf{y}(0) = (+1,\,+1,\,+1,\,-1)$$
-
-**Lo que decís:** *"Se **fuerza** como estado inicial. No se 'presenta a la entrada', porque esta red no tiene entrada: **tiene estado**. Y a partir de acá $\mathbf{W}$ es una constante: lo único que se mueve es $\mathbf{y}(n)$."*
-
-### Paso 7 — Iterás, de a una neurona sorteada
-
-**Dibujás la tabla vacía primero** —es el andamio de todo el ejercicio— y después la llenás:
-
-| Paso $n$ | $j^*$ | $v_{j^*} = \sum_i w_{j^*i}\,y_i$ | $y_{j^*}$ nuevo | Estado | ¿Cambió? |
-|:---:|:---:|:---|:---:|:---:|:---:|
-| — | — | — | — | $(+\,+\,+\,-)$ | — |
-| 1 | 3 | $(-0{,}25)(+1)+(-0{,}25)(+1)+(+0{,}25)(-1) = -0{,}75$ | $-1$ | $(+\,+\,-\,-)$ | **sí** |
-| 2 | 1 | $(+0{,}25)(+1)+(-0{,}25)(-1)+(-0{,}25)(-1) = +0{,}75$ | $+1$ | sin cambios | no |
-| 3 | 2 | $+0{,}75$ | $+1$ | sin cambios | no |
-| 4 | 4 | $-0{,}75$ | $-1$ | sin cambios | no |
-| 5 | 3 | $-0{,}75$ | $-1$ | sin cambios | no |
-
-**Lo que decís sobre el paso 1 de la tabla:** *"Las otras tres neuronas opinaron sobre la 3, y dos de las tres estaban en $+1$ con cables negativos: la empujaron a $-1$, que es el valor que tenía en el patrón guardado. **Ése es todo el mecanismo de la memoria asociativa.**"*
-
-> **OJO — las dos trampas de este paso**
-> **Una por vez:** no se recalculan todas con el estado viejo. Eso es el modo **sincrónico** y puede oscilar con período 2. La siguiente neurona ya usa el valor nuevo de la anterior.
-> **El sorteo:** la neurona se elige al azar, $j^*=\operatorname{rnd}(N)$. Si en la pizarra las vas a recorrer en orden por comodidad, **aclaralo**.
-
-### Paso 8 — Parás, y enunciás bien el criterio
-
-**Lo que decís:** *"Se termina cuando se recorren las $N$ neuronas sin que ninguna cambie."* En la tabla, los pasos 2 a 5 recorrieron las cuatro sin un solo cambio: **convergió**, y el estado final es exactamente $\mathbf{x}^*_1$.
-
-**Y agregás la aclaración que evita la repregunta:** *"No alcanza con que la neurona que toqué no cambie. Recién con una pasada completa sin cambios sabemos que nada puede moverse en el futuro, porque a cada neurona le entra lo mismo que antes. Cuánto tarda no se sabe de antemano."*
-
-### Paso 9 — Demostrás que tenía que frenar
-
-Éste es el único momento de toda la exposición con una demostración, así que es donde te van a mirar. **Escribís la energía y la abrís, igual que las otras dos:**
-
-$$E(\mathbf{y}) = -\frac{1}{2}\sum_{i \neq j} w_{ji}\,y_i\,y_j$$
-
-- **$w_{ji}\,y_i\,y_j$** — *"un término por cada par de neuronas. Si están como el peso 'quiere' —las dos iguales con $w>0$, o cruzadas con $w<0$— el término es positivo."*
-- **el signo menos** — *"para que esa situación cómoda **baje** la energía. $E$ mide incomodidad."*
-- **el $\tfrac12$** — *"porque la doble suma cuenta cada par dos veces."*
-
-**La demostración, en tres líneas:**
-
-1. Al actualizar una sola neurona $j$, **sólo se mueven los términos que la contienen**, y su aporte total es $-y_j v_j$. *(Acá señalás la simetría del paso 3: el par $(i,j)$ aporta **un solo** término porque $w_{ji}=w_{ij}$.)*
-2. Si la neurona **cambió**, $y_j^{\text{nuevo}} = -y_j$, y entonces
-   $$\Delta E = -\big(y_j^{\text{nuevo}} - y_j\big)v_j = -(-2y_j)\,v_j = 2\,y_j\,v_j$$
-   Pero si cambió fue porque $\operatorname{sgn}(v_j) \neq y_j$: tienen **signos distintos**, el producto es negativo, y $\Delta E < 0$.
-3. Si **no cambió**, $\Delta E = 0$.
-
-$$\boxed{\Delta E \le 0 \text{ en todo paso}}$$
-
-**El cierre, contado con los dedos:** *"La energía nunca sube, hay una cantidad **finita** de estados y está acotada por abajo. No puede bajar para siempre: frena en una cantidad finita de pasos."*
-
-**Y lo verificás sobre el ejemplo, que es lo que lo vuelve convincente:** el estado sucio tenía $E = 0$; al corregirse la neurona 3 la energía cayó a $E = -1{,}5$, y ahí se quedó. $-1{,}5$ es exactamente la energía de $\mathbf{x}^*_1$.
-
-> **IDEA DE FONDO — con cuatro neuronas se puede mostrar el paisaje entero**
-> Hay sólo $2^4 = 16$ estados posibles. Si calculás la energía de todos, encontrás **exactamente dos** mínimos: $\mathbf{x}^*_1$ y $-\mathbf{x}^*_1$, los dos con $E=-1{,}5$. Es la forma más barata de mostrar que *"por cada memoria guardás gratis su negativo"*, sin tener que creerle a la fórmula.
-
-### El cierre honesto (los últimos dos minutos)
-
-No termines en *"y converge"*, porque queda la impresión de que el método es mejor de lo que es. Terminá con las tres limitaciones, que además son de donde salen las preguntas:
-
-1. **Frena en el pozo más cercano, no necesariamente en el correcto.** Los tres finales posibles: la memoria correcta, un **estado espúreo** (un mínimo local que nadie guardó — el negativo de una memoria, o una mezcla de una cantidad impar de ellas), o una **oscilación**, que sólo puede pasar si los pesos no son simétricos.
-2. **Los patrones son mínimos locales, no necesariamente globales.** Y no hace falta que lo sean: lo que importa es que su cuenca de atracción sea ancha.
-3. **La capacidad es chiquísima:** $P_{\max} = N/(2\ln N)$. Decí el número en voz alta. *"En el ejemplo de cuatro neuronas, $P_{\max} = 1{,}44$: podía guardar **un** patrón, y por eso guardé uno solo. Con $N=100$ son once memorias. Una imagen de $100\times100$ necesita $10\,000$ neuronas y $10^8$ pesos, y guarda 543 patrones."* $P_{\max}$ crece más lento que $N$ y los pesos crecen como $N^2$: por eso hoy no se usa como memoria en producción.
-
-> **IDEA DE FONDO — la frase con la que conviene terminar**
-> *"Hopfield es el espejo de todo lo anterior: el multicapa entrena iterando y se usa de una; Hopfield entrena de una y se usa iterando."* Es corta, es verdadera, y deja al que escucha con el tema ubicado dentro de la materia.
-
-### Los nueve pasos, para memorizar
-
-| # | Paso | La frase que lo dispara |
-|---|---|---|
-| 1 | La ecuación, símbolo por símbolo | *"de adentro hacia afuera: valor, peso, suma, signo"* |
-| 2 | Qué hace: una votación con números | *"el peso es cuánto vale el voto"* |
-| 3 | Las dos restricciones | *"la simetría sostiene la energía; la diagonal evita que se clave"* |
-| 4 | Recién acá, las dos fases | *"almacenar es llenar la fórmula; recuperar es hacerla correr"* |
-| 5 | Hebb: tres pesos y basta | *"$j$ e $i$ eligen el cable, $k$ recorre los patrones"* |
-| 6 | Forzar $\mathbf{y}(0)=\mathbf{x}$ | *"no tiene entrada, tiene estado"* |
-| 7 | Sortear y actualizar, de a una | *"gana la mayoría ponderada"* |
-| 8 | Parar con una pasada completa | *"no alcanza con una neurona quieta"* |
-| 9 | La energía y la convergencia | *"nunca sube, y hay finitos estados"* |
-
-> **PARA LA DEFENSA — el tamaño de los ejemplos**
-> Usá siempre patrones cortos: $2\times2$ ($N=4$) alcanza para todo el desarrollo, y $3\times3$ ($N=9$, $P_{\max}=2{,}05$) es lo mínimo si te piden **dos** patrones y querés mostrar el caso $w_{ji}=0$. Nunca arranques con ocho neuronas en la pizarra: cada $v_j$ pasa a tener siete términos y se te va la mitad del tiempo en aritmética.
+La cantidad de patrones que se pueden guardar antes de que la recuperación falle. Crece más lento que la cantidad de neuronas, mientras que los pesos crecen como $N^2$.
 
 ### Fin del bloque de Hopfield
 
@@ -1126,6 +990,112 @@ Se repite con la secuencia siguiente. Una **época** es todas las secuencias del
 | Memoria | Por qué crece con $T$, y qué lo limita |
 
 ---
+
+## BPTT de corrido: el algoritmo ecuación por ecuación
+
+*Las secciones 7 a 11 derivan cada pieza. Ésta es sólo el algoritmo: cada ecuación en orden, y debajo qué dice en palabras.*
+
+### Datos de partida
+
+$$\{(\mathbf{x}_t,\ \mathbf{d}_t)\}_{t=0}^{T-1}$$
+
+Una secuencia de entradas, con su salida deseada en los instantes que la tengan. No todos tienen que tenerla: si la tarea es clasificar la secuencia entera, puede haber una sola al final.
+
+### Inicialización
+
+$$\mathbf{W}^{I},\ \mathbf{W} \sim \text{al azar, chicos} \qquad \mathbf{y}_{-1} = \mathbf{0} \qquad \Delta\mathbf{W} = \Delta\mathbf{W}^{I} = \mathbf{0}$$
+
+Los pesos arrancan chicos por el mismo motivo que en el multicapa: con pesos grandes las neuronas quedan saturadas, $\varphi'\approx0$ y no aprende. El estado previo al arranque de la secuencia es nulo, y los acumuladores de gradiente se ponen en cero.
+
+### Paso hacia adelante
+
+$$\mathbf{v}_t = \mathbf{W}^{I}\mathbf{x}_t + \mathbf{W}\,\mathbf{y}_{t-1} \qquad t = 0,\dots,T-1$$
+
+En cada instante, lo que le entra a las neuronas tiene dos partes: la entrada de ese instante y la salida que la propia red tenía en el instante anterior. Ésa es toda la recurrencia.
+
+$$\mathbf{y}_t = \varphi(\mathbf{v}_t)$$
+
+La salida es la activación aplicada a ese total. La **misma** $\mathbf{W}$ se usa en todos los instantes: hay una sola copia de pesos, aunque al desenrollar parezcan muchas capas.
+
+$$\text{guardar } \mathbf{v}_t,\ \mathbf{y}_t \quad \forall\, t$$
+
+Hay que guardar la secuencia entera, no sólo el último valor: la vuelta hacia atrás va a necesitar $\varphi'(\mathbf{v}_t)$ de cada instante. Es la diferencia práctica más grande con el multicapa, y la otra razón por la que se trunca.
+
+### Error
+
+$$\mathbf{e}_t = \mathbf{y}_t - \mathbf{d}_t \qquad E = \frac{1}{2}\sum_{t}\sum_{k} e_{t,k}^2$$
+
+El error de cada instante es la diferencia entre lo que salió y lo que se quería, y el error de la secuencia es la suma de todos. Los instantes sin salida deseada aportan cero.
+
+### Gradiente: la forma derivada
+
+$$\delta_{t,j} = e_{t,j}\,\varphi'(v_{t,j})$$
+
+El delta del instante donde se midió el error: error por derivada de la activación. Es idéntico al de la capa de salida del multicapa.
+
+$$\delta_{\tau,j} = \left(\sum_k w_{jk}\,\delta_{\tau+1,k}\right)\varphi'(v_{\tau,j}) \qquad \tau < t$$
+
+Para los instantes anteriores, el delta se arrastra hacia atrás: se juntan los deltas del instante siguiente, cada uno pesado por la conexión que lo une con esta neurona, y se multiplica por la derivada de la activación **de esta neurona en este instante**. El tiempo hace de profundidad.
+
+$$\frac{\partial E_t}{\partial w_{ji}} = \sum_{\tau=t}^{0} \delta_{\tau,j}\,y_{\tau-1,i}$$
+
+El gradiente de un peso recurrente no es un solo término: el error del instante $t$ se reparte sobre **todos** los instantes anteriores, porque el mismo peso participó en todos. Los aportes se **suman**, no se promedian.
+
+$$\frac{\partial E_t}{\partial w^{I}_{ji}} = \sum_{\tau=t}^{0} \delta_{\tau,j}\,x_{\tau,i}$$
+
+Para los pesos de entrada los deltas son **los mismos**; lo único que cambia es el último factor, que pasa de la salida anterior a la entrada de ese instante. El delta agrupa lo que pasa dentro de la neurona y no sabe por dónde entró la señal.
+
+### Gradiente: la forma optimizada
+
+$$\boldsymbol{\delta}^*_T = \mathbf{0}$$
+
+$$\boldsymbol{\delta}^*_t = \big[\mathbf{e}_t + \mathbf{W}^{\mathsf{T}}\boldsymbol{\delta}^*_{t+1}\big] \odot \varphi'(\mathbf{v}_t) \qquad t = T-1,\dots,0$$
+
+El delta acumulado de un instante junta dos cosas: el error medido ahí y lo que viene arrastrado de todos los instantes posteriores, ya sumado. Se recorre **al revés** que la propagación. La transpuesta es lo que distingue la ida de la vuelta: hacia adelante se suma sobre el segundo índice de $\mathbf{W}$, hacia atrás sobre el primero. El $\odot$ es producto elemento a elemento.
+
+$$\Delta\mathbf{W} \mathrel{+}= \boldsymbol{\delta}^*_t\,\mathbf{y}_{t-1}^{\mathsf{T}} \qquad \Delta\mathbf{W}^{I} \mathrel{+}= \boldsymbol{\delta}^*_t\,\mathbf{x}_t^{\mathsf{T}}$$
+
+En el mismo barrido se acumulan los dos gradientes: delta por la señal que entró a esa conexión. Da exactamente el mismo gradiente que la forma derivada, sólo que reorganizado.
+
+### Actualización
+
+$$\mathbf{W} \leftarrow \mathbf{W} - \eta\,\Delta\mathbf{W} \qquad \mathbf{W}^{I} \leftarrow \mathbf{W}^{I} - \eta\,\Delta\mathbf{W}^{I}$$
+
+Los pesos se tocan **al final de la secuencia**, nunca en el medio del barrido hacia atrás. Si se actualizaran antes, los deltas que faltan calcular usarían una $\mathbf{W}$ distinta de la que se usó hacia adelante, y el gradiente deja de ser el gradiente.
+
+### Truncado y costo
+
+$$\tau \ge \max(0,\ t - P)$$
+
+La versión truncada limita hacia atrás a $P$ instantes. Se pierden las dependencias más largas que $P$, pero se gana poder correrlo.
+
+$$O(T^2) \;\longrightarrow\; O(T)$$
+
+La forma derivada recorre, para cada $t$, todos los instantes anteriores. La forma optimizada hace un solo barrido. **Truncar cambia el gradiente; optimizar no.**
+
+### Derivada de la activación
+
+$$\varphi'(v) = \tfrac{1}{2}\big(1 + y\big)\big(1 - y\big)$$
+
+Vale tanto en la ida como en la vuelta, y se evalúa **siempre en la neurona del delta que se está armando**. El $\tfrac12$ va: sin él, el factor queda al doble y se acumula una vez por instante desenrollado.
+
+---
+
+## Arquitecturas con retardo: las ecuaciones
+
+*TDNN, Elman y Jordan no tienen algoritmo de entrenamiento propio: se entrenan con back-propagation común. Lo que cambia es qué entra a la red.*
+
+$$\tilde{\mathbf{x}}_t = \big(\mathbf{x}_t,\ \mathbf{x}_{t-1},\ \dots,\ \mathbf{x}_{t-D}\big)$$
+
+**TDNN.** La entrada se amplía con sus propios retardos y la red pasa a ser hacia adelante, sin recurrencia. Toda la memoria está en la entrada, no en la red.
+
+$$\mathbf{y}_t = \varphi\big(\mathbf{W}^{I}\mathbf{x}_t + \mathbf{W}^{C}\mathbf{c}_t\big) \qquad \mathbf{c}_t = \mathbf{y}^{\text{oculta}}_{t-1}$$
+
+**Elman.** Una capa de contexto guarda la salida de la capa **oculta** del instante anterior y se trata como una entrada más, con sus valores congelados. Con eso la red vuelve a ser hacia adelante y se entrena con back-propagation común: es BPTT truncada a un solo paso.
+
+$$\mathbf{c}_t = \mathbf{y}^{\text{salida}}_{t-1}$$
+
+**Jordan.** Lo mismo, pero lo que se realimenta es la capa de **salida**.
 
 ## 12. Dos errores en las notas de BPTT
 
