@@ -1,0 +1,293 @@
+bueno como parte final de la clase vamos a ver una serie de tres o cuatro ejemplos ilustrativos
+0:12
+12 segundos
+el primero estaba relacionado con el ejemplo de los ceros de los seis de los nueve que estamos viendo y es
+0:19
+19 segundos
+hacer el reconocimiento de caracteres pero ahora ya de texto de caracteres manuscritos por ejemplo una persona
+0:27
+27 segundos
+escribe sobre una tableta ya acá la palabra 40 y lo que está graficando aquí arriba es
+0:34
+34 segundos
+el vector de características extraídos es decir la el vector x
+0:42
+42 segundos
+que va a estar dado por el conjunto d una de dimensionalización hay una reducción
+0:51
+51 segundos
+de dimensiones del de la imagen original por eso se ve ahí como pixelado y un cálculo de derivadas
+0:59
+59 segundos
+un cálculo de gradientes en sentido horizontal y vertical que nos van a dar los bordes estos que están aquí marcados sin grises
+1:07
+1 minuto y 7 segundos
+entonces con eso se construyen estos vectores de características que van luego a alimentar a los clasificadores
+1:15
+1 minuto y 15 segundos
+por ejemplo basado en autómata de estos son modelos ocultos marcos que van a aprender cuáles
+1:23
+1 minuto y 23 segundos
+las probabilidades intrínsecas cuáles son los parámetros de problema de transición de emisión etcétera que luego
+1:31
+1 minuto y 31 segundos
+bueno nos van a permitir generar los esquemas como el que está en la parte inferior donde tenemos una concatenación de estos modelitos para construir por
+1:39
+1 minuto y 39 segundos
+ejemplo él el dígito o la letra m a través
+1:47
+1 minuto y 47 segundos
+de tres modelos más pequeños la letra y la letra de l de cada uno de estos en un nivel superior de la extracción van a
+1:54
+1 minuto y 54 segundos
+ser en sí mismos otros modelos culto de marco y que van a recorrer
+2:01
+2 minutos y 1 segundo
+la serie de vectores de entrada hasta ir encontrando cuáles son los
+2:10
+2 minutos y 10 segundos
+las letras constitutivas de ese dígito manuscrito no entonces podemos aquí tener un modelo que sea 1000 este es un
+2:18
+2 minutos y 18 segundos
+espacio 1001 espacio o mil dos espacios
+2:26
+2 minutos y 26 segundos
+y acá se arman grandes autómatas para reconocer la gramática de cómo uno
+2:33
+2 minutos y 33 segundos
+escribe todos los posibles números y entonces poder solucionar esta tarea
+2:40
+2 minutos y 40 segundos
+escaneando de la hoja caracterice manuscritos y luego pasándolo por estos modelos de tipo
+2:47
+2 minutos y 47 segundos
+autómata otra tarea es el reconocimiento de señales de tráfico esto para sistemas de
+2:55
+2 minutos y 55 segundos
+asistencia viales consiste en el reconocimiento de por ejemplo llevamos en el automóvil una cámara que toma la
+3:04
+3 minutos y 4 segundos
+imagen de la escena que está entrando y queremos reconocer los patrones o las señales de tráfico
+3:12
+3 minutos y 12 segundos
+por ejemplo los identificadores de velocidad máxima la identificadores de vía cerrada o cualquiera de ellos
+3:21
+3 minutos y 21 segundos
+entonces aquí la segunda imagen muestra cuál es el proceso o pre proceso que se
+3:30
+3 minutos y 30 segundos
+lleva a cabo que es finalizar segmentar por colores etcétera y poder identificar aquí con el rectángulo verde
+3:38
+3 minutos y 38 segundos
+el patrón se ha buscado esa es la detección del signo
+3:45
+3 minutos y 45 segundos
+en la imagen eso es lo que luego hay que aprender a discriminar un signo de otro a través de los vectores de escritores y
+3:54
+3 minutos y 54 segundos
+a través del clasificador que es la vía aquí por ahí por abajo como es que uno o
+4:01
+4 minutos y 1 segundo
+cómo es que el sistema puede decir por ejemplo señal de no seguir derecho o señal de
+4:07
+4 minutos y 7 segundos
+pare o señal de velocidad máximo a 60 80 etcétera para hacer la indicación al usuario
+4:16
+4 minutos y 16 segundos
+aquí vemos cómo está el diagrama en bloques que se corresponde con el diagrama funcional que hemos visto al
+4:23
+4 minutos y 23 segundos
+principio imágenes entrada adquisición sería todo el bloque inicial de pre proceso
+4:32
+4 minutos y 32 segundos
+luego vendría la detección de características encontrar el sistema y detectar el signo y finalmente
+4:41
+4 minutos y 41 segundos
+el bloque de construir una base de datos de entrenamiento que esté lo que decíamos que es una tarea nuestra como
+4:47
+4 minutos y 47 segundos
+expertos recolectar grandes cantidades de ejemplos para mostrárselo al sistema y que el sistema pueda aprender sus
+4:55
+4 minutos y 55 segundos
+parámetros y aprender a decidir por ejemplo en el caso de frontera de decisión lineales
+5:02
+5 minutos y 2 segundos
+cómo poner con qué inclinación y con qué ordenada al origen colocar esa curva en
+5:08
+5 minutos y 8 segundos
+el espacio de parámetros que me puedan ayudar a decidir si es una clase pues otra todo eso van a aprender a hacer
+5:18
+5 minutos y 18 segundos
+durante el curso y finalmente el diseño del clasificador en sí mismo que es el que nos va a
+5:24
+5 minutos y 24 segundos
+decidir la etiqueta del patrón de entrada otro ejemplo es el reconocimiento facial
+5:32
+5 minutos y 32 segundos
+ya conocerán los reconocedores de cara en biometría una de las sus tareas más recientes digamos es reconocer también
+5:40
+5 minutos y 40 segundos
+expresiones faciales o emociones en la persona y entonces aquí está ejemplificado a
+5:47
+5 minutos y 47 segundos
+esta tarea donde básicamente se recolecta en una serie de siete u ocho puntos de la cara que son marcadores
+5:56
+5 minutos y 56 segundos
+como están aquí a la izquierda marcadores que se encuentran las cejas en los ojos la nariz juegos
+6:04
+6 minutos y 4 segundos
+etcétera entonces la primera tarea es detectar dónde están esos puntos de la cara de entrada y cómo se mueven a lo
+6:12
+6 minutos y 12 segundos
+largo del tiempo por ejemplo una expresión de sorpresa como como la imagen de la derecha el movimiento de
+6:21
+6 minutos y 21 segundos
+esos marcadores de movimiento relativo por ejemplo las cejas se levantan la boca se agranda se pone curvas cetera es
+6:29
+6 minutos y 29 segundos
+distinta de la expresión de disgusto que tiene la imagen de la izquierda donde el movimiento relativo de los marcadores es
+6:37
+6 minutos y 37 segundos
+otro entonces aquí el clasificador tiene que aprender cuál es la dinámica temporal de los marcadores para después
+6:45
+6 minutos y 45 segundos
+decidir por ejemplo como ven aquí disgusto o sorpresa en el segundo caso
+6:53
+6 minutos y 53 segundos
+un ejemplo de tareas agronómicas la detección de maleza en aplicaciones agrícolas esto es para
+7:02
+7 minutos y 2 segundos
+sistemas de siembra automática o en este caso era para el inoculante para los productos
+7:11
+7 minutos y 11 segundos
+químicos que se colocan en el campo para eliminación de malezas tiene montado un sistema de cámara el sistema de visión
+7:19
+7 minutos y 19 segundos
+artificial que va tomando imágenes del campo en todo momento y va decidiendo aquí vemos
+7:27
+7 minutos y 27 segundos
+o bien en rojo hoy viene en verde la etiqueta que le va asignando a cada planta que va viendo en el campo
+7:34
+7 minutos y 34 segundos
+entonces todo lo que es fondo todo lo que es tierra y piedra o toda otra
+7:40
+7 minutos y 40 segundos
+estructura que haya sacado del juego no se tiene en cuenta
+7:46
+7 minutos y 46 segundos
+como pixeles negros ahí y los objetos que si son del interés que son las plantas son las que finalmente el
+7:54
+7 minutos y 54 segundos
+sistema decide de la etiqueta como maleza o planta interés puede ser hay una maleza de por ejemplo la soja y
+8:02
+8 minutos y 2 segundos
+entonces al etiquetarlo con rojo luego después se inyecta el producto químico que sea
+8:09
+8 minutos y 9 segundos
+en el campo y dónde están las plantas de interés no por ejemplo entonces esto reduce mucho los costos de agroquímicos
+8:19
+8 minutos y 19 segundos
+en el uso agrícola esta es una de las tareas que lleva adelante el grupo es el reconocimiento
+8:26
+8 minutos y 26 segundos
+de sonidos masticatorios en rumiantes aquí pasamos de ejemplos basados en imágenes como para ver para que vean un
+8:34
+8 minutos y 34 segundos
+ejemplo basado en señales de audio entonces se coloca un micrófono en la frente del animal que recoge por vía
+8:43
+8 minutos y 43 segundos
+ósea el sonido que hace el mismo cuando está pastando entonces está bien
+8:50
+8 minutos y 50 segundos
+acá hay dos o tres eventos de interés que son el arranque de la pastura la masticación o hay un evento que es
+8:59
+8 minutos y 59 segundos
+conjunto arranque y masticación en el mismo momento entonces acá vemos un ejemplo de la señal temporal esta es la señal de audio
+9:07
+9 minutos y 7 segundos
+el sonograma de la señal adquirida y acaba un análisis muy básico que es el espectro grama
+9:14
+9 minutos y 14 segundos
+y luego similar a cómo se construye el sistema de reconocimiento automático del habla basada en esas señales
+9:22
+9 minutos y 22 segundos
+acá usamos el mismo paradigma para construir sistemas de reconocimiento automático del sonido masticatorio
+9:29
+9 minutos y 29 segundos
+entonces acá tenemos de un nivel inicial hasta un nivel d
+9:36
+9 minutos y 36 segundos
+atracción mayor el reconocimiento d los eventos propiamente dicho
+9:44
+9 minutos y 44 segundos
+hace un nivel a nivel de eventos oa nivel del modelo del lenguaje modelo de lenguaje que en este caso actuaría como
+9:51
+9 minutos y 51 segundos
+supongamos acaba de arrancar que se espera encontrar después otro arranque o una masticación entonces esto mejora
+9:59
+9 minutos y 59 segundos
+después el desempeño de sistemas haciendo por ejemplo que la clasificación que se va dando de
+10:06
+10 minutos y 6 segundos
+arranque masticación sea mayor entonces aquí tenemos por ejemplo el psuv que es el arranque
+10:15
+10 minutos y 15 segundos
+by la masticación y kuwait que es el evento conjunto de arranque y matización así como un silencio que va a absorber
+10:24
+10 minutos y 24 segundos
+la dinámica de la señal en entre eventos y bueno acá les dejo como una
+10:33
+10 minutos y 33 segundos
+simplemente una enumeración de algunas de la infinidad de tareas que pueden ser resueltas a través de sistemas algunas
+10:42
+10 minutos y 42 segundos
+basadas en el conocimiento de imágenes como las que estuve mostrando y otra basada en el reconocimiento de hablado
+10:49
+10 minutos y 49 segundos
+del lenguaje el conocimiento del identificación del locutor que decir no me interesa saber que lo que está diciendo sino quién lo está diciendo el
+10:57
+10 minutos y 57 segundos
+reconocimiento de la identidad a través de su voz otras tareas por ejemplo la traducción automática donde la salida no en la
+11:05
+11 minutos y 5 segundos
+etiqueta de lo que está diciendo a quien estoy diciendo si no es una señal similar pero en otro idioma
+11:13
+11 minutos y 13 segundos
+algunas aplicaciones biomédicas de segmentación de imágenes biometría el
+11:20
+11 minutos y 20 segundos
+conocimiento huella de palmas de venas en la mano etcétera o biometría por ejemplo reconocimiento del modo de
+11:28
+11 minutos y 28 segundos
+caminar de una persona y muchas otras y también aplicaciones bioinformáticas
+11:35
+11 minutos y 35 segundos
+en economía y un gran etcétera finalmente como para qué
+11:41
+11 minutos y 41 segundos
+[Música]
+11:42
+11 minutos y 42 segundos
+puedan leer un poquito más de interés a interesarse sobre el tema
+11:50
+11 minutos y 50 segundos
+la mayor parte del bloque central de la clase que es la parte del reconocimiento estadístico está sacado
+11:59
+11 minutos y 59 segundos
+duda y hard to the heart que son los autores que escribieron un libro para ten classification hace muchos años
+12:06
+12 minutos y 6 segundos
+soy en su primera edición y luego en su segunda edición la más reciente en el año 2000 sumaron a store que es una
+12:13
+12 minutos y 13 segundos
+persona que trabaja en matlab que eso todas las todos los ejemplos y generación de gráficas mucho más
+12:21
+12 minutos y 21 segundos
+didácticos que en la edición inicial del libro y por lo tanto recomiendo la lectura de estos capítulos que son los
+12:29
+12 minutos y 29 segundos
+recubren y la formulación inicial de un sistema de reconocimiento hasta llegar al clasificador valenciano como vimos en
+12:38
+12 minutos y 38 segundos
+esta clase
+Sincronizar con el tiempo del vídeo

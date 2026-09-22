@@ -1,0 +1,239 @@
+estas definiciones nos van a permitir llegar a la probabilidad posterior
+0:12
+12 segundos
+ya tenemos la definición de probabilidad a priori densidad condicional
+0:20
+20 segundos
+y también tenemos la medida que es el brillo que acabamos de medir o el dato que acabamos de sacar
+0:26
+26 segundos
+la probabilidad posteriori para que no pierda el foco dígame lo que queremos hacer es llegar a una
+0:34
+34 segundos
+definición de un clasificador estadístico basada en esta serie de definiciones de probabilidad entonces la probabilidad posteriori y acá cambiar la
+0:43
+43 segundos
+anotación es de la clase dada la muestra qué problema tengo de que la muestra que
+0:50
+50 segundos
+acabo de sacar sea de clase 1 clase 2 o clase c que provea que tengo si tengo 4
+0:58
+58 segundos
+millones qué problema tengo que sea sano o enfermos individuos o si tengo el brillo 45 con la prioridad que es un 0 o
+1:05
+1 minuto y 5 segundos
+que sea un 9 y eso ya es una pregunta mucho más cercana a lo que estamos buscando porque nosotros ponemos el
+1:12
+1 minuto y 12 segundos
+patrón en el sistema como entrada y es lo que le damos al clasificador es decir le decimos que el brillo es 45 o que los
+1:21
+1 minuto y 21 segundos
+glóbulos rojos están en 3 millones y lo que estamos buscando el sistema que nos diga sano enfermo o 09
+1:30
+1 minuto y 30 segundos
+entonces esa probabilidad se calcula mente la regla de valles que es el producto como vemos aquí en la fórmula
+1:38
+1 minuto y 38 segundos
+de la densidad condicional por la priori sobre la probabilidad incondicional
+1:45
+1 minuto y 45 segundos
+entonces es una relación entre las tres primeras definiciones que hemos visto
+1:53
+1 minuto y 53 segundos
+ahora bien esta definición nos va a permitir llegar al clasificador estadístico ya que
+2:00
+2 minutos
+tenemos a la izquierda tenemos la misma curva que ya sabíamos el 0 la propiedad de 9
+2:09
+2 minutos y 9 segundos
+y la suma de las dos qué es la curva en negro fíjense si yo ahora calculo desastres
+2:18
+2 minutos y 18 segundos
+calculó la probabilidad que acabo de definir la probabilidad posteriori
+2:25
+2 minutos y 25 segundos
+pero tener la curva de la derecha donde veo cuál es la probabilidad posteriori del
+2:33
+2 minutos y 33 segundos
+cero en la curva en rojo y cuál es la probabilidad a posteriori
+2:40
+2 minutos y 40 segundos
+del 9 en la curva en azul y acá hay algo muy particular que es hay una gran cantidad de valores de cero de
+2:48
+2 minutos y 48 segundos
+brillo donde la probabilidad a posteriori del cero vale 1 que todo el inicio de esta curva
+2:57
+2 minutos y 57 segundos
+y por lo tanto la probabilidad de posteriori del 9 vale 0
+3:05
+3 minutos y 5 segundos
+y sobre los brillos muy altos la probabilidad de posteriores del 9 es muy alta cercana a 1 no necesariamente 1 y
+3:14
+3 minutos y 14 segundos
+la probabilidad a posteriori del 0 es muy baja cercana a 0 y esto ya es básicamente lo que estoy buscando es
+3:22
+3 minutos y 22 segundos
+decir si se acuerdan de las funciones discriminantes y qué es lo que buscábamos cuando decíamos jesús 0 mayor
+3:30
+3 minutos y 30 segundos
+a jesús 9 acá estamos teniendo una función definida por una probabilidad que es
+3:37
+3 minutos y 37 segundos
+mayor a la otra para todos los brillos que corresponden a los ceros
+3:46
+3 minutos y 46 segundos
+y por otro lado la segunda función la de los nueves es mayor su brillo es mayor a
+3:54
+3 minutos y 54 segundos
+la otra o su nivel de probabilidad para todos aquellos brillos altos
+4:03
+4 minutos y 3 segundos
+una idea para un clasificador ya podría ser construir un clasificador estadístico basado en probabilidades a
+4:11
+4 minutos y 11 segundos
+posteriori es decir usar estas probabilidades que acabamos de definir como las funciones discriminantes
+4:20
+4 minutos y 20 segundos
+por supuesto en la zona central si se fijan en la zona central es donde tenemos la zona de máxima incerteza del sistema si no viene un brillo 43 por
+4:30
+4 minutos y 30 segundos
+ejemplo voy a tener el punto donde se cruzan las dos que era equivalente a la frontera de decisión de que habíamos
+4:37
+4 minutos y 37 segundos
+definido previamente en ese punto no puedo decir que la probabilidad posterior y del 0 es mayor que la del 9 y viceversa entonces ahí donde tengo la
+4:46
+4 minutos y 46 segundos
+máxima inserten cya en el sistema bien entonces esa es justamente la idea
+4:53
+4 minutos y 53 segundos
+de clasificadores de valles que es un clasificador estadístico teórico de mínimo error que es lo mejor que
+5:00
+5 minutos
+podríamos hacer de que es construir un clasificador usando los probabilidades a
+5:07
+5 minutos y 7 segundos
+posteriori como funciones discriminantes luego el máximo que se acuerda en el bloque citó de salida de ese
+5:15
+5 minutos y 15 segundos
+clasificador es simplemente la clase que maximiza esta expresión la probabilidad
+5:22
+5 minutos y 22 segundos
+posterior y dada la muestra bien entonces el clasificador de valles es el que nos queda aquí definido jesús
+5:31
+5 minutos y 31 segundos
+igual a la probabilidad de la a posteriores de la décima clase luego es simplemente juntar las problemas
+5:40
+5 minutos y 40 segundos
+posteriores de todas las clases y con eso conformamos el clasificador de valles un clasificador valenciano
+5:47
+5 minutos y 47 segundos
+acá hay algunas formulaciones equivalentes por ejemplo ya que la probabilidad conjunta de x es la misma para todas las
+5:54
+5 minutos y 54 segundos
+clases puedo sacarla de la expresión y obtener una expresión equivalente basada solamente en el numerador de la
+6:02
+6 minutos y 2 segundos
+expresión anterior y luego como hay un producto de probabilidades puedo
+6:09
+6 minutos y 9 segundos
+aplicar a una función bueno está la creciente como el logaritmo para separarlo a esas expresiones en una suma lo cual fue para facilitar después la
+6:17
+6 minutos y 17 segundos
+expresión final de los clasificadores son todos equivalentes lo bueno de este clasificado
+6:28
+6 minutos y 28 segundos
+que su error es mínimo mejor que este clasificador no podemos hacer y para medirla el error digamos hay que
+6:37
+6 minutos y 37 segundos
+decir como estamos viendo recién uno menos la máxima probabilidad posterior es
+6:44
+6 minutos y 44 segundos
+decir si volvemos a la gráfica supongamos que tengo un brillo de entrada 30
+6:52
+6 minutos y 52 segundos
+para un brillo de entrada 30 cuál es la probabilidad posterior del 0 1
+6:58
+6 minutos y 58 segundos
+1 - el máximo de las 21 menos 10 o sea que la probabilidad de errarle cuando el brillo es 30 es 0 estoy totalmente
+7:07
+7 minutos y 7 segundos
+seguro de que si el brillo es 2025 335 el dígito escrito va a ser un 0
+7:17
+7 minutos y 17 segundos
+cuál era la probabilidad de errarle cuál es la prueba de error cuando el brillo es 40 por ejemplo
+7:25
+7 minutos y 25 segundos
+entonces en este caso tengo brillo entrada 40 una prioridad posteriores 08
+7:31
+7 minutos y 31 segundos
+y la otra es 02 entonces una menos el máximo 1 - 08 va a
+7:40
+7 minutos y 40 segundos
+ser co2 ahí tengo ya un 20% de error cuando el brillo es 40 ese mismo comportamiento entonces se puede
+7:48
+7 minutos y 48 segundos
+calcular para todos los brillos de entrada y obtener su integral que es la probabilidad de
+7:55
+7 minutos y 55 segundos
+error de este clasificador cuál es la probabilidad de errarle para todos los brillos de entrada entonces decimos que ese es el error
+8:03
+8 minutos y 3 segundos
+mínimo teórico que puede lograr un clasificador y cuál es los problemas que tenemos para calcular
+8:11
+8 minutos y 11 segundos
+ese error porque si podrían si pudiéramos calcularlo tendríamos solucionado es él
+8:17
+8 minutos y 17 segundos
+el problema pero fíjense la probabilidad priori de la clase decíamos colega problema de encontrar
+8:25
+8 minutos y 25 segundos
+individuos sanos o individuos anémicos en una población puede ser que nunca conozcamos el valor
+8:33
+8 minutos y 33 segundos
+exacto de esa probabilidad podemos conocer un valor aproximado levantado de la muestra que tenemos de la población que tenemos pero si esa misma muestra la
+8:41
+8 minutos y 41 segundos
+hacemos en otra región del mundo por ejemplo puede ser que la probabilidad a priori cambie porque la población es
+8:47
+8 minutos y 47 segundos
+naturalmente más anémica por cuestiones de salud propia entonces esa
+8:55
+8 minutos y 55 segundos
+probabilidad priori que antes la conocía muy simple como la razón no entre las clases ahora ya podemos desconocerlo
+9:05
+9 minutos y 5 segundos
+y lo segundo es que la probabilidad condicional que es la prioridad de x dada a la clase decíamos cómo se
+9:12
+9 minutos y 12 segundos
+distribuyen las muestras sabiendo que los individuos son sanos o sabiendo que el individuo es un enfermo también podemos llegar a desconocerla porque si
+9:21
+9 minutos y 21 segundos
+hacemos el histograma por ejemplo con mil individuos y mañana sumamos díaz individuos más de la población de al
+9:28
+9 minutos y 28 segundos
+lado es a sixto gramo puede cambiar en función de esos individuos entonces esa probabilidad condicional también puede
+9:36
+9 minutos y 36 segundos
+llegar a ser desconocida con lo cual nos empiezan a faltar ya los factores que nos va a permitir
+9:45
+9 minutos y 45 segundos
+calcular justamente la problema posteriores van a faltar justamente los dos factores que están en el numerador
+9:53
+9 minutos y 53 segundos
+de esa expresión y con lo cual se llega a la imposibilidad práctica de generar o
+10:00
+10 minutos
+de crear un clasificador vallès ya no basada en esta propiedad posterior y todo lo que van a aprender en la
+10:07
+10 minutos y 7 segundos
+materia son métodos que aproximan métodos que intentan generar sistemas
+10:13
+10 minutos y 13 segundos
+que aproximen su error al clasificador valenciano no es una cota de error mínima al cual
+10:21
+10 minutos y 21 segundos
+luego por ejemplo mediante redes neuronales o clasificadores gaussianos etcétera se intenta llegar a un error parecido al error de valles lo más
+10:30
+10 minutos y 30 segundos
+cercano posible
+Sincronizar con el tiempo del vídeo

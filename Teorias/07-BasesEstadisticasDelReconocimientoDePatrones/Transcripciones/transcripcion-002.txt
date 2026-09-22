@@ -1,0 +1,286 @@
+vamos a ver ahora una serie de conceptos básicos en un aprendizaje maquinal para poder luego aproximarnos a
+0:13
+13 segundos
+los sistemas ya particulares de reconocimiento estadístico entonces primero comenzamos con un contexto de la disciplina que es decir
+0:22
+22 segundos
+dónde estamos parados en el aprendizaje maquinal respecto a toda la inteligencia artificial y podemos considerar dos
+0:29
+29 segundos
+grandes ramas básicas las cuales están dadas de manera histórica no la inteligencia artificial clásica que fue
+0:37
+37 segundos
+la primera aproximación a este tipo de sistemas que básicamente modela el razonamiento humano donde uno necesitaba
+0:45
+45 segundos
+el experto en la tarea sentada al lado del programador para que vaya por
+0:51
+51 segundos
+ejemplo diciendo pongamos una tarea muy simple detección de anemias en en
+0:58
+58 segundos
+personas observando o simplemente el conteo de glóbulos rojos por decir entonces nos sentamos
+1:06
+1 minuto y 6 segundos
+al médico al lado y que dé una serie de mediciones de glóbulos rojos nos vaya diciendo esta persona está sana esta
+1:14
+1 minuto y 14 segundos
+persona está anémica etcétera y con eso se pueden ir construyendo reglas tipo is del en su versión más básica que nos
+1:23
+1 minuto y 23 segundos
+pueden dar un sistema que simplemente viendo ese conteo nos diga si la persona está sana o anémica
+1:30
+1 minuto y 30 segundos
+una aproximación un poco más reciente qué es el aprendizaje máquina algo el reconocimiento de formas y es el que
+1:39
+1 minuto y 39 segundos
+modela el proceso de percepción humana como estuvimos viendo una tarea pasada este es básicamente en dos grandes técnicas basada en la teoría de decisión
+1:47
+1 minuto y 47 segundos
+estadística es decir la aproximación estadística que luego vamos a considerar un poco más en detalle o basada de la
+1:54
+1 minuto y 54 segundos
+teoría de lenguajes formales donde el aprendizaje está dado de manera
+2:01
+2 minutos y 1 segundo
+inductiva es decir a través de ejemplos entonces algunas consideraciones sobre el aprendizaje maquinal desde el punto
+2:08
+2 minutos y 8 segundos
+de vista de la inteligencia artificial y es que por ejemplo puede adquirir y representar el conocimiento ya que en un
+2:16
+2 minutos y 16 segundos
+sistema de este tipo debemos ser capaces de tomar los patrones de la realidad por ejemplo tomar las imágenes tomar las
+2:23
+2 minutos y 23 segundos
+señales de audio y representarlos de alguna manera óptima para el sistema que vamos viviendo después algunas
+2:31
+2 minutos y 31 segundos
+particularidades de cada uno de estos pasos el aprendizaje en sí mismo está dado por una gran batería de algoritmos
+2:38
+2 minutos y 38 segundos
+que ya fueron planteados y hoy en día se sigue investigando para dado un conjunto de entrenamiento es decir un conjunto de
+2:45
+2 minutos y 45 segundos
+muestras poder inferir cuál es el sistema máquina la clasificación que es lo referido a
+2:54
+2 minutos y 54 segundos
+etiquetar o sea asignarle identidad a patrones nuevos no vistos en el conjunto de entrenamiento esto es la capacidad de
+3:04
+3 minutos y 4 segundos
+generalización que que pueda tener este sistema si lo entrenamos por ejemplo con mil imágenes de llaves y luego se viene
+3:12
+3 minutos y 12 segundos
+una imagen de una llave antigua o una llave moderna una llave que por ejemplo no haya estado en el conjunto de entrenamiento el sistema sea capaz de
+3:20
+3 minutos y 20 segundos
+asignar la identidad llave dada algunas características aprendidas y por último lo que mencionaban sobre
+3:27
+3 minutos y 27 segundos
+desempeño es que siempre debemos plantear algunos mecanismos para evaluar la bondad de decir
+3:35
+3 minutos y 35 segundos
+el desempeño en clasificación por ejemplo qué tasa de aciertos logra en clasificación con qué grado de confianza está de etiquetado en sus patrones o
+3:44
+3 minutos y 44 segundos
+bien qué error está alcanzando el sistema bueno algunas definiciones ya que vamos a manejar a lo largo de la
+3:53
+3 minutos y 53 segundos
+presentación llamamos patrón a los objetos de interés básicamente son las
+3:59
+3 minutos y 59 segundos
+cosas que queremos clasificar esos patrones algunas veces pueden estar
+4:06
+4 minutos y 6 segundos
+muy bien separados por ejemplo en el caso de las imágenes de llaves en la primera imagen si se acuerdan que tenía cuatro llaves las cuatro llaves estaban
+4:15
+4 minutos y 15 segundos
+bien separadas no estaban solapadas no había problemas de sombra es decir esos problemas esos
+4:23
+4 minutos y 23 segundos
+patrones personas estaban perfectamente definidos algunas veces iba a ser la mayoría de las veces en tareas más complejas o
+4:31
+4 minutos y 31 segundos
+tareas reales esos patrones posiblemente no estén tan definidos posiblemente no sean visibles en el caso
+4:40
+4 minutos y 40 segundos
+de solapamientos o en el caso por ejemplo de conteos ahí dice el ejemplo la voz de una persona o
+4:50
+4 minutos y 50 segundos
+una cara a la una persona puede estar enmascarada entre la base de varias personas por ejemplo si tomamos una grabación en un restaurant
+4:58
+4 minutos y 58 segundos
+y donde se escucha el ruido de fondo que es básicamente la conversación de todas las otras personas si queremos identificar la voz de una
+5:06
+5 minutos y 6 segundos
+persona en particular entonces el patrón ahí está muy difuso o la cara de una persona por ejemplo en
+5:14
+5 minutos y 14 segundos
+una tribuna de fútbol etc entonces el reconocimiento de patrones
+5:22
+5 minutos y 22 segundos
+el estudio de los procesos de percepción y reconocimiento con estos 3 sub tareas
+5:30
+5 minutos y 30 segundos
+primero que sea capaz de aislar y distinguir los patrones segundo reunirnos en grupos en el caso
+5:38
+5 minutos y 38 segundos
+de por ejemplo si no es posible asignarle una etiqueta a cada uno si no sabemos cuál es la identidad de las personas que están en la tribuna por lo
+5:46
+5 minutos y 46 segundos
+menos decir estas personas tienen o pertenecen a alguna determinada facción o bien esto es una persona y esto no es
+5:53
+5 minutos y 53 segundos
+una persona una tarea más simple y asignarles un nombre identificatoria de cada grupo se refiere a darle el
+6:01
+6 minutos y 1 segundo
+etiquetado final el objetivo entonces de reconocimiento de patrones es crear los sistemas
+6:08
+6 minutos y 8 segundos
+informáticos que sean capaces de imitar este comportamiento desde un punto de vista conceptual cuál
+6:17
+6 minutos y 17 segundos
+es el diagrama en bloques de este sistema entonces acá tenemos como entrada las variables físicas es decir acá tenemos
+6:26
+6 minutos y 26 segundos
+el mundo real donde tomamos la imagen de la escena o la grabación de audio o la señal del
+6:36
+6 minutos y 36 segundos
+conteo de glóbulos rojos como decíamos y siempre vamos a obtener un primer bloque de adquisición o bien dónde está
+6:44
+6 minutos y 44 segundos
+el dispositivo de captura la cámara etcétera luego si tenemos ya la señal adquirida que es esta que está aquí
+6:52
+6 minutos y 52 segundos
+y acá estoy introducirlo ahí a proposito digamos el nombre patrón en este paso del diagrama de bloques ya
+7:01
+7 minutos y 1 segundo
+que muchas veces según la literatura depende de donde lo lean digamos patrón se le llama a la señal adquirida o bien
+7:09
+7 minutos y 9 segundos
+patrón se le llama a la descripción que está en el paso siguiente entonces no confundirnos con eso simplemente el
+7:18
+7 minutos y 18 segundos
+patrón va a ser el objeto que queremos reconocer que ya está adquirido en un caso o está transformado en el segundo caso
+7:26
+7 minutos y 26 segundos
+esa transformación viene dada por el módulo central que es el módulo de procesamiento que es un modelo muy importante que nos va a permitir
+7:34
+7 minutos y 34 segundos
+caracterizar a esos objetos por ejemplo para detectar algo como decíamos detectar cuáles son las personas que
+7:42
+7 minutos y 42 segundos
+están presente en una escena y cuáles son los objetos que no son personas cuál es cuál es la fisonomía de una cara
+7:51
+7 minutos y 51 segundos
+el tono de piel promedio los componentes de esa cara ojos boca nariz que se
+7:58
+7 minutos y 58 segundos
+espera encontrar para por ejemplo separar lo que es una cara de un cuadro por ejemplo
+8:05
+8 minutos y 5 segundos
+entonces ese módulo de procesamiento va a tomar como entrada la señal
+8:12
+8 minutos y 12 segundos
+como viene del mundo real ya capturada o digitalizada y nos va a entregar como
+8:18
+8 minutos y 18 segundos
+salida esta descripción que es un vector ese vector tiene que ser lo más
+8:27
+8 minutos y 27 segundos
+representativo posible del objeto que se quiere identificar esto es por ejemplo en el caso de caras entonces tomó la
+8:36
+8 minutos y 36 segundos
+cara por ejemplo la cara mía en este momento y tengo un rectángulo que puede ser por ejemplo de 100 píxeles por 100
+8:43
+8 minutos y 43 segundos
+píxeles usted tengo 10 mil puntos 10 mil píxeles dónde está contenida de la información de color de la imagen
+8:51
+8 minutos y 51 segundos
+si pensamos desde el punto de vista matemático tenemos un vector de dimensión 10.000 al cual le tenemos que
+8:58
+8 minutos y 58 segundos
+asignar una etiqueta por ejemplo la identidad del individuo y esa altísima dimensión en la entrada
+9:06
+9 minutos y 6 segundos
+hace muy complejo construir sistemas automáticos para resolver la tarea por lo tanto el módulo de procesamiento se
+9:14
+9 minutos y 14 segundos
+encarga de extraer las características más importantes y generan un nuevo vector descriptivo que tenga unos pocos números
+9:22
+9 minutos y 22 segundos
+por ejemplo distancia entre ojos distancia de la línea de ojos a boca tono de piel relación de aspecto es
+9:31
+9 minutos y 31 segundos
+decir si tengo la cara más alargada o más redondeada entonces con eso vamos juntando uno dos tres cuatro cinco
+9:38
+9 minutos y 38 segundos
+valores en vez de diez mil con los cuales esos cinco valores si ahora van a ser representativos de la identidad mía
+9:47
+9 minutos y 47 segundos
+o de la identidad de otra persona para que finalmente el módulo de clasificación que es el paso final pueda
+9:54
+9 minutos y 54 segundos
+decidir la etiqueta de clases desde un punto de vista funcional es básicamente lo que vemos abajo
+10:02
+10 minutos y 2 segundos
+en líneas negras bien marcado es el mismo diagrama que teníamos en la transparencia
+10:09
+10 minutos y 9 segundos
+anterior fíjense de la línea de puntos hacia abajo tenemos el sistema funcionando ya en
+10:17
+10 minutos y 17 segundos
+tiempo real entonces tomas toma un patrón se procesa que acá la primer procesamiento depende del tipo de señal
+10:25
+10 minutos y 25 segundos
+puede ser una mejora de contraste en imágenes o un realce de la señal a una ecualización en
+10:33
+10 minutos y 33 segundos
+audio etcétera la extracción de características que es el paso que decía reciente de caracterizar esa señal medir
+10:41
+10 minutos y 41 segundos
+cosas sobre los objetos para sí dar la entrada al clasificador que es el que le va a asignar la etiqueta entonces en
+10:49
+10 minutos y 49 segundos
+entrenamiento que nos va a llevar casi la mayor parte del tiempo el bloque de ajuste acondicionamiento
+10:58
+10 minutos y 58 segundos
+está aquí están todos los algoritmos digamos que tenemos que poner para justamente lograr una entrada al bloque
+11:06
+11 minutos y 6 segundos
+descriptor que sea lo más óptima posible desde el punto de vista de procesamiento digital de señales
+11:15
+11 minutos y 15 segundos
+posteriormente el bloque de selección de características este es un bloque muy importante ya que aquí tenemos que poner toda nuestra
+11:23
+11 minutos y 23 segundos
+experticia o aprender de otros expertos en la tarea para seleccionar entre todas las cosas que podemos medir de esa señal
+11:30
+11 minutos y 30 segundos
+cuáles son las que vamos a dejar en el bloque de extractor de características en el si puede haber características
+11:39
+11 minutos y 39 segundos
+que confundan al sistema en vez de ayudarlo a decidir por ejemplo
+11:47
+11 minutos y 47 segundos
+decidir la identidad de una persona dada dado el color de los ojos y ahí va a haber muchísimas personas del color de
+11:56
+11 minutos y 56 segundos
+ojos de iris marrones y por lo tanto el sistema no va a ser capaz luego de asignar una etiqueta por la incerteza
+12:04
+12 minutos y 4 segundos
+que tienen esa en esa característica elegida entonces es una tarea que
+12:13
+12 minutos y 13 segundos
+en la cual ahora sí ya es válida la experticia nuestra como desarrolladores de sistemas maquinales y el otro gran
+12:20
+12 minutos y 20 segundos
+bloque es el diseño del clasificador en sí mismo es decir dado el vector que elegimos qué tipo de clasificador usamos
+12:29
+12 minutos y 29 segundos
+siempre van en conjunto a estas dos estos dos bloques hitos ya que si elegimos un vector numérico luego
+12:38
+12 minutos y 38 segundos
+podemos hacer uso de algún clasificadores estadísticos o sea dijimos un vector que esté expresado en
+12:45
+12 minutos y 45 segundos
+símbolos por ejemplo en letras podemos hacer uso de un clasificador sintáctico etcétera

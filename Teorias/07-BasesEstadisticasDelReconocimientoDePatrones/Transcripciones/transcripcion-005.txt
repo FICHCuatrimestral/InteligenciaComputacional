@@ -1,0 +1,215 @@
+ahora si definimos ya las tres o cuatro definiciones que no van a permitir llegar a la definición del clasificador
+0:13
+13 segundos
+estadístico entonces la primera de ellas es la probabilidad a priori de una clase que se simboliza como p de omega sub
+0:23
+23 segundos
+que entre comillas podemos ver la definición conceptual de cuál es la probabilidad de observar la etiqueta
+0:32
+32 segundos
+sin saber cuál es el valor del patrón sería como un conocimiento a priori que
+0:39
+39 segundos
+tenemos antes de comenzar a decidir por ejemplo en el caso de anemia podría ser
+0:47
+47 segundos
+cuál es la probabilidad que hay en una población de encontrar individuos anémicos
+0:54
+54 segundos
+entonces esa es una cuestión que básicamente se puede resolver como una especie este párrafo
+1:03
+1 minuto y 3 segundos
+si conocemos cuál es la proporción anémicos en el total de la población en el caso de la otra clase cuál es la
+1:11
+1 minuto y 11 segundos
+proporción de shannon en el total de la población entonces fíjense que ésta esté solo conocimiento
+1:19
+1 minuto y 19 segundos
+nos permitiría definir un clasificador muy trivial tan trivial que decida por la probabilidad priori es decir en
+1:29
+1 minuto y 29 segundos
+si se recuerdan en la definición del clasificador que en las funciones discriminantes colocamos la probabilidad a priori como función screamin antes y
+1:37
+1 minuto y 37 segundos
+directamente decidimos si un individuo sano o enfermo por la máxima probabilidad priori es decir
+1:46
+1 minuto y 46 segundos
+supongamos que tenemos y ustedes cuando están presente en una clase son 20 o 30 personas cuál es la
+1:53
+1 minuto y 53 segundos
+probabilidad que tengo yo de encontrar el individuo anémico en esa clase y posiblemente sea muy baja
+2:00
+2 minutos
+o sea del 1% o menor entonces un clasificador trivial sería directamente
+2:08
+2 minutos y 8 segundos
+es decir que los individuos son todos sanos me viene un individuo soy sano antes de saber cuál es su conteo glóbulos rojos son clasificó
+2:16
+2 minutos y 16 segundos
+haber trivial que fíjense va a lograr un desempeño muy alto porque les vamos una respuesta correcta en más del 99% de
+2:26
+2 minutos y 26 segundos
+los casos o sea que es una un desempeño muy alto para un clasificador sin embargo
+2:34
+2 minutos y 34 segundos
+hay que tener en cuenta también el costo de errarle por una clase o por otra si bien el individuo sano
+2:42
+2 minutos y 42 segundos
+y yo digo que es sano no es cierto y si bien el individuo enfermo o anémico y yo digo que está sano
+2:51
+2 minutos y 51 segundos
+posteriormente ese individuo no se trata de manera adecuada entonces ahí estoy introduciendo un costo en la clasificación que es muy superior al
+3:00
+3 minutos
+caso contrario es decir que es enfermo y cuando en el diversa no en el callo en
+3:08
+3 minutos y 8 segundos
+cuyo caso por ejemplo se puede dar un suplemento vitamínico un suplemento de hierro
+3:12
+3 minutos y 12 segundos
+[Música]
+3:14
+3 minutos y 14 segundos
+y se soluciona ese costo del error es diferente en los dos casos eso no está contemplado aquí entonces los
+3:22
+3 minutos y 22 segundos
+clasificadores basado en probabilidad de priori son muy simples pero no efectivos
+3:29
+3 minutos y 29 segundos
+una segunda definición es la densidad condicional expresada como la probabilidad
+3:37
+3 minutos y 37 segundos
+de la muestra dada la clase en la barrita s significa a la clase entonces como dice ahí entre comillas
+3:46
+3 minutos y 46 segundos
+conceptualmente es observar la muestra x o sea ahora observar
+3:52
+3 minutos y 52 segundos
+sabiendo que la etiqueta es enfermo por ejemplo ahora yo puedo tener
+3:59
+3 minutos y 59 segundos
+si se imaginan dos contenedores con todos los análisis de glóbulos rojos de
+4:07
+4 minutos y 7 segundos
+individuos sanos en un lado individuo enfermo en el otro meter la mano en uno con la probabilidad que tengo
+4:16
+4 minutos y 16 segundos
+de encontrar un conteo de glóbulos rojos superior a cuatro millones sabiendo que estoy sacando de los individuos años
+4:25
+4 minutos y 25 segundos
+o cuál es la prioridad de encontrar un conteo de un millón sabiendo que estoy sacando de los individuos anémicos entonces esa es
+4:33
+4 minutos y 33 segundos
+la probabilidad de una muestra que es el dato condicionado a que tengo separadas las clases estoy sabiendo de qué clase
+4:42
+4 minutos y 42 segundos
+esté sacando la muestra y usando las dos definiciones anteriores entonces se llega a la definición de la
+4:50
+4 minutos y 50 segundos
+probabilidad conjunta fíjese la natación es prioridad de x omega es decir probabilidad de x
+4:58
+4 minutos y 58 segundos
+y la clase y la problema de observar la muestra con la clase con la etiqueta dada entonces ahora por ejemplo a todas
+5:06
+5 minutos y 6 segundos
+esas muestras las vuelco en un solo contenedor donde tengo todos mezclados sanos y enfermos meto la mano revuelvo y saco un conteo de cuál es la problema de
+5:15
+5 minutos y 15 segundos
+encontrar tres millones de glóbulos rojos en individuos enfermos ahora ya por supuesto va a ser una prueba menor
+5:23
+5 minutos y 23 segundos
+porque tengo mezclada en las clases bueno
+5:32
+5 minutos y 32 segundos
+estas tres definiciones digamos las tienen que ir teniendo bien en claro para llegar a la última que es la
+5:39
+5 minutos y 39 segundos
+definición de densidad incondicional qué es la suma para todas las clases de las probabilidades
+5:49
+5 minutos y 49 segundos
+entonces expresado como el producto de la definición anterior en la suma para todas las clases del
+5:57
+5 minutos y 57 segundos
+producto de la densidad condicional que está por su probabilidad priori
+6:05
+6 minutos y 5 segundos
+bien y esa es conceptualmente cuál es la probabilidad de encontrar la muestra x no me importa si es etiqueta a
+6:13
+6 minutos y 13 segundos
+1 y quedó todo en etiqueta 3 cuál es la prioridad que tengo de meter la mano y sacaron un conteo glóbulo rojo 4 millones no importa si es etiquetado
+6:21
+6 minutos y 21 segundos
+como sano o enfermo por eso es la suma sobre todas las clases que tenemos
+6:28
+6 minutos y 28 segundos
+bien y un ejemplo para que veamos el uso de estas definiciones es otra vez los dígitos 0 y 9 es donde
+6:37
+6 minutos y 37 segundos
+tengo ahora las campanas o la distribución que antes tenía como barras el histograma del 0 y del 9
+6:45
+6 minutos y 45 segundos
+y acá tengo alguna información extra por ejemplo esta que está acá arriba puede ser el
+6:51
+6 minutos y 51 segundos
+golpe de 9 igual a 05 si se acuerdan de la nomenclatura
+6:58
+6 minutos y 58 segundos
+esta es la misma nomenclatura qué me dice pero me da igual a 0 igual a 05 es decir
+7:06
+7 minutos y 6 segundos
+la probabilidad priori la prioridad a priori del 0 igual a la prioridad previa de 9 igual a 05 es decir a igual
+7:14
+7 minutos y 14 segundos
+cantidad de muestras de los ceros y de los 9 por lo tanto no puedo plantear un clasificador trivial como en el que
+7:23
+7 minutos y 23 segundos
+basado en problemas a priori el segundo dato
+7:30
+7 minutos y 30 segundos
+cuál es la probabilidad de que la muestra sea 45 sabiendo que es de clase 0 este la densidad condicional
+7:38
+7 minutos y 38 segundos
+o la probabilidad condicionada a la clase entonces sabiendo que es de clase 0 ya voy a observar solamente la curva
+7:47
+7 minutos y 47 segundos
+roja en esa curva roja de cuál es la probabilidad de encontrar el brillo 45 este brillo entonces
+7:56
+7 minutos y 56 segundos
+la probabilidad va a ser algo así como 0 0 este punto que está acá
+8:04
+8 minutos y 4 segundos
+00 33 en el resultado que tengo acá entonces esa será la probabilidad de
+8:10
+8 minutos y 10 segundos
+encontrar brillo 45 en los ceros
+8:15
+8 minutos y 15 segundos
+[Música]
+8:17
+8 minutos y 17 segundos
+pregunta que sigue con la probabilidad de encontrar brillo 45
+8:25
+8 minutos y 25 segundos
+clase 0 ahora sí digo probabilidad conjunta entonces la prueba conjunta si
+8:32
+8 minutos y 32 segundos
+se acuerdan era el producto de las dos anteriores el producto de la condicional por la probabilidad a priori entonces
+8:41
+8 minutos y 41 segundos
+esa densidad incondicional me va a dar 00 33 por un medio del / 200 16
+8:52
+8 minutos y 52 segundos
+va a ser el dato que tengo acá en la gráfica de la derecha por el brillo 45 por acá
+9:00
+9 minutos
+00 16 ya que en esta gráfica de la derecha cada una de las campanas fue dividida por dos para expresar la
+9:08
+9 minutos y 8 segundos
+densidad incondicional y finalmente acá pd x 45 es decir dado
+9:17
+9 minutos y 17 segundos
+brillo 45 cuál es la suma de la probabilidad que sea 0 más la probabilidad que sea 9 y va a ser la
+9:25
+9 minutos y 25 segundos
+curva que está en negro 00 54 cosas el valor
+Sincronizar con el tiempo del vídeo

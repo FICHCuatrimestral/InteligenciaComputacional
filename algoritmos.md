@@ -147,6 +147,43 @@ $$\Delta w^{(p)}_{j0} = \mu\,\delta^{(p)}_j\,(-1)$$
 
 El peso de sesgo se ajusta igual, con la entrada fija $-1$.
 
+## La generalización: una capa $p$ cualquiera
+
+$$\Delta w^{(p)}_{ji}(n) = \eta\;\big\langle \boldsymbol{\delta}^{(p+1)},\ \mathbf{w}^{(p+1)}_j \big\rangle\;\big(1+y^{(p)}_j\big)\big(1-y^{(p)}_j\big)\;y^{(p-1)}_i(n)$$
+
+Una sola fórmula para **todas** las capas, tenga la red tres o veinte. Los tres índices: $p$ es la capa donde estoy parado, $p-1$ de dónde viene la entrada, $p+1$ la capa siguiente. Leída en voz alta: **velocidad de aprendizaje, por error, por derivada de la activación en la capa actual, por entrada**. Y acá $\eta = \mu/2$, porque absorbe el $\tfrac12$ de la derivada.
+
+$$\big\langle \boldsymbol{\delta}^{(p+1)},\ \mathbf{w}^{(p+1)}_j \big\rangle = \sum_k \delta^{(p+1)}_k\,w^{(p+1)}_{kj}$$
+
+El producto interno desplegado. $k$ recorre las neuronas de la **capa siguiente** y $j$ queda fijo, así que $\mathbf{w}^{(p+1)}_j$ es **la columna $j$** de esa matriz: los pesos que **salen** de la neurona $j$, no los que entran. Hacia adelante se suma sobre el segundo índice de $w_{kj}$; hacia atrás, sobre el primero. Es la misma matriz transpuesta, y de ahí el nombre del método.
+
+## Los dos bordes
+
+La fórmula general es idéntica en todas las capas y sólo falla en los extremos, porque ahí **falta un vecino**.
+
+$$\Delta w^{(III)}_{ji} = \eta\;\underbrace{\big(d_j - y^{(III)}_j\big)}_{e_j}\;\big(1+y^{(III)}_j\big)\big(1-y^{(III)}_j\big)\;y^{(II)}_i$$
+
+**Capa de salida:** no existe $p+1$, así que el producto interno se reemplaza por el **error verdadero**. Todo lo demás queda igual.
+
+$$\Delta w^{(I)}_{ji} = \eta\;\big\langle \boldsymbol{\delta}^{(II)},\ \mathbf{w}^{(II)}_j \big\rangle\;\big(1+y^{(I)}_j\big)\big(1-y^{(I)}_j\big)\;x_i$$
+
+**Primera capa:** no existe $p-1$, así que la «salida de la capa anterior» es la **entrada de la red**.
+
+$$\delta^{(III)}_j \;\longrightarrow\; \delta^{(II)}_j \;\longrightarrow\; \delta^{(I)}_j$$
+
+Y el orden no es negociable: los $\delta$ se calculan **de la salida hacia atrás**, porque cada capa necesita los de la siguiente. El de la capa de salida es el único que se puede calcular sin depender de nadie.
+
+## El corchete, desglosado un nivel
+
+$$\big\langle \boldsymbol{\delta}^{(III)},\ \mathbf{w}^{(III)}_j \big\rangle = \tfrac{1}{2}\sum_k \big(d_k - y^{(III)}_k\big)\big(1+y^{(III)}_k\big)\big(1-y^{(III)}_k\big)\,w^{(III)}_{kj}$$
+
+Reemplazando $\delta^{(III)}_k$ por su fórmula y sacando el $\tfrac12$ afuera de la suma, el corchete queda escrito **sólo con cosas ya calculadas**: las salidas deseadas, las salidas de la red y los pesos.
+
+> **OJO — dos derivadas de activación distintas, y el $\tfrac12$**
+> La derivada de adentro del corchete va evaluada en **$k$** (capa siguiente); la de afuera, en **$j$** (capa actual). Escribirlas con el mismo índice es el error más común del tema. Y de los dos $\tfrac12$: el de adentro es el del $\delta^{(p+1)}$ y se escribe; el de la capa actual está absorbido en $\eta$.
+>
+> **Y hasta acá no más.** Con más capas, cada $\delta^{(p+1)}$ tiene adentro otro corchete, y desplegar eso son cuatro renglones ilegibles. La gracia del $\delta$ es justamente **no** desplegarlo: se calcula una vez por neurona y en cada capa se lo trata como un número que ya está.
+
 ---
 
 # 4. Redes de base radial

@@ -1,0 +1,296 @@
+muy bien ahora vamos a focalizarnos ya en la primera de estas dos aproximaciones que la aproximación
+0:12
+12 segundos
+estadística y vamos a ver unos conceptos un poco más en detalle que nos van a permitir llegar a una formulación
+0:19
+19 segundos
+general de un clasificador estadístico entonces aquí seguimos hablando sobre la
+0:28
+28 segundos
+adquisición y el pre proceso de datos donde tenemos el vector numérico que representa al objeto y formalmente ya un
+0:35
+35 segundos
+patrón entonces es una variable n dimensional de la dimensión que tenga
+0:44
+44 segundos
+esa señal en la realidad por ejemplo cuando hablaba de la cara decía que tenía dimensión 10.000 si hablo de una señal de voz puede adquirido por ejemplo
+0:53
+53 segundos
+la calidad decidí 44 keyloggers y tengo un segundo enseñar voy a tener una señal
+0:59
+59 segundos
+de dimensión 44 mil 100 muestras eso es el patrón adquirido
+1:08
+1 minuto y 8 segundos
+y lo que buscamos con el bloque de extracción de características es reducir esa dimensión
+1:13
+1 minuto y 13 segundos
+[Música]
+1:15
+1 minuto y 15 segundos
+este paso puede ser que reduzca a 1 pero lo que sí lo vamos a buscar es un vector destructor de mucha menor
+1:22
+1 minuto y 22 segundos
+dimensión pero que tenga la información relevante para el clasificador entonces acá hablamos ya de un vector x
+1:29
+1 minuto y 29 segundos
+de dimensionalidad de dónde requerido menor o igual que él es mucho
+1:40
+1 minuto y 40 segundos
+menor que n y ahí ese va a ser el espacio donde van a vivir los patrones que después vamos a
+1:47
+1 minuto y 47 segundos
+introducir en el clasificador esa extracción de característica tiene
+1:54
+1 minuto y 54 segundos
+que tener algunas propiedades algunas deseables y otras impuestas por ejemplo que sea preciso es decir dos objetos
+2:03
+2 minutos y 3 segundos
+diferentes tengan representaciones diferentes que cada objeto tenga una representación única y que no que haya varias
+2:11
+2 minutos y 11 segundos
+representaciones para el mismo objeto estas dos que acabo de mencionar digamos se pueden relajar podemos no cumplirlas
+2:20
+2 minutos y 20 segundos
+y aún seguirán pudiendo generar sistemas informáticos de buen desempeño la que sí es muy
+2:27
+2 minutos y 27 segundos
+importante es en la tercera que en la de continuidad en el espacio es la que le va a dar robustez a la tarea o mejor
+2:35
+2 minutos y 35 segundos
+dicho al sistema contiene del espacio significa que un punto en ese espacio de dimensión al que tiene una etiqueta
+2:43
+2 minutos y 43 segundos
+cualquiera por ejemplo mi cara en este momento identidad mía
+2:50
+2 minutos y 50 segundos
+cualquier modificación de ruido por ejemplo bajamos un poquito la luz o hay
+2:57
+2 minutos y 57 segundos
+un poquito de ruido de la imagen o me pongo anteojos eso es también ruido introducido en la señal
+3:06
+3 minutos y 6 segundos
+el sistema siga siendo capaz de decir que la identidad es mía entonces los patrones en el espacio de
+3:14
+3 minutos y 14 segundos
+dimensional van a estar muy cercanos pero van a ser diferentes sin embargo la identidad va a seguir siendo la mía eso es una característica
+3:23
+3 minutos y 23 segundos
+muy deseada en los sistemas además de dar la inmunidad en ruido le van a dar
+3:31
+3 minutos y 31 segundos
+no convenciones un nuevo término que es capacidad de generalizar quiere decir dado toda la nube de puntos por ejemplo
+3:39
+3 minutos y 39 segundos
+la de los ceros aprendida ante un nuevo cero que está muy cercano en los otros aprendidos le podemos podemos
+3:48
+3 minutos y 48 segundos
+generalizar y decir que también es un cero a lo que se refiere con esa capacidad y definimos el número de clases
+3:57
+3 minutos y 57 segundos
+de etiquetas que vamos a poner como c y un conjunto mega que va a tener la clase 1 la clase 2 en la clase c por
+4:06
+4 minutos y 6 segundos
+ejemplo pueden ser la identidad de las personas reconocer el tipo de llave a reconocer o en el
+4:12
+4 minutos y 12 segundos
+caso de anemia era sano y enfermo será y 22 clases informacionales
+4:19
+4 minutos y 19 segundos
+que puede ser un conjunto extendido con una clase más omega 0 que es la clase de rechazo es decir aquellos aquellos casos
+4:28
+4 minutos y 28 segundos
+en los cuales el sistema no tiene seguridad sobre la decisión que tomo por ejemplo yo estoy seguro que con este conteo de
+4:37
+4 minutos y 37 segundos
+glóbulos rojos las personas está sana y con este otro conteo está enferma pero si tengo un conteo en el límite el
+4:45
+4 minutos y 45 segundos
+sistema también puede ser capaz de decir revise la muestra ese es el espíritu de
+4:52
+4 minutos y 52 segundos
+la clase rechazando tendrá que venir el experto humano a revisar a qué clase pertenece esa muestra
+5:02
+5 minutos y 2 segundos
+bien entonces un clasificador estadístico ya lo definimos como una máquina con un conjunto de funciones
+5:09
+5 minutos y 9 segundos
+discriminantes entonces esos conjuntos de funciones son las jesus y tenemos a tener
+5:17
+5 minutos y 17 segundos
+tantas funciones como clases tenga
+5:20
+5 minutos y 20 segundos
+[Música]
+5:21
+5 minutos y 21 segundos
+y la tarea y esas funciones van a tomar un patrón del espacio de dimensional e iban a
+5:29
+5 minutos y 29 segundos
+obtener como salida un número real entonces por ejemplo
+5:36
+5 minutos y 36 segundos
+vector x dado por las de dimensiones fíjense con lo que dice el gráfico es
+5:44
+5 minutos y 44 segundos
+pasado a través de todas las funciones discriminantes y por cada una de ellas entonces se tiene un valor real y
+5:53
+5 minutos y 53 segundos
+finalmente la decisión de la etiqueta acabado por el máximo de todas las salidas
+6:01
+6 minutos y 1 segundo
+de las funciones discriminantes ese máximo va a decidir luego cuál es la etiqueta y encima que le corresponde al
+6:08
+6 minutos y 8 segundos
+patrón de entrada es decir puedo tener por ejemplo en el caso de sano y enfermo para hacerlo simple
+6:16
+6 minutos y 16 segundos
+tengo
+6:17
+6 minutos y 17 segundos
+[Música]
+6:18
+6 minutos y 18 segundos
+cien mil glóbulos rojos lo paso por la función g 1 me da un valor
+6:25
+6 minutos y 25 segundos
+0.8 lo paso por la función genera un valor 0.2 el máximo de estos dos valores
+6:31
+6 minutos y 31 segundos
+0.8 entonces ese patrón es enfermo
+6:40
+6 minutos y 40 segundos
+muy bien entonces sobre el plano o mejor dicho sobre el espacio y se pueden definir entonces regiones de
+6:48
+6 minutos y 48 segundos
+decisión que son es todo aquél aquella zona del espacio donde la
+6:57
+6 minutos y 57 segundos
+función discriminante y encima es mayor a todas las otras entonces viene a ser toda la región por ejemplo si se
+7:04
+7 minutos y 4 segundos
+acuerdan el ejemplo de los ceros de los 6 y de unos 9 toda la región que está que estaba desde una de las líneas verdes hacia arriba es decir todo punto
+7:14
+7 minutos y 14 segundos
+que esté por arriba de esa línea va a ser un 9 entonces toda esa región del espacio va a ser la región de los 9 la
+7:22
+7 minutos y 22 segundos
+región central la de los ceos y la inferior de la 6 si hicimos bien las tareas y el
+7:31
+7 minutos y 31 segundos
+clasificador estadístico está bien aprendido la función discriminante que nos dice máximo el 9 va a tener que ser superior
+7:39
+7 minutos y 39 segundos
+a todas las otras funciones discriminante en esa región del espacio la frontera de decisión es justamente
+7:46
+7 minutos y 46 segundos
+los puntos del espacio en donde hay igualdad en la salida de las funciones discriminantes por ejemplo justamente
+7:55
+7 minutos y 55 segundos
+sobre la recta verde en esa en esos puntos por ejemplo la función discriminante del 9 me va a dar
+8:01
+8 minutos y 1 segundo
+igual a la función discriminante del 0 y eso va a ser por ejemplo un causal de rechazo entonces no sé si es un 0 o un 9
+8:10
+8 minutos y 10 segundos
+si el punto cae sobre esa en su formulación más simple digamos
+8:20
+8 minutos y 20 segundos
+podemos generar algún clasificado lineal como el que estaban viendo en esa en ese ejemplo
+8:27
+8 minutos y 27 segundos
+que está dado por una combinación lineal de las dimensiones del patrón de entrada y
+8:34
+8 minutos y 34 segundos
+entonces este en particular es un ejemplo de un clasificador que van a ver ya pronto que son las redes neuronales
+8:42
+8 minutos y 42 segundos
+tipo perceptual multicapa gobierno algo un poquito más general que es un clasificador cuadrática ahora ya
+8:50
+8 minutos y 50 segundos
+tenemos combinaciones cuadráticas aquí de las dimensiones el vector de entrada
+8:57
+8 minutos y 57 segundos
+clasificado un poquito más general permite decidir por una línea cuál es la
+9:05
+9 minutos y 5 segundos
+frontera en el caso del plano ya podemos dejar una línea curva que se ajuste un poco mejor a los ratos de entrada
+9:15
+9 minutos y 15 segundos
+volviendo al ejemplo de la dígitos manuscritos tengo ahora que decidir entre ceros o unos entonces acá tengo
+9:23
+9 minutos y 23 segundos
+un ejemplo del dígito 0 y acá un ejemplo de un dígito 1 y simplificó mucho la tarea o sea llevó
+9:31
+9 minutos y 31 segundos
+todo a un solo a una sola dimensión simplemente en esa imagen ya que acá lo puedo hacer porque los dígitos menos
+9:39
+9 minutos y 39 segundos
+permiten puedo medir solamente la cantidad de píxeles blancos y decidir por la cantidad máxima entonces la idea
+9:48
+9 minutos y 48 segundos
+de brillo que ante los nada más se acuerdan dividido en dos partes superior e inferior acá se simplifica porque los
+9:55
+9 minutos y 55 segundos
+dígitos me simplifican la tarea si yo mido o veo ejemplos de cero voy a ver que tienen un brillo inferior a ejemplos
+10:04
+10 minutos y 4 segundos
+de unos donde hay mayor cantidad de píxeles blanco entonces de todo el vector de escritor que ahora es de
+10:11
+10 minutos y 11 segundos
+dimensión 1 el espacio que tenía recién se reduce ahora una recta que va a ser la entrada
+10:20
+10 minutos y 20 segundos
+y puedo ver en rojo digamos el histograma de aparición de los ceros y en azul el histograma de aparición de
+10:29
+10 minutos y 29 segundos
+los dígitos 1 y entonces esas dos rectas azules y rojas que están dibujadas ahí son
+10:36
+10 minutos y 36 segundos
+justamente las funciones discriminantes de una clase y de la otra esas funciones
+10:43
+10 minutos y 43 segundos
+discriminante si vemos bien acá hay un punto en el que se cruzan
+10:54
+10 minutos y 54 segundos
+entonces todos los ejemplos que tengan por ejemplo brillo 45
+11:01
+11 minutos y 1 segundo
+y justo de 10 o 11 cuyo brillo sea 45 voy a estar cayendo en el punto de cruce de esas 2 discriminantes que es la
+11:09
+11 minutos y 9 segundos
+frontera de decisión en ese punto no estoy seguro si es un 011 enredada no lo sé todos los brillos inferiores
+11:18
+11 minutos y 18 segundos
+estoy seguro que van a ser ceros ya que la función discriminante del jesús 0 por ejemplo este brillo es mayor
+11:27
+11 minutos y 27 segundos
+que la función discriminante del 1 y lo contrario pasa el lado derecho por ejemplo para un brillo 55 la función
+11:37
+11 minutos y 37 segundos
+discriminante jesús 1 es mayor tiene un valor de 0 32 que la función discriminante del 0 que tiene un valor
+11:44
+11 minutos y 44 segundos
+de 0 2 entonces se acuerdan decidíamos por el máximo y le asignamos a ese dígito la clase 1
+11:55
+11 minutos y 55 segundos
+el mismo ejemplo de los seis de los nueve ahora ya he dibujado con sus regiones de decisión y sus
+12:02
+12 minutos y 2 segundos
+fronteras decidió entonces podemos ver que la frontera estaba dada por la
+12:08
+12 minutos y 8 segundos
+intersección de los planos de decisión
+12:12
+12 minutos y 12 segundos
+[Música]
+12:14
+12 minutos y 14 segundos
+las funciones discriminantes ahora que son estos híper planos entonces va a hacer una mayor jesús se iba a ser mayor
+12:22
+12 minutos y 22 segundos
+que el plano de jesús 9 para toda la región del espacio que está contenida en esa parte y lo contrario
+12:31
+12 minutos y 31 segundos
+parte del espacio correspondiente a los dígitos 9
+Sincronizar con el tiempo del vídeo

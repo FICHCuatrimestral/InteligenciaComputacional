@@ -1,0 +1,131 @@
+en esta clase vamos a ver bases estadísticas del reconocimiento de patrones que es tratar de aproximarnos
+0:12
+12 segundos
+como un objetivo de máxima imitar el proceso de razonamiento humano que llevamos a cabo nosotros todos los días
+0:19
+19 segundos
+cuando reconocemos objetos en nuestro ambiente para ilustrar el proceso comenzamos con
+0:28
+28 segundos
+una tarea muy simple como verán en la imagen se trata de decir cuántas llaves a de la imagen entonces con un simple
+0:36
+36 segundos
+golpe de vista fíjense que nosotros somos capaces de es decir bien que son cuatro objetos y
+0:44
+44 segundos
+son todos llaves no hay ninguna incerteza en esa en esa información por más que por ejemplo nunca hayamos visto
+0:52
+52 segundos
+llaves largas como la primera la de la izquierda podemos básicamente identificar correctamente todos los
+1:00
+1 minuto
+objetos entonces esa tarea ha llevado un poquito más allá de en complejidad la
+1:08
+1 minuto y 8 segundos
+misma pregunta cuántas llaves a de ahora en esta imagen y bueno entonces en el análisis que hacemos nosotros visual rápidamente
+1:16
+1 minuto y 16 segundos
+podemos por ejemplo descartar la presencia del tornillo este que está
+1:23
+1 minuto y 23 segundos
+al principio o bien en la cerradura que está segunda y rápidamente contar 1 2 3 objetos llave
+1:31
+1 minuto y 31 segundos
+y dar la respuesta correcta entonces con este nivel de complejidad de la tarea todavía somos capaces de resolverla con
+1:39
+1 minuto y 39 segundos
+un simple golpe de vista un poquito más compleja a la misma tarea cuántas se saben hay en esta imagen
+1:46
+1 minuto y 46 segundos
+entonces por ejemplo habiendo dejado un par de segundos a mala imagen en vuelvo a la anterior
+1:53
+1 minuto y 53 segundos
+si yo les preguntaba ustedes cuántas llaves había ya posiblemente entre todas
+2:00
+2 minutos
+las respuestas que me puedan dar algunas eran correctas y otras se dan no tan correctas aproximadas le podrán entrar
+2:08
+2 minutos y 8 segundos
+por una por dos ya que por ejemplo vuelvo a la imagen en este caso ya aparecen complejidades
+2:15
+2 minutos y 15 segundos
+en la misma por ejemplo este tipo de complejidades que son sombras en los objetos que no sabemos
+2:22
+2 minutos y 22 segundos
+bien si son dos objetos o solapados o es efectivamente un solo objeto con su sombra sin embargo después de revisarla
+2:32
+2 minutos y 32 segundos
+unos pocos segundos hacer un par de pasadas de comprobación podemos dar la respuesta correcta a todos
+2:39
+2 minutos y 39 segundos
+y un poco más compleja todavía sería decir la misma pregunta cuántas chaves ahí en esta imagen en donde
+2:47
+2 minutos y 47 segundos
+podemos estar contando el a muchísimo tiempo y todavía fallar en la respuesta correcta
+2:55
+2 minutos y 55 segundos
+entonces con este ejemplo quería mostrarles digamos cuál es el proceso que después vamos a intentar reproducir
+3:03
+3 minutos y 3 segundos
+en un sistema informático que es enseñarle a la computadora o poder enseñar algún sistema informático
+3:10
+3 minutos y 10 segundos
+que emule todas las tareas que fuimos realizando en cada una de estas diapositivas en particular es detectar
+3:19
+3 minutos y 19 segundos
+los objetos y percibir el entorno identificarlos y luego darles una etiqueta es decir asignarles una
+3:27
+3 minutos y 27 segundos
+identidad contarlos etcétera entonces el aprendizaje marginal es la
+3:35
+3 minutos y 35 segundos
+rama del conocimiento que tiene por objetivo entonces realizar esta clase de sistemas
+3:41
+3 minutos y 41 segundos
+programando sistemas que puedan realizar una tarea es decir tienen un
+3:48
+3 minutos y 48 segundos
+objetivo específico para resolver siempre midiendo el desempeño esto es muy importante porque una vez que
+3:57
+3 minutos y 57 segundos
+diseñamos un sistema informático y otra persona diseñó un sistema informático para desarrollar la misma tarea entonces
+4:04
+4 minutos y 4 segundos
+debemos ser capaces de comparar cuál anda mejor cuál es más rápido etcétera la comparación de desempeño se puede dar
+4:11
+4 minutos y 11 segundos
+en función de varios criterios pero es algo que tiene que estar y además basado en la experiencia
+4:19
+4 minutos y 19 segundos
+significa que cuantos más ejemplos le mostremos al sistema ese sistema debe ser capaz de ir aprendiendo de la experiencia de haber visto muchos
+4:27
+4 minutos y 27 segundos
+ejemplos para luego inferir nuevos posiblemente nunca visto algunas restricciones adicionales esto
+4:37
+4 minutos y 37 segundos
+pueden les podemos pedir o no al sistema que tenga estas restricciones digamos la mínima intervención humana posible lo
+4:44
+4 minutos y 44 segundos
+particular el objetivo de máxima sería sin intervención humana entonces son sistemas que funcionan de manera
+4:52
+4 minutos y 52 segundos
+autónoma después si tiene alguna intervención humana entonces ya son sistemas que por ejemplo dan una respuesta y esperan la comprobación del
+5:01
+5 minutos y 1 segundo
+experto humano con reducido conjunto de ejemplos esto es beneficioso desde el punto de vista de conseguir bases de
+5:09
+5 minutos y 9 segundos
+datos para aprender a realizar una tarea ya que puede ser muy costoso conseguir
+5:16
+5 minutos y 16 segundos
+juntar una gran cantidad de datos en algunos campos de particulares por ejemplo en campos biológicos
+5:24
+5 minutos y 24 segundos
+por ejemplo imágenes médicas hay que hacer una tarea de reconocimiento de estructuras en tomografías entonces
+5:33
+5 minutos y 33 segundos
+recolectar a cada tomografía es un proceso muy costoso por lo cual sería bueno de poder generar un sistema
+5:41
+5 minutos y 41 segundos
+automático a partir de un reducido conjunto
+Sincronizar con el tiempo del vídeo

@@ -1,0 +1,194 @@
+y acá acabo de mencionar las dos grandes aproximaciones que alguna es la aproximación estadística sobre la cual
+0:10
+10 segundos
+después vamos a particularizar que está basada en
+0:17
+17 segundos
+descriptores basados en vectores numéricos y los clasificadores pues hay una gran variedad de ustedes a lo largo de la
+0:26
+26 segundos
+materia buena para vender por ejemplo redes neuronales y otro tipo de sistemas que están dentro de esta de este bloque
+0:33
+33 segundos
+no son clasificadores gaussianos basado en distancias etc la otra gran aproximación
+0:42
+42 segundos
+la aproximación sintáctica en donde los vectores o los patrones ahora están representados como cadenas de símbolos
+0:50
+50 segundos
+por lo tanto se usan reglas sintácticas dramáticas para construir los sistemas de
+0:58
+58 segundos
+clasificación ahora vemos una tarea resuelta por básicamente las dos aproximaciones para que vean la
+1:06
+1 minuto y 6 segundos
+diferencia él lo seré que es el reconocimiento óptico de caracteres de dígitos manuscritos entonces sobre una plantilla
+1:13
+1 minuto y 13 segundos
+de alguna persona se hace escribir oa varias personas se van a escribir ejemplos del 0 del 6 y del 9 y después
+1:21
+1 minuto y 21 segundos
+construir algún sistema automático que diga qué dígito es el que acaban de escribir entonces si recordamos el bloque
+1:29
+1 minuto y 29 segundos
+funcional luego de haber hecho todo el proceso de la imagen por ejemplo yo la tenemos finalizada en este caso osea píxeles blancos y negro el paso
+1:37
+1 minuto y 37 segundos
+siguiente era describirlo al objeto que podemos medir sobre la imagen que nos permita después
+1:44
+1 minuto y 44 segundos
+clasificarlo entonces una medida muy simple fíjense dada la imagen
+1:52
+1 minuto y 52 segundos
+partirla en dos a la mitad y contar cuántos píxeles blancos quedaron en la
+1:59
+1 minuto y 59 segundos
+parte superior y cuántos píxeles blancos quedaron en la parte inferior eso nos va a dar una idea muy básica de
+2:06
+2 minutos y 6 segundos
+el brillo de la imagen en su parte superior y su parte inferior entonces ese descriptor que acabamos de elegir
+2:15
+2 minutos y 15 segundos
+está muy relacionado con la tarea que estamos resolviendo porque fíjense que el 9
+2:22
+2 minutos y 22 segundos
+en los números 9 tienen un brillo menor en su parte superior que los números 6
+2:28
+2 minutos y 28 segundos
+[Música]
+2:29
+2 minutos y 29 segundos
+qué son los que tienen menos píxeles negros en su parte superior y al contrario en los 6 tienen menor brillo
+2:39
+2 minutos y 39 segundos
+en la parte inferior que los números 9 y por otro lado el número cero es
+2:45
+2 minutos y 45 segundos
+esperable un brillo similar en su parte superior e inferior entonces un comportamiento intermedio
+2:54
+2 minutos y 54 segundos
+entonces un clasificador geométrico o estadístico puede haber sido dado por una representación acá en dos
+3:03
+3 minutos y 3 segundos
+dimensiones en las dos dimensiones ponemos el brillo en su parte superior e inferior no por ejemplo toda esta nube
+3:10
+3 minutos y 10 segundos
+de puntos azules son los números 6 está aquí ya que el brillo en la parte
+3:17
+3 minutos y 17 segundos
+superior es mayor que el brillo en la parte inferior entonces aquí el promedio anda en alrededor de 200 y acá el
+3:24
+3 minutos y 24 segundos
+promedio 140 por ejemplo el caso contrario es de los números 9
+3:30
+3 minutos y 30 segundos
+donde esta nube de puntos correspondiente al 9 entonces tiene un
+3:37
+3 minutos y 37 segundos
+promedio de parte superior 140 y un promedio de parte inferior en alrededor
+3:44
+3 minutos y 44 segundos
+de 200 y los otros números que eran los ceros del cero en la nube de puntos que quedó entre ellos entonces el clasificador acá
+3:53
+3 minutos y 53 segundos
+cuáles son esas dos líneas verdes que se ve ahí sobre el plano que tratan de
+4:01
+4 minutos y 1 segundo
+separar con máxima efectividad a las tres nubes entonces luego se puede
+4:09
+4 minutos y 9 segundos
+decidir dado un dígito nuevo que se dibuja sobre la plantilla simplemente se
+4:15
+4 minutos y 15 segundos
+miden los brillos y donde caiga el punto la nube de máxima correspondencia en la que va a decidir después la identidad de
+4:22
+4 minutos y 22 segundos
+ese número el mismo ejemplo de ocr pero ahora
+4:30
+4 minutos y 30 segundos
+[Música]
+4:31
+4 minutos y 31 segundos
+resuelto por la aproximación sintáctica entonces ahora dado cualquier dígito por ejemplo ese 7 que está ahí se lo expresa
+4:39
+4 minutos y 39 segundos
+como una cadena de símbolos o bien usando este código de contorno de 4 kim
+4:45
+4 minutos y 45 segundos
+bolos o bien usando este código de 85 los entonces por ejemplo si usamos el d
+4:53
+4 minutos y 53 segundos
+ocho símbolos por ejemplo hay que decidir por dónde empezamos a recorrer el dígito por ejemplo por la esquina
+5:01
+5 minutos y 1 segundo
+superior izquierda y nos vamos moviendo en este sentido
+5:08
+5 minutos y 8 segundos
+recorriendo todo el borde hasta llegar de nuevo al punto de origen y entonces en cada pixel vamos viendo hacia dónde
+5:17
+5 minutos y 17 segundos
+nos mueven por ejemplo desde el inicio vamos moviendo hacia la derecha es decir en dirección 0 y vamos escribiendo entonces 000
+5:26
+5 minutos y 26 segundos
+etcétera etcétera hasta que se llega a la esquina donde comenzamos a bajar se escribe el dígito 6 y comenzamos a ver
+5:34
+5 minutos y 34 segundos
+la bajada 666 acá está la combinación entre seis y cinco para hacer la bajada en diagonal 6 5 5 665 depende de la
+5:43
+5 minutos y 43 segundos
+longitud que tengáis a bajar y finalmente bueno si seguimos hasta llegar al final donde se ve el dígito 2
+5:51
+5 minutos y 51 segundos
+que es el de subida para llegar de nuevo al punto de inicio entonces ahora cada dígito es representado por una cadena
+6:00
+6 minutos
+que tiene en este aspecto soy un vector de símbolos los clasificadores digamos estándares
+6:06
+6 minutos y 6 segundos
+para este tipo de descriptores está dado por autómatas modelo de marco western
+6:13
+6 minutos y 13 segundos
+donde por ejemplo se parte de un estado inicial y si quiere llegar a cualquiera de estos dos estados finales y lo que
+6:23
+6 minutos y 23 segundos
+tenemos por cada símbolo es un modelo está representado aquí por ejemplo tenemos un modelo de un dígito 3
+6:31
+6 minutos y 31 segundos
+donde esperamos a encontrar siempre por ejemplo si la persona hace o no hace esta diagonal inicial
+6:38
+6 minutos y 38 segundos
+que es de uno y luego si puedo encontrar un pedacito en horizontal un pedacito de bajada
+6:45
+6 minutos y 45 segundos
+pedacito en horizontal un pedazo de baja un pedazo en horizontal y posiblemente o
+6:52
+6 minutos y 52 segundos
+no una diagonal al final entonces dibujo acá arriba digamos ejemplo de los 3
+7:03
+7 minutos y 3 segundos
+es un ejemplo por ejemplo entonces cada uno de ellos puede ser representado con ese modelo que está ahí
+7:11
+7 minutos y 11 segundos
+algunos tendrán la subida las diagonales más largas que otros no importa los autómatas son capaces de reconocer todos
+7:18
+7 minutos y 18 segundos
+los ejemplos de dígitos 3 ya que una vez que llegan por ejemplo el pedacito de arriba del horizontal h1
+7:26
+7 minutos y 26 segundos
+se quedan en ese estado hasta que baja el símbolo y pasan tránsitos de estado y así sucesivamente hasta llegar a algún
+7:35
+7 minutos y 35 segundos
+estado final o se termina el dígito sin la diagonal como en este caso o se tuvo un dígito
+7:44
+7 minutos y 44 segundos
+que tuvo una diagonal grande como en este caso lo último que quería decir sobre este
+7:51
+7 minutos y 51 segundos
+ejemplo es que a la derecha se ve la gramática del clasificador es decir cuál
+7:58
+7 minutos y 58 segundos
+es el conjunto de reglas que nos va a permitir ir recorriendo la cadena de símbolos para finalmente llegar a decir
+8:04
+8 minutos y 4 segundos
+esto es un 3 o es un 7 o es un 5
+Sincronizar con el tiempo del vídeo
