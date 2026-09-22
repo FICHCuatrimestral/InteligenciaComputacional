@@ -65,13 +65,13 @@ Se termina cuando una pasada completa por el conjunto no produce ninguna correcc
 
 ## Criterio
 
-$$\xi(n) = \tfrac{1}{2}\,e^2(n), \qquad e(n) = d(n) - y(n)$$
+$$e^2(n) = \big[d(n) - \langle \mathbf{w}(n), \mathbf{x}(n)\rangle\big]^2, \qquad e(n) = d(n) - y(n)$$
 
-Se define una medida de lo mal que está la red para el patrón actual: el error al cuadrado, por comodidad analítica. El $\tfrac12$ está para que se cancele con el 2 que baja al derivar.
+Se define una medida de lo mal que está la red para el patrón actual: el error al cuadrado. Se trabaja en el **caso lineal** —$y = \langle \mathbf{w},\mathbf{x}\rangle$, sin activación— porque $\operatorname{sgn}$ no es derivable. Y el criterio va **sin** el $\tfrac12$: por eso el resultado lleva un $2\mu$.
 
 ## Regla del gradiente
 
-$$\Delta \mathbf{w}(n) = -\mu\,\nabla_{\mathbf{w}}\,\xi(n)$$
+$$\Delta \mathbf{w}(n) = -\mu\,\nabla_{\mathbf{w}}\,e^2(n)$$
 
 Los pesos se mueven en la dirección **opuesta** al gradiente, que es la de máximo crecimiento del error: se baja por la superficie de error. $\mu$ dice qué tan grande es el paso.
 
