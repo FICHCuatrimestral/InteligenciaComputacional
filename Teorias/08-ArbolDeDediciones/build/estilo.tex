@@ -51,3 +51,8 @@
 \AtBeginEnvironment{longtable}{\footnotesize}
 \AtBeginEnvironment{verbatim}{\footnotesize}
 \AtBeginEnvironment{Highlighting}{\footnotesize}
+
+% Figuras en el lugar donde se las cita. Con figuras flotantes, los recuadros
+% partibles (tcolorbox breakable) desbordaban la pagina sobre el pie.
+\usepackage{float}
+\floatplacement{figure}{H}

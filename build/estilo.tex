@@ -16,9 +16,10 @@
 \definecolor{acentoOjo}{HTML}{eb6834}
 \definecolor{acentoIdea}{HTML}{2a78d6}
 \definecolor{acentoDefensa}{HTML}{1baf7a}
+\definecolor{acentoContame}{HTML}{6a5aa8}
 
 \newtcolorbox{recuadrobase}[2]{
-  enhanced, breakable, sharp corners=all, boxrule=0pt,
+  enhanced, sharp corners=all, boxrule=0pt,
   leftrule=3pt, colframe=#1, colback=#1!5!white,
   left=8pt, right=8pt, top=6pt, bottom=6pt,
   fontupper=\footnotesize,
@@ -29,6 +30,7 @@
 \newenvironment{recuadroojo}[1]{\begin{recuadrobase}{acentoOjo}{#1}}{\end{recuadrobase}}
 \newenvironment{recuadroidea}[1]{\begin{recuadrobase}{acentoIdea}{#1}}{\end{recuadrobase}}
 \newenvironment{recuadrodefensa}[1]{\begin{recuadrobase}{acentoDefensa}{#1}}{\end{recuadrobase}}
+\newtcolorbox{recuadrocontame}[1]{enhanced, sharp corners=all, boxrule=0pt, leftrule=3pt, colframe=acentoContame, colback=acentoContame!6!white, left=9pt, right=9pt, top=7pt, bottom=7pt, fontupper=\small, title={#1}, coltitle=acentoContame, fonttitle=\small\bfseries\sffamily, attach title to upper=\par\vspace{4pt}, colbacktitle=acentoContame!6!white, titlerule=0pt, toptitle=0pt, bottomtitle=0pt}
 
 \titleformat{\section}{\large\bfseries\sffamily\color{tintaTitulo}}{}{0pt}{}
   [\vspace{-0.45em}{\color{acentoIdea}\rule{\linewidth}{0.9pt}}]
@@ -51,8 +53,3 @@
 \AtBeginEnvironment{longtable}{\footnotesize}
 \AtBeginEnvironment{verbatim}{\footnotesize}
 \AtBeginEnvironment{Highlighting}{\footnotesize}
-
-% Figuras en el lugar donde se las cita. Con figuras flotantes, los recuadros
-% partibles (tcolorbox breakable) desbordaban la pagina sobre el pie.
-\usepackage{float}
-\floatplacement{figure}{H}
