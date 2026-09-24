@@ -430,7 +430,7 @@ for i, (f, d_) in enumerate(steps):
     ax.text(15.8, yy, d_, fontsize=8.5, va='center', color=GR)
 ax.text(10.0, 1.9, '5', fontsize=10, fontweight='bold', color=VE, ha='center', va='center',
         bbox=dict(boxstyle='circle,pad=0.2', fc='white', ec=VE))
-ax.text(10.7, 1.9, '¿N pasos sin cambios?   sí → FIN', fontsize=9.5, va='center', color=VE, fontweight='bold')
+ax.text(10.7, 1.9, '¿las N estables?   sí → FIN', fontsize=9.5, va='center', color=VE, fontweight='bold')
 ax.plot([18.6, 21.2, 21.2], [1.9, 1.9, 5.85], color=NA, lw=1.8)
 arrow(ax, (21.2, 5.85), (20.3, 5.85), NA, 1.8)
 ax.text(21.0, 3.9, 'no', fontsize=9, color=NA, fontweight='bold', va='center', ha='right')
