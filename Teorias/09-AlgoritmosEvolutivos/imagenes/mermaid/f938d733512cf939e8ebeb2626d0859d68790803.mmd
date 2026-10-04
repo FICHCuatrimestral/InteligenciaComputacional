@@ -1,0 +1,14 @@
+%% titulo: Dónde vive cada cosa. Los operadores sólo ven bits; la aptitud sólo ve la solución.
+%% ancho: 0.9
+flowchart LR
+    subgraph G["Genotipo (bits)"]
+        C["cromosoma<br/>10011"]
+        O["selección · cruza · mutación"]
+    end
+    subgraph F["Fenotipo (el problema)"]
+        X["solución<br/>x = 19"]
+        A["aptitud<br/>f = 361"]
+    end
+    C -- decodificar --> X --> A
+    A -. la aptitud guía a .-> O
+    O -. producen nuevos .-> C

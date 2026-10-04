@@ -4,6 +4,48 @@ subtitle: "Inteligencia Computacional · FICH-UNL"
 lang: es
 ---
 
+## Mapa del tema
+
+```mermaid
+%% titulo: El tema completo de un vistazo. Cada rama es una sección del apunte.
+%% ancho: 1.0
+mindmap
+  root((Algoritmos<br/>evolutivos))
+    1 El problema
+      sin derivada
+      sólo evaluar
+    2 La idea
+      variación + selección
+      población y diversidad
+    3 El algoritmo
+      generación a mano
+      cinco decisiones
+    4 Representación
+      genotipo y fenotipo
+      decodificar
+    5 Aptitud
+      cuatro propiedades
+    6 Selección
+      ruleta y mares
+      ventanas
+      competencias
+    7 Variación
+      cruza explota
+      mutación explora
+    8 Reemplazo
+      brecha
+      elitismo
+    9 Esquemas
+    10 Frente al gradiente
+    11-14 Extensiones
+      restricciones
+      Lamarck
+      estrategias evolutivas
+    15 Selección de características
+```
+
+---
+
 ## 1. El problema que resuelven
 
 Un algoritmo evolutivo es un método de **búsqueda**: sirve para encontrar una solución buena en un problema donde hay **muchísimas** soluciones posibles. Ejemplos:
@@ -117,7 +159,19 @@ fin
 
 Es exactamente lo que se hizo a mano. `ReproducciónVariación` esconde la cruza, la mutación y el armado de la población nueva.
 
-![El ciclo completo. Es el dibujo para hacer en el pizarrón junto al pseudocódigo.](../imagenes/02-ciclo-evolutivo.png)
+```mermaid
+%% titulo: El ciclo completo, con lo que pasa en cada etapa. Es el dibujo para hacer en el pizarrón junto al pseudocódigo.
+%% ancho: 0.55
+flowchart TD
+    A["Inicializar: N cromosomas al azar"] --> B["Decodificar y evaluar la aptitud"]
+    B --> C{"¿se cumple el criterio de parada?"}
+    C -- sí --> Z(["Devolver el mejor"])
+    C -- no --> D["Selección: elegir padres<br/>(más chance a los mejores)"]
+    D --> E["Cruza, con prob. p_c"]
+    E --> F["Mutación, cada bit con prob. p_m"]
+    F --> G["Reemplazo: total, brecha o elitismo"]
+    G -- nueva generación --> B
+```
 
 ### El mismo algoritmo con las funciones a la vista
 
@@ -149,6 +203,12 @@ Qué hace cada pieza, con el ejemplo:
 | `mutar` | recorre los bits y cada uno se invierte con probabilidad $p_m$ (por ejemplo 0,01) | |
 | `P ← H` | la nueva población reemplaza a la vieja | |
 
+**Cuándo parar.** El `mientras` puede cortar por cualquiera de estos criterios, o por el primero que se cumpla:
+
+- se llegó a una **cantidad máxima de generaciones**;
+- se alcanzó la **aptitud deseada** (si se sabe cuánto es «suficientemente bueno»);
+- la mejor aptitud **no mejoró durante $n$ generaciones** seguidas: el algoritmo se estancó.
+
 **Las cinco decisiones.** Para aplicar el algoritmo a un problema cualquiera hay que decidir cinco cosas, que son los cinco «elementos de un algoritmo evolutivo» de la diapositiva:
 
 1. **Representación:** cómo se escribe una solución como cromosoma (§4).
@@ -178,14 +238,33 @@ Hacen falta dos funciones:
 - **Decodificar** (genotipo → fenotipo). Es **imprescindible**: la aptitud se calcula sobre la solución, no sobre los bits. Con `10011` no se puede calcular $f$; con 19 sí.
 - **Codificar** (fenotipo → genotipo). Sirve, por ejemplo, para meter en la población una solución que ya conocés.
 
+```mermaid
+%% titulo: Dónde vive cada cosa. Los operadores sólo ven bits; la aptitud sólo ve la solución.
+%% ancho: 0.9
+flowchart LR
+    subgraph G["Genotipo (bits)"]
+        C["cromosoma<br/>10011"]
+        O["selección · cruza · mutación"]
+    end
+    subgraph F["Fenotipo (el problema)"]
+        X["solución<br/>x = 19"]
+        A["aptitud<br/>f = 361"]
+    end
+    C -- decodificar --> X --> A
+    A -. la aptitud guía a .-> O
+    O -. producen nuevos .-> C
+```
+
 > **OJO — dónde ocurre cada cosa**
 > La **cruza y la mutación** trabajan sobre el **genotipo** (los bits). La **aptitud** se mide sobre el **fenotipo** (la solución). Por eso se dice que el algoritmo busca «en un espacio codificado».
 
 ### Números reales en bits
 
-Si la solución es un real $x \in [a, b]$, se usan $L$ bits que se leen como un entero entre 0 y $2^L-1$, y ese entero se estira al intervalo:
+Si la solución es un real $x \in [a, b]$, se usan $L$ bits $a_1 a_2 \ldots a_L$ que se leen como un entero entre 0 y $2^L-1$,
+$$d = \sum_{i=1}^{L} 2^{L-i}\,a_i ,$$
+y ese entero se estira al intervalo:
 
-$$x = a + (b-a)\,\frac{\text{entero}}{2^L - 1}$$
+$$x = a + (b-a)\,\frac{d}{2^L - 1}$$
 
 **Ejemplo:** $x\in[-100, 100]$ con 4 bits. El cromosoma `0101` es el entero 5, y entonces $x = -100 + 200\cdot 5/15 = -33{,}33$.
 
@@ -425,6 +504,18 @@ Es el más usado porque es simple, no necesita ordenar la población y no tiene 
 
 ### Comparación
 
+```mermaid
+%% titulo: Los métodos de selección según qué usan de la aptitud.
+%% ancho: 0.55
+flowchart TD
+    S["¿Qué mira de la aptitud?"] --> V["El valor<br/>(cocientes f_i / Σf)"]
+    S --> O["Sólo el orden"]
+    V --> R["Ruleta<br/>sufre los mares"]
+    R --> E["Arreglo: re-escalar<br/>sigma, lineal, rango"]
+    O --> W["Ventanas<br/>ordena y sortea en ventanas<br/>cada vez más chicas"]
+    O --> T["Competencias<br/>k al azar, gana el mejor<br/>k regula la presión"]
+```
+
 | | Ruleta | Ventanas | Competencias |
 |---|---|---|---|
 | Qué usa de la aptitud | el **valor** (los cocientes) | sólo el **orden** | sólo **quién gana** cada comparación |
@@ -451,11 +542,11 @@ Se recorre el cromosoma y **cada bit se invierte con una probabilidad $p_m$** mu
 | 1 % | se muta 1 individuo | se mutan unos 10 genes; queda tocado el 9,6 % de los individuos |
 | 10 % | se mutan 10 individuos | se mutan unos 100 genes; queda tocado el 65 % de los individuos |
 
-La fracción de individuos con al menos un gen mutado sale de $1-(1-p_m)^L$: la probabilidad de que **ninguno** de sus $L$ genes mute es $(1-p_m)^L$. Lo habitual es dar la tasa **por gen** y usar $p_m \approx 1/L$, que muta en promedio un gen por individuo.
+La fracción de individuos con al menos un gen mutado sale de $1-(1-p_m)^L$: la probabilidad de que **ninguno** de sus $L$ genes mute es $(1-p_m)^L$. Hay dos convenciones habituales, y dicen casi lo mismo: dar la tasa **por gen** con $p_m \approx 1/L$ (en promedio un gen mutado por individuo), o dar la tasa **por individuo**, del orden de 0,1 (uno de cada diez hijos recibe una mutación, en un gen al azar). Lo importante es decir cuál de las dos se está usando.
 
 ### Cruza simple
 
-Se elige **un punto de corte al azar**, el mismo en los dos padres, y se **intercambian las colas**. De dos padres salen dos hijos. Se aplica con probabilidad $p_c$ (alta, por ejemplo 0,9); si no se aplica, los hijos son copias de los padres.
+Se elige **un punto de corte al azar**, el mismo en los dos padres, y se **intercambian las colas**. De dos padres salen dos hijos. Se aplica con probabilidad $p_c$ (alta: entre 0,8 y 0,9); si no se aplica, los hijos son copias de los padres.
 
 ![Mutación, cruza simple y cruza uniforme. Es el dibujo de los operadores para el pizarrón: las tiras de bits, el corte y los colores de cada padre.](../imagenes/10-operadores.png)
 
@@ -625,6 +716,16 @@ En muchos de los ejemplos hay soluciones **inválidas**: figuras que se pisan o 
 
 ### Cuatro formas de manejarlas
 
+```mermaid
+%% titulo: Las cuatro formas, ordenadas de la más simple a la más elaborada.
+%% ancho: 0.55
+flowchart LR
+    I["Un hijo inválido<br/>(viola una restricción)"] --> R1["1. Rechazo<br/>se descarta o aptitud 0"]
+    I --> R2["2. Penalización<br/>f − λ·violación"]
+    I --> R3["3. Reparación<br/>se lo arregla a uno válido"]
+    P["Diseño previo"] --> R4["4. Que no pueda aparecer<br/>representación y operadores<br/>que sólo dan válidos"]
+```
+
 **1. Rechazo.** Los individuos inválidos se descartan, o reciben aptitud cero. Es lo más simple, pero si casi todo lo que se genera es inválido (porque la zona válida es chica), se tira casi todo y el algoritmo no avanza.
 
 **2. Penalización.** Se resta de la aptitud un término proporcional a **cuánto** se viola la restricción. Es lo que se hizo en el lienzo con $-1000\,A_{\text{fuera}}$:
@@ -662,6 +763,16 @@ En la naturaleza, lo que un individuo aprende durante su vida no se hereda (§2)
 
 A los algoritmos que combinan evolución con búsqueda local se los llama **híbridos** o **meméticos**.
 
+```mermaid
+%% titulo: La única diferencia entre las dos variantes es si lo aprendido vuelve al cromosoma (flecha punteada).
+%% ancho: 0.5
+flowchart TD
+    C["cromosoma"] --> D["decodificar"]
+    D --> BL["búsqueda local<br/>(unos pasos de gradiente)"]
+    BL --> AP["aptitud mejorada:<br/>con esa compite en la selección"]
+    BL -. "sólo en la lamarckiana:<br/>la solución mejorada se codifica<br/>y reemplaza al cromosoma" .-> C
+```
+
 ![Función de Rastrigin con 6 variables (muchos mínimos locales). La búsqueda local son 3 pasos de gradiente por individuo y por generación, y se cuentan en el costo.](../imagenes/16-lamarck.png)
 
 | Hasta $f<0{,}01$, 20 corridas | Lo logra | Generaciones (mediana) | Evaluaciones (mediana) |
@@ -680,6 +791,16 @@ El lamarckiano llega unas 18 veces antes en generaciones y unas 4 veces antes en
 ## 14. Otras ramas de la computación evolutiva
 
 Lo visto hasta acá son los **algoritmos genéticos**. Hay otras familias con la misma idea y distintos énfasis.
+
+```mermaid
+%% titulo: La familia de la computación evolutiva y qué distingue a cada rama.
+%% ancho: 0.75
+flowchart TD
+    CE["Computación evolutiva<br/>población + selección + variación"] --> AG["Algoritmos genéticos<br/>bits · la cruza manda"]
+    CE --> EE["Estrategias evolutivas<br/>reales + σ que evoluciona<br/>la mutación manda"]
+    CE --> PG["Programación genética<br/>programas como árboles<br/>cruza de subárboles"]
+    CE --> PE["Programación evolutiva<br/>sólo mutación"]
+```
 
 ### Estrategias evolutivas
 
@@ -703,9 +824,138 @@ Los individuos son **programas**, representados como **árboles**: los nodos int
 
 Sólo usa mutación, sin cruza, y elige a los sobrevivientes por competencias entre padres e hijos.
 
+## 15. Aplicación: selección de características
+
+Es el caso de uso de la práctica: usar un algoritmo genético para decidir **qué variables de entrada** le conviene usar a un clasificador.
+
+### El problema
+
+Un patrón se describe con $m$ **características** (las variables de entrada del clasificador). Muchas veces son demasiadas: el ejemplo de la práctica, el conjunto *Leukemia*, tiene **7129** características por muestra (la expresión de genes medida con micro-arreglos de ADN) y sólo 38 muestras para entrenar.
+
+**Selección de características:** elegir un **subconjunto** de las variables de entrada en el que el algoritmo de aprendizaje se tiene que concentrar.
+
+**Para qué:**
+
+- **Evitar el sobreajuste** y mejorar el desempeño. Con 7129 variables y 38 muestras, un clasificador encuentra siempre alguna combinación que separa el entrenamiento por casualidad.
+- **Contrarrestar la maldición de la dimensionalidad.** Cuantas más dimensiones, más datos hacen falta para cubrir el espacio.
+- Modelos **más rápidos y más baratos**: menos cosas para medir y para calcular.
+- **Separar lo relevante de lo irrelevante:** saber qué variables importan es información en sí misma (en *Leukemia*, qué genes distinguen los dos tipos de leucemia).
+
+### Reducción de dimensión contra selección de características
+
+Las dos achican la cantidad de variables, pero de forma distinta:
+
+- **Reducción de dimensión** (por ejemplo, PCA): **crea variables nuevas** como combinaciones de las originales y se queda con algunas. Las nuevas variables ya no son ninguna de las medidas.
+- **Selección de características:** se queda con **algunas de las variables originales, tal cual**, y descarta el resto. Lo que queda se sigue pudiendo interpretar («el gen 1882 es importante»).
+
+![Las mismas dos clases. A la izquierda, la reducción de dimensión proyecta sobre una dirección nueva, $z$, que es combinación de $x_1$ y $x_2$: con $z$ sola se clasifica bien el 99 %. A la derecha, la selección se queda con una de las variables originales: con $x_1$ sola, el 54 %.](../imagenes/18-reduccion-vs-seleccion.png)
+
+### Por qué no alcanza con mirar cada variable por separado
+
+Lo más tentador es un **ranking**: medir qué tan útil es cada variable sola, quedarse con las mejores y descartar las demás antes de usar métodos más complejos. Las dos preguntas de la práctica muestran por qué eso puede fallar:
+
+**1. ¿Una variable que sola no sirve puede servir junto con otra? (interacción).** Sí. En el panel izquierdo de la figura, las clases están en esquinas opuestas, como un XOR. Mirando sólo $x$, las dos clases están mezcladas en las dos mitades; lo mismo con sólo $y$. Juntas, separan perfecto. Un ranking pondría a $x$ y a $y$ al final y las descartaría.
+
+**2. ¿Dos variables «redundantes» se pueden ayudar? (redundancia).** Sí. En el panel derecho, $x$ e $y$ están muy correlacionadas, así que parecen decir lo mismo, y muchos métodos se quedarían con una sola. Pero la diferencia entre las clases está en la dirección perpendicular a la diagonal, y para verla hacen falta **las dos**.
+
+![Los dos ejemplos de la práctica. Arriba de cada gráfico, la proporción de aciertos de un clasificador (k vecinos más cercanos, validación cruzada) usando sólo $x$, sólo $y$ y las dos. Los histogramas de los bordes son lo que ve cada variable por separado.](../imagenes/19-interaccion-y-redundancia.png)
+
+> **IDEA DE FONDO — por qué hace falta buscar subconjuntos**
+> Lo que importa es **qué tan bueno es el conjunto**, no qué tan buena es cada variable sola. Por eso hay que evaluar **subconjuntos completos**, y ahí aparece el problema de cuántos hay.
+
+### Cuántos subconjuntos hay
+
+Para elegir $l$ variables de $m$ con garantía de encontrar el mejor subconjunto, habría que probar todos:
+
+$$\binom{m}{l} = \frac{m!}{l!\,(m-l)!}$$
+
+- $m = 20$, $l = 5$: **15 504** subconjuntos.
+- $m = 100$, $l = 50$: $1{,}01 \times 10^{29}$.
+
+Y eso con $l$ fijo. Si también se deja libre cuántas variables usar, son $2^m$ subconjuntos: $2^{20} \approx 10^6$, y con las 7129 de *Leukemia*, $2^{7129} \approx 10^{2146}$. Probarlos todos es imposible: hace falta una búsqueda **subóptima**, y es el tipo de problema de §1 (muchísimas soluciones, sin derivada, pero cada una se puede evaluar).
+
+### El algoritmo genético para seleccionar características
+
+```mermaid
+%% titulo: El esquema de la práctica. El AG propone subconjuntos, el clasificador los evalúa y la aptitud vuelve al AG. Al final queda el mejor subconjunto encontrado.
+%% ancho: 0.95
+flowchart LR
+    D["Datos"] --> FE["Extracción de<br/>características<br/>(m variables)"]
+    FE --> AG["Algoritmo genético<br/>propone un subconjunto"]
+    AG -- "cromosoma = máscara" --> CL["Clasificador<br/>entrena y valida<br/>con ese subconjunto"]
+    CL -- "aptitud = desempeño" --> AG
+    AG --> OPT(["Subconjunto<br/>optimizado"])
+```
+
+**Representación.** Un cromosoma **binario de $m$ bits**, uno por característica: el bit $j$ vale **1 si la característica $j$ se usa** y 0 si no. Cada individuo es una selección distinta. Ejemplo con 8 características: `11010011` usa la 1, 2, 4, 7 y 8.
+
+**Esta representación pasa la prueba de §4:** cualquier corte y pegado, y cualquier bit invertido, dan otra máscara válida. Por eso se usan los operadores estándar sin cambios.
+
+**El algoritmo** (traducido de la práctica):
+
+```text
+Algoritmo genético:
+    inicializar la población
+    evaluar la población
+    repetir
+        seleccionar padres
+        cruzar los padres elegidos con probabilidad p_c
+        mutar los hijos con probabilidad p_m
+        aplicar la estrategia de reemplazo
+        evaluar la población
+    hasta que se cumpla el criterio de parada
+
+Evaluar la población:
+    para cada individuo de la población:
+        obtener el subconjunto de características que indica su cromosoma
+        armar los datos sólo con esas columnas
+        entrenar el clasificador con el conjunto de entrenamiento
+        probarlo con el conjunto de validación
+        calcular el desempeño y asignarlo como aptitud
+```
+
+La primera parte es el AG de siempre. Todo lo particular del problema está en **evaluar**: cada evaluación es **entrenar un clasificador entero**. Por eso acá la desventaja de §10 (son lentos) pesa de verdad, y el paralelismo maestro–esclavo de §11 es lo primero que se aplica.
+
+> **OJO — validación, no prueba**
+> La aptitud se mide sobre un conjunto de **validación**, separado del de prueba. Si se midiera sobre el de prueba, el AG elegiría el subconjunto que mejor le va **a esos datos** y la estimación final del desempeño quedaría inflada.
+
+**La aptitud.** Las dos de la práctica:
+
+$$f = \text{acierto}$$
+
+$$f = \alpha\cdot\text{acierto} - \beta\cdot\frac{\text{características elegidas}}{\text{características totales}}$$
+
+La segunda es la **penalización de la complejidad** de §5: entre dos subconjuntos que clasifican igual, gana el que usa menos variables. $\alpha$ y $\beta$ dicen cuánto pesa cada cosa. Ejemplo: con $\alpha = 1$ y $\beta = 0{,}1$, un subconjunto de 2 de 20 variables con 100 % de acierto tiene $f = 1 - 0{,}1\cdot 2/20 = 0{,}99$; uno de 10 variables con el mismo acierto, $0{,}95$.
+
+### Con números
+
+Un conjunto de datos de prueba con **20 características**: 18 son ruido puro y 2 (la 3 y la 11) son las del XOR, que solas no sirven y juntas separan perfecto.
+
+![Izquierda: el acierto usando cada variable sola. Las dos útiles, en verde, no se distinguen del ruido: un ranking las pondría en los puestos 6 y 15. Derecha: la aptitud del mejor individuo en 10 corridas del AG, con $f = \text{acierto} - 0{,}1\cdot(\text{fracción usada})$.](../imagenes/20-ag-seleccion.png)
+
+| Estrategia | Variables | Acierto |
+|---|---|---:|
+| Todas | 20 | 0,74 |
+| Las 5 mejores del ranking | 2, 12, 13, 14, 19 | 0,46 |
+| El AG (30 individuos, 40 generaciones) | **3 y 11**, en 10 de 10 corridas | **1,00** |
+
+El ranking descarta justo las dos que importan, y usar todas mete tanto ruido que el clasificador se equivoca uno de cada cuatro. El AG encuentra el par en las 10 corridas, evaluando unos 5900 subconjuntos distintos de los $2^{20} \approx 10^6$ posibles.
+
+### El conjunto de datos de la práctica
+
+*Leukemia*: datos de expresión génica, medidos con micro-arreglos de ADN, para distinguir dos tipos de leucemia: **ALL** (leucemia linfocítica aguda) y **AML** (leucemia mielógena aguda). Cada muestra tiene **7129 características**.
+
+| | Entrenamiento | Prueba |
+|---|---:|---:|
+| ALL | 27 | 20 |
+| AML | 11 | 14 |
+| Total | 38 | 34 |
+
+El resultado de referencia de la práctica es un **UAR de 0,82**. El UAR (*unweighted average recall*) es el promedio de la tasa de acierto **de cada clase**: $\text{UAR} = \frac{1}{2}(\text{acierto en ALL} + \text{acierto en AML})$. Se usa porque las clases están desbalanceadas (27 contra 11): un clasificador que dijera siempre «ALL» tendría un 71 % de acierto en el entrenamiento, pero un UAR de 0,5.
+
 ---
 
-## 15. Guion para desarrollarlo en el pizarrón
+## 16. Guion para desarrollarlo en el pizarrón
 
 Este orden cubre todo el tema y cada paso se apoya en el anterior. Al lado de cada paso, qué conviene dibujar.
 
@@ -719,10 +969,11 @@ Este orden cubre todo el tema y cada paso se apoya en el anterior. Al lado de ca
 8. **Cruza y mutación** (§7): qué hace cada una y por qué una explota y la otra explora. *Dibujo:* la curva con dos lomas, los padres en una, los hijos alrededor y el mutante que salta a la otra.
 9. **Reemplazo** (§8): brecha y elitismo. *Dibujo:* la curva del mejor en escalera contra la que oscila.
 10. **Cierre** (§10): búsqueda en muchos puntos contra gradiente, ventajas y desventajas. *Dibujo:* los anillos vistos desde arriba, el gradiente que queda en uno y la nube de puntos que llega al centro.
+11. **Una aplicación** (§15): selección de características. *Dibujo:* el XOR de cuatro manchas para mostrar que las variables solas no sirven, la máscara binaria como cromosoma y el lazo AG → clasificador → aptitud.
 
 ---
 
-## 16. Formulario
+## 17. Formulario
 
 | Qué | Fórmula |
 |---|---|
@@ -743,10 +994,13 @@ Este orden cubre todo el tema y cada paso se apoya en el anterior. Al lado de ca
 | Mutación gaussiana | $\tilde x_j = x_j + \sigma N(0,1)$ |
 | Penalización | $f_{\text{pen}} = f - \lambda\sum_m p_m(x)$ |
 | Estrategias evolutivas | $(\mu,\lambda)$, $(\mu+\lambda)$; regla de 1/5 |
+| Subconjuntos de $l$ entre $m$ | $\binom{m}{l} = \dfrac{m!}{l!(m-l)!}$; con $l$ libre, $2^m$ |
+| Aptitud para selección de características | $f = \alpha\cdot\text{acierto} - \beta\cdot\dfrac{\#\text{elegidas}}{\#\text{totales}}$ |
+| UAR (dos clases) | $\frac{1}{2}(\text{acierto clase 1} + \text{acierto clase 2})$ |
 
 ---
 
-## 17. Errores típicos
+## 18. Errores típicos
 
 1. **Decir que sobrevive «el mejor».** Sobrevive con **más probabilidad** el mejor según la aptitud, no con certeza.
 2. **Elegir siempre a los mejores.** Se pierde la diversidad: los dos mejores del ejemplo no pueden generar un `1` en el bit del medio.
@@ -763,7 +1017,7 @@ Este orden cubre todo el tema y cada paso se apoya en el anterior. Al lado de ca
 
 ---
 
-## 18. Autoevaluación
+## 19. Autoevaluación
 
 1. ¿Qué tipo de problema resuelve un algoritmo evolutivo? ¿Qué necesita saber de la función y qué no?
 2. ¿En qué falla Lamarck? ¿Qué dos piezas usa Darwin? ¿Qué cambia: el individuo o la población?
@@ -788,3 +1042,8 @@ Este orden cubre todo el tema y cada paso se apoya en el anterior. Al lado de ca
 21. Mostrá cómo la cruza simple rompe un recorrido del viajante y explicá cuatro formas de manejar restricciones.
 22. ¿Cómo se usa la idea de Lamarck para acelerar el algoritmo? ¿Qué diferencia hay con la versión baldwiniana?
 23. ¿En qué se diferencia una estrategia evolutiva de un algoritmo genético?
+24. ¿Qué es la selección de características y en qué se diferencia de la reducción de dimensión?
+25. Dibujá un ejemplo donde dos variables solas no sirven y juntas sí. ¿Por qué falla un ranking de variables?
+26. ¿Cuántos subconjuntos de 5 variables hay entre 20? ¿Y subconjuntos de cualquier tamaño entre 7129?
+27. Diseñá el AG para seleccionar características: cromosoma, aptitud y qué hace la evaluación. ¿Por qué la aptitud se mide en validación?
+28. ¿Qué es el UAR y por qué se usa con clases desbalanceadas?

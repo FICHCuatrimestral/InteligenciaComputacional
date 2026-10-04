@@ -4,6 +4,39 @@ subtitle: "Inteligencia Computacional · FICH-UNL"
 lang: es
 ---
 
+## Mapa del tema
+
+```mermaid
+%% titulo: Los tres formalismos de base y las características que comparten los algoritmos del bloque.
+%% ancho: 1.0
+mindmap
+  root((Inteligencia<br/>colectiva))
+    Autómatas §2
+      A = X, Y, E, D
+      reglas deterministas
+      reglas probabilísticas
+    Autómatas celulares §3
+      R = A, T, C
+      topología
+      vecindades von Neumann y Moore
+      juego de la vida
+    Agentes §4
+      sensores y efectores
+      proactivo, reactivo, social
+      sistemas multiagente
+    Características §5
+      auto-organización
+      estigmergía
+      comportamiento emergente
+      inteligencia distribuida
+      interacción local
+      azar
+    Algoritmos del bloque
+      evolutivos
+      colonias de hormigas
+      enjambre de partículas
+```
+
 ---
 
 ## 1. La idea del bloque

@@ -36,10 +36,23 @@ Todos salen de `../imagenes/graficos_evolutivos.py` (AG binario propio: ruleta, 
 | Viajante | la cruza simple repite 2 y 4 y pierde 5 y 7; la cruza de orden da `7 1 3 4 5 6 8 2` |
 | Lamarck (Rastrigin 6-D, 20 semillas) | hasta $f<0{,}01$: AG solo 10/20 (306 gen.), baldwiniano 20/20 (56 gen.), lamarckiano 20/20 (16,5 gen., 4184 evaluaciones) |
 
+## Selección de características (§15)
+
+Sale del repaso de la práctica 6 (`Practicas/TP6/repasoAG_introFS.pdf`), traducido y explicado. Los números son de `graficos_evolutivos.py` (clasificador k vecinos con validación cruzada, scikit-learn):
+
+| Afirmación | Verificación |
+|---|---|
+| Reducción contra selección | proyección sobre $z$: 0,99; sólo $x_1$: 0,54 |
+| Interacción (XOR) | sólo $x$ 0,51; sólo $y$ 0,47; las dos 1,00 |
+| Redundancia | sólo $x$ 0,60; sólo $y$ 0,57; las dos 0,99 |
+| 20 variables, útiles la 3 y la 11 | ranking: puestos 6 y 15; las 5 mejores del ranking 0,46; todas 0,74; el AG encuentra {3, 11} en 10/10 corridas (acierto 1,00), con ~5900 subconjuntos evaluados de $2^{20}$ |
+| Combinatoria | $\binom{20}{5} = 15\,504$; $\binom{100}{50} = 1{,}01\times10^{29}$; $2^{7129} \approx 10^{2146}$ |
+
 ## Carpetas
 
 - `../imagenes/`: los 22 PNG y el script que los genera (numpy y matplotlib; tarda menos de un minuto).
-- `../build/`: el filtro y el estilo, copiados de la unidad 08.
+- `../imagenes/mermaid/`: los diagramas Mermaid ya dibujados (un PNG por diagrama, con nombre = sha1 del bloque) y `tema.json`, los colores de los diagramas.
+- `../build/`: el filtro y el estilo. El filtro reemplaza cada bloque ` ```mermaid ` del `.md` por su PNG; si el diagrama cambió y falta el PNG, lo genera con `mmdc` (mermaid-cli). En GitHub, los mismos bloques se ven como diagramas directamente.
 
 ## Regenerar
 
@@ -49,4 +62,4 @@ python3 ../imagenes/graficos_evolutivos.py
 ../build/construir.sh 02-algoritmos-evolutivos.md
 ```
 
-El filtro necesita Pandoc 3 (usa `pandoc.write`); con una versión anterior falla en los recuadros.
+El filtro necesita Pandoc 3 (usa `pandoc.write`); con una versión anterior falla en los recuadros. Para regenerar diagramas Mermaid que cambiaron hace falta `npm i -g @mermaid-js/mermaid-cli`.

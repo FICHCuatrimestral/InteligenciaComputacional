@@ -1,0 +1,7 @@
+%% titulo: La única diferencia entre las dos variantes es si lo aprendido vuelve al cromosoma (flecha punteada).
+%% ancho: 0.5
+flowchart TD
+    C["cromosoma"] --> D["decodificar"]
+    D --> BL["búsqueda local<br/>(unos pasos de gradiente)"]
+    BL --> AP["aptitud mejorada:<br/>con esa compite en la selección"]
+    BL -. "sólo en la lamarckiana:<br/>la solución mejorada se codifica<br/>y reemplaza al cromosoma" .-> C

@@ -1030,3 +1030,141 @@ if __name__ == "__main__":
     figura_viajante()
     figura_lamarck()
     figura_paralelismo()
+
+
+# ===========================================================================
+# Seleccion de caracteristicas con AG (repaso de TP6)
+# ===========================================================================
+
+
+def _knn_cv(X, y, k=5, folds=3, semilla=0):
+    from sklearn.neighbors import KNeighborsClassifier
+    from sklearn.model_selection import cross_val_score, StratifiedKFold
+    if X.shape[1] == 0:
+        return 0.5
+    cv = StratifiedKFold(n_splits=folds, shuffle=True, random_state=semilla)
+    return cross_val_score(KNeighborsClassifier(n_neighbors=k), X, y, cv=cv).mean()
+
+
+def datos_interaccion(n=400, generador=None):
+    g = generador or np.random.default_rng(0)
+    centros = np.array([[-1, 1], [1, 1], [-1, -1], [1, -1]], dtype=float)
+    clase_centro = np.array([0, 1, 1, 0])           # diagonal = una clase (XOR)
+    c = g.integers(0, 4, n)
+    X = centros[c] + g.normal(0, 0.3, (n, 2))
+    return X, clase_centro[c]
+
+
+def datos_redundantes(n=400, generador=None):
+    g = generador or np.random.default_rng(1)
+    y = g.integers(0, 2, n)
+    t = g.normal(0, 1.6, n)                          # a lo largo de la diagonal
+    s = np.where(y == 1, 0.55, -0.55) + g.normal(0, 0.22, n)   # perpendicular
+    X = np.column_stack([t - s, t + s]) / np.sqrt(2)
+    return X, y
+
+
+def figura_reduccion_vs_seleccion():
+    titulo("Reduccion de dimension contra seleccion de caracteristicas")
+    g = np.random.default_rng(3)
+    X, y = datos_redundantes(300, g)
+    figura, (eje_a, eje_b) = plt.subplots(1, 2, figsize=(9.6, 3.6))
+    for eje, modo in ((eje_a, "pca"), (eje_b, "fs")):
+        eje.scatter(X[y == 0, 0], X[y == 0, 1], s=8, color=AZUL, alpha=0.6)
+        eje.scatter(X[y == 1, 0], X[y == 1, 1], s=8, color=ROJO, alpha=0.6)
+        eje.set_aspect("equal"); eje.set_xlabel("$x_1$"); eje.set_ylabel("$x_2$")
+        eje.set_xlim(-4, 4); eje.set_ylim(-4, 4)
+    d = np.array([-1, 1]) / np.sqrt(2)
+    eje_a.annotate("", xy=3.4 * d, xytext=-3.4 * d, arrowprops=dict(arrowstyle="-|>", color=VERDE, linewidth=2))
+    eje_a.text(-3.6, 3.2, "nueva variable\n$z = (x_2 - x_1)/\\sqrt{2}$", fontsize=8, color=VERDE)
+    eje_a.set_title("Reducción de dimensión (p. ej. PCA):\nse crea una variable nueva combinando las originales", fontsize=9)
+    eje_b.annotate("", xy=(3.6, -3.6), xytext=(-3.6, -3.6), arrowprops=dict(arrowstyle="-|>", color=VERDE, linewidth=2))
+    eje_b.text(-3.5, -3.2, "se queda con $x_1$ tal cual; $x_2$ se descarta", fontsize=8, color=VERDE)
+    eje_b.set_title("Selección de características:\nse elige un subconjunto de las variables originales", fontsize=9)
+    z = X @ d
+    print(f"  proyeccion sobre z: acierto kNN {_knn_cv(z[:, None], y):.3f}; solo x1: {_knn_cv(X[:, :1], y):.3f}")
+    guardar(figura, "18-reduccion-vs-seleccion.png")
+
+
+def figura_interaccion_y_redundancia():
+    titulo("Interaccion y redundancia")
+    figura = plt.figure(figsize=(10.5, 4.4))
+    resultados = {}
+    for col, (nombre, fn) in enumerate([("interaccion", datos_interaccion), ("redundancia", datos_redundantes)]):
+        X, y = fn(400, np.random.default_rng(10 + col))
+        ax = figura.add_axes([0.06 + 0.5 * col, 0.12, 0.30, 0.62])
+        ax_x = figura.add_axes([0.06 + 0.5 * col, 0.76, 0.30, 0.14], sharex=ax)
+        ax_y = figura.add_axes([0.37 + 0.5 * col, 0.12, 0.07, 0.62], sharey=ax)
+        for clase, color in ((0, AZUL), (1, ROJO)):
+            ax.scatter(X[y == clase, 0], X[y == clase, 1], s=7, color=color, alpha=0.55)
+            ax_x.hist(X[y == clase, 0], bins=30, color=color, alpha=0.5)
+            ax_y.hist(X[y == clase, 1], bins=30, color=color, alpha=0.5, orientation="horizontal")
+        for e in (ax_x, ax_y):
+            e.tick_params(labelbottom=False, labelleft=False); e.grid(False)
+        ax.set_xlabel("$x$"); ax.set_ylabel("$y$")
+        a_x, a_y, a_xy = _knn_cv(X[:, :1], y), _knn_cv(X[:, 1:], y), _knn_cv(X, y)
+        resultados[nombre] = (a_x, a_y, a_xy)
+        print(f"  {nombre}: acierto kNN (validacion cruzada) solo x {a_x:.3f}; solo y {a_y:.3f}; x e y {a_xy:.3f}")
+        ax_x.set_title(("Interacción: cada una sola no sirve" if col == 0 else "Redundancia: muy correlacionadas, juntas separan")
+                       + f"\nsólo x: {a_x * 100:.0f} %   sólo y: {a_y * 100:.0f} %   las dos: {a_xy * 100:.0f} %", fontsize=9)
+    guardar(figura, "19-interaccion-y-redundancia.png")
+    return resultados
+
+
+def figura_ag_seleccion():
+    titulo("AG para seleccion de caracteristicas (datos sinteticos)")
+    from sklearn.feature_selection import mutual_info_classif
+    g = np.random.default_rng(42)
+    n, m = 300, 20
+    X = g.normal(0, 1, (n, m))
+    Xi, y = datos_interaccion(n, g)
+    X[:, 3], X[:, 11] = Xi[:, 0], Xi[:, 1]           # las dos utiles (interactuan) en posiciones 3 y 11
+    # ranking univariado (filtro): cada variable sola
+    solo = np.array([_knn_cv(X[:, [j]], y) for j in range(m)])
+    orden = np.argsort(-solo)
+    print("  acierto de cada variable sola: utiles 3 y 11 ->", np.round(solo[[3, 11]], 3),
+          "; puestos en el ranking:", int(np.where(orden == 3)[0][0]) + 1, int(np.where(orden == 11)[0][0]) + 1, "de", m)
+    print("  quedarse con las 5 mejores del ranking:", sorted(orden[:5].tolist()), "-> acierto", round(_knn_cv(X[:, orden[:5]], y), 3))
+    print("  todas las variables:", round(_knn_cv(X, y), 3), "; solo 3 y 11:", round(_knn_cv(X[:, [3, 11]], y), 3))
+    cache = {}
+    alfa, beta = 1.0, 0.1
+
+    def aptitud(cromosomas):
+        valores = []
+        for c in cromosomas:
+            clave = c.tobytes()
+            if clave not in cache:
+                sel = np.nonzero(c)[0]
+                acc = _knn_cv(X[:, sel], y) if len(sel) else 0.0
+                cache[clave] = alfa * acc - beta * len(sel) / m
+            valores.append(cache[clave])
+        return np.array(valores)
+    exitos, finales, curvas = 0, [], []
+    for semilla in range(10):
+        gg = np.random.default_rng(semilla)
+        pob, apt, mejor, media, _ = algoritmo_genetico(aptitud, m, gg, individuos=30, generaciones=40,
+                                                       seleccion="competencia", reemplazo="elitismo")
+        b = pob[np.argmax(apt)]
+        sel = np.nonzero(b)[0].tolist()
+        finales.append(sel); curvas.append(mejor)
+        exitos += (3 in sel and 11 in sel)
+    print(f"  AG (30 ind., 40 gen., 10 semillas): encuentra 3 y 11 en {exitos}/10; subconjuntos finales: {finales}")
+    print(f"  evaluaciones distintas (memo): {len(cache)} de 2^20 = {2 ** 20} subconjuntos posibles")
+    figura, (eje_a, eje_b) = plt.subplots(1, 2, figsize=(10.5, 3.2), gridspec_kw={"width_ratios": [1.15, 1]})
+    eje_a.bar(range(m), solo, color=[VERDE if j in (3, 11) else GRIS_CLARO for j in range(m)])
+    eje_a.axhline(0.5, color=GRIS, linestyle="--", linewidth=0.8)
+    eje_a.set_ylim(0.3, 1.0); eje_a.set_xticks(range(m))
+    eje_a.set_xlabel("variable"); eje_a.set_ylabel("acierto usando sólo esa variable")
+    eje_a.set_title("Filtro por ranking: las útiles (verde) parecen ruido", fontsize=9)
+    for c in curvas:
+        eje_b.plot(c, color=AZUL, alpha=0.4, linewidth=1)
+    eje_b.set_xlabel("generación"); eje_b.set_ylabel("aptitud del mejor")
+    eje_b.set_title("AG con aptitud = acierto − 0,1·(fracción usada)", fontsize=9)
+    guardar(figura, "20-ag-seleccion.png")
+    return exitos
+
+
+if __name__ == "__main__" and os.environ.get("SOLO_SELECCION"):
+    figura_reduccion_vs_seleccion()
+    figura_interaccion_y_redundancia()
+    figura_ag_seleccion()

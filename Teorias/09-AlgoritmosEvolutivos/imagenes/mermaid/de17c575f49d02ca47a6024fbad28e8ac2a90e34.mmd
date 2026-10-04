@@ -1,0 +1,8 @@
+%% titulo: El esquema de la práctica. El AG propone subconjuntos, el clasificador los evalúa y la aptitud vuelve al AG. Al final queda el mejor subconjunto encontrado.
+%% ancho: 0.95
+flowchart LR
+    D["Datos"] --> FE["Extracción de<br/>características<br/>(m variables)"]
+    FE --> AG["Algoritmo genético<br/>propone un subconjunto"]
+    AG -- "cromosoma = máscara" --> CL["Clasificador<br/>entrena y valida<br/>con ese subconjunto"]
+    CL -- "aptitud = desempeño" --> AG
+    AG --> OPT(["Subconjunto<br/>optimizado"])

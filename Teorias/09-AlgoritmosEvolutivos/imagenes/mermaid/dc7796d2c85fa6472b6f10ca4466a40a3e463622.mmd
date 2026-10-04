@@ -1,0 +1,11 @@
+%% titulo: El ciclo completo, con lo que pasa en cada etapa. Es el dibujo para hacer en el pizarrón junto al pseudocódigo.
+%% ancho: 0.55
+flowchart TD
+    A["Inicializar: N cromosomas al azar"] --> B["Decodificar y evaluar la aptitud"]
+    B --> C{"¿se cumple el criterio de parada?"}
+    C -- sí --> Z(["Devolver el mejor"])
+    C -- no --> D["Selección: elegir padres<br/>(más chance a los mejores)"]
+    D --> E["Cruza, con prob. p_c"]
+    E --> F["Mutación, cada bit con prob. p_m"]
+    F --> G["Reemplazo: total, brecha o elitismo"]
+    G -- nueva generación --> B

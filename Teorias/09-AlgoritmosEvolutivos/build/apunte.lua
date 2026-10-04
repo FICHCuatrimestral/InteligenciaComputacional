@@ -151,3 +151,45 @@ function BlockQuote(elemento)
   resultado:insert(pandoc.RawBlock("latex", "\\end{" .. entorno .. "}"))
   return resultado
 end
+
+----------------------------------------------------------------------- mermaid
+-- Un bloque ```mermaid se reemplaza por su PNG en ../imagenes/mermaid/.
+-- El nombre del PNG es el sha1 del texto: si el diagrama no cambió, no se
+-- vuelve a generar. Si falta, se genera con mmdc (mermaid-cli); la ruta a la
+-- configuración de puppeteer se toma de la variable MERMAID_PUPPETEER.
+-- Comentarios opcionales al principio del bloque:
+--   %% titulo: epígrafe de la figura
+--   %% ancho: 0.8            (fracción del ancho de texto)
+local DIR_MERMAID = "../imagenes/mermaid"
+
+local function existe(ruta)
+  local f = io.open(ruta, "r")
+  if f then f:close() return true end
+  return false
+end
+
+function CodeBlock(bloque)
+  if not bloque.classes:includes("mermaid") then return nil end
+  if not salida_latex() then return nil end
+  local texto = bloque.text
+  local titulo = texto:match("%%%%%s*titulo:%s*([^\n]+)") or ""
+  local ancho = tonumber(texto:match("%%%%%s*ancho:%s*([%d%.]+)") or "0.95")
+  local nombre = pandoc.sha1(texto)
+  local png = DIR_MERMAID .. "/" .. nombre .. ".png"
+  if not existe(png) then
+    os.execute("mkdir -p " .. DIR_MERMAID)
+    local mmd = DIR_MERMAID .. "/" .. nombre .. ".mmd"
+    local f = io.open(mmd, "w"); f:write(texto); f:close()
+    local cfg = os.getenv("MERMAID_PUPPETEER")
+    local opciones = cfg and (" -p " .. cfg) or ""
+    local tema = DIR_MERMAID .. "/tema.json"
+    if existe(tema) then opciones = opciones .. " -c " .. tema end
+    os.execute("mmdc" .. opciones .. " -i " .. mmd .. " -o " .. png .. " -s 3 -b white -q")
+  end
+  local imagen = pandoc.Image({}, png)
+  imagen.attributes["width"] = string.format("%.0f%%", ancho * 100)
+  if titulo ~= "" and pandoc.Figure then
+    return pandoc.Figure(pandoc.Plain({imagen}), {pandoc.Plain(pandoc.read(titulo, "markdown").blocks[1].content)})
+  end
+  return pandoc.Para({imagen})
+end

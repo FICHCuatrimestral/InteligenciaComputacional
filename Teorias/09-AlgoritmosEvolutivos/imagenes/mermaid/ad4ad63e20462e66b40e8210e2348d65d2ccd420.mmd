@@ -1,0 +1,9 @@
+%% titulo: Los métodos de selección según qué usan de la aptitud.
+%% ancho: 0.55
+flowchart TD
+    S["¿Qué mira de la aptitud?"] --> V["El valor<br/>(cocientes f_i / Σf)"]
+    S --> O["Sólo el orden"]
+    V --> R["Ruleta<br/>sufre los mares"]
+    R --> E["Arreglo: re-escalar<br/>sigma, lineal, rango"]
+    O --> W["Ventanas<br/>ordena y sortea en ventanas<br/>cada vez más chicas"]
+    O --> T["Competencias<br/>k al azar, gana el mejor<br/>k regula la presión"]
