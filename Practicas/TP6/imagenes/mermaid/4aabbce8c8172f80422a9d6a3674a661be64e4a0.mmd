@@ -1,0 +1,11 @@
+%% titulo: El flujo del ejercicio 2. Lo importante es dónde se usa cada conjunto de datos: el de prueba sólo aparece al final.
+%% ancho: 1.0
+flowchart LR
+    subgraph TR["Sólo con TRAIN (38 pacientes)"]
+        N["normalizar<br/>media y desvío<br/>de cada gen"] --> P["prefiltro señal/ruido<br/>7129 → 50 genes"]
+        P --> AG["AG: máscara de 50 bits"]
+        AG --> C["1-vecino + validación<br/>dejando uno afuera"]
+        C -- "aptitud = UAR − β·proporción" --> AG
+    end
+    AG --> G["genes elegidos"]
+    G --> T["UAR en TEST (34)<br/>una sola vez"]

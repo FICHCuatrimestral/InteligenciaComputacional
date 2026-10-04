@@ -1,0 +1,9 @@
+%% titulo: Cómo está armado el notebook. El motor genético se escribe una sola vez y cada ejercicio le enchufa su problema.
+%% ancho: 1.0
+flowchart LR
+    M["AlgoritmoGenetico<br/>el motor: torneo, cruce, mutación, elitismo<br/>no sabe qué problema resuelve"]
+    M --> E1["MinimizarFuncion (ej. 1)<br/>individuo = bits de x o de (x, y)<br/>aptitud = −f"]
+    M --> E2["SeleccionDeGenes (ej. 2)<br/>individuo = máscara sobre 50 genes<br/>aptitud = UAR − β · proporción"]
+    E1 --> G["comparado con<br/>gradiente descendiente"]
+    E2 --> V["vecino más cercano<br/>+ validación dejando uno afuera<br/>(sólo train)"]
+    V --> T["UAR de test<br/>una sola vez, al final"]
