@@ -1,0 +1,219 @@
+5 segundos
+los otros operadores que queremos definir son los operadores de cruzas y mutaciones se acuerdan que nosotros lo que íbamos a hacer con el material
+0:13
+13 segundos
+genético era cruzar el de los padres para obtener unos hijos y mutar levemente algunos de los hijos en el
+0:22
+22 segundos
+caso de los algoritmos de computación evolutiva en particular en los algoritmos genéticos que tienen promoción más binarios lo que vamos a
+0:30
+30 segundos
+hacer es simplemente elegir un punto al azar y cambiar ese bit si era 1 le ponemos 0
+0:38
+38 segundos
+y si era 0 le ponemos 1 así de simple es la mutación no tiene
+0:45
+45 segundos
+mayor complejidad acá vale aclarar que muchas veces se da la tasa de mutación y
+0:53
+53 segundos
+hay que tener cuidado cuando se especifica la tasa de mutación si en una tasa de mutación a nivel de individuos a nivel de cromosomas o al nivel de genes
+1:02
+1 minuto y 2 segundos
+no es exactamente lo mismo porque si yo digo que supongamos que tenemos 100 individuos cada individuo tiene un
+1:10
+1 minuto y 10 segundos
+cromosoma y ese cromosoma tiene 10 genes y suponemos que definimos una tasa de mutación del 1 por ciento entonces si yo
+1:19
+1 minuto y 19 segundos
+digo que es del 1 por ciento sobre los individuos yo elegiría uno de los 100 individuos y a ese voy y le cambio un
+1:29
+1 minuto y 29 segundos
+gen o sea un 1 por un 0 fíjense en cambio que si yo digo que es un 10% de los genes yo en realidad tengo
+1:39
+1 minuto y 39 segundos
+100 individuos con 10 genes cada uno tengo miles por lo tanto tendría que cambiar 100 genes en total o sea que
+1:46
+1 minuto y 46 segundos
+prácticamente a cada individuo de la población le voy a estar cambiando algún gen así que básicamente la misma probabilidad de mutación funciona muy
+1:55
+1 minuto y 55 segundos
+diferente si digo que es una mutación a nivel de genes oa nivel de individuos así que hay que tener cuidado con eso y
+2:03
+2 minutos y 3 segundos
+aplicar correctamente las mutaciones la otra operación muy importante de variación
+2:12
+2 minutos y 12 segundos
+que tenemos es la cruza de la cruza también está inspirada en la naturaleza y consiste en elegir primero un punto de
+2:20
+2 minutos y 20 segundos
+cruz al azar elijo un punto en el cual yo pueda cortar los cromosomas y lo que vamos a
+2:28
+2 minutos y 28 segundos
+intercambiar intercambiar el material genético de
+2:34
+2 minutos y 34 segundos
+padre lo llevó a este hijo y de este hijo lo llevó a este padre y la primera parte la dejó como estaba esté con este
+2:43
+2 minutos y 43 segundos
+y este con este entonces a partir de dos padres genere dos nuevos hijos y por
+2:50
+2 minutos y 50 segundos
+supuesto en muchísimas variantes de implementación práctica pero básicamente consiste en esto en intercambiar el material genético cuál es la idea de
+2:58
+2 minutos y 58 segundos
+este operador es que si por ejemplo estos dos padres eran relativamente buenos pero tenían
+3:06
+3 minutos y 6 segundos
+esta parte inicial que hacía bueno al padre 1 y esta parte final que hacía bueno al padre 2 y acá tendríamos un
+3:15
+3 minutos y 15 segundos
+hijo que combina las dos partes buenas y que sería mucho mejor que los padres y el otro dijo que seguramente en la próxima vuelta va a tener un fitness
+3:23
+3 minutos y 23 segundos
+bajo y va a quedar descartado así la idea es para las cruzas las cruzas
+3:30
+3 minutos y 30 segundos
+simples es ir combinando las mejores partes de los materiales genéticos de los padres fíjense para
+3:39
+3 minutos y 39 segundos
+una observación importante vuelve a aparecer una componente aleatoria en la mutación era cuál era el gen que
+3:47
+3 minutos y 47 segundos
+elegimos para cambiar y acá cuál es el punto que elegimos para cruzar eso es muy importante para mantener esto que
+3:54
+3 minutos y 54 segundos
+decíamos de la variabilidad la diversidad en la población en siempre tenemos que tener algunas componentes de la historia que hagan que esa
+4:02
+4 minutos y 2 segundos
+variabilidad o diversidad se conserve vamos a ver conceptualmente cuál es el
+4:10
+4 minutos y 10 segundos
+rol que cumplen estos dos operadores como decíamos antes el rol fundamental de la cruza es
+4:18
+4 minutos y 18 segundos
+combinar las mejores partes de los padres que ya de por sí si fueron elegidos porque son bastante buenos
+4:27
+4 minutos y 27 segundos
+fijense que esto si uno está pensando en una búsqueda en un espacio de búsqueda de soluciones lo que hace es hacer una
+4:36
+4 minutos y 36 segundos
+exploración un poco más fina de una zona del espacio necesitaríamos dos padres que eran buenos y están en una zona
+4:43
+4 minutos y 43 segundos
+cercana y se van a combinar esas partes buenas del cromosoma para encontrar algo
+4:50
+4 minutos y 50 segundos
+mejor podríamos pensar de que si hay una superficie de error y había un padre que estaba por aquí y otro que estaba por
+4:59
+4 minutos y 59 segundos
+aquí de alguno tenía digamos que un padre tenía la primera parte del cromosoma abuelo y el segundo la segunda
+5:06
+5 minutos y 6 segundos
+al combinarlo porque esperamos es que el nuevo hijo quede mucho más cerca el mínimo error
+5:14
+5 minutos y 14 segundos
+lo que estamos buscando en cambio el operador de mutación tiene una función muy diferente fíjense que la mutación es
+5:22
+5 minutos y 22 segundos
+disruptiva es algo que cambia completamente y totalmente la sar la función que tenía
+5:30
+5 minutos y 30 segundos
+un cromosoma por lo tanto si teníamos un padre en esta zona probablemente lo contemos y vayamos a parar a otra zona
+5:37
+5 minutos y 37 segundos
+que no tiene nada que ver y ustedes eran buenos pero para qué sirve si se rompe todo sirve para aumentar la diversidad y
+5:45
+5 minutos y 45 segundos
+para estar siempre explorando regiones lejanas del espacio de búsqueda porque yo no lo sé pero quizás esta función
+5:52
+5 minutos y 52 segundos
+tenía un mínimo mucho más bajo en esta zona y si yo me me quedo combinando soluciones de esta zona nunca voy a
+6:01
+6 minutos y 1 segundo
+encontrar este mínimo que es un mínimo mucho mejor entonces lo que hace la mutación es siempre aunque con una tasa
+6:10
+6 minutos y 10 segundos
+baja muchas veces del 1 o del 0 5 % siempre están enviando individuos lejos
+6:17
+6 minutos y 17 segundos
+a zonas totalmente nuevas del espacio para no perder la capacidad de exploración y la diversidad en la población
+6:26
+6 minutos y 26 segundos
+vamos a ver por último el operador de reemplazo una vez que yo tengo los padres de los padres que salieron en
+6:34
+6 minutos y 34 segundos
+esta generación elegidos y los hijos que se generaron a partir de esos padres una de las estrategias de reemplazo o
+6:41
+6 minutos y 41 segundos
+reproducción a veces también se llama así es reemplazar directamente la población por todos los hijos que acabo
+6:49
+6 minutos y 49 segundos
+de generar o sea que ese caso sería en que denominamos reemplazo total otra alternativa
+6:56
+6 minutos y 56 segundos
+un poquito más realista y si quiere inspirar una naturaleza es que hayan generaciones en las que pueden convivir
+7:04
+7 minutos y 4 segundos
+padres con hijos entonces lo que hacemos en lugar de hacer un reemplazo total dejamos vivos a algunos padres y a esos
+7:13
+7 minutos y 13 segundos
+padres le sumamos los hijos generados y esa sería la nueva población que comparte un poco la historia lo que
+7:21
+7 minutos y 21 segundos
+viene de los padres con los nuevos individuos en ese caso denominamos reemplazo con brecha generacional la
+7:30
+7 minutos y 30 segundos
+brecha generacional sería justamente esta este conjunto de individuos que comparten lo que puede estar compartidos en dos o más
+7:38
+7 minutos y 38 segundos
+generaciones así que si definimos por ejemplo que vamos a conservar un 20 por ciento de los padres supongamos que tenemos una
+7:47
+7 minutos y 47 segundos
+población de 200 individuos podríamos hacer lo siguiente elegimos 40 padres que sería el 20 por ciento de los 200
+7:56
+7 minutos y 56 segundos
+elegimos esos 40 y con esos 40 padres haciendo cruzas y mutaciones generamos los 160 individuos que nos faltan para
+8:04
+8 minutos y 4 segundos
+completar los 200 y de esa manera la próxima generación tenemos nuevamente 200 individuos y mantenemos constante la cantidad de la población por supuesto de
+8:13
+8 minutos y 13 segundos
+algoritmos que utilizan estrategias más complejas de acuerdo a cuántas veces estuvo un padre en la población actual y
+8:21
+8 minutos y 21 segundos
+le dan un índice de vejez y ya disminuyen la probabilidad de ser elegido cuando se hace la selección
+8:30
+8 minutos y 30 segundos
+hay otros algoritmos que utilizan poblaciones de tamaño variable que van cambiando a lo largo del tiempo y bueno
+8:37
+8 minutos y 37 segundos
+hay muchas alternativas pero lo básico es esto que estamos comentando acá de la brecha generacional que es de lo que más se utiliza y un último punto interesante
+8:47
+8 minutos y 47 segundos
+que se utiliza mucho es el de elitismo en elitismo es lo siguiente se toma al mejor individuo de la población y se lo
+8:56
+8 minutos y 56 segundos
+pasa directamente a la próxima generación sin cruzar sin mutaciones sin nada
+9:03
+9 minutos y 3 segundos
+además de todo lo que hicimos que fue seleccionar los padres ya sea con la ruleta con la competencia con lo que sea y cruzar mutar etcétera etcétera siempre
+9:12
+9 minutos y 12 segundos
+dejamos en la nueva población un lugarcito para pasar directamente el mejor individuo a ese lugar la consecuencia que tenemos de eso es que
+9:21
+9 minutos y 21 segundos
+el fitness si nosotros gráfica vamos delfines en función de las generaciones vamos a observar que tiene estas formas pega saltos
+9:30
+9 minutos y 30 segundos
+cuando se encuentra un nuevo individuo y mientras no se encuentra en ningún nuevo individuo bueno el individuo de la élite
+9:37
+9 minutos y 37 segundos
+es el que sigue pasando de generación en generación sin cambio si no usáramos elitismo probablemente
+9:44
+9 minutos y 44 segundos
+tendríamos alguna curva acá de un cambio puede bajar y acá saldría el otro
+9:52
+9 minutos y 52 segundos
+individuo y así podríamos ver que la curva de la actitud de los individuos va aumentando pero no escalones
+Sincronizar con el tiempo del video

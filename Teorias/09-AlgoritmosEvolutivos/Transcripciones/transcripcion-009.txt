@@ -1,0 +1,272 @@
+algunos otros ejemplos para seguir ilustrando esto supongan que tenemos que entrenar una red neuronal es el problema
+0:13
+13 segundos
+encuentre los valores de los pesos de la red neuronal de manera que resuelvan un determinado problema
+0:22
+22 segundos
+vamos a suponer que tenemos para dar un ejemplo no más 100 rostros que identificar y la red neuronal lo que
+0:30
+30 segundos
+tiene que hacer es clasificar correctamente qué persona es cuando llega una fotografía nueva entonces lo que nosotros tenemos como
+0:38
+38 segundos
+información es las imágenes que le vamos a dar de entrada a la red neuronal y la
+0:45
+45 segundos
+salida va a ser una de las 100 salidas que va a decir que personales y que tenemos que encontrar cuál es el
+0:52
+52 segundos
+desafío que lo que yo le voy a preguntar a mi amigo por correo electrónico le voy a decir mirá acá te mando una base de
+1:00
+1 minuto
+datos de imágenes con sus etiquetas de cada persona y yo quiero que me devuelvas una red neuronal
+1:07
+1 minuto y 7 segundos
+que clasifique bien a toda esa persona que me tendría que volver el amigo me tendría que devolver
+1:14
+1 minuto y 14 segundos
+los pesos sinápticos tendría que decir bueno básicamente que arquitectura va a tener esa red neuronal
+1:22
+1 minuto y 22 segundos
+me va a decir mira vamos a ponerle 50 neuronas de la primera capa 100 en la
+1:28
+1 minuto y 28 segundos
+capa oculta y 100 en la de salida por ejemplo y los pesos que unen las
+1:35
+1 minuto y 35 segundos
+neuronas de la primera capa son tales y me mandará un montón de peso tanto a la matriz de entrada los pesos que unen la
+1:42
+1 minuto y 42 segundos
+primera capa con la capa oculta son estos otros o sea que básicamente me tiene que mandar números
+1:50
+1 minuto y 50 segundos
+podría ser que yo dijera bueno los primeros números que él me mande en ese archivo de texto que yo le pido
+1:58
+1 minuto y 58 segundos
+como respuesta al problema van a ser la arquitectura cantidad de neuronas en
+2:06
+2 minutos y 6 segundos
+la primera capa cantidad de neuronas en la capa oculta cantidad neurona en la capa salida vamos a suponer un caso sencillo
+2:15
+2 minutos y 15 segundos
+esto lo voy a codificar en binario así que voy a tener varios bits para cada uno
+2:23
+2 minutos y 23 segundos
+también voy a tener varios bits dependerá de qué tan fino quiero hilar con eso voy a poner más o menos bits y
+2:30
+2 minutos y 30 segundos
+después voy a tener que poner acá a continuación los pesos los pesos empiezo a poner uno atrás del otro los pesos de la primera capa los de la segunda los de
+2:39
+2 minutos y 39 segundos
+la tercera así hasta que termine y cada uno de esto lo voy a tener que modificar en bits cada uno de los pesos que bueno van a
+2:47
+2 minutos y 47 segundos
+ser un número real voy a necesitar un poco más de bits pero en definitiva construir un cromosoma con toda la
+2:54
+2 minutos y 54 segundos
+definición de mi red neuronal así que ya encontré una manera de como
+3:00
+3 minutos
+representar vuelvo a insistir con el ejemplo de cómo hacer este ejercicio ante un problema que en principio a mí
+3:09
+3 minutos y 9 segundos
+me puede desconcertar sirve hacer este ejercicio de decir yo le tengo que pedir a otra persona que me devuelva la
+3:18
+3 minutos y 18 segundos
+solución a mi problema una solución no cómo sería eso que me devuelve cómo sería la solución ya el problema
+3:26
+3 minutos y 26 segundos
+resuelto la solución es ésta entonces cuando yo me imaginé cómo es una solución puedo empezar a pensar en
+3:34
+3 minutos y 34 segundos
+general cuál va a ser la forma que van a tener cualquiera de las soluciones a ese problema que en definitiva lo que yo
+3:42
+3 minutos y 42 segundos
+quiero una forma genérica que me permita representar cualquier soluciones de problema pero es útil pensar primero en
+3:49
+3 minutos y 49 segundos
+una solución que debería quedar especificado para que yo pueda con esa información ya resolver
+3:56
+3 minutos y 56 segundos
+el problema vamos a ver algún otro ejemplo vamos a suponer que tenemos que programar un
+4:04
+4 minutos y 4 segundos
+robot en un problema también parece que no tiene nada que ver con lo que vimos antes pero como yo le había
+4:13
+4 minutos y 13 segundos
+dicho prácticamente cualquier problema que se me ocurra lo puedo representar y si tiene solución voy a poder encontrar la solución con
+4:21
+4 minutos y 21 segundos
+estos métodos así que si yo mi problema es que tengo que programar un robot para que haga alguna actividad alguna tarea
+4:29
+4 minutos y 29 segundos
+que por supuesto tengo que conocer de antemano y tendría que poder representarlo alguna manera entonces para hacer un ejemplo práctico concreto
+4:38
+4 minutos y 38 segundos
+vamos a suponer que hay un robot que lo que tiene que hacer es recorrer un ambiente que tiene una determinada forma
+4:47
+4 minutos y 47 segundos
+el robot lo largamos acá vamos a suponer que tiene unos sensores para adelante y para atrás
+4:56
+4 minutos y 56 segundos
+son los sensores de proximidad para saber si se está por chocar una pared o si detectó algunos de los objetivos y
+5:05
+5 minutos y 5 segundos
+bueno vamos a suponer las cosas básicas que puede tener un robot qué es por ejemplo dependiendo del modo de
+5:13
+5 minutos y 13 segundos
+tracción que tenga podría tener 2 tractores en los costados y uno tiene
+5:20
+5 minutos y 20 segundos
+que decidir si el de la derecha va hacia adelante o hacia atrás y si el de la izquierda va hacia adelante es de atrás también lo podríamos hacer con cuatro
+5:27
+5 minutos y 27 segundos
+ruedas o con tres ruedas hay distintas variantes pero simplemente estamos definiendo un robot hipotético muy elemental como para simplificar el
+5:36
+5 minutos y 36 segundos
+ejemplo para que ustedes vean cómo esto lo podemos convertir un cromosoma que es lo que nos interesa cómo podemos representar la solución a este problema
+5:44
+5 minutos y 44 segundos
+en un cromosoma vamos a suponer que el objetivo de este robot es recorrer la pared sin chocar sela
+5:52
+5 minutos y 52 segundos
+sea donde sea donde yo lo ubique como posición inicial él tiene que ir hasta una pared y después recorrer toda la pared
+6:01
+6 minutos y 1 segundo
+entonces el robot que resuelva este problema va a tener un
+6:08
+6 minutos y 8 segundos
+programa que básicamente que va a ser va a sentar uno se lo puede imaginar cómo lo resolvería uno pero acuérdense que la
+6:15
+6 minutos y 15 segundos
+idea es que la solución la encuentre el algoritmo evolutivo pero si no tuviera que resolver programando va a sentar se
+6:23
+6 minutos y 23 segundos
+va a fijar que los sensores de adelante no detecten nada y mientras no detecten nada va a seguir para adelante cuando
+6:30
+6 minutos y 30 segundos
+detecte en una pared por ejemplo podemos tomar la decisión de doblar a la derecha así que vamos a hacer girar la rueda
+6:38
+6 minutos y 38 segundos
+tractora de la izquierda hacia adelante y la de la derecha hacia atrás giramos 90 grados y después le damos con las dos
+6:46
+6 minutos y 46 segundos
+para adelante hasta que se detecte nuevo ya se imagina que es un ciclo guay que adentro tiene algunas condiciones if y
+6:54
+6 minutos y 54 segundos
+ya estaría solucionado problemas pero insisto que lo que nosotros queremos que los métodos de computación evolutiva encuentren solo ese programa
+7:02
+7 minutos y 2 segundos
+pero yo ya me estoy imaginando una solución y puedo empezar a pensar cómo codificar la
+7:10
+7 minutos y 10 segundos
+fíjense vuelvo al ejemplo de antes le pido un amigo que me mande la solución al problema mándame la por
+7:18
+7 minutos y 18 segundos
+mail mandamos un archivo de texto que va a mandar me va a mandar un programa un programa del lenguaje que sea que se maneja ese error el definitivo un
+7:26
+7 minutos y 26 segundos
+programa que tiene instrucciones como si el sensor detecta algo adelante entonces
+7:34
+7 minutos y 34 segundos
+doblar a la derecha si no detecta nada entonces avanzar y así instrucciones de
+7:41
+7 minutos y 41 segundos
+tipo entonces yo voy a tener un programa y yo podría codificar un programa en un cromosoma
+7:49
+7 minutos y 49 segundos
+ya me imaginé lo que es es un programa un montón de líneas de código y quiero convertir los mensajes hay una cuestión
+7:58
+7 minutos y 58 segundos
+si se quiere filosófica de fondo es que cualquier cosa que está entre una computadora evidentemente se puede
+8:07
+8 minutos y 7 segundos
+codificar en ceros y unos no nos cabe ninguna duda habrá mejores o peores formas de codificar lo en ceros y unos
+8:16
+8 minutos y 16 segundos
+pero que podemos llegar a encontrar un cromosoma con ceros y uno nos tendría que quedar ninguna duda evidentemente es
+8:23
+8 minutos y 23 segundos
+algo de naturaleza informática un programa de computación así que sin duda lo podemos representar con ceros y uno quizá lo que vamos a tener que tener
+8:31
+8 minutos y 31 segundos
+cuidado es representarlos de una manera que no sea una manera tan cruda digamos convirtiendo los caracteres aquí en su
+8:40
+8 minutos y 40 segundos
+código en binario porque lo que puede pasar es que cuando a esa representación le hagamos cualquier modificación una
+8:47
+8 minutos y 47 segundos
+mutación una cruz a cualquier cosa que cambiemos va a dejar de tener sentido porque si en vez de decir if dice ah
+8:56
+8 minutos y 56 segundos
+entonces en programación no significa nada y va a ser un programa que no va ni compilar entonces lo que podríamos hacer
+9:02
+9 minutos y 2 segundos
+es un listado las funciones o los comandos que tienen nuestro lenguaje de programación y la
+9:11
+9 minutos y 11 segundos
+estructura mínima unir que va a tener un antecedente y un consecuente entonces lo podemos codificar como
+9:19
+9 minutos y 19 segundos
+un código binario que signifique live por ejemplo que sean las instrucciones depende de la cantidad que tengamos pero
+9:27
+9 minutos y 27 segundos
+supongamos que el 0 1 es en ir en cambio el 11 es el avanzar y el 10 es
+9:36
+9 minutos y 36 segundos
+el retroceder cada instrucción le podemos asignar un código binario si tenemos más instrucciones vamos a necesitar 3 beat 4 beats 5 beats para la
+9:45
+9 minutos y 45 segundos
+instrucción y en definitiva vamos a poder construir ese programa que teníamos
+9:53
+9 minutos y 53 segundos
+sensor 1 es igual proximidad de pared o detecta también
+10:00
+10 minutos
+podría ser un detectó un objeto a menos de tantos centímetros entonces el de en
+10:08
+10 minutos y 8 segundos
+doblar steve lo podemos codificar en
+10:17
+10 minutos y 17 segundos
+101 dijimos el argumento o sea que es lo que tiene que evaluar también lo tendríamos que codificar o sea que podría ser que el
+10:26
+10 minutos y 26 segundos
+sensor 1 el cereso 1 se activó entonces en sort 1 vamos a suponer que es el código 0 0 1 y
+10:34
+10 minutos y 34 segundos
+que se haya activado es 1 en ese caso que hacer doblar bueno vamos
+10:40
+10 minutos y 40 segundos
+a poner que doblar en la instrucción 11 entonces esto elemental así ya lo
+10:48
+10 minutos y 48 segundos
+convertimos de una manera muy simplificada no pero en ceros y unos y ya nos imaginamos que nuestros cromosomas van a tener a lo mejor los
+10:56
+10 minutos y 56 segundos
+dos primeros bits van a decir la instrucción y los siguientes 6 bit van a dar los argumentos de esa instrucción y después
+11:04
+11 minutos y 4 segundos
+vemos que hay otro tipo de instrucciones o variables más complejas bueno podemos aumentar a cambio de 2 bits podríamos codificar con más bits y en definitiva
+11:13
+11 minutos y 13 segundos
+el programa va a tener una instrucción con sus argumentos otra instrucción con sus argumentos otra instrucción con sus
+11:21
+11 minutos y 21 segundos
+argumentos y así yo me voy a poder construir en definitiva con cada instrucción y sus argumentos básicamente
+11:29
+11 minutos y 29 segundos
+un programa codificado en bits y luego cuando haga operaciones con ese cromosoma se podrán intercambiar esas
+11:37
+11 minutos y 37 segundos
+instrucciones entre distintos individuos pero básicamente encontré lo que yo quería aquello que hasta hace unos momentos nos
+11:45
+11 minutos y 45 segundos
+parecía imposible o que no tenía sentido yo encontré una forma de representar el programa que manejaba el robot como un
+11:52
+11 minutos y 52 segundos
+cromosoma y por lo tanto de ahí en más el algoritmo evolutivo se va a encargar de encontrar la solución adecuada luego
+12:01
+12 minutos y 1 segundo
+vamos a ver las otras partes y vamos a tratar de seguir con este mismo ejemplo también
+Sincronizar con el tiempo del video

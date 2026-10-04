@@ -1,0 +1,159 @@
+4 segundos
+otro ejemplo más sería el de calcular un circuito electrónico que cumpla con alguna
+0:13
+13 segundos
+función en particular en este caso yo puse a cada que sea un filtro que deje pasar algunas corrientes determinadas
+0:21
+21 segundos
+frecuencias y otras no entonces yo lo que tengo que encontrar es un circuito que puede tener amplificadores
+0:28
+28 segundos
+operacionales puede tener transistores podría tener resistencias podrá tener un
+0:36
+36 segundos
+capacitor inductancia podrá tener cosas
+0:43
+43 segundos
+de todo tipo conectadas tendrá una entrada y una salida es el
+0:51
+51 segundos
+circuito puede llegar a ser exactamente cualquier desastre y cualquier cosa lo puse como para mostrar cualquier ejemplo
+0:58
+58 segundos
+entonces en este circuito yo lo que tengo que encontrar en definitiva es algo que
+1:07
+1 minuto y 7 segundos
+cuando venga una señal o de una determinada frecuencia sea capaz de filtrarlo por ejemplo
+1:15
+1 minuto y 15 segundos
+esta es la respuesta que me tiene que dar el circuito esto quiere decir que aquellas entradas
+1:24
+1 minuto y 24 segundos
+que tengan esta frecuencia de 100 por ejemplo gears la tiene que dejar pasar
+1:30
+1 minuto y 30 segundos
+pero cuando llegue una entrada de muy baja frecuencia o muy alta frecuencia en la tiene que rechazar no la tiene que
+1:39
+1 minuto y 39 segundos
+dejar pasar desde la entrada a la salida bien pensemos por ahora cómo representar
+1:46
+1 minuto y 46 segundos
+esto tenemos que convertir en esto nuevamente en un cromosoma una situación totalmente diferente a las
+1:54
+1 minuto y 54 segundos
+que vimos antes a la red neuronal al robot a las áreas
+2:02
+2 minutos y 2 segundos
+hay muchas alternativas pero evidentemente si hay programas que permiten diseñar circuitos electrónicos
+2:10
+2 minutos y 10 segundos
+mediante la computadora como si fuera un caza pero para circuitos electrónicos y esos programas lo pueden guardar un archivo en la computadora no hay duda de
+2:19
+2 minutos y 19 segundos
+que se puede convertir en cero y uno porque los archivos definitivas la reputada ahora sea vuelvo a este principio para que veamos que realmente
+2:27
+2 minutos y 27 segundos
+cualquier problema cualquier situación que se nos presente vamos a poder convertirla solamente nos tenemos que ingeniar para hacerlo pero vamos a poder
+2:36
+2 minutos y 36 segundos
+convertirlas en ceros y unos entonces por ejemplo en este caso yo lo que podría enumerar son los nodos por ejemplo este
+2:45
+2 minutos y 45 segundos
+lo voy a llamar el nodo 1 que también es el mismo que el nodo entrada este es el nodo 2 1 3
+2:52
+2 minutos y 52 segundos
+acá hay otro nodo 4 acá tenemos otro nodo
+2:58
+2 minutos y 58 segundos
+como podemos llamarle 5 este nodo s no sé qué es la referencia
+3:05
+3 minutos y 5 segundos
+de tierra no sé si me faltan uno y este se cae 127
+3:13
+3 minutos y 13 segundos
+y luego lo que podemos decir es que hay entre cada nodo entre el nodo 1 y el nodo 2 hay un cable
+3:23
+3 minutos y 23 segundos
+entre nodos y el nodo 3 hay un capacitor que podemos poner un
+3:30
+3 minutos y 30 segundos
+valor de 10 micro faria o de un micro farah de entre 1 4 y el 6
+3:38
+3 minutos y 38 segundos
+hay una resistencia de 3 o de la cantidad que sea y así describiendo lo que hay entre cada nodo
+3:46
+3 minutos y 46 segundos
+podemos tener una representación del circuito y por supuesto ya tenemos la solución al problema
+3:54
+3 minutos y 54 segundos
+porque eso lo convertimos en binario o sea convertimos el número de los nodos el código d
+4:03
+4 minutos y 3 segundos
+el dispositivo electrónico que hay una resistencia un capacitor un amplificador operacional lo que sea y alguna otra
+4:10
+4 minutos y 10 segundos
+característica como por ejemplo cuánto mide la capacidad o cuánto mide la resistencia o lo que sea y listo ya
+4:18
+4 minutos y 18 segundos
+tenemos nuestro cromosoma
+4:20
+4 minutos y 20 segundos
+[Música]
+4:21
+4 minutos y 21 segundos
+después vamos a ver vamos a seguir con estos ejemplos para ver las otras partes del desarrollo de algoritmos y por último un ejemplo
+4:30
+4 minutos y 30 segundos
+clásico en estas cosas que ya es un ejemplo más del libro si se quiere que es el problema de la gente viajero en la
+4:37
+4 minutos y 37 segundos
+gente viajero una gente que tiene que viajar por determinadas ciudades
+4:46
+4 minutos y 46 segundos
+y tiene que encontrar la forma de optimizar la distancia recorrida y los gastos en general podría ser que en algunas
+4:54
+4 minutos y 54 segundos
+ciudades en determinada época haya ofertas los hoteles por lo cual conviene visitarlas antes y que determinados
+5:04
+5 minutos y 4 segundos
+caminos tengan peajes más caros entonces por ahí conviene evitarlo podríamos decir que entre esta ciudad y esta ciudad hay un peaje muy caro entonces me
+5:12
+5 minutos y 12 segundos
+conviene ir de esta esta de esta esta y de esta ésta y visite las tres ciudades pero no use
+5:20
+5 minutos y 20 segundos
+este camino entonces bueno básicamente yo tengo un montón de ciudades podrían ser cientos y estos problemas este es un
+5:28
+5 minutos y 28 segundos
+problema típico porque se generaliza a muchos otro tipo de problemas similares y tengo que encontrar
+5:36
+5 minutos y 36 segundos
+la ruta que minimiza los costos cuál es la secuencia de ciudades que me hacen
+5:43
+5 minutos y 43 segundos
+limitar los costos una opción ésta es bastante directa es que cada ciudad tenga un número la 1 la
+5:51
+5 minutos y 51 segundos
+2 y la 3 la 4 las 5 las 6 las 7 y la 8 entonces yo puedo pensar en principio en
+5:59
+5 minutos y 59 segundos
+un cromosoma que tiene 8 lugarcitos
+6:06
+6 minutos y 6 segundos
+y cada lugarcito es una posible ciudad que la puedo codificar con
+6:17
+6 minutos y 17 segundos
+pero tomar que la primera ciudad la 001 acá supongamos que sigo el orden directo 0
+6:25
+6 minutos y 25 segundos
+10 y así y tengo ya una representación para ese problema luego tengo que ver cómo solucionar algunas cuestiones de
+6:34
+6 minutos y 34 segundos
+que no se pueden repetir ciudades y otro tipo de cosas o bien si se puede repetir pero evidentemente el costo va a ser muy
+6:41
+6 minutos y 41 segundos
+alto y que tengo que visitarlos a todas pero bueno esos son otros problemas que no tienen que ver estrictamente con la representación así que bueno en este
+6:50
+6 minutos y 50 segundos
+caso encontramos una representación bastante sencilla en principio como tal salta más a la vista como representarlo
+Sincronizar con el tiempo del video

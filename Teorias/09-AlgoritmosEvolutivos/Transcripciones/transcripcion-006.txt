@@ -1,0 +1,235 @@
+vamos a comenzar con la primera parte ya propiamente de los algoritmos de inteligencia colectiva y vamos a ver los
+0:13
+13 segundos
+algoritmos evolutivos los algoritmos de computación evolutiva y particularmente en esta clase nos vamos a dedicar más a
+0:21
+21 segundos
+los denominados algoritmos genéticos ya vamos a ver un poquito más adelante qué diferencia de los algoritmos genéticos de otros algoritmos de
+0:30
+30 segundos
+computación evolutiva pero por lo pronto esa es la parte que nos toca ahora
+0:38
+38 segundos
+hace 200 años había una gran confrontación entre dos ideas entre dos
+0:44
+44 segundos
+formas de analizar la naturaleza la reinante que era la visión
+0:52
+52 segundos
+creacionista donde todas las especies de la naturaleza habían sido creadas como tales
+0:59
+59 segundos
+sin más y había otra idea que pensó surgir que era de que las especies se habían ido modificando con el tiempo no
+1:08
+1 minuto y 8 segundos
+necesariamente que no habían sido creadas pero al menos empezó a surgir alguna evidencia algunos fósiles y
+1:15
+1 minuto y 15 segundos
+algunas particularidades de que había habido cambios de que los animales no habían sido iguales siempre a lo largo
+1:24
+1 minuto y 24 segundos
+de los miles de miles de años en particular había
+1:32
+1 minuto y 32 segundos
+un investigador lamarck que propuso que el cuello de las jirafas no había sido
+1:39
+1 minuto y 39 segundos
+siempre largo había en algún tiempo remoto algún tipo
+1:45
+1 minuto y 45 segundos
+de jirafas de cuello más corto que según él habían hecho un esfuerzo y había
+1:52
+1 minuto y 52 segundos
+estirado un poco su cuerpo lo habían estirado y eso se había
+1:59
+1 minuto y 59 segundos
+transmitido a sus hijos que ya nacieron con el cuello un poco más largo hicieron
+2:07
+2 minutos y 7 segundos
+nuevamente un esfuerzo porque porque había unas ramas de árboles que le permitían alimentarse y tener alguna
+2:14
+2 minutos y 14 segundos
+ventaja en relación a otras especies y que estaban altas entonces se seguían estirando seguían haciendo un esfuerzo y
+2:22
+2 minutos y 22 segundos
+se seguían estirando entonces la marca proponía que luego de miles de miles de años de que estas jirafas le gustaba
+2:29
+2 minutos y 29 segundos
+siempre la misma planta obtenían ciertas ventajas evolutivas al comer esa planta que otros animales no comían
+2:38
+2 minutos y 38 segundos
+con los años decía habían logrado tener en el cuello largo de esta manera tan extraña que a todos
+2:46
+2 minutos y 46 segundos
+les sorprende sin embargo había algo en la teoría de la mar que hoy sabemos muy bien
+2:54
+2 minutos y 54 segundos
+que no es así y que invalidaba eso la idea era una buena idea pero se
+3:03
+3 minutos y 3 segundos
+heredan las propiedades que se adquieren durante la vida por ejemplo si alguien tiene un
+3:12
+3 minutos y 12 segundos
+accidente y queda sin una pierna hay algún efecto de eso en los hijos de
+3:21
+3 minutos y 21 segundos
+esa persona es esa persona luego tiene hijos le va a salir una pierna un poco más corta o alguna cosa así no
+3:29
+3 minutos y 29 segundos
+o vamos a poner un ejemplo por la positiva de alguien se entrena mucho y va mucho al gimnasio y se hace unos
+3:36
+3 minutos y 36 segundos
+músculos muy grandes y después que le van a salir hijos más musculosos o con más tendencia a hacer
+3:45
+3 minutos y 45 segundos
+musculosos no en absoluto hoy por hoy a pesar de que yo doy ejemplos muy ridículos hoy por hoy
+3:53
+3 minutos y 53 segundos
+es bien sabido de que los caracteres adquiridos que son estas que estamos ejemplificando nos heredan
+4:02
+4 minutos y 2 segundos
+no se transmiten al hijo sino que la transmisión en una transmisión de caracteres que ya están codificados en
+4:10
+4 minutos y 10 segundos
+el material genético de cada individuo están codificados incluso cuando el individuo nace
+4:16
+4 minutos y 16 segundos
+así que en esa época hace 200 años no se sabía todo esto y la teoría de la mar
+4:24
+4 minutos y 24 segundos
+parecía razonable aunque no había suficientes pruebas como para demostrar que efectivamente había sido así
+4:33
+4 minutos y 33 segundos
+otra teoría que surgió más o menos hace 150 años y que realmente fue una de las revoluciones sino la revolución más
+4:41
+4 minutos y 41 segundos
+grandes de la ciencia y del conocimiento en toda la historia fue la teoría que se
+4:48
+4 minutos y 48 segundos
+denominó la teoría de la evolución que propuso darwin esta idea que propone de darwin también
+4:57
+4 minutos y 57 segundos
+tenía alguna relación con la anterior y en particular con el hecho de que eso que molestaba tanto que las especies
+5:04
+5 minutos y 4 segundos
+no habían sido creadas así como tales sino que habían ido cambiando durante el tiempo pero explicaba ese cambio lo
+5:12
+5 minutos y 12 segundos
+explicaba de una manera diferente explicada con otro algoritmo por decirlo en términos computacionales
+5:20
+5 minutos y 20 segundos
+había dos elementos fundamentales en la teoría de edad la variación había alguna alguna
+5:28
+5 minutos y 28 segundos
+capacidad de los individuos de variar en esa época él no sabía qué era lo que hacía que al cubrir a pequeñas
+5:36
+5 minutos y 36 segundos
+variaciones y la fuerza de la selección natural ahora vamos a ver cómo funcionaba esta idea de darwin
+5:44
+5 minutos y 44 segundos
+darwin lo que decía es que a partir de la variación en una generación de jirafas había
+5:53
+5 minutos y 53 segundos
+alguna que tenía por este fenómeno de variación el cuello un poco más largo
+6:01
+6 minutos y 1 segundo
+estas variaciones hoy sabemos cómo cómo se dan un ejemplo son las mutaciones pero en
+6:10
+6 minutos y 10 segundos
+esa época no se sabía y darwin tenía la idea de que tendría que haber algún mecanismo quisiera que hubiera pequeñas radiaciones en los individuos hijos
+6:18
+6 minutos y 18 segundos
+generación tras generación entonces aquella jirafa que tenía el cuello un poquito más largo tenía mayor
+6:27
+6 minutos y 27 segundos
+probabilidad de sobrevivir o sea la selección natural qué es esta otra componente importante
+6:35
+6 minutos y 35 segundos
+conceptualmente hacía que en este caso las jirafas con esa característica como
+6:43
+6 minutos y 43 segundos
+decíamos antes alcanzar mejor ciertas hojas eran más fuertes se alimentaban mejor y sobre todo que tenía tenían la
+6:50
+6 minutos y 50 segundos
+posibilidad de reproducirse y transmitir esa pequeña variación que habían tenido que les había dado ventajas evolutivas
+6:58
+6 minutos y 58 segundos
+ventajas en el medio a sus hijos entonces fíjense qué
+7:05
+7 minutos y 5 segundos
+y esa variación que decía darwin no era lo mismo que hacer un esfuerzo para llegar a una planta x
+7:12
+7 minutos y 12 segundos
+el estire el cuello carmen decía que ya nacían con esa variación y en eso acertaba actualmente sabemos que esas
+7:20
+7 minutos y 20 segundos
+variaciones con las que uno ya nace de esas pequeñas modificaciones que no son exactamente lo mismo que juntar el
+7:28
+7 minutos y 28 segundos
+material del padre y de la madre en material genético y esas pequeñas variaciones si se
+7:35
+7 minutos y 35 segundos
+transmiten a los hijos entonces esta idea cambió toda la concepción y durante
+7:43
+7 minutos y 43 segundos
+muchos años se confrontó con la idea de la marca pero finalmente con toda la evidencia que recolectó darwin con todo
+7:51
+7 minutos y 51 segundos
+y con todo lo que por supuesto se demostró años y años después fue realmente la teoría que se consolidó y
+7:59
+7 minutos y 59 segundos
+que permitió explicar esta idea de la evolución de cómo las especies los
+8:06
+8 minutos y 6 segundos
+animales nosotros incluidos fueron cambiando poco a poco durante el tiempo pero en un sentido poblacional en lo que
+8:16
+8 minutos y 16 segundos
+incorpora de manera muy importante en la idea de población en toda la población en una gran cantidad dividido hay pequeñas
+8:25
+8 minutos y 25 segundos
+variaciones y que de toda la población aquellos individuos que tienen es las variaciones que lo benefician en ese
+8:33
+8 minutos y 33 segundos
+entorno particular y en ese momento del tiempo en particular pueden reproducirse con más probabilidad y por lo tanto
+8:40
+8 minutos y 40 segundos
+transmitir esas radiaciones hoy por supuesto sabemos que eso ocurre así
+8:49
+8 minutos y 49 segundos
+luego se descubrió el adn y descubrieron montones de evidencias científicas que demostraron cómo
+8:57
+8 minutos y 57 segundos
+funciona también mostraron otras formas de evolución muy minoritarias pero que
+9:03
+9 minutos y 3 segundos
+también funcionan de naturaleza así que esta idea de darwin realmente explicó cómo había sido la evolución
+9:12
+9 minutos y 12 segundos
+cómo fueron cambiando las especies y cómo se llegó a animales tan curiosos
+9:20
+9 minutos y 20 segundos
+como una jirafa que tiene en curso tan largo y muchos otros que tiene que ver todo esto con la asignatura que tiene que ver con la informática con la
+9:28
+9 minutos y 28 segundos
+computación bueno nuevamente este es un hecho de la naturaleza y lo que vamos a hacer nosotros es
+9:35
+9 minutos y 35 segundos
+tratar de aprovecharnos de esta idea de la naturaleza para armar algoritmos para
+9:43
+9 minutos y 43 segundos
+armar programas de computadora que utilizando estas ideas tan ingeniosas nos permitan resolver problemas
+9:51
+9 minutos y 51 segundos
+complejos y en particular lo que nosotros queremos hacer es
+9:58
+9 minutos y 58 segundos
+convertir esto que propuso darwin esta idea de cómo evolucionen las poblaciones convertirlo en un algoritmo
+10:06
+10 minutos y 6 segundos
+computacional que nos permita resolver problemas y resolver problemas del tipo que sea que no tienen a lo mejor nada
+10:13
+10 minutos y 13 segundos
+que ver con la naturaleza ni mucho menos con la jirafa que estábamos hablando sino algoritmos computacionales que nos permitan resolver problemas de la
+10:21
+10 minutos y 21 segundos
+ingeniería científico en el tipo que sea y eso es lo que vamos a ver a continuación

@@ -1,0 +1,305 @@
+la evolución como un algoritmo habíamos dicho que queríamos convertir estas ideas de darwin estas ideas de
+0:11
+11 segundos
+cómo la naturaleza optimizada a las poblaciones mejoraban las adaptaba al entorno en un algoritmo para poder
+0:20
+20 segundos
+resolver cualquier tipo de problemas así que lo que vimos recién fue en primer lugar el creacionismo versus
+0:29
+29 segundos
+las ideas de la mar decíamos hace 200 años luego las nuevas
+0:36
+36 segundos
+ideas de darwin y el cambio que proponía en relación a lo que fallaba la marca que era que los
+0:45
+45 segundos
+adquirido no se le daban y lo que tenemos que ver como conceptos generales repasar un poco la idea de que
+0:54
+54 segundos
+ahora vamos a hablar siempre de poblaciones de hecho estamos en el bloque de inteligencia colectiva y se supone que siempre va a haber muchos de
+1:02
+1 minuto y 2 segundos
+muchos individuos muchos autómatas muchos insectos muchos lo que sea pero vamos a hablar siempre de poblaciones
+1:10
+1 minuto y 10 segundos
+antes teníamos una red neuronal que trataba de solucionar un determinado problema o
+1:18
+1 minuto y 18 segundos
+bien un sistema borroso ahora vamos a tener muchas potenciales soluciones al problema que queremos resolver y esas
+1:26
+1 minuto y 26 segundos
+potenciales soluciones van a construir una población de soluciones que vamos a modelar como si fueran individuos
+1:35
+1 minuto y 35 segundos
+y cromosomas por migas o lo que sea otro de los conceptos importantes para
+1:44
+1 minuto y 44 segundos
+resumir es la idea de los mejores adaptados acá esto tiene que ver con lo
+1:52
+1 minuto y 52 segundos
+que planteaba darwin en realidad no son los mejores individuos en un sentido absoluto ni tampoco quiere decir que la evolución
+2:00
+2 minutos
+tenga una flecha una dirección hacia una élite hacia un súper individuo sino que
+2:09
+2 minutos y 9 segundos
+lo que hace la evolución es buscar la mejor adaptación a las condiciones actuales si por ejemplo en santa fe hay
+2:18
+2 minutos y 18 segundos
+una determinada especie que vive con la cantidad de lluvias que es normalmente llueve en esta zona y de pronto hay un
+2:26
+2 minutos y 26 segundos
+cambio por el cambio climático por cambios que se dan incluso naturalmente
+2:33
+2 minutos y 33 segundos
+y se duplica la cantidad de lluvias en la región probablemente haya especies que van a desaparecer
+2:41
+2 minutos y 41 segundos
+haya individuos que no se van a alcanzar adaptar y algunas que tienen pequeñas variaciones van a adaptarse a ese cambio
+2:49
+2 minutos y 49 segundos
+de la cantidad de lluvias y van a poder vivir en ese nuevo ambiente que no quiere decir que estos nuevos individuos sean mejores en un
+2:58
+2 minutos y 58 segundos
+sentido absoluto que los anteriores sino simplemente que se adaptaron a las nuevas condiciones y los anteriores no
+3:06
+3 minutos y 6 segundos
+así que hay que distinguir un poco en lo que es ser el mejor y el mejor individuo
+3:13
+3 minutos y 13 segundos
+el mejor la mejor especie en el sentido absoluto de lo que realmente se propone en la evolución que es ser el mejor adaptado y mejorará todas las
+3:22
+3 minutos y 22 segundos
+condiciones actuales que pueden ser muy diferentes a las de hace cien mil años oa las de dentro de cien mil años
+3:29
+3 minutos y 29 segundos
+otro concepto importante es que hay alguna componente aleatoria como yo le decía la jirafa con el cuello un poquito
+3:37
+3 minutos y 37 segundos
+más largo tiene más probabilidad de transmitir sus genes de reproducirse pero la tiene asegurada 100%
+3:46
+3 minutos y 46 segundos
+siempre hay una componente aleatorio puede ser que haya una jirafa con un pollo un poco más corto y que igual se reproduce no hay un determinismo
+3:54
+3 minutos y 54 segundos
+absoluto en esto de las poblaciones de las generaciones y de la reproducción siempre hay alguna componente de la
+4:01
+4 minutos y 1 segundo
+teoría y eso va a ser importante para nuestros modelos y para nuestras simulaciones vamos a tener que incorporar esas componentes aleatorias y
+4:10
+4 minutos y 10 segundos
+van a ver que tienen tienen factores y tienen efectos muy importantes en la evolución y en la convergencia de los años
+4:18
+4 minutos y 18 segundos
+otra otro aspecto de interés es el de la diversidad de la variación que habíamos
+4:26
+4 minutos y 26 segundos
+hablado tiene que haber diversidad si todas las jirafas tienen exactamente la misma
+4:33
+4 minutos y 33 segundos
+longitud de cohesión no hay selección que valga va a haber una cuestión al menos en relación a la longitud del cuello una
+4:41
+4 minutos y 41 segundos
+cuestión completamente al azar algunas jirafas se van a reproducir y otras no vayas a ver por qué pero no va a tener nada que ver con la longitud del cuello
+4:50
+4 minutos y 50 segundos
+entonces tiene que haber algunas con un poquito de cuello más largo y otro con un poquito de cuello más corto tiene que haber variación tiene que
+4:58
+4 minutos y 58 segundos
+haber diversidad si no hay diversidad y esto lo podrán haber escuchado de discursos ambiente
+5:05
+5 minutos y 5 segundos
+ambientalistas y ecologistas si no hay diversidad realmente esa población corre
+5:12
+5 minutos y 12 segundos
+un gran riesgo porque si no hay diversidad es imposible que se pueda adaptar a cualquier cambio en las condiciones de contexto
+5:19
+5 minutos y 19 segundos
+así que una clave importante para nuestro algoritmo es mantener la diversa es decir seguir generando individuos
+5:29
+5 minutos y 29 segundos
+seguir avanzando en las generaciones pero siempre asegurándonos de que la toda la población no se estanque y no se
+5:38
+5 minutos y 38 segundos
+homogenice no sea igual porque cuando la población se convierte en toda igual no hay más evolución siempre necesitamos la
+5:47
+5 minutos y 47 segundos
+diversidad y para eso vamos a definir operadores de variación van a ver que son cosas conocidas como
+5:54
+5 minutos y 54 segundos
+las cruzas y las mutaciones que van a permitir que haya variaciones y que la diversidad no se pierda
+6:04
+6 minutos y 4 segundos
+vamos a ver ahora esta idea de convertir toda la teoría de darwin en un algoritmo para poder implementar una computadora
+6:14
+6 minutos y 14 segundos
+al principio lo que vamos a hacer es inicializar la población voy a recordarles que la población es
+6:23
+6 minutos y 23 segundos
+una población de potenciales soluciones a algún problema que nosotros queramos resolver el problema puede ser ya van a
+6:30
+6 minutos y 30 segundos
+ver vamos a ver algunos ejemplos de cualquier tipo en cualquier problema que tenga alguna solución
+6:37
+6 minutos y 37 segundos
+no conocida por supuesto pero que se sepa que tiene solución puede ser resuelto por este tipo de algoritmos la
+6:44
+6 minutos y 44 segundos
+inicialización es al azar y esto ya no le sorprenden recordarán que las redes neuronales querer a las inicializa 2 al
+6:52
+6 minutos y 52 segundos
+azar así que vamos inicializar individuos al azar o sea soluciones genéricas al azar
+7:00
+7 minutos
+luego vamos a evaluar la población y vamos a encontrar cuál es el individuo
+7:06
+7 minutos y 6 segundos
+que tiene mejor actitud qué significa esto vamos a tratar de encontrar de todos esos individuos
+7:13
+7 minutos y 13 segundos
+les recuerdo soluciones a un problema dado vamos a tratar de encontrar cuál es el que lo soluciona mejor cuál es el que
+7:21
+7 minutos y 21 segundos
+cometen menos errores suelen que tiene menor tolerancia de diferentes formas lo cual vamos a
+7:29
+7 minutos y 29 segundos
+llamar función de actitud la función de aptitud nos va a permitir medir qué tan bueno es
+7:35
+7 minutos y 35 segundos
+para el problema que queremos resolver y de ahí vamos a sacar de toda la población cuál fue el mejor entonces
+7:42
+7 minutos y 42 segundos
+vamos a entrar en un ciclo mientras mientras la mejor actitud sea menor que la actitud requerida la que hemos
+7:51
+7 minutos y 51 segundos
+y necesitamos para considerar resuelto nuestro problema vamos a seguir en este ciclo y que vamos a hacer este ciclo bueno en el caso de los algoritmos
+7:58
+7 minutos y 58 segundos
+evolutivos primero vamos a hacer la selección natural que es la selección natural es elegir cuáles van a ser los
+8:05
+8 minutos y 5 segundos
+padres de la nueva generación quienes van a ser padres de los hijos que van a componer la población en la
+8:15
+8 minutos y 15 segundos
+generación siguiente de individuos así que así vamos a encontrar los progenitores vamos a ver por supuesto
+8:22
+8 minutos y 22 segundos
+métodos algoritmos para encontrar esa selección de padres tengan en cuenta que esa selección tiene que tener dos
+8:29
+8 minutos y 29 segundos
+aspectos básicos uno tiene que favorecer a los más aptos o sea los que mejor resuelven el problema que estamos
+8:38
+8 minutos y 38 segundos
+queriendo resolver tienen que tener más probabilidad de ser elegidos como padres pero por otro lado tiene que haber una
+8:44
+8 minutos y 44 segundos
+componente de aleatoriedad o sea que tiene que haber alguna probabilidad aunque sea baja de también elegir a los
+8:53
+8 minutos y 53 segundos
+peores luego lo que vamos a hacer es la reproducción
+9:00
+9 minutos
+ahí vamos a hacer la reproducción a través de los operadores de variación entonces lo que vamos a hacer es pequeñas modificaciones del material
+9:09
+9 minutos y 9 segundos
+genético y la combinación del material genético de padres generar hijos vamos a ver por ejemplo en
+9:18
+9 minutos y 18 segundos
+el caso típico dos padres vamos a hacer una cruza y de esa cruza van a salir uno dos o más hijos depende
+9:25
+9 minutos y 25 segundos
+de cómo hagamos la cruz de esa manera los padres van a transmitir el material genético a la
+9:32
+9 minutos y 32 segundos
+nueva generación el material genético que que va a ser bueno van a ser parte de la solución al problema es parte de la solución al problema que queremos
+9:41
+9 minutos y 41 segundos
+solucionar en el fondo y lo que vamos a hacer también son pequeñas variaciones por ejemplo vamos a hacer pequeñas modificaciones como
+9:49
+9 minutos y 49 segundos
+mutaciones en ese material genético que van a hacer que los hijos no salgan tal cual la cruza de los padres
+9:57
+9 minutos y 57 segundos
+finalmente volvemos a evaluar la actitud de todos los individuos de la población vemos para todos los individuos que
+10:04
+10 minutos y 4 segundos
+también resuelven ahora estos individuos nuevos no los que generamos como hijos que también resuelven ese problema que
+10:11
+10 minutos y 11 segundos
+queríamos resolver elegimos el mejor y evaluamos el ciclo mientras nuevamente
+10:18
+10 minutos y 18 segundos
+y así seguimos hasta satisfacer que la mejor actitud sea al menos igual o
+10:25
+10 minutos y 25 segundos
+superior a la actitud requerida de esta manera hemos convertido la idea de darwin en toda la teoría de la evolución
+10:32
+10 minutos y 32 segundos
+en algo muy a alto nivel pero en un algoritmo que ya vamos a ir viendo parte por parte como
+10:40
+10 minutos y 40 segundos
+implementar vamos a repasar un poquito los elementos de este algoritmo evolutivo
+10:48
+10 minutos y 48 segundos
+dijimos que necesitamos representar los individuos que es representar a los individuos representarlos / es poder
+10:57
+10 minutos y 57 segundos
+codificar de alguna forma las soluciones a nuestro problema les recuerdo cada individuo es una solución al problema en
+11:05
+11 minutos y 5 segundos
+el problema que queremos resolver entonces tenemos que poder codificar de alguna forma las soluciones a nuestro problema en este caso particular con los
+11:14
+11 minutos y 14 segundos
+algoritmos genéticos lo vamos a hacer en forma binaria a través de cromosomas y genes eso lo vamos a ver en detalle
+11:24
+11 minutos y 24 segundos
+otra de los aspectos claves de los elementos que tenemos que poder definir para resolver problemas con algoritmos evolutivos es la función de actitud
+11:33
+11 minutos y 33 segundos
+parece obvio pero a veces se complica esto es cómo medir qué tan bueno es un
+11:40
+11 minutos y 40 segundos
+individuo para resolver el problema que estoy queriendo resolver y eso lo tenemos que poder poner un número y
+11:48
+11 minutos y 48 segundos
+aquellos que lo resuelvan mejor ese número tiene que ser más alto y aquellos que no sean tan buenos a resolver el problema tiene que tener un número más
+11:55
+11 minutos y 55 segundos
+bajo o sea que hay que medirlo y hay que medirlo bien lo otro que tenemos que definir es un mecanismo de selección recuerdan la
+12:04
+12 minutos y 4 segundos
+selección natural tenemos que poder decir cómo se eligen los padres que van a ser los progenitores de la nueva
+12:12
+12 minutos y 12 segundos
+generación y ahí teníamos que como les decía tener en cuenta la actitud o sea aquellos que tengan mayor actitud tiene
+12:19
+12 minutos y 19 segundos
+que tener mayor probabilidad pero también tenemos que tener en cuenta esta componente aleatoria en la cual no es simplemente que tomó los 10 padres con
+12:28
+12 minutos y 28 segundos
+mayor actitud y eso son los progenitores de la nueva generación sino que tenemos que dar la posibilidad de que salga cualquiera para emular la naturaleza y
+12:37
+12 minutos y 37 segundos
+para conservar estas características de la variabilidad y la diversidad en las soluciones
+12:44
+12 minutos y 44 segundos
+otra de las cosas que tenemos que definir es cómo
+12:51
+12 minutos y 51 segundos
+mezclar cómo cruzar el material genético y cómo hacer pequeñas radiaciones en ese material genético
+12:58
+12 minutos y 58 segundos
+y finalmente lo que tenemos que definir es cómo vamos a realizar la reproducción
+13:04
+13 minutos y 4 segundos
+hay distintas alternativas hay por ejemplo un reemplazo generacional completo en el cual en las distintas
+13:14
+13 minutos y 14 segundos
+generaciones nunca conviven los padres con los hijos pero un modelo un poco más natural sería que algunos padres puedan pertenecer a la generación siguiente y
+13:22
+13 minutos y 22 segundos
+tengan algún solapamiento con los hijos que van surgiendo generación a generación entonces también cómo hacer
+13:31
+13 minutos y 31 segundos
+esa reproducción y cómo generar la nueva población tiene varias alternativas que vamos a analizar a continuación
+Sincronizar con el tiempo del video

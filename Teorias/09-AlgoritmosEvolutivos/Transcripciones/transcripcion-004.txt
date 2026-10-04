@@ -1,0 +1,242 @@
+bueno volviendo a la idea de inteligencia colectiva recién vimos algo de autómatas y autómatas celulares de
+0:12
+12 segundos
+agentes y sistemas multiagentes como base como conceptos relacionados para tenerlos presentes y ahora vamos a
+0:20
+20 segundos
+volver a algunos conceptos básicos sobre la inteligencia colectiva para luego sí comenzar con los primeros algoritmos de
+0:28
+28 segundos
+inteligencia colectiva en la próxima parte acá tenemos varios temas o varias
+0:36
+36 segundos
+temáticas o varios algoritmos varios paradigmas lo van a encontrar con muy diferentes nombres
+0:44
+44 segundos
+que se relacionan con la inteligencia colectiva tenemos la computación evolutiva
+0:52
+52 segundos
+que es la que nos habla de los algoritmos genéticos la programación genética los algoritmos
+1:01
+1 minuto y 1 segundo
+evolutivos en general o estrategias de evolución esos están basados en la teoría de darwin
+1:09
+1 minuto y 9 segundos
+con modificaciones por supuesto y es lo que vamos a ver en la próxima parte tenemos otros términos
+1:17
+1 minuto y 17 segundos
+acá hay términos que se incluyen mutuamente van a encontrar inteligencia de colonias también es otro término bastante
+1:25
+1 minuto y 25 segundos
+utilizado en la bibliografía debo remarcar que todo esto de la inteligencia colectiva es una área o una
+1:32
+1 minuto y 32 segundos
+disciplina que no tiene mucho más que diez años las primeras investigaciones en estos temas surgieron
+1:40
+1 minuto y 40 segundos
+a fines de los 90 y tuvo mayor auge a mediados de los 2000 así que van a
+1:49
+1 minuto y 49 segundos
+encontrar más frecuentemente a lo mejor que con redes neuronales o sistemas borrosos una bibliografía un poco más
+1:57
+1 minuto y 57 segundos
+dispersa en cuanto a la terminología así que van a encontrar también este término inteligencia de colonias de colonias no
+2:05
+2 minutos y 5 segundos
+pasa que algunos algoritmos de inteligencia colectiva no son de colonias entonces bueno es una
+2:13
+2 minutos y 13 segundos
+clasificación que incluye algunos sí y otras no otro es la inteligencia de enjambres porque muchos de estos métodos surgieron
+2:22
+2 minutos y 22 segundos
+inspirados en enjambres de insectos en este caso de hombres de abejas por ejemplo
+2:30
+2 minutos y 30 segundos
+en cambio cuando se habla de algoritmos de colonias de hormigas muchas veces se habla de inteligencia de colonias
+2:37
+2 minutos y 37 segundos
+otra denominación que suele encontrarse es la de inteligencia colaborativa en
+2:44
+2 minutos y 44 segundos
+donde hay muchos individuos que tienen que colaborar entre sí para llevar a cabo una tarea más compleja
+2:52
+2 minutos y 52 segundos
+y por último pero no con intenciones de agotar toda la terminología muchas veces se habla de inteligencia social una
+2:59
+2 minutos y 59 segundos
+inteligencia que se construye a partir de individuos con capacidad social no a
+3:05
+3 minutos y 5 segundos
+partir de cada uno por separado algunas características fundamentales de todos los algoritmos o los modelos de
+3:14
+3 minutos y 14 segundos
+inteligencia colectiva las vamos a listar y vamos a repasar las brevemente
+3:21
+3 minutos y 21 segundos
+la primera es la autoorganización la autoorganización es lo que nosotros ya
+3:28
+3 minutos y 28 segundos
+vimos en los mapas auto organizativos de ahí su nombre se acuerdan que era esa capacidad que tenía la estructura de
+3:37
+3 minutos y 37 segundos
+neuronas de armar un mapa una topología que tenía que ver con la estructura de
+3:44
+3 minutos y 44 segundos
+los datos en un espacio n dimensional pero esa topología no la definimos nosotros antemano sino que al ver muchos
+3:53
+3 minutos y 53 segundos
+ejemplos muchos datos muchos patrones solo el mapa autonomiza tivo se iba ordenando las neuronas iban quedando
+4:01
+4 minutos y 1 segundo
+unas más cercas de otras de acuerdo a la estructura que tenían los datos así que esa capacidad era
+4:09
+4 minutos y 9 segundos
+realmente de auto-organización solo iba tomando y esa es una de las capacidades que tienen todos los algoritmos de
+4:18
+4 minutos y 18 segundos
+inteligencia colectiva que vamos a empezar a ver más adelante otra de las capacidades no necesariamente común a
+4:26
+4 minutos y 26 segundos
+todos en este caso es la de esta energía está como lo define acá es la
+4:35
+4 minutos y 35 segundos
+colaboración a través del medio físico y el ejemplo más típico para esto es el caso de las colonias de hormigas como
+4:44
+4 minutos y 44 segundos
+vamos a ver las hormigas no se comunican directamente o al menos no sólo directamente sino que dejan un rastro de
+4:51
+4 minutos y 51 segundos
+feromonas que otras hormigas pueden detectar y de esa manera empiezan a transitar
+4:58
+4 minutos y 58 segundos
+un mismo camino logran llevar todo el alimento a su hormiguero esa estrategia de dejar un
+5:07
+5 minutos y 7 segundos
+rastro en la tierra es lo que acá se denomina como colaboración a través del
+5:15
+5 minutos y 15 segundos
+medio físico o sea que dejan algo en el medio físico que pueden percibir las otras y en función de esa marca de esa
+5:23
+5 minutos y 23 segundos
+señal que van dejando es que organizan su colaboración eso se conoce como este otra de las características es la del
+5:32
+5 minutos y 32 segundos
+comportamiento emergente de estos hablamos vimos varios ejemplos hablamos con
+5:40
+5 minutos y 40 segundos
+cuando hablamos de autómatas y también lo hablamos cuando hablamos de mapas auto organizativos en redes el comportamiento emergente es aquel
+5:49
+5 minutos y 49 segundos
+comportamiento que uno no define de antemano pero que surge a partir de nerja a partir de la colaboración de
+5:57
+5 minutos y 57 segundos
+muchos individuos sencillos van a ver que en el juego de la vida de conway también hay comportamientos emergentes
+6:04
+6 minutos y 4 segundos
+uno programa o define ya sea cuando lo hace con un el lenguaje de programación o la
+6:12
+6 minutos y 12 segundos
+naturaleza en una hormiga o en un pájaro ciertas características y ciertas
+6:19
+6 minutos y 19 segundos
+funciones muy elementales pero luego cuando empiezan a interactuar resulta que emergen comportamientos
+6:28
+6 minutos y 28 segundos
+mucho más complejos lo mismo pasa con las células del corazón cada célula del corazón tiene un comportamiento muy elemental que es transmitir un impulso a
+6:37
+6 minutos y 37 segundos
+la que sigue de manera que el corazón se contraiga pero cuando todas las células actúan a la vez surge un comportamiento emergente mucho más complejo que el que
+6:46
+6 minutos y 46 segundos
+uno podía prever a partir del comportamiento sencillo de cada individuo ese comportamiento emergente
+6:52
+6 minutos y 52 segundos
+es crucial para esto de la inteligencia colectiva y para distribuida la inteligencia no está
+7:01
+7 minutos y 1 segundo
+concentrada en un individuo no hay una hormiga que dirige a todas las hormigas le dice a dónde tienen que ir
+7:09
+7 minutos y 9 segundos
+no hay una hormiga super inteligente o un cerebro que las maneja sino que hay un montón de hormigas siguen reglas muy
+7:16
+7 minutos y 16 segundos
+sencillas pero la inteligencia de la construcción del hormiguero de la recolección de alimentos y todo eso en inteligencia distribuida está
+7:24
+7 minutos y 24 segundos
+distribuida en un montón de individuos sencillos eso entre otras tantas ventajas le da muchas robustez al
+7:31
+7 minutos y 31 segundos
+sistema porque porque al igual que internet si hay un si se cae un nodo hay vías redundantes por donde puede seguir
+7:39
+7 minutos y 39 segundos
+transmitiendo se las señales en este caso también si se muere una hormiga el hormiguero no se viene abajo
+7:46
+7 minutos y 46 segundos
+en caso de que hubiera una hormiga super inteligente que las maneja todas y se muere esa hormiga moriría todo él
+7:53
+7 minutos y 53 segundos
+hormiguero le podría dar montones de ejemplos más o sea que esto le da robustez a el sistema quiere decir que
+8:00
+8 minutos
+ante fallas ante roturas en el sistema puede seguir funcionando y cumpliendo su función
+8:06
+8 minutos y 6 segundos
+otra de las características es la fuerte interacción local eso ya lo estuvimos viendo en el caso de los autómatas también las hormigas también en los
+8:15
+8 minutos y 15 segundos
+mapas auto organizativos con el tema de las vecindades hay una fuerte interacción entre los que están cerca en algún sentido cerca puede ser
+8:23
+8 minutos y 23 segundos
+físicamente o lo que sea pero a medida que hay distancia la interacción es mucho menor y hay una
+8:33
+8 minutos y 33 segundos
+organización generalmente a lo largo d el tiempo que va evolucionando o que va
+8:39
+8 minutos y 39 segundos
+avanzando esa colonia es esa población se empieza a generar una estructura
+8:46
+8 minutos y 46 segundos
+social donde hay roles jerarquías y demás definiciones uno de los conceptos
+8:53
+8 minutos y 53 segundos
+que suele estar presente y que es importante en todos estos algoritmos es la colaboración o la competencia en
+9:03
+9 minutos y 3 segundos
+donde siempre hay un compromiso entre colaborar con los demás para un fin común y para obtener en definitiva un
+9:10
+9 minutos y 10 segundos
+beneficio de forma indirecta al lograr toda la colonia por ejemplo el objetivo de conseguir el alimento o cortarse por
+9:17
+9 minutos y 17 segundos
+su lado y competir o sea lograr lo más que puede cada uno individualmente ninguno de los dos extremos es bueno
+9:25
+9 minutos y 25 segundos
+siempre hay un balance y ese compromiso también es importante en todos estos algoritmos
+9:32
+9 minutos y 32 segundos
+otro de los elementos importantes y que ya venimos en toda la asignatura incorporando
+9:39
+9 minutos y 39 segundos
+mucho es el de las componentes estocástico se acuerdan que las redes neuronales comenzaban con valores al
+9:45
+9 minutos y 45 segundos
+azar siempre había algún elemento al azar van a ver que en todo lo que es inteligencia colectiva las componentes
+9:52
+9 minutos y 52 segundos
+estocásticos van a aparecer mucho y van a ser una fortaleza y una clave muy importante para la convergencia de los
+10:00
+10 minutos
+algoritmos y el otro elemento clave que en particular nos va a guiar bastante
+10:07
+10 minutos y 7 segundos
+sobre cuáles algoritmos elegimos para desarrollar la asignatura es la vía de inspiración vamos a trabajar con casos
+10:15
+10 minutos y 15 segundos
+así como en las redes neuronales inspirados biológicamente o sea que vamos a tomar la naturaleza vamos a hacer una simulación y luego con eso
+10:23
+10 minutos y 23 segundos
+vamos a resolver problemas de la ingeniería de la tecnología de la ciencia que a lo mejor nada tiene que ver con los que resolvía
+10:31
+10 minutos y 31 segundos
+originalmente
+Sincronizar con el tiempo del video

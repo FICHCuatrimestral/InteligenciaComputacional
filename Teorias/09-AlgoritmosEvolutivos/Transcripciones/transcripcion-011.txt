@@ -1,0 +1,149 @@
+siguiendo con las etapas que necesitamos resolver para solucionar un problema es justamente
+0:13
+13 segundos
+mediante algoritmos evolutivos vamos a ver la siguiente etapa que es cómo armar como construir una función de actitud o
+0:22
+22 segundos
+sea una función que me da que también un individuo solución a un determinado problema recuerden que esta función de
+0:31
+31 segundos
+actitud nos servía después para elegir a los padres de la próxima generación le habíamos dicho que le íbamos a dar mayor
+0:38
+38 segundos
+probabilidad de ser elegidos aquellos padres que tuvieran mayor aptitud o sea aquellos que mejor resuelvan el problema
+0:46
+46 segundos
+porque de esa manera iban a hacer que se herede en sus genes y con el tiempo toda la población iba a ir mejorando hacia la
+0:54
+54 segundos
+solución del problema que estamos buscando así que la función de actitud es muy importante y está muy relacionada también al igual que la representación
+1:02
+1 minuto y 2 segundos
+de los individuos está muy relacionada con el problema particular que queramos resolver sin embargo hay algunas características
+1:10
+1 minuto y 10 segundos
+generales que se le piden a toda función actitud una característica general es la monótono cidad lo que queremos decir con
+1:18
+1 minuto y 18 segundos
+esto es que esta es la función de latitud o fitness
+1:24
+1 minuto y 24 segundos
+y digamos que acá con este eje aumenta
+1:30
+1 minuto y 30 segundos
+la bondad de el individuo para resolver un determinado problema es decir cuán bueno es cuán exitoso es para resolver
+1:40
+1 minuto y 40 segundos
+proyectos yo podría decir bueno la función de actitud lineal a medida que aumenta la bondad del individuo aumenta
+1:48
+1 minuto y 48 segundos
+la actitud y listo pero bueno también yo podría decir no yo quiero que al principio aumente poco pero los individuos con
+1:57
+1 minuto y 57 segundos
+mucha actitud se veamos muy favorecido en relación a los otros lo que no puedo decir lo que no puedo decir es que haga
+2:07
+2 minutos y 7 segundos
+algo así que un individuo que es mejor
+2:14
+2 minutos y 14 segundos
+en este punto según la función de actitud en realidad no es mejor en la realidad
+2:21
+2 minutos y 21 segundos
+este individuo según la función de actitud es peor que éste y sin embargo si nosotros miramos acá en este eje que
+2:30
+2 minutos y 30 segundos
+es que también resuelve el problema éste es peor que éste así que tiene que ser mono tónica mente creciente siempre
+2:38
+2 minutos y 38 segundos
+tiene que ir para arriba puede tener esta forma puede tener distintas formas pero siempre tiene que ir para arriba otra de las cosas que necesitamos pedirle la función de actitud es la
+2:47
+2 minutos y 47 segundos
+precisión nosotros necesitamos poder calificar con precisión en los distintos individuos por ejemplo una
+2:56
+2 minutos y 56 segundos
+funciona de tu que me ofrezca poca precisión me podría decir bueno hay dos tipos de individuos los malos y lo bueno
+3:07
+3 minutos y 7 segundos
+tiene dos valores tiene valor 1 y el valor 5 así que a cualquier individuo que esté por esta zona a todo le pone uno y a
+3:15
+3 minutos y 15 segundos
+cualquiera que esté por esta zona todo le pone 5 s tiene poca precisión tenemos que buscar la función exactitud que tengan gran anualidad que puedan
+3:22
+3 minutos y 22 segundos
+diferenciar bien individuos que sean apenas parecidos y que los distingan con un número diferente otra
+3:30
+3 minutos y 30 segundos
+característica interesante digamos que esta no sería una característica indispensable puede estar en algunos casos y en el caso que este es mejor es
+3:40
+3 minutos y 40 segundos
+que la suavidad sea regulable que yo pueda cambiar graduar con algún parámetro de
+3:48
+3 minutos y 48 segundos
+la función que tan escarpada es la forma podría ser que yo tenga esta forma o que
+3:57
+3 minutos y 57 segundos
+tenga una forma con cambios más suaves y sería bueno con un parámetro poder cambiar esa suavidad acá estoy dibujando
+4:04
+4 minutos y 4 segundos
+algo que ustedes ya conocen que es una función sino idea una función sin movilidad ustedes saben que la suavidad del salto la puedo regular con el
+4:13
+4 minutos y 13 segundos
+parámetro la signo venía convirtiéndola en la función signo o en una función completamente lineal ese sería un
+4:22
+4 minutos y 22 segundos
+ejemplo de una función con suavidad regulable por último una cosa que es interesante es que la misma función de
+4:29
+4 minutos y 29 segundos
+actitud penalice de alguna forma la complejidad de la solución es decir queremos que ante una solución compleja
+4:37
+4 minutos y 37 segundos
+y una solución simple pero ambas soluciones válidas para el problema que estamos queriendo resolver el algoritmo aleja la simple no elija la
+4:47
+4 minutos y 47 segundos
+compleja no elija la que tiene muchísimos parámetros o por ejemplo si tuviéramos una red neuronal aunque no elija la red neuronal que
+4:54
+4 minutos y 54 segundos
+tiene 10.000 neuronas a la capa oculta si hay otra con 100 resuelve el problema igual así que si en la función actitud
+5:03
+5 minutos y 3 segundos
+finalizamos la complejidad estaríamos ayudando a que el algoritmo termine eligiendo la solución más simple que
+5:11
+5 minutos y 11 segundos
+resuelve el problema algunos ejemplos de funciones de actitud
+5:18
+5 minutos y 18 segundos
+son los siguientes uno es la idea de promediar errores uno puede tener habíamos dicho en el caso de
+5:27
+5 minutos y 27 segundos
+la red neuronal un montón de rostros que te hay que reconocer y uno bueno puede contar en cuartos se equivoca
+5:34
+5 minutos y 34 segundos
+o al revés puede contar en cuanto a ciertas y de esa manera tener una idea de qué tan bueno es ese individuo dentro de la población el que acierta más es
+5:42
+5 minutos y 42 segundos
+mejor el que acierta menos es peor es una función dentro de esos promedios de errores puedo hacer cuadrados puedo hacer la delegación de
+5:52
+5 minutos y 52 segundos
+la media absoluta hay muchísimas medidas que yo puedo utilizar como función de actitud otras son medidas más estadísticas de
+6:00
+6 minutos
+cómo funciona ese individuo puedo usar la varianza puedo hacer una validación cruzada y sacar
+6:08
+6 minutos y 8 segundos
+el porcentaje de acierto el porcentaje de error el porcentaje de aproximación otras medidas un poco más complejas que
+6:16
+6 minutos y 16 segundos
+suelen utilizarse son las medidas de información que tratan de medir la cantidad de información que tiene esas soluciones o qué aportan a la solución
+6:24
+6 minutos y 24 segundos
+del problema en este caso también se suelen utilizar para y medir la complejidad de la solución
+6:31
+6 minutos y 31 segundos
+suelen estar dentro de las funciones de aptitud ayudando a medir qué tan compleja una solución y de esa manera penalizar y bueno hay muchas otras que
+6:41
+6 minutos y 41 segundos
+como les decía yo son muy dependientes del problema que quiero solucionar digamos que en definitiva es el problema
+6:49
+6 minutos y 49 segundos
+y la aplicación práctica a la que me define qué es lo bueno y qué es lo malo como función de actitud
+Sincronizar con el tiempo del video

@@ -1,0 +1,296 @@
+a ver ahora algunos ejemplos de función de actitud vamos a ver cómo podemos hacer para los casos que vimos antes
+0:14
+14 segundos
+cuando veíamos la representación de los individuos vamos a tomar esos mismos ejemplos y vamos a tratar de ver cómo podríamos diseñar aunque sea una forma
+0:23
+23 segundos
+sencilla de diseñar una función de actitud para que ustedes tengan una idea más práctica de lo que estamos hablando con todas las características anteriores
+0:32
+32 segundos
+supongamos que tenemos se acuerdan el caso de una área que hemos dicho podría ser una tila de
+0:40
+40 segundos
+la que hay que sacar figuras o bueno hay montones de ejemplos y en ese área había que ubicar estas
+0:48
+48 segundos
+figuras de la manera de aprovechar lo mejor posible el espacio y sacar correctamente las figuras eso lo primero
+0:57
+57 segundos
+que nosotros podríamos pensar es que si ubicamos muy bien las figuras yo acá estoy dibujando cualquier figura
+1:04
+1 minuto y 4 segundos
+lo que tendríamos que minimizar es la cantidad de tila desperdiciada
+1:12
+1 minuto y 12 segundos
+o sea que podríamos tomar como un indicador de que también lo estamos haciendo todo el área que queda afuera
+1:18
+1 minuto y 18 segundos
+es todo este área que estoy pintando y que queda fuera de las figuras sería
+1:26
+1 minuto y 26 segundos
+la tela desperdiciada o sea todo lo que no se está utilizando y que van a quedar
+1:33
+1 minuto y 33 segundos
+como recortes que por lo tanto vamos a tener que tirar esa tila desperdiciada
+1:42
+1 minuto y 42 segundos
+hay que minimizarla cuanto menos como llamarle área de desperdicio cuanto
+1:50
+1 minuto y 50 segundos
+menos área de desperdicio haya mejor va a ser el individuo
+1:58
+1 minuto y 58 segundos
+así que podríamos empezar a pensar en una función de aptitud que tenga ese
+2:03
+2 minutos y 3 segundos
+área de desperdicio ese área desperdicio dijimos que el inverso o sea que
+2:10
+2 minutos y 10 segundos
+podríamos poner ese área desperdició restando alguien podrá decir bueno podríamos poner uno sobre o cualquier
+2:19
+2 minutos y 19 segundos
+función que cuando el área desperdiciada aumente disminuye a la función o viceversa
+2:26
+2 minutos y 26 segundos
+así que en el principio podemos hacer una simple relación lineal y poner los restando después podríamos tener también
+2:33
+2 minutos y 33 segundos
+el área ocupada que sería el área que ahora estoy rayando en horizontal
+2:40
+2 minutos y 40 segundos
+el área ocupada sería más área ocupada podría ser otro indicador pero también podría ser que tuviéramos
+2:49
+2 minutos y 49 segundos
+por ejemplo una una figura hubiera quedado solapada en el caso de que queden figuras
+2:55
+2 minutos y 55 segundos
+solapadas que no es válido no tendríamos que considerar esas áreas que estoy
+3:02
+3 minutos y 2 segundos
+ahora rayando en forma vertical también negativa - el área solapada
+3:10
+3 minutos y 10 segundos
+porque sería algo que está en contra de la actitud cuanto más solapada haya peor es cierto y otro área que se lo puede
+3:18
+3 minutos y 18 segundos
+ocurrir también es este área que está acá es el área que queda por fuera de la tela y evidentemente a ese es un error y
+3:27
+3 minutos y 27 segundos
+también tenemos que de alguna manera penalizado así que tendríamos que decir - también el área que queda afuera bueno
+3:36
+3 minutos y 36 segundos
+de esa manera si bien estamos simplificando mucho el problema estamos construyendo una función que mide mejor
+3:44
+3 minutos y 44 segundos
+o peor los individuos las soluciones de la población fíjense que esta función de aptitud o de
+3:53
+3 minutos y 53 segundos
+fitness es muy elemental simplemente estamos sumando las cosas sin darle ninguna ponderación como yo le decía
+4:00
+4 minutos
+antes podríamos poner algún tipo de función no lineal podríamos poner unos sobre podríamos usar un logaritmo algunas que queremos que se enfaticen
+4:09
+4 minutos y 9 segundos
+más podríamos elevarlo al cuadrado también podríamos poner adelante de
+4:16
+4 minutos y 16 segundos
+cada uno de los términos algunos coeficientes de manera de darle más peso a algunos términos que otros podemos decir es mucho más importante para mí
+4:24
+4 minutos y 24 segundos
+que por ejemplo no quede ninguna figura afuera
+4:32
+4 minutos y 32 segundos
+a que se desperdicie un poco más un poco menos de superficie de tela entonces podríamos decir que acá podemos poner un
+4:40
+4 minutos y 40 segundos
+coeficiente adelante del área que quedaba por fuera un coeficiente de 1000 entonces quiere decir que eso va a
+4:49
+4 minutos y 49 segundos
+afectar mucho a los individuos que dejen algo por afuera bueno de esa manera con un montón de criterios prácticos y algunas otras cosas que también vamos a
+4:58
+4 minutos y 58 segundos
+analizar más adelante como por ejemplo penalizar a los individuos que cometen errores podemos ir construyendo esta
+5:05
+5 minutos y 5 segundos
+función de aptitud o fitness vamos a ver otro ejemplo se acuerdan que habíamos
+5:12
+5 minutos y 12 segundos
+hablado de la red neuronal de entre una red neuronal la idea era que tenemos que encontrar los pesos e incluso la arquitectura también la cantidad de
+5:21
+5 minutos y 21 segundos
+neuronas y la cantidad de capas de manera que la red cometa un error de clasificación mínimo fíjense
+5:30
+5 minutos y 30 segundos
+que acá casi que con la definición del problema ya estamos diciendo directamente cuál es una buena medida de
+5:38
+5 minutos y 38 segundos
+que también o qué tan mal funciona cada individuo es decir que nos sirve de casi directamente para
+5:45
+5 minutos y 45 segundos
+crear la función de actitud podríamos por ejemplo decir que bueno tenemos la red neuronal y supongamos que
+5:52
+5 minutos y 52 segundos
+acá entran imágenes de un rostro que queremos clasificar cada una de estas entradas sería un píxel de
+6:01
+6 minutos y 1 segundo
+la imagen en la imagen la tenemos acá tiene la cuadrícula que serían los píxeles y estamos poniendo cada píxel en
+6:10
+6 minutos y 10 segundos
+una de las entradas la red en un enfoque muy sencillo y decimos que supongamos si había cuatro personas que reconocer la
+6:19
+6 minutos y 19 segundos
+red va a tener cuatro salidas que van a dar uno o menos uno dependiendo si acertó no acertó entonces nosotros lo
+6:27
+6 minutos y 27 segundos
+que podríamos hacer es pasarle muchas imágenes una cantidad según lo que tengamos en la base de datos de muchas
+6:35
+6 minutos y 35 segundos
+imágenes y para cada una de contar acertó o no acertó la red si la red acierto contamos un acierto y si la red
+6:45
+6 minutos y 45 segundos
+se equivocó decimos nada entonces después podemos sumar la cantidad de
+6:53
+6 minutos y 53 segundos
+aciertos y decimos bueno de un total de 200 imágenes hacer todo 100 es decir que
+7:03
+7 minutos y 3 segundos
+tenemos una tasa de acierto del 50 por ciento y bueno en principio podríamos decir que esa directamente la función de
+7:11
+7 minutos y 11 segundos
+actitud es la taza de imágenes correctamente clasificadas
+7:20
+7 minutos y 20 segundos
+y listo también podríamos decir que es la inversa de el error la cantidad de errores que
+7:28
+7 minutos y 28 segundos
+cometan de contar los aciertos contamos los errores o el opuesto del error o bueno podemos hacer funciones que
+7:35
+7 minutos y 35 segundos
+combinen distintas propiedades el otro ejemplo que habíamos visto se acuerdan era el del robot de el de robot
+7:43
+7 minutos y 43 segundos
+teníamos una habitación que tenía una forma arbitraria que podría definir el usuario y el robot lo largamos en
+7:51
+7 minutos y 51 segundos
+cualquier punto de la habitación y lo que tenía que seguir era recorrer las paredes es sin chocarse y eventualmente si había un obstáculo esquiva algo no
+7:59
+7 minutos y 59 segundos
+entonces una forma fácil con la que podemos hacer una función de fin es exponer definir en cerca de las paredes
+8:06
+8 minutos y 6 segundos
+del robot un conjunto de objetivos por ejemplo ponemos un objetivo cada medio metro
+8:15
+8 minutos y 15 segundos
+y luego contar cuántos de esos objetivos alcanzó entonces la función define la podemos definir simplemente como objetivos
+8:25
+8 minutos y 25 segundos
+alcanzados el porcentaje de objetivos alcanzados si las queremos hacer relativa al total
+8:32
+8 minutos y 32 segundos
+y también podríamos decir bueno pero de poco me sirve que el robot haga esto vaya a dar un objetivo y vuelva a dar otro objetivo y vuelva a dar otro
+8:40
+8 minutos y 40 segundos
+objetivo y vuelva sino que como habíamos visto antes el problema del viajero
+8:47
+8 minutos y 47 segundos
+también me interesaría que recorre la menor distancia posible entonces podríamos decir bueno cuanto más
+8:55
+8 minutos y 55 segundos
+distancia recorra peor es el individuo entonces podríamos restarle
+9:02
+9 minutos y 2 segundos
+la distancia y decir bueno la cantidad de objetivos alcanzados menos la distancia recorrida es por supuesto esto
+9:10
+9 minutos y 10 segundos
+después puede tener asociado algún coeficiente alguna alfa algún beta que le dé más peso a una cosa o la otra
+9:20
+9 minutos y 20 segundos
+ahí tenemos otro caso de una función lineal muy sencilla con la cual resolvemos el problema de medir qué tan
+9:27
+9 minutos y 27 segundos
+bueno es cada individuo vamos a ver el otro caso se acuerdan que habíamos dicho que teníamos que armar un
+9:35
+9 minutos y 35 segundos
+circuito un circuito electrónico que cumpliera con determinadas características como ven siempre la función de altitud es bastante más
+9:43
+9 minutos y 43 segundos
+intuitiva bastante más fácil de definir que lo que habíamos visto que era cómo representar en un cromosoma a
+9:52
+9 minutos y 52 segundos
+los individuos eso requería un poquito más de análisis no era tan directo necesitaba esa codificación en binario
+10:00
+10 minutos
+necesitábamos imaginarnos cómo era la solución en caso del circuito de filtro este multi banda casi siempre como en
+10:09
+10 minutos y 9 segundos
+los casos anteriores la misma definición del problema me dice cuál es el objetivo y casi directamente tengo cómo medirlo
+10:17
+10 minutos y 17 segundos
+habíamos dicho que había un circuito que determinadas frecuencias las tenía que dejar pasar y de otras frecuencias no
+10:26
+10 minutos y 26 segundos
+las tenía que dejar pasar esta será la respuesta de ese circuito o de ese filtro o sistema entonces lo que
+10:34
+10 minutos y 34 segundos
+nosotros podríamos hacer es decir bueno si hay un individuo que tiene esta salida en el circuito de esa salida
+10:42
+10 minutos y 42 segundos
+podemos medir error podemos decir bueno a ver toda este área que está acá
+10:49
+10 minutos y 49 segundos
+que estoy rayando es el error podemos medir el error absoluto el error cuadrática y bueno de esa manera cuando
+10:59
+10 minutos y 59 segundos
+el individuo se acerque más a la forma que tiene que dar va a ser menor el error y por lo tanto podemos definir
+11:06
+11 minutos y 6 segundos
+alguna función de actitud basada en el error que podrá ser por ejemplo 1 sobre 1 más el error cuanto más grande es el
+11:16
+11 minutos y 16 segundos
+error más chica va a ser la función latitud y cuando el error tiende a cero esa
+11:23
+11 minutos y 23 segundos
+actitud va a valer 1 con lo cual es una manera fíjense que acá en lugar de usar la relación lineal que habíamos usado
+11:30
+11 minutos y 30 segundos
+antes elegir utilizar una función no lineal pero bueno básicamente uno puede dirigiendo distinto tipo de funciones de
+11:39
+11 minutos y 39 segundos
+acuerdo a los operadores que utilice luego en el algoritmo por último en el caso del problema del viajero recuerdan que teníamos muchas
+11:48
+11 minutos y 48 segundos
+ciudades y evidentemente si el viajero hacía esto para recorrer las ciudades no iba a ser tan óptimo al menos en cuanto
+11:57
+11 minutos y 57 segundos
+a la distancia como si hiciera esto otro por lo tanto la distancia total
+12:03
+12 minutos y 3 segundos
+recorrida sin dudas es una buena medida de que tan bueno es el individuo nuevamente acá cuanto más distancia
+12:11
+12 minutos y 11 segundos
+menor fitness pero también puede haber otros costos asociados yo les comentaba que por ejemplo visitar esta ciudad en
+12:19
+12 minutos y 19 segundos
+una determinada semana en la que hay descuentos en hoteles por ejemplo podría ser de que a pesar de que yo para visitar esa ciudad tenga que recorrer
+12:27
+12 minutos y 27 segundos
+una distancia más larga y salirme del camino más corto el costo total del viaje se viera suficientemente reducido
+12:37
+12 minutos y 37 segundos
+por lo que me ahorraba en hoteles así que puede haber una función de costo bastante más compleja en la cual yo podría decir que tengo una función de
+12:45
+12 minutos y 45 segundos
+fitness en la cual tengo costos asociados a la distancia y acá pongo alfa por la distancia evidentemente la nafta se supone que va
+12:54
+12 minutos y 54 segundos
+a seguir valiendo lo mismo por lo tanto es proporcional a la distancia recorrida y un costo asociado a la distancia pero
+13:00
+13 minutos
+puedo tener otros costos costo como costos de hotelería u otros gastos
+13:08
+13 minutos y 8 segundos
+en general que tenga el viajero de acuerdo a cuando visite cada una de las ciudades si va por autopistas y vapor
+13:17
+13 minutos y 17 segundos
+una ruta común etcétera
+Sincronizar con el tiempo del video

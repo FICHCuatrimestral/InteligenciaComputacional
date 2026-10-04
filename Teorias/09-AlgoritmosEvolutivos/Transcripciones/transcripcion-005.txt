@@ -1,0 +1,122 @@
+algunos ejemplos de esta vida inspiración son las bandadas de pájaros en particular
+0:12
+12 segundos
+los algoritmos que vamos a ver están inspirados en las bandadas de pájaros las colonias de hormigas vamos a ver
+0:19
+19 segundos
+también algoritmos de colonias de hormigas se llaman exactamente así y que simulan cómo las hormigas trabajan en paneles de abejas cardúmenes de peces
+0:28
+28 segundos
+hay distintos comportamientos que ustedes lo pueden haber visto como los pájaros se organizan para volar y
+0:36
+36 segundos
+optimizar la energía que se gastan como los cardúmenes de peces se agrupan para comer para lo que sea
+0:45
+45 segundos
+los rebaños de ovejas hay muchos casos las manadas de predadores los leones como se agrupan en qué comportamientos
+0:54
+54 segundos
+que son interesantes que evidentemente a la naturaleza le han dado resultado y que en alguna medida sería bueno copiar
+1:01
+1 minuto y 1 segundo
+así como copiamos las redes neuronas para tratar de hacer que las computadoras tengan esas mismas capacidades
+1:10
+1 minuto y 10 segundos
+en general van a encontrar alguna variabilidad en la terminología depende la bibliografía en algunos casos a estos
+1:18
+1 minuto y 18 segundos
+elementos individuales se les van a llamar cuerpos de partículas objetos
+1:25
+1 minuto y 25 segundos
+elementos autómatas agentes hay muchas maneras de llamarlos fíjense acá en el
+1:33
+1 minuto y 33 segundos
+caso de que tomemos de autómatas vamos a definirlos como autómatas y vamos a armar una red de autómatas que serán autómatas celulares
+1:41
+1 minuto y 41 segundos
+podemos pensar que cada hormiga es una autómata que cada neurona es un autómata de la misma manera podemos
+1:49
+1 minuto y 49 segundos
+armar redes o estructuras o sociedades o poblaciones de agentes enmarcar todo esto en la teoría de
+1:58
+1 minuto y 58 segundos
+sistemas multiagentes y en alguna medida ya también lo hicimos y una referencia estuve haciendo con los
+2:05
+2 minutos y 5 segundos
+mapas organizativos cada una de las neuronas de una red neuronal es también un autómata tiene estados se pueden definir estados
+2:14
+2 minutos y 14 segundos
+por ejemplo es un agente neuronal se puede ver como un sistema multi agente que cumple con esas reglas
+2:23
+2 minutos y 23 segundos
+básicas entonces estos elementos individuales que luego interaccionan entre sí algunos localmente otros
+2:32
+2 minutos y 32 segundos
+globalmente también pueden ser considerados como las neuronas y de hecho vimos que los mapas autónomos activos tenían estas propiedades de
+2:40
+2 minutos y 40 segundos
+autoorganización comportamiento emergente etcétera etcétera
+2:46
+2 minutos y 46 segundos
+nosotros vamos a ver a continuación tres casos de inteligencia colectiva que son
+2:53
+2 minutos y 53 segundos
+los algoritmos evolutivos en diversas variantes vamos a ver unos algoritmos de
+3:02
+3 minutos y 2 segundos
+hormigas dos en particular hay varios más pero vamos a ver el principio elemental y dos algoritmos y vamos a ver
+3:09
+3 minutos y 9 segundos
+algoritmos de enjambre de partículas también a veces se le llama enjambre de insectos o bandada de pájaros hay
+3:17
+3 minutos y 17 segundos
+distintas denominaciones tanto en inglés como traducciones diversas también en castellano hay muchos otros que no los
+3:26
+3 minutos y 26 segundos
+vamos a ver la asignatura pero que se rigen por los mismos principios los de difusión estocástica los de
+3:34
+3 minutos y 34 segundos
+búsqueda gravitacional y los de sistemas inmunes que simulan el sistema inmunológico los algoritmos genéticos
+3:42
+3 minutos y 42 segundos
+donde hay unidades de memoria que se van transmitiendo como ideas y que también
+3:51
+3 minutos y 51 segundos
+están inspirado en la naturaleza en las redes sociales vamos a ver como les decía estos primeros tres en las clases que vienen a continuación
+4:00
+4 minutos
+por último muy brevemente algunas de las aplicaciones más comunes esto lo vamos a
+4:07
+4 minutos y 7 segundos
+ir viendo a lo largo d las próximas clases con los distintos ejemplos muchas veces se utilizan para
+4:14
+4 minutos y 14 segundos
+aproximación de funciones esto ya algo vimos cuando vimos lógica borrosa y también cuando vimos
+4:20
+4 minutos y 20 segundos
+con funciones de base radial se utilizan para entrenar para hacer que otros sistemas aprendan para entrenar
+4:28
+4 minutos y 28 segundos
+una red neuronal yo puede utilizar algunos de estos algoritmos de inteligencia colectiva para estimar para
+4:36
+4 minutos y 36 segundos
+identificar sistemas para planificar para hacer muchísimas de estas tareas
+4:43
+4 minutos y 43 segundos
+otro gran grupo de aplicaciones son las de búsqueda para buscar soluciones
+4:52
+4 minutos y 52 segundos
+esto va relacionado con los algoritmos de búsqueda clásica bueno como el bosque de
+4:59
+4 minutos y 59 segundos
+profundidad que de una amplitud acá en la alternativa es buscar mediante por ejemplo colonia de hormigas o algo evolutivos
+5:08
+5 minutos y 8 segundos
+y también se utilizan para agrupamiento no supervisado para clustering sin ir
+5:15
+5 minutos y 15 segundos
+más lejos podemos pensar que un ejemplo sería el más protagoniza tivo pero bueno vamos a ver otros ejemplos más específicos o también para clasificar
+5:23
+5 minutos y 23 segundos
+hay muchísimas más aplicaciones pero bueno al menos estos como para tener un panorama inicial
+Sincronizar con el tiempo del video

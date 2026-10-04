@@ -1,0 +1,250 @@
+en esta parte los operadores genéticos hay una importante separación la distinción entre lo que vimos antes y lo
+0:14
+14 segundos
+que vamos a ver ahora en general lo que vimos antes es muy propio o se define muy en función del problema que queramos
+0:21
+21 segundos
+resolver tanto la representación de los individuos como la definición de la función de actitud es va muy pegada al
+0:30
+30 segundos
+problema práctico que se quiere resolver una vez hechas esas dos definiciones todo lo que resta todos los operadores
+0:38
+38 segundos
+que nos quedan por definir en general son siempre lo mismo siempre son muy sencillos a veces se hacen algunos operadores especiales de acuerdo al
+0:47
+47 segundos
+problema que uno quiere resolver pero en la mayoría de los casos uno puede aplicar operadores estándar como los que vamos a ver ahora
+0:55
+55 segundos
+va a encontrar la solución del problema el primer operador que vamos a ver es el operador de selección se acuerdan que
+1:03
+1 minuto y 3 segundos
+para una etapa importante de la evolución había que elegir los padres que iban a ser progenitores de los que iban a
+1:12
+1 minuto y 12 segundos
+conformar los individuos que iban a conformar la próxima generación incluso dentro de esos padres había algunos
+1:19
+1 minuto y 19 segundos
+padres que podían quedar en la población entonces vamos a ver métodos para elegir esos padres dijimos que estos métodos
+1:27
+1 minuto y 27 segundos
+tienen que tener algunas particularidades y una de ellas una muy importante es que tienen que darle la
+1:34
+1 minuto y 34 segundos
+posibilidad de ser elegidos a cualquiera de los individuos pero todos tienen la posibilidad pero todos tienen que tener
+1:41
+1 minuto y 41 segundos
+distinta probabilidad y esa probabilidad tiene que estar en función de qué tan buenos son los individuos es decir un individuo malo tiene que eventualmente
+1:51
+1 minuto y 51 segundos
+poder ser elegido y un individuo bueno podría llegar a no ser elegido aunque
+1:57
+1 minuto y 57 segundos
+con una probabilidad muy baja el primer método que vamos a ver es el método de la ruleta el método la ruleta consiste
+2:04
+2 minutos y 4 segundos
+en como se ve acá en la gráfica una ruleta que gira y en la cual hay porciones en donde
+2:13
+2 minutos y 13 segundos
+están ubicados los individuos por ejemplo acá está el individuo uno el dos el tres cada individuo tiene una porción
+2:21
+2 minutos y 21 segundos
+de la ruleta que es proporcional a sus fines si un individuo tiene un fitness más
+2:28
+2 minutos y 28 segundos
+grande o sea que es una mejor solución tiene una porción de ruleta más grande fíjense acá el individuo 4 tiene toda
+2:35
+2 minutos y 35 segundos
+esta porción de ruleta quiere decir que si tiramos muchas veces la ruleta
+2:42
+2 minutos y 42 segundos
+es más probable que salga varias veces el individuo 4 y no por ejemplo el 3 que tiene una porción mucho menor
+2:50
+2 minutos y 50 segundos
+así que con este método en su método es muy sencillo uno puede elegir los padres para la próxima generación si por
+2:59
+2 minutos y 59 segundos
+ejemplo yo tengo que elegir dos padres para la próxima generación tiro dos veces la ruleta y donde cae en el área
+3:06
+3 minutos y 6 segundos
+que cae es el individuo que me dijo este método tiene dos inconvenientes conocidos como el mar de los mediocres y
+3:15
+3 minutos y 15 segundos
+el mar de los virtuosos vamos a hacer un ejemplo supongan que en una determinada población hay un
+3:22
+3 minutos y 22 segundos
+individuo que tiene fitness 10 y hay 990 individuos que tienen fitness
+3:31
+3 minutos y 31 segundos
+1 esos 990 individuos imagínense que me van a ocupar la mayor parte de las
+3:39
+3 minutos y 39 segundos
+ruletas y yo dibujará la ruleta y tendría una porción muy pequeña muy muy pequeña que es la del individuo que
+3:47
+3 minutos y 47 segundos
+tiene 10 y tendría muchas pero muchas más pequeñas aún
+3:56
+3 minutos y 56 segundos
+de todos los 990 individuos que tienen fitness 1 qué pasaría cuando yo tiene la
+4:05
+4 minutos y 5 segundos
+ruleta lo más probable es que caiga uno de esos 990 individuos que tienen copada la mayoría de la ruleta por lo tanto ese
+4:14
+4 minutos y 14 segundos
+individuo que era bueno y fíjense que tenía 10 de fitness o sea 10 veces más que cualquiera de los otros o sea que era mucho mejor que los demás sin
+4:23
+4 minutos y 23 segundos
+embargo la probabilidad de que salga ese individuo es que por lo tanto evolucione por lo tanto a partir de ese individuo
+4:30
+4 minutos y 30 segundos
+se generen hijos y esos hijos tengan características similares a ese individuo que era bueno y vayan mejorando la probabilidad muy baja por
+4:39
+4 minutos y 39 segundos
+lo tanto este problema que tiene la ruleta el mar de mediocres es un problema que puede estancar la convergencia es un problema serie el
+4:47
+4 minutos y 47 segundos
+otro problema muy similar en el mar de virtuosos en el otro extremo podríamos tener imagínense individuos en el cual son
+4:56
+4 minutos y 56 segundos
+todos buenos son todos buenos pero con pequeñas diferencias entre ellos podríamos tener individuos que me dan
+5:03
+5 minutos y 3 segundos
+por ejemplo que su fin es valga 50 50.1
+5:08
+5 minutos y 8 segundos
+49,9 en 50.01 49.99 y así
+5:17
+5 minutos y 17 segundos
+qué va a pasar como hay muy poca diferencia entre ellos hay individuos que son unos mejores y
+5:25
+5 minutos y 25 segundos
+otros peores pero son todos bastante buenos por igual lo que va a pasar es que al final está otra ruleta va a elegir al azar para elegir cualquiera de
+5:33
+5 minutos y 33 segundos
+esos relativamente buenos que teníamos y ese 50.1 que era un poquito más grande
+5:41
+5 minutos y 41 segundos
+que el 50.0 de a los fines prácticos no va a ser prácticamente ninguna diferencia por lo tanto este es otro caso en el
+5:50
+5 minutos y 50 segundos
+cual el método de la ruleta también falla fíjense en ambos casos que está pasando hay un problema con la función
+5:57
+5 minutos y 57 segundos
+de fitness si nosotros pudiéramos hacer un programa de la cantidad de individuos que hay para cada valor del fitness
+6:05
+6 minutos y 5 segundos
+ponemos acá un fitness el valor define y contamos cuántos individuos hay con fines unos cuantos
+6:13
+6 minutos y 13 segundos
+individuos hay confines dos cuántos individuos hay confines 345 y así con todos lo que veríamos es que tito grama
+6:20
+6 minutos y 20 segundos
+tiene una forma muy pico de sea tiene un pico en algún lugar por ejemplo acá en
+6:27
+6 minutos y 27 segundos
+el caso del mar de virtuosos tendría un pico cerca de 50 y todos los otros con 0
+6:35
+6 minutos y 35 segundos
+n porque no habría individuos con fines 1 con fines de todo con fines 3 todos estarían ubicados acá muy cerca en torno
+6:43
+6 minutos y 43 segundos
+al 50 en el otro caso en el mar de mediocres estarían todos los individuos acá en uno
+6:49
+6 minutos y 49 segundos
+habría 990 individuos en uno y habría un solo individuo que tenía 10
+6:57
+6 minutos y 57 segundos
+o sea que siempre que la distribución que da como resultado la distribución de fitness que da como resultado la función
+7:05
+7 minutos y 5 segundos
+de fitness sea muy picada este método va a fallar por lo tanto lo que tenemos que hacer es o bien cambiar
+7:13
+7 minutos y 13 segundos
+la distribución cambiar la función de fitness o re escalar el fitness de alguna manera de que la ruleta quede
+7:20
+7 minutos y 20 segundos
+definida solamente en esta zona vamos a ver otros métodos interesantes que no tienen este problema uno de ellos
+7:29
+7 minutos y 29 segundos
+es el método de ventanas el método de ventana es mucho más simple y utiliza el fitness solamente para
+7:37
+7 minutos y 37 segundos
+ordenar los individuos pero descarta el valor absoluto del fitness solo le interesa a los fines de ordenar los
+7:45
+7 minutos y 45 segundos
+individuos de nuestro menor entonces lo que hace el método de ventanas supongamos que tenemos 100 individuos es
+7:51
+7 minutos y 51 segundos
+ordenar los de mayor a menor de mayor fitness a menor fitness y en base a la lista supongamos que el que tenía mayor
+8:00
+8 minutos
+fines era el 9 después venía el 1 después venía el 53 después del 97
+8:06
+8 minutos y 6 segundos
+después el 4 el 5 y así hasta llegar al último que supongamos
+8:12
+8 minutos y 12 segundos
+que era el 91 entonces estos individuos están ordenados de mayor a menor y lo que hace
+8:20
+8 minutos y 20 segundos
+el método la ventana es primero elige una ventana grande por ejemplo que abarque a todos los individuos y salta
+8:27
+8 minutos y 27 segundos
+uno al azar o sea que tira un número al azar puede salir cualquiera supongamos que acá salió el 5
+8:35
+8 minutos y 35 segundos
+ese número al azar de habíamos dicho que había sido individuos ya que tiramos un número 31 y ciento luego elegimos una ventana
+8:42
+8 minutos y 42 segundos
+más chica supongamos hasta 80 no más y tiramos un número entre 1 y 80 ahora quiere decir que estos últimos los
+8:50
+8 minutos y 50 segundos
+peores ya no tienen posibilidad de ser elegidos fíjense que de esta manera le estamos dando menos probabilidad de ser elegidos a los últimos a los que tienen
+8:59
+8 minutos y 59 segundos
+menos fines pero la probabilidad de esa no es cero porque en la primera ventana estaban así que de esta ventana sacamos
+9:06
+9 minutos y 6 segundos
+otro y supongamos que sale el 97 y así vamos reduciendo la ventana hasta
+9:13
+9 minutos y 13 segundos
+llegar a una ventana de unos pocos individuos y para cada ventana sacamos a un progenitor fíjense por otro lado que
+9:23
+9 minutos y 23 segundos
+si bien no está asegurado que el 9 o el 1 salgan en el hecho de estar en todas las ventanas le da una alta probabilidad
+9:30
+9 minutos y 30 segundos
+porque tiene muchas oportunidades para salir así que cumplimos con aquellas restricciones básicas que teníamos para
+9:37
+9 minutos y 37 segundos
+los operadores de selección que era que había que darle posibilidad de salir a todos y había que darle probabilidad
+9:45
+9 minutos y 45 segundos
+proporcional al fitness o escalable al fitness en este caso que en ese que dejamos de lado el fitness y
+9:52
+9 minutos y 52 segundos
+simplemente utilizamos el orden de fitness un método más un método muy simple que se utiliza mucho y que también tiene
+10:01
+10 minutos y 1 segundo
+esta propiedad de no tener el problema de mar de medio que no el mar de ventosos el método de competencia es el
+10:08
+10 minutos y 8 segundos
+método de competencia es muy simple hasta incluso es inspirado directamente de la naturaleza se eligen dos
+10:16
+10 minutos y 16 segundos
+individuos cualquiera al azar y se compite el que tiene mayor fines queda así de simple en general se eligen cada
+10:25
+10 minutos y 25 segundos
+individuos esté cada puede valer dos a veces usa 35 dependiendo de cómo conversa en el problema que estamos
+10:33
+10 minutos y 33 segundos
+teniendo en manos se pueden usar mayor o menor se eligen cada individuos por ejemplo elijo cinco individuos completamente al azar los hago competir
+10:41
+10 minutos y 41 segundos
+y el mayor gana fíjense que básicamente los presupuestos que teníamos antes se siguen cumpliendo es salvo para el peor
+10:50
+10 minutos y 50 segundos
+de todos los individuos que evidentemente no va a salir porque no le gana a nadie todos los demás pueden ser seleccionados
+10:56
+10 minutos y 56 segundos
+en el caso de que elijamos dos por ejemplo

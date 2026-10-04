@@ -1,0 +1,148 @@
+un ejemplo histórico muy interesante de autómatas celulares
+0:11
+11 segundos
+nos lleva a otro de los temas relacionados con la inteligencia
+0:18
+18 segundos
+colectiva que son los modelos de vida artificial los modelos en donde mediante una simulación con computadora
+0:26
+26 segundos
+se busca emular a un sistema vivo de manera artificial no
+0:34
+34 segundos
+este juego de conway fue un juego de hace muchos años que dio
+0:40
+40 segundos
+origen a un montón de simulaciones ejemplos de modelado que tuvieron mucho
+0:48
+48 segundos
+éxito porque a partir de unas reglas muy simples muy sencillas de comportamiento de los autómatas se podían obtener
+0:57
+57 segundos
+comportamientos globales o emergentes bastante complejos en este juego había una rejilla
+1:05
+1 minuto y 5 segundos
+y había
+1:05
+1 minuto y 5 segundos
+[Música]
+1:07
+1 minuto y 7 segundos
+células o bacterias o algún tipo de muy sencillo que estaba puesto en cada
+1:17
+1 minuto y 17 segundos
+una de las celdas de esta rejilla uno se podía imaginar que esto era una cápsula de petri donde había un cultivo
+1:26
+1 minuto y 26 segundos
+de ciertos microorganismos por ejemplo entonces había un individuo por ejemplo
+1:32
+1 minuto y 32 segundos
+que teníamos que determinar en cada pasada del algoritmo si sobrevivía al siguiente instante de tiempo o no
+1:42
+1 minuto y 42 segundos
+o incluso podría ser que se reproduce entonces para para eso había algunas reglas básicas que eran completamente
+1:50
+1 minuto y 50 segundos
+deterministas en este caso por ejemplo si había un organismo vivo
+1:56
+1 minuto y 56 segundos
+en una determinada celda que tenía menos de dos vivos en su entorno buscando
+2:03
+2 minutos y 3 segundos
+alrededor uno podía encontrar menos de dos vivos entonces ese lugar ismo en la próxima pasada se moría por ejemplo el
+2:12
+2 minutos y 12 segundos
+ejemplo que hicimos recién este organismo no tiene ninguno vivo alrededor quiere decir que la próxima pasada iba a morir
+2:20
+2 minutos y 20 segundos
+pero por ejemplo si hubiéramos tenido un caso así donde había dos organismos en su entorno
+2:27
+2 minutos y 27 segundos
+el organismo que era el que estábamos evaluando en particular sobrevivía y quedaba tal cual cuando había
+2:36
+2 minutos y 36 segundos
+más de tres vivos también moría porque porque había una sobrepoblación y se quedaban sin
+2:44
+2 minutos y 44 segundos
+alimentos así que por ejemplo si acá hubiéramos tenido todos estos vecinos finalmente en la próxima etapa este
+2:52
+2 minutos y 52 segundos
+organismo que teníamos en el medio hubiera muerto lo que si nos quedaban y bueno cuando se evalúe la celda de al lado se evaluará si cada uno vive o
+3:01
+3 minutos y 1 segundo
+muere cuando había dos o tres vivos en el entorno
+3:08
+3 minutos y 8 segundos
+simplemente se quedaba vivo como ya más o menos estuvimos viéndolo antes y había un caso en que si no hay ningún
+3:16
+3 minutos y 16 segundos
+organismo acá está la celda vacía y ahí
+3:23
+3 minutos y 23 segundos
+tres vivos en el entorno entonces nace un nuevo organismo en este caso para que se dé esa regla tendría que ser una
+3:31
+3 minutos y 31 segundos
+situación así fíjense hay tres vivos de entorno no hay nada ahí entonces quiere decir que para la próxima iteración o
+3:38
+3 minutos y 38 segundos
+generación van a ser bueno este juego de la vida de conway tiene muchísimas implementaciones
+3:46
+3 minutos y 46 segundos
+prácticas y ejemplos se lo pueden bajarlo para verlo para ver
+3:53
+3 minutos y 53 segundos
+cómo funciona para modificarlo hay una simulación que es muy muy completa y permite hacer un montón de
+4:01
+4 minutos y 1 segundo
+es distinta incluso trae precargadas muchísimas situaciones distintas con organismos que les recomiendo que se la bajen pongan simplemente en
+4:10
+4 minutos y 10 segundos
+en el buscador este nombre mire qué celebration autómatas
+4:19
+4 minutos y 19 segundos
+iban a poder bajarse una aplicación hay algunas versiones online también donde puede jugar con esto de la vida de la muerte y genera
+4:27
+4 minutos y 27 segundos
+distintos escenarios donde en todas las celdas sobreviven y hay sobrepoblación o se extinguen por completo y van a ver
+4:35
+4 minutos y 35 segundos
+algunas simulaciones muy muy curiosas de pero más allá de las simulaciones o del
+4:44
+4 minutos y 44 segundos
+juego esto se ha utilizado para modelado de sistemas de sistemas con poblaciones más o menos inteligentes a nosotros en
+4:53
+4 minutos y 53 segundos
+particular más adelante nos van a interesar los sistemas que demuestran cierta inteligencia y por ejemplo se ha utilizado para
+5:03
+5 minutos y 3 segundos
+el crecimiento de plantas y bacterias se ha visto que las simulaciones logradas coinciden con las que ocurre
+5:10
+5 minutos y 10 segundos
+la naturaleza y eso tiene una gran ventaja porque uno en lugar de hacer cambios de la naturaleza y matar
+5:18
+5 minutos y 18 segundos
+una hoja para ver si crece otra uno puede digo exageradamente uno puede hacerlo con la simulación por
+5:25
+5 minutos y 25 segundos
+computadora lo mismo con poblaciones de hormigas enjambres de abejas hay modelos bastante complejos
+5:34
+5 minutos y 34 segundos
+realizados en particular de estos vamos a ver un poco más adelante pero todos se basan en las mismas ideas de autómatas
+5:42
+5 minutos y 42 segundos
+celulares y otro caso muy interesante en el caso del tejido nervioso el caso se han hecho modelos completos del corazón
+5:50
+5 minutos y 50 segundos
+con lo cual se pueden simular por ejemplo un infarto por ejemplo arritmias y
+5:58
+5 minutos y 58 segundos
+singular también operaciones donde se corrigen algunos circuitos
+6:04
+6 minutos y 4 segundos
+del corazón y se evalúa el efecto antes que evaluarlo en un paciente real entonces se evalúa si se encuentra cuál
+6:11
+6 minutos y 11 segundos
+es la forma correcta de corregirlo y luego si se hace la operación el sistema real ese es el poder que tiene muchas veces estos modelos
+6:20
+6 minutos y 20 segundos
+emulan la vida natural justamente como modelos de vida artificial

@@ -1,0 +1,257 @@
+seguimos con la representación de los individuos uno de los aspectos fundamentales es cómo traducir el
+0:12
+12 segundos
+problema real del problema práctico que tenemos en esta representación especial que necesitamos para los algoritmos
+0:20
+20 segundos
+genéticos que es la de los cromosomas que adentro tienen genes y que los genes pueden tomar distintos valores que
+0:27
+27 segundos
+llamamos alelos en esta gráfica tenemos un espacio de el
+0:34
+34 segundos
+genotipo donde está la información genética que nosotros vamos a simplificar con ceros y unos los
+0:41
+41 segundos
+genotipos biológicos ustedes saben que tienen cuatro diferentes letras digamos que son
+0:49
+49 segundos
+nucleótidos pero acá en los genotipos informáticos vamos a tener dos posibilidades que son
+0:58
+58 segundos
+el 0 y el 1 por otro lado tenemos un espacio de el fenotipo el fenotipo es
+1:07
+1 minuto y 7 segundos
+expresión del genotipo es la realización la forma final que toma la información esa que está en el genotipo y que en una
+1:17
+1 minuto y 17 segundos
+planta puede ser el color o la forma de la hoja la altura el tamaño del tallo lo que sea no
+1:24
+1 minuto y 24 segundos
+en el caso nuestro el fenotipo va a ser el problema que queremos resolver o sea
+1:32
+1 minuto y 32 segundos
+las características los parámetros los pesos lo que sea numérico que podamos representar del problema que queremos
+1:41
+1 minuto y 41 segundos
+resolver entonces acá en el fenotipo tenemos números números reales pues vamos a ver que pueden ser cualquier
+1:49
+1 minuto y 49 segundos
+cosa la que codifica más no solamente numérica y lo que necesitamos es un proceso de
+1:56
+1 minuto y 56 segundos
+codificación es decir un proceso en el cual se convierte en genotipo en
+2:03
+2 minutos y 3 segundos
+fenotipo esto para qué porque si tenemos el material genético en estado puro
+2:10
+2 minutos y 10 segundos
+digamos consejos y unos no vamos a poder saber por ejemplo si esa es una buena solución o no a nuestro problema entonces tenemos que convertirla al
+2:18
+2 minutos y 18 segundos
+dominio del fenotipo al dominio donde realmente podemos evaluar qué tan buena solución es para el problema es
+2:26
+2 minutos y 26 segundos
+individuo y al revés también vamos a necesitar aunque no es tan crucial
+2:34
+2 minutos y 34 segundos
+convertir el fenotipo en genotipo vamos a también tener intenciones de ver dado
+2:43
+2 minutos y 43 segundos
+una determinada solución del problema a qué genotipo se le corresponde entonces tenemos que tener esas dos funciones es
+2:52
+2 minutos y 52 segundos
+la de codificación y decodificación y para ello lo primero que vamos a tener que pensar es cómo vamos a representar
+2:59
+2 minutos y 59 segundos
+esa información del problema que queremos resolver en términos de cromosomas que van a tener 0 y 1 en cada
+3:08
+3 minutos y 8 segundos
+posición del cromosoma podemos pensar en principio que hay un solo cromosoma y en cada posición del cromosoma va a haber
+3:15
+3 minutos y 15 segundos
+un gen y ese gen podrá tomar el valor 0 o 1 es una ultra simplificación pero
+3:23
+3 minutos y 23 segundos
+bueno como siempre le tomamos la idea general a la naturaleza pues la simplificamos para implementar la computacionalmente por supuesto podemos
+3:30
+3 minutos y 30 segundos
+tener varios cromosomas los cromosomas pueden tener internamente distintas estructuras pues siempre se puede complejizar para modelar mejor
+3:39
+3 minutos y 39 segundos
+entonces vamos a ver cómo podemos hacer esto de representar en un genotipo algunos problemas unos problemas
+3:47
+3 minutos y 47 segundos
+sencillos problemas tipos que podemos resolver estos ejemplos también nos van a servir como una introducción a todos los tipos de problemas que podemos
+3:56
+3 minutos y 56 segundos
+resolver con los algoritmos evolutivos que van a ver que realmente son muchas vamos a suponer que tenemos
+4:04
+4 minutos y 4 segundos
+una determinada superficie una área podría ser
+4:12
+4 minutos y 12 segundos
+en la industria textil tenemos un lienzo de tela de tantos x tantos metros y
+4:18
+4 minutos y 18 segundos
+tenemos que sacar de ese área figuras en determinadas figuras de manera de
+4:25
+4 minutos y 25 segundos
+optimizarlo se ha de aprovechar lo mejor posible todo lo que tenemos disponible y no
+4:32
+4 minutos y 32 segundos
+o sea desaprovechar o desechar la menor cantidad posible entonces podríamos tener distintas figuras que tenemos que
+4:40
+4 minutos y 40 segundos
+acomodar por ejemplo si esto fuera siguiendo con ejemplo la estela un pantalón
+4:48
+4 minutos y 48 segundos
+y tuviéramos que sacar distintas figuras del lienzo s
+4:56
+4 minutos y 56 segundos
+ideas que nosotros podamos ubicar estas figuras en alguna posición es ahí podría
+5:03
+5 minutos y 3 segundos
+ser esa y esa y de manera de que yo pueda sacar la tela necesaria para coser
+5:13
+5 minutos y 13 segundos
+esas tres prendas pero que se aproveche lo mejor posible el espacio que queden
+5:19
+5 minutos y 19 segundos
+la menor cantidad de desechos vamos a simplificar un poco este ejemplo y vamos a pensar que tenemos que ubicar figuras
+5:27
+5 minutos y 27 segundos
+simplemente de esta manera fíjense que yo ahora estoy pensando en cómo
+5:34
+5 minutos y 34 segundos
+desaprovechar la menor cantidad posible pero hay otras cosas que también voy a tener que tener en cuenta como por ejemplo no ubicar figuras solapadas
+5:42
+5 minutos y 42 segundos
+porque evidentemente no las voy a poder cortar ni tampoco figuras que estén afuera porque va a quedar la mitad de la figura
+5:49
+5 minutos y 49 segundos
+entonces cómo podemos representar esta solución al problema
+5:57
+5 minutos y 57 segundos
+vamos a aclarar algunas cosas nosotros vamos a tener muchos individuos cada individuo va a tener sus cromosomas
+6:06
+6 minutos y 6 segundos
+podría ser uno o más cromosomas por individuo vamos a poner que cada / tiene un cromosoma que es un cromosoma y un
+6:13
+6 minutos y 13 segundos
+montón de ceros y unos a cada individuo de mi población es una posible solución al problema de cada
+6:23
+6 minutos y 23 segundos
+individuo representa una solución y después vamos a ver cuál es el mejor lo vamos a hacer evolucionar todo lo que
+6:30
+6 minutos y 30 segundos
+vimos las ideas que vimos antes entonces yo tengo que pensar de que ese individuo tiene que codificar
+6:38
+6 minutos y 38 segundos
+representar una solución del problema entonces cuando yo busco una solución a este
+6:48
+6 minutos y 48 segundos
+problema como se imaginan que tendría que estar dada esa solución
+6:55
+6 minutos y 55 segundos
+le voy a poner otro ejemplo para que se ubiquen imagínense que ustedes le tienen que mandar un correo electrónico un amigo y dicen mira tengo este problema
+7:04
+7 minutos y 4 segundos
+tengo 10 figuras geométricas y tengo que ubicarlas en este área de
+7:13
+7 minutos y 13 segundos
+manera que no se solapen de manera que aprovechen mejor posible el espacio te pido que me mandes la solución
+7:21
+7 minutos y 21 segundos
+que le mandaría de vuelta el amigo vamos a poner que encontró la solución que recibirían ustedes de
+7:30
+7 minutos y 30 segundos
+vuelta lo primero que alguien puede decir es una imagen con las figuras ubicadas y si yo le digo al amigo mira mandarlo
+7:38
+7 minutos y 38 segundos
+pero mandámelo en un archivo de texto ponérmelo de alguna manera en el archivo de texto que nos pondría y me diría
+7:46
+7 minutos y 46 segundos
+bueno fíjate el triángulo lo voy a poner en la posición
+7:53
+7 minutos y 53 segundos
+73 entonces te pongo la t de triángulo después te voy a poner un 7 y un 3 o quiere decir que el triángulo está en la
+8:02
+8 minutos y 2 segundos
+posición 73 esa sería la primera línea del archivo de texto que me manda el amigo después el círculo te lo voy a
+8:11
+8 minutos y 11 segundos
+poner en la posición 22 entonces voy a poner una c 2 2
+8:20
+8 minutos y 20 segundos
+en el primer cuadrado también voy a poner en la 2 entonces voy a poner el cuadrado
+8:28
+8 minutos y 28 segundos
+en la 26 y así en el archivo de texto le podría mandar la posición que él
+8:36
+8 minutos y 36 segundos
+encontró como óptima la mejor posición que mejor aprovecha que hicimos modificamos una posible
+8:45
+8 minutos y 45 segundos
+solución al problema o sea que encontramos una forma de representar esa solución ahora lo único
+8:53
+8 minutos y 53 segundos
+que nos queda es convertirla en un cromosoma binario o sea que ahora lo que nosotros tenemos
+9:01
+9 minutos y 1 segundo
+acá vamos a suponer que en el cromosoma binario tomamos los dos primeros bits para representar la figura así que si es
+9:10
+9 minutos y 10 segundos
+la figura 01 es el triángulo por ejemplo si en la
+9:15
+9 minutos y 15 segundos
+10 es el círculo 11 entonces es el cuadrado y así si necesitamos más bill
+9:24
+9 minutos y 24 segundos
+pondremos más vip para representar después vamos a tomar por ejemplo dependiendo de las dimensiones físicas
+9:30
+9 minutos y 30 segundos
+no podríamos tomar unos 4 bits representar la primera coordenada de la figura
+9:38
+9 minutos y 38 segundos
+y luego otros 4 bits para representar la segunda coordenada la figura que dependiendo podemos usar cualquiera de
+9:47
+9 minutos y 47 segundos
+las codificaciones binario que ustedes conocen algunas tienen algunas ventajas particulares por los podemos realizar
+9:54
+9 minutos y 54 segundos
+eso representaría una figura entonces pero cromosoma tiene que representar la solución completa al problema o sea que tiene que darme la
+10:02
+10 minutos y 2 segundos
+ubicación de toda la figura así que lo que tendremos que hacer a continuación es poner el código que identifica a la otra figura por ejemplo
+10:11
+10 minutos y 11 segundos
+que fuera el círculo y 4 bits para la posición la primera coordenada y 4 bits para la
+10:20
+10 minutos y 20 segundos
+segunda coordenada y acá estarán los 0 y los unos que correspondan a la codificación esa
+10:27
+10 minutos y 27 segundos
+así que le estamos poniendo 2 4
+10:34
+10 minutos y 34 segundos
+cuatro más serían diez mil por cada figura así que si tenemos diez figuras
+10:41
+10 minutos y 41 segundos
+vamos a tener un cromosoma de 100 bits de largo y eso va a ser un individuo es el material genético de un individuo
+10:51
+10 minutos y 51 segundos
+de esta manera podemos convertir genotipo en fenotipo y fenotipo en genotipo ya tenemos una forma de
+10:58
+10 minutos y 58 segundos
+codificar una solución a este problema vuelvo a insistir nosotros lo que vamos a tener en nuestra población son muchas soluciones o sea que por ejemplo vamos a
+11:07
+11 minutos y 7 segundos
+tener mil individuos o sea que en este caso si queremos representar diez figuras a 10 bits por individuo vamos a
+11:14
+11 minutos y 14 segundos
+tener 1000 cromosomas cada uno con 100 genes que pueden tomar valores 0 y 1 y
+11:22
+11 minutos y 22 segundos
+esa va a ser nuestra población ese va a ser nuestro genoma de la población en el material genético de la población
+Sincronizar con el tiempo del video

@@ -1,0 +1,247 @@
+oy vamos a comenzar con el tercer bloque de la asignatura que habla acerca de inteligencia colectiva recuerdo que
+0:13
+13 segundos
+vimos un 1er gran bloque de redes neuronales con muchas variantes el segundo bloque fue
+0:20
+20 segundos
+el de lógica borrosa que terminamos en la clase anterior y ahora iniciamos el tercer bloque que tiene varios
+0:28
+28 segundos
+algoritmos que tienen esta particularidad que la inteligencia surge a partir de un colectivo de individuos
+0:35
+35 segundos
+que interactúan en este primer bloque vamos a ver algunos conceptos básicos previos
+0:43
+43 segundos
+a la inteligencia colectiva o en los algoritmos de inteligencia colectiva propiamente dicho pero que nos sirven de fundamento y un poco de contexto también
+0:52
+52 segundos
+un poco de historia acerca de cómo se llegó a este tipo de algoritmos
+0:59
+59 segundos
+lo primero que vamos a ver es algo de autómatas celulares definimos un
+1:06
+1 minuto y 6 segundos
+autómata celular como una estructura que tiene básicamente entradas
+1:15
+1 minuto y 15 segundos
+que vamos a llamar x tiene salidas tiene un conjunto de estados esto es muy
+1:22
+1 minuto y 22 segundos
+particular los autómatas los autómatas tienen adentro estados por lo que van transitando ya vamos a ver algunos ejemplos
+1:29
+1 minuto y 29 segundos
+y un conjunto de reglas que le permiten el autómata ir cambiando de estados así que
+1:38
+1 minuto y 38 segundos
+en esta estructura a veces tenemos alguna extensión que nos permite que de
+1:45
+1 minuto y 45 segundos
+acuerdo a la entrada y al estado en el que está el autómata haya una función que da la salida otras veces simplemente
+1:52
+1 minuto y 52 segundos
+la salida es el número de estado en el que está el autómata y hay algunos casos en que ni siquiera hay una salida
+1:59
+1 minuto y 59 segundos
+estrictamente vamos a ver que estos estados se pueden
+2:06
+2 minutos y 6 segundos
+graficar como un estado no un estado 2 un estado 3 un estado 4
+2:15
+2 minutos y 15 segundos
+y unas flechas que nos indican las transiciones de estado por ejemplo acá en la transición del estado dos alumnos
+2:24
+2 minutos y 24 segundos
+y acá hay una visión del estado 1 al 2 por ejemplo para quedarse en un mismo estado el autómata puede seguir estando
+2:33
+2 minutos y 33 segundos
+en el estado 1 del estado 3 se puede ir hacia el estado 4 y definimos como por
+2:42
+2 minutos y 42 segundos
+ejemplo que el estado 1 es el estado inicial por el que siempre se inicia el autómata y el estado 4 es el estado en el que termina hay algunos autómatas que
+2:51
+2 minutos y 51 segundos
+no hace falta definirlo y pueden estar funcionando continuamente pero cuando definimos un estado inicial decimos que siempre se inicia por el 1 por ejemplo y
+2:59
+2 minutos y 59 segundos
+siempre que llegue al 4 termina el ciclo del autómata entonces esto que se puede representar
+3:08
+3 minutos y 8 segundos
+también más formalmente como un grafo es lo que denominamos autómatas dijimos que teníamos los estados a veces se hace
+3:16
+3 minutos y 16 segundos
+algún tipo de simbología donde se dan las salidas por ejemplo ahí estamos diciendo que el estado 1 da como salida
+3:25
+3 minutos y 25 segundos
+la letra b podrían ser de salidas un número en cualquier cosa no
+3:33
+3 minutos y 33 segundos
+y también por supuesto en algunos casos consideramos entradas como suele decir con la variable x
+3:41
+3 minutos y 41 segundos
+vamos a ver algún algunos ejemplos de reglas de transición decimos que las reglas de transición que son las que le
+3:48
+3 minutos y 48 segundos
+permiten un autómata ir de un estado del otro pueden ser determinísticos o probabilísticas si son deterministas
+3:58
+3 minutos y 58 segundos
+directamente se evalúa alguna función en un umbral algún número y se decide por ejemplo
+4:06
+4 minutos y 6 segundos
+si está en el estado 1 podría haber una regla que diga cuando la entrada sea
+4:11
+4 minutos y 11 segundos
+mayor que 5 pasar al estado 3 esa es una regla que está en el estado 1
+4:21
+4 minutos y 21 segundos
+y que permite la transición al estado 3 simplemente se fija que la entrada sea mayor que 5 y pasa al estado 3 es un
+4:28
+4 minutos y 28 segundos
+claro ejemplo de una regla determinísticos en cambio cuando tenemos reglas
+4:34
+4 minutos y 34 segundos
+probabilísticas no tenemos la certeza de que se pase a un determinado estado
+4:41
+4 minutos y 41 segundos
+sino que hay una probabilidad que asocia las transiciones por ejemplo podríamos
+4:48
+4 minutos y 48 segundos
+decir estando en el estado 1 hay una probabilidad de 01 de pasar al
+4:55
+4 minutos y 55 segundos
+estado 3 y hay una probabilidad de 0.9 de pasar el estado 4 entonces qué hacemos tiramos un número
+5:03
+5 minutos y 3 segundos
+entre 1 y 10 si sale el 1 pasamos al estado 3 y si sale cualquiera de los otros pasamos al estado 4
+5:13
+5 minutos y 13 segundos
+no tenemos la seguridad de que vas y siempre han estado 4 aunque con más probabilidad vaya al estado 4 ese sería
+5:19
+5 minutos y 19 segundos
+un ejemplo de regla probabilística o sea que acá tenemos una gran distinción
+5:27
+5 minutos y 27 segundos
+entre autómatas determinísticos y autómatas probabilísticos en ambos casos se utilizan para hacer modelos
+5:36
+5 minutos y 36 segundos
+otro elemento interesante que tiene más relación con vigencia colectiva son los autómatas
+5:43
+5 minutos y 43 segundos
+celulares se definen como otra estructura en la cual están los autómatas
+5:51
+5 minutos y 51 segundos
+que la componen kaká lo que vamos a tener es muchos autómatas juntos está la topología la forma en que se
+6:00
+6 minutos
+organizan ahora vamos a ver algunos ejemplos y está la colectividad cómo se conectan unos con otros
+6:07
+6 minutos y 7 segundos
+esta la forma que definimos como si fuera una red de autómatas un conjunto de autómatas que se vinculan entre sí y
+6:15
+6 minutos y 15 segundos
+cada uno de esos autómatas puede ser considerado como una célula y muchos modelos se utilizaban justamente para
+6:22
+6 minutos y 22 segundos
+simular tejidos en donde cada autómata era una célula entonces tenemos distintas tipologías esto les va a hacer
+6:30
+6 minutos y 30 segundos
+acordar algo que vimos no hace mucho que son los mapas auto organizativos que también tenían neuronas con topologías
+6:38
+6 minutos y 38 segundos
+acá estoy haciendo una topología triangular o sea que un autómata tiene
+6:47
+6 minutos y 47 segundos
+a su lado por ejemplo este autómata tiene 12 es decir
+6:56
+6 minutos y 56 segundos
+y una topología triangular la otra más elemental sería una topología
+7:02
+7 minutos y 2 segundos
+rectangular un autómata por ejemplo que tiene acá sus vecinos y depende de cómo esté
+7:11
+7 minutos y 11 segundos
+definida la vecindad también podría tener estos vecinos de acá y la otra que habíamos visto se acuerdan en el caso de
+7:19
+7 minutos y 19 segundos
+los mapas and organizativos se usaba bastante era la topología hexagonal de acá estamos definiendo topología en dos dimensiones
+7:28
+7 minutos y 28 segundos
+pero también se podrían definir topologías en dimensiones
+7:37
+7 minutos y 37 segundos
+entonces con la topología hexagonal cada autómata va a tener como vecino
+7:48
+7 minutos y 48 segundos
+esto es lo que se define con la t luego lo que tenemos que definir en
+7:56
+7 minutos y 56 segundos
+función de esa topología es la conectividad cómo se conectan entre sí y para eso se definen distintos tipos de
+8:04
+8 minutos y 4 segundos
+vecindades estás vecindades son las que permiten definir que autómata está conectado en
+8:14
+8 minutos y 14 segundos
+el modelo con su vecino y hasta dónde llega esa conexión vuelvo a referir el ejemplo de los mapas auto organizativos donde teníamos
+8:22
+8 minutos y 22 segundos
+neuronas que se conectaban con sus vecinos así que por ejemplo podemos definir una vecindad de este tipo
+8:32
+8 minutos y 32 segundos
+acá tenemos el autómata central y estos son los vecinos esto se conoce como
+8:40
+8 minutos y 40 segundos
+vecindad de von neumann esta es una vecindad de radio 1 el tamaño de la vecindad es 1 pero si
+8:48
+8 minutos y 48 segundos
+definimos el contexto como este que también es vecino este que estaba acá así que ahora
+8:57
+8 minutos y 57 segundos
+tenemos que se sumen a la vecindad para este otro también tenemos que agregar
+9:07
+9 minutos y 7 segundos
+esos dos elementos en la vecindad nosotros ya estaban adentro para este ahora tenemos que agregar acá
+9:13
+9 minutos y 13 segundos
+y acá parte de la vecindad y en que nos que debería agregar es el que corresponde y tenemos una vecindad entonces von neumann
+9:22
+9 minutos y 22 segundos
+de radio 2 sería de manera similar se define la vecindad de moore
+9:29
+9 minutos y 29 segundos
+en donde ya todos los que están a uno de distancia
+9:36
+9 minutos y 36 segundos
+vecinos o sea estamos incluyendo la también y si queremos tomar una vecindad de radio dos
+9:45
+9 minutos y 45 segundos
+tenemos que ampliar de esta manera y tendríamos todos los autómatas que
+9:52
+9 minutos y 52 segundos
+están en la vecindad de radio 2 del autómata central que
+9:59
+9 minutos y 59 segundos
+además de esta distribución de esta vecindad quien está conectado con quien tenemos distintos tipos de conexiones
+10:07
+10 minutos y 7 segundos
+también las conexiones a rasgos muy generales pueden ser es otro picasso anisotropy cast lo que quiere decir es
+10:14
+10 minutos y 14 segundos
+que si son todas iguales en todas las direcciones o si tienen un sentido preferencial podríamos decir por ejemplo que en este
+10:23
+10 minutos y 23 segundos
+sentido están conectado más débilmente que en este sentido y supongamos que hay una conexión que se transmite en un
+10:32
+10 minutos y 32 segundos
+impulso una corriente eléctrica una fuerza o lo que sea y el caso anís o
+10:39
+10 minutos y 39 segundos
+trópico sería el caso en el que las conexiones se den en algún sentido particular puede ser este puede ser este puede tener una
+10:48
+10 minutos y 48 segundos
+forma definida en general en donde básicamente un autómata con el que estás a su derecha no se conecta con igual
+10:57
+10 minutos y 57 segundos
+fuerza con igual intensidad que o el otro que tiene la izquierda o hacia arriba o en diagonal esas serían las años otro picas que son
+11:04
+11 minutos y 4 segundos
+un poco más complejas ya típicas pero que también son muy útiles para el modelo este tipo de

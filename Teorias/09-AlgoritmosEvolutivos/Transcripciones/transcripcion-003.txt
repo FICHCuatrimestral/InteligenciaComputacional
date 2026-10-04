@@ -1,0 +1,151 @@
+otro de los conceptos básicos que vamos a ver y que tiene mucha relación con todo esto de la inteligencia colectiva es el concepto de agentes
+0:13
+13 segundos
+vamos a ver lo que son en su definición básica los agentes y los sistemas multiagentes que tienen mucho que ver
+0:20
+20 segundos
+con el concepto de autómatas y autómatas celulares y que vamos a ver que en definitiva son distintos formalismos que
+0:28
+28 segundos
+nos permiten llegar a lo mismo que tenía que queríamos que era alguna concepción
+0:35
+35 segundos
+básica alguna teoría en cual en la cual enmarcar todo lo que vamos a ver de inteligencia colectiva
+0:42
+42 segundos
+los agentes pueden definirse como un sistema que está situado en un ambiente
+0:49
+49 segundos
+hay algunas palabras clave acá que están destacadas que es capaz de realizar acciones y que tiene objetivos que tiene
+0:59
+59 segundos
+que cumplir objetivos fíjense que en una definición muy amplia los autómatas que acabamos de definir
+1:08
+1 minuto y 8 segundos
+estaban en un ambiente realizaban acciones de manera automática que iban cambiando de estado median las
+1:16
+1 minuto y 16 segundos
+entradas tenían sus y tenían objetivos que tenían que cumplir con distintos objetivos en el
+1:24
+1 minuto y 24 segundos
+caso que dimos los ejemplo eran objetivos más bien de modelado transmisión de impulsos nerviosos del crecimiento de las bacterias pero bueno
+1:33
+1 minuto y 33 segundos
+en el caso de la gente se pueden definir objetivos mucho más claros
+1:41
+1 minuto y 41 segundos
+otras definiciones que amplían un poco el concepto de agente es por ejemplo la
+1:50
+1 minuto y 50 segundos
+de agente inteligente acá se le piden algunas cosas más y ya nos vamos acercando al tipo de agentes que se
+1:58
+1 minuto y 58 segundos
+imaginan que interesan la asignatura fíjense lo que se le pide un agente inteligente proactividad osea
+2:06
+2 minutos y 6 segundos
+proactividad cuando realiza acciones sin un requerimiento específico de
+2:13
+2 minutos y 13 segundos
+actividades cuando reacciona sea ante una demanda un cambio en el ambiente o
+2:19
+2 minutos y 19 segundos
+lo que sea tiene capacidad reactiva y habilidad social lo cual nos interesa
+2:27
+2 minutos y 27 segundos
+especialmente habilidad social se refiere a poder interactuar en términos generales con otros agentes es un agente aislado
+2:36
+2 minutos y 36 segundos
+vendría a ser como un autómata aislado los autómatas que primero definimos pero cuando empezamos a hablar de habilidad social estamos empezando a pensar en que
+2:44
+2 minutos y 44 segundos
+se va a tener que reaccionar con otros agentes o incluso podría ser con humanos una gente es todo aquello que
+2:53
+2 minutos y 53 segundos
+percibe el ambiente mediante sensores estamos empezando a definir las partes que tiene una gente
+3:01
+3 minutos y 1 segundo
+y se relaciona o actúa sobre el ambiente mediante efectores
+3:09
+3 minutos y 9 segundos
+así que nosotros básicamente podemos pensar que tenemos en la gente
+3:16
+3 minutos y 16 segundos
+tenemos los sensores que nos permiten medir nos permiten ver lo que pasa afuera en
+3:25
+3 minutos y 25 segundos
+el ambiente este es la gente y tenemos los efectores
+3:32
+3 minutos y 32 segundos
+que nos permiten actuar sobre ese ambiente ese esquema un poquito más complejo un poquito más simple acá está bien
+3:40
+3 minutos y 40 segundos
+simplificado en que van a encontrar en la bibliografía de cualquier agente y nuevamente vemos que son definiciones
+3:46
+3 minutos y 46 segundos
+muy muy pero muy generales además le pedimos a la gente ya lo
+3:55
+3 minutos y 55 segundos
+habíamos dicho anteriormente que tenga autonomía y entre esas
+4:03
+4 minutos y 3 segundos
+capacidades de autonomía una de las que se les pide y que nos interesa especialmente en la asignatura es la
+4:10
+4 minutos y 10 segundos
+capacidad de aprender y de aprender de forma automática a medida que va adquiriendo experiencias a medida que va
+4:19
+4 minutos y 19 segundos
+viendo en este caso el ambiente a partir de su sensor incluso que va actuando en el ambiente y en función de su actuación
+4:27
+4 minutos y 27 segundos
+va cambiando el ambiente y ésta capacidad de aprendizaje es lo que le
+4:35
+4 minutos y 35 segundos
+permite irse modificando a lo largo del tiempo en su ejecución o sea que no sea el mismo sino que al ir aprendiendo va
+4:43
+4 minutos y 43 segundos
+modificando su conducta hay otra definición que puede ser de interés también que es la de agente
+4:52
+4 minutos y 52 segundos
+racional la gente racional es que realiza las acciones correctas nuevamente caemos en definiciones
+4:58
+4 minutos y 58 segundos
+bastante amplias pero que sirven de base para todo lo que es la teoría de agentes y que nos sirven de contexto en nuestra
+5:07
+5 minutos y 7 segundos
+asignatura y dentro de las definiciones de agentes se define como agente racional ideal aquel que puede percibir
+5:16
+5 minutos y 16 segundos
+conocer decidir y actuar bien serían las cuatro capacidades básicas que se le
+5:22
+5 minutos y 22 segundos
+pide a un agente racional ideal y por último vamos a ampliar la idea de gente
+5:31
+5 minutos y 31 segundos
+multiagentes qué es lo que más se relaciona con este capítulo de la asignatura en la inteligencia colectiva
+5:39
+5 minutos y 39 segundos
+fíjense que en multi agente ya damos prioridad o énfasis a la cooperación a
+5:47
+5 minutos y 47 segundos
+distintas formas en las que pueden cooperar los agentes en un sistema multi agente
+5:55
+5 minutos y 55 segundos
+y hablamos de racionalidad ahora pero racionalidad social fíjense que lo que
+6:03
+6 minutos y 3 segundos
+pretendemos no es que son simplemente una gente se beneficie a partir de sus acciones aprenda el solo sino que puedan
+6:13
+6 minutos y 13 segundos
+generar un beneficio a los otros agentes del sistema a eso lo llamamos racionalidad social
+6:21
+6 minutos y 21 segundos
+y por supuesto siempre hay que tener en cuenta la relación entre los beneficios y las pérdidas propias siempre la gente
+6:29
+6 minutos y 29 segundos
+va general va a tener que hacer algún tipo va a tener que tener algún tipo de pérdida lo cual se puede representar un
+6:36
+6 minutos y 36 segundos
+poquito más formalmente mediante el concepto de utilidad esperada que
+6:43
+6 minutos y 43 segundos
+relaciona la utilidad individual y la utilidad social que deja ese agente

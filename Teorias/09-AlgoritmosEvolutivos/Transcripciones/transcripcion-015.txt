@@ -1,0 +1,284 @@
+vamos a ver ahora algunas características particulares un poco a modo de resumen muchas yo las he ido mencionando durante las partes
+0:14
+14 segundos
+anteriores vamos a ver en general los algoritmos evolutivos qué características tienen en relación a
+0:20
+20 segundos
+otros métodos una de las características que vimos es que la búsqueda se hace sobre un espacio codificado
+0:30
+30 segundos
+fíjense que la búsqueda se hace sobre el genotipo si bien midiendo la función de actitud
+0:36
+36 segundos
+que es sobre el espacio verdadero en donde está el problema la búsqueda no se hace sobre los parámetros verdaderos del problema que queremos resolver sino que
+0:45
+45 segundos
+en este caso particular de los algoritmos genéticos la búsqueda se hace en un espacio de vectores binarios que son los cromosomas esto puede tener
+0:53
+53 segundos
+algunas ventajas y algunas desventajas entre las ventajas es que está demostrado hay un teorema que se llama
+1:02
+1 minuto y 2 segundos
+teorema de los esquemas que demuestra la convergencia para estos algoritmos que utilizando los operadores de cruza y
+1:09
+1 minuto y 9 segundos
+votación que definimos y la selección con las características que definimos está asegurada la convergencia en este tipo de espacios en cambio en los
+1:17
+1 minuto y 17 segundos
+espacios en donde se utiliza directamente los valores del
+1:24
+1 minuto y 24 segundos
+de los parámetros del problema no está tan asegurada la convergencia o asegurarla requiere de muchas otras condiciones otra de las características
+1:32
+1 minuto y 32 segundos
+es muy importante esta es que se busca en múltiples puntos a la vez del espacio
+1:40
+1 minuto y 40 segundos
+de soluciones fíjense que tenemos una población tener una población es y cada
+1:47
+1 minuto y 47 segundos
+individuo de la población es una posible solución quiere decir que en cada generación estamos buscando en tantas
+1:54
+1 minuto y 54 segundos
+soluciones como individuos tenemos en la población supongamos que tenemos 100 soluciones en esta gráfica que fíjense
+2:02
+2 minutos y 2 segundos
+un problema artificial no pero muy complejo porque tienen muchos mínimos locales y un solo mínimo global que es el que está acá
+2:10
+2 minutos y 10 segundos
+pero en todos estos círculos en las partes de abajo en los valles hitos en la circunferencia esa hay todos mínimos
+2:19
+2 minutos y 19 segundos
+locales que estarían ubicados de forma concéntrica acá si nosotros tenemos si a individuos lo
+2:27
+2 minutos y 27 segundos
+que quiere decir es que cuando comienza la evolución es como si tomáramos un puñado conciencia en millas y nos tiráramos acá arriba
+2:35
+2 minutos y 35 segundos
+estos puntitos que estoy dibujando son todos los 100 individuos que tiramos y en cada generación con cruzas y
+2:43
+2 minutos y 43 segundos
+mutaciones esos 100 individuos se van a ir ubicando en otras regiones y cómo van a ir ganando los que tengan
+2:50
+2 minutos y 50 segundos
+mejor fines de a poco esos individuos se van a ubicar cada vez más al fondo en las mejores regiones y van a encontrar
+2:59
+2 minutos y 59 segundos
+la solución pero no se van a quedar estancados por ejemplo en esta zona moviéndose en círculos como harían otros
+3:08
+3 minutos y 8 segundos
+algoritmos como por ejemplo el algoritmo gradiente que no encontraría un gradiente hacia dónde ir otro caso también viene bien el ejemplo
+3:17
+3 minutos y 17 segundos
+del algoritmo de gradiente es en el caso en que las superficies de error o la superficie en donde estemos buscando
+3:23
+3 minutos y 23 segundos
+tengan regiones planas en regiones en donde gradiente sea cero si yo estoy buscando y tengo un solo
+3:31
+3 minutos y 31 segundos
+punto que está puesto en ese escalón cito acá el gradiente 90 y no voy a saber para dónde seguir la búsqueda de
+3:38
+3 minutos y 38 segundos
+no sé seguir para allá y para allá para donde tengo que ir sin gradiente me da 0 no me dice así en qué sentido mejorar
+3:45
+3 minutos y 45 segundos
+las condiciones entonces nuevamente lo bueno de tener múltiples puntos de búsqueda en toda la superficie el hecho
+3:53
+3 minutos y 53 segundos
+de estar combinando soluciones buenas por ejemplo estos padres que están acá abajo que tienen menos error tendrían más probabilidad de ser seleccionados
+4:02
+4 minutos y 2 segundos
+para ser padres en la próxima generación y los hijos seguramente tendrían combinaciones de esos padres y cada vez
+4:09
+4 minutos y 9 segundos
+si bien poco a poco encontrando el centro en donde es mínimo ese error
+4:16
+4 minutos y 16 segundos
+otra de los puntos importantes que tienen los algoritmos evolutivos es que requieren muy pocos requisitos en la
+4:23
+4 minutos y 23 segundos
+función objetivo acabo de mencionar que los métodos de gradiente básicamente requieren poder conocer la derivada de
+4:32
+4 minutos y 32 segundos
+la función objetivo en la derivada de esa superficie fíjense que en los algoritmos evolutivos no necesitamos para nada ninguna información y algo más
+4:41
+4 minutos y 41 segundos
+importante ni siquiera necesitamos conocer la forma analítica en la fórmula de la función objetivo nosotros podemos
+4:50
+4 minutos y 50 segundos
+tener un problema totalmente práctico en el cual como en el caso del robot por
+4:57
+4 minutos y 57 segundos
+ejemplo en el cual la función objetivo no tiene una fórmula que dice el logaritmo de esto más del seno del otro
+5:05
+5 minutos y 5 segundos
+lo que sea incluso nosotros podemos interactuar con el mundo real por ejemplo podríamos tener que ubicar los banners de
+5:14
+5 minutos y 14 segundos
+propagandas en una página web imagínense que tengo que ubicar los banners de manera de que depende si
+5:22
+5 minutos y 22 segundos
+lo pongo en esta posición o en esta o abajo acostado o vertical izquierda reciben más clics o menos clics entonces
+5:30
+5 minutos y 30 segundos
+habrá un óptimo habrá una posición para los banners que más llama la atención y que los usuarios van a ser más clics
+5:37
+5 minutos y 37 segundos
+fácilmente yo defino el problema en términos de computación evolutiva porque digo bueno las coordenadas x de donde
+5:45
+5 minutos y 45 segundos
+ubicó el banner las convierte en binarios ya tengo los cromosomas quiero medir el fitness bueno como me define cantidad de clics recibido tengo
+5:53
+5 minutos y 53 segundos
+muchos clics por lo tanto más fitness ahora cuál es la función de fitness y
+6:01
+6 minutos y 1 segundo
+una fórmula no no hay ninguna fórmula simplemente yo voy a poner estos van en un servidor voy a contar en el mundo
+6:09
+6 minutos y 9 segundos
+real cuantos clics recibieron y en función de eso le voy a poner más o menos fines a los individuos pero no tengo una fórmula analítica ni mucho
+6:17
+6 minutos y 17 segundos
+menos voy a poder obtener la derivada de eso qué sé yo cuál es la derivada de los clics en función del tiempo si realmente
+6:26
+6 minutos y 26 segundos
+todavía no los puedo ni medir ni sé la forma que tienen entonces esto permite que los algoritmos evolutivos en aplicable un montón de problemas en
+6:35
+6 minutos y 35 segundos
+donde yo ni siquiera puedo definir por la naturaleza del problema cuál es la función objetivo así que no sólo que les pido pocos requisitos sino que
+6:42
+6 minutos y 42 segundos
+prácticamente puedo tenerla definida por lo tanto ni hablar de los requisitos
+6:50
+6 minutos y 50 segundos
+otra de las características que hicimos mucho énfasis en todas las partes anteriores es la naturaleza estocástica pero fíjense una cosa estocástico pero
+6:58
+6 minutos y 58 segundos
+no es completamente aleatorio es combina algo de determinismo con algo de la
+7:05
+7 minutos y 5 segundos
+naturaleza estocástica los operadores tienen reglas que se aplican pero que en esas reglas
+7:12
+7 minutos y 12 segundos
+hay algunas componentes aleatorias y esa es una gran ventaja no es ni una búsqueda completamente determinista como
+7:19
+7 minutos y 19 segundos
+sería la búsqueda por gradiente de o una búsqueda de profundidad una búsqueda en altitud sino que
+7:26
+7 minutos y 26 segundos
+es una búsqueda que combina algo de aleatorio tampoco está en el otro extremo que es una búsqueda completamente aleatoria donde se tiran
+7:33
+7 minutos y 33 segundos
+números al azar constantemente hasta ver que la peguemos cromosomas al azar serían constantemente hasta que la peguemos con uno sino que combina en
+7:41
+7 minutos y 41 segundos
+parte determinista parte de la historia y otra característica es que los operadores tienen propiedades que nos
+7:50
+7 minutos y 50 segundos
+hacen aptos para búsquedas globales no no son no hacen búsquedas locales en una región no más del espacio de búsqueda sino que exploran al mismo tiempo
+7:59
+7 minutos y 59 segundos
+muchísimos lugares del espacio de soluciones otra de las características que no vemos específicamente pero que se
+8:06
+8 minutos y 6 segundos
+pueden utilizar es que pueden resolver múltiples objetivos a la vez pueden perseguir múltiples objetivos a la vez
+8:14
+8 minutos y 14 segundos
+en algún ejemplo lo vimos por ejemplo cuando hacíamos las áreas que teníamos que cubrir vimos que dijimos que a la vez tenía que desaprovechar la menor
+8:23
+8 minutos y 23 segundos
+cantidad de tela posible no dejar ninguna figura fuera de no solapar las figuras esos distintos objetivos o
+8:30
+8 minutos y 30 segundos
+restricciones que le ponemos al método y evidentemente simplemente con la función de fitness pudimos cubrir múltiples
+8:38
+8 minutos y 38 segundos
+objetivos a la vez hay otras maneras de hacerlo y se denominan algoritmos multi objetivos y por último debemos mencionar algunas
+8:45
+8 minutos y 45 segundos
+desventajas no todo es perfecto no todo es tan lindo la principal desventaja que tienen estos métodos es que son lentos
+8:52
+8 minutos y 52 segundos
+comparados con otros métodos son métodos que requieren mucho costo computacional hoy por hoy con los servicios que hay en
+9:00
+9 minutos
+la nube o con los clúster de computadoras prácticamente no es un obstáculo mayor ni se pueden resolver
+9:07
+9 minutos y 7 segundos
+problemas muy pero muy complejos sin tener esta limitación pero lo cierto es que especialmente la evaluación de la
+9:16
+9 minutos y 16 segundos
+función de fitness usted se imaginarán que hacer una cruz a una mutación no requiere mucho costo computacional pero evaluar las funciones
+9:24
+9 minutos y 24 segundos
+de fitness depende del problema suele ser bastante costoso y eso es un cuello de botella en la aplicación de los algoritmos evolutivos
+9:33
+9 minutos y 33 segundos
+vamos a ver algunas comparaciones ahora sí con los métodos tradicionales repasando un poquito lo anterior
+9:41
+9 minutos y 41 segundos
+dijimos que los métodos tradicionales trabajan con los mismos parámetros que queremos utilizar o encontrar el óptimo
+9:49
+9 minutos y 49 segundos
+sin embargo los algoritmos evolutivos trabajan con una codificación en particular los algoritmos genéticos mismos que colocó dif y cavan el binario
+9:58
+9 minutos y 58 segundos
+otra característica que enfatizamos bastante es que estos métodos no necesitan conocer una función en forma
+10:07
+10 minutos y 7 segundos
+analítica ni mucho menos le piden que sea derivables o cosas por el estilo y acá se puede hacer en forma directa
+10:16
+10 minutos y 16 segundos
+una optimización sin requerir esa función de forma explícita otra característica es que las reglas que
+10:24
+10 minutos y 24 segundos
+gobiernan el método son reglas que mezclan en lo probabilístico con lo determinísticos esa es otra ventaja y
+10:34
+10 minutos y 34 segundos
+otra de las diferencias es que cuando los métodos tradicionales buscan en un solo punto de la superficie de error
+10:41
+10 minutos y 41 segundos
+estos métodos evolutivos buscan en múltiples puntos múltiples posiciones o
+10:49
+10 minutos y 49 segundos
+posibles soluciones de acuerdo a la cantidad de individuos que tenga la población por último vamos a hacer una primera referencia a la facilidad con la
+10:58
+10 minutos y 58 segundos
+que se pueden para realizar estos métodos un esquema muy directo es el esquema maestro esclavo
+11:06
+11 minutos y 6 segundos
+es que gente que está acá generalmente como les comentaba lo más costoso computacionalmente es la evaluación de
+11:13
+11 minutos y 13 segundos
+la función de fitness entonces yo tengo 100 individuos lo que puedo hacer es hacer las cruces y mutaciones y todas
+11:21
+11 minutos y 21 segundos
+el servidor y en los siete individuos distribuir una función define por cada
+11:28
+11 minutos y 28 segundos
+nodo de un clúster o por cada procesador que tenga disponible en una gpu all o el sistema de paralelismo que tenga esa es
+11:37
+11 minutos y 37 segundos
+una paralización directa es muy sencilla y muy aplicable a la mayoría de los problemas que tengo que resolver con algoritmos evolutivos otras
+11:46
+11 minutos y 46 segundos
+paralizaciones son las conexiones y armar pequeñas colonias acá a lo mejor hay 50 individuos
+11:55
+11 minutos y 55 segundos
+acá hay otros 50 individuos acá hay otros 50 individuos cada colonia trabaja en un procesador o en un grupo de
+12:03
+12 minutos y 3 segundos
+procesadores y cada tanto se hacen intercambios y en este caso a todos contra todos e intercambios de
+12:11
+12 minutos y 11 segundos
+individuos para hacer que evolucione en forma conjunta en otros casos se arman sistemas de tipo celdas en donde las
+12:19
+12 minutos y 19 segundos
+conexiones no son todos contra todos sino que hay regiones en donde se realizan esos intercambios y bueno eso requiere ya sí de cambios en
+12:28
+12 minutos y 28 segundos
+el algoritmo en sí mismo evolutivo en este primer caso que yo mencioné en el caso de evaluar la función de fitness es
+12:36
+12 minutos y 36 segundos
+exactamente el caso de los algoritmos evolutivos que vimos hasta recién sin definir colonias ni nada por el estilo
+Sincronizar con el tiempo del video
