@@ -1,0 +1,224 @@
+vamos a empezar con el algoritmo inicializa mos al azar ya esta altura este tipo de
+0:12
+12 segundos
+inicialización no les puede extrañar en lo más mínimo fíjense que lo que inicializa mos son las posiciones de los
+0:19
+19 segundos
+pájaros esto lo distribuimos uniformemente en un
+0:25
+25 segundos
+rango máximo mínimo para cada una de las variables que tienen los vectores de
+0:32
+32 segundos
+posiciones fíjense que este mínimo este máximo es por cada dimensión porque podría ser que
+0:38
+38 segundos
+yo tenga en una dimensión la temperatura en otra dimensión puede que tenga la velocidad del viento en otra dimensión
+0:47
+47 segundos
+la cantidad de hojas que tenía un libro en cada dimensión puede tener cosas completamente diferentes por lo tanto
+0:53
+53 segundos
+ese máximo y ese mínimo para cada una de las dimensiones en las cuales vamos a tirar un número la sal para inicializar tiene que estar de acuerdo a la realidad
+1:02
+1 minuto y 2 segundos
+práctica de cómo funciona y de que el problema queremos resolver entonces vamos a repetir para ver que
+1:11
+1 minuto y 11 segundos
+este algoritmo es muy sencillo y lo primero que vamos a hacer es fijarnos si la posición actual
+1:21
+1 minuto y 21 segundos
+que tiene el individuo es mejor qué
+1:29
+1 minuto y 29 segundos
+la mejor posición que obtuvo alguna vez como esto está recién inicializa 2
+1:37
+1 minuto y 37 segundos
+al principio esto directamente va a ser la posición que tiene actualmente
+1:44
+1 minuto y 44 segundos
+y vamos a hacer esta asignación se le vamos a llamar si de acá o sea la mejor posición del individuo
+1:53
+1 minuto y 53 segundos
+personal cognitiva la vamos a asignar directamente al valor que se dirigió recién por otro lado
+2:02
+2 minutos y 2 segundos
+vamos a considerar si ese individuo es mejor que la mejor posición global
+2:09
+2 minutos y 9 segundos
+obtenida en toda la historia por la bandada en caso de que sea mejor vamos a
+2:16
+2 minutos y 16 segundos
+actualizar la mejor posición global con la posición que acabamos de obtener que es
+2:23
+2 minutos y 23 segundos
+voy a insistir en que con esta función efe estamos midiendo que también
+2:31
+2 minutos y 31 segundos
+resuelve el problema práctico que queremos resolver ese individuo acá esa es la función
+2:37
+2 minutos y 37 segundos
+que queremos utilizar podría ser una función de error fíjense qué acá por cómo está puesto el signo menor
+2:46
+2 minutos y 46 segundos
+estamos pensando en una función de aptitud como era el caso de los algoritmos evolutivos en una función de error pues si el error es menor que el
+2:54
+2 minutos y 54 segundos
+que cualquier otra partícula había obtenido en toda la historia entonces le asignamos y redefinimos cuál es esa
+3:02
+3 minutos y 2 segundos
+mejor posición global y ahora sí vamos a entrar en la
+3:09
+3 minutos y 9 segundos
+actualización o sea vamos a ver cómo mover a cada uno de los individuos así que
+3:16
+3 minutos y 16 segundos
+nuevamente hacemos un ciclo para cada uno de los individuos fíjense que acá ya no está puesto en
+3:24
+3 minutos y 24 segundos
+términos vectoriales acá tenemos la velocidad del individuo acá
+3:31
+3 minutos y 31 segundos
+en la dimensión y encima se acuerdan que habíamos dicho que los
+3:37
+3 minutos y 37 segundos
+individuos estaban en regla l en el instante temas 1 vamos a hacer que
+3:45
+3 minutos y 45 segundos
+sea igual a la velocidad que tiene actualmente más alguna pequeña corrección y de qué depende esa corrección va a depender de los dos
+3:53
+3 minutos y 53 segundos
+términos que estuvimos hablando desde el principio por un lado de la experiencia personal de la información cognitiva de
+4:02
+4 minutos y 2 segundos
+lo que el mismo individuo sabe que logró como mejor o sea que va a tratar de irse un poco hacia ese lugar en donde el
+4:09
+4 minutos y 9 segundos
+mejor resultado obtuvo fíjense que acá lo que estamos midiendo es
+4:17
+4 minutos y 17 segundos
+la distancia que hay entre para cada dimensión la posición mejor que haya obtenido el individuo y la posición
+4:26
+4 minutos y 26 segundos
+actual en fíjense que éste surge psuv acá o sea que es la posición mejor del individuo en esa dimensión además hay dos
+4:36
+4 minutos y 36 segundos
+constantes adelante una es la constante de aceleración que
+4:43
+4 minutos y 43 segundos
+tan rápido se va a mover ese individuo y la otra es una constante aleatoria que
+4:50
+4 minutos y 50 segundos
+incorpora una pequeña variación a la posición a la que hubiera ido realmente y que ahora vamos a
+4:59
+4 minutos y 59 segundos
+analizar un poco más en detalle cómo funciona por otro lado tenemos la influencia de la mejor
+5:07
+5 minutos y 7 segundos
+posición global o sea del conocimiento social de toda la bandada y en ese caso también fíjense que alcalá ya no tiene
+5:15
+5 minutos y 15 segundos
+la causa que es la de global la que teníamos acá si tiene la y porque estamos trabajando dimensión a dimensión
+5:21
+5 minutos y 21 segundos
+no en formato vectorial y nuevamente hacemos la recta con la posición del individuo acá tenemos otra constante de
+5:29
+5 minutos y 29 segundos
+aceleración constantes y otra componente otro factor aleatorio también multiplicando a esa
+5:39
+5 minutos y 39 segundos
+diferencia y ese valor aleatorio va a tomar valores
+5:45
+5 minutos y 45 segundos
+justamente a partir de una distribución uniforme entre 0 y 1 y fíjense que lo
+5:52
+5 minutos y 52 segundos
+que va a hacer es modificar si es cercano a 1 va a dejar tal cual el movimiento que el individuo haría pero
+6:01
+6 minutos y 1 segundo
+si es cercano a 0 va a reducir mucho esa componente o sea que dependiendo de lo que valgan en cada iteración esas dos
+6:11
+6 minutos y 11 segundos
+componentes aleatorias se va a modificar en mayor o en menor medida
+6:17
+6 minutos y 17 segundos
+la velocidad que tomaría el individuo en caso de seguir estrictamente su conocimiento personal o el conocimiento
+6:25
+6 minutos y 25 segundos
+social lo otro que nos queda por hacer es simplemente sumar ese cambio de
+6:33
+6 minutos y 33 segundos
+velocidad a la posición actual me voy a detener un poco más
+6:41
+6 minutos y 41 segundos
+analizar el impacto de esta constante que se genera de forma aleatoria en cada interacción
+6:49
+6 minutos y 49 segundos
+fíjense que la c la c1 y c2 son dos aceleraciones que se
+6:56
+6 minutos y 56 segundos
+mantienen fijas pero en cambio la agr van generando se aleatoriamente y esto
+7:04
+7 minutos y 4 segundos
+de que haya componentes aleatorios que sacan al individuo o sacan a la
+7:12
+7 minutos y 12 segundos
+partícula o sacan antes hablamos de cromosomas de una posición a la cual se llegó por un método totalmente
+7:20
+7 minutos y 20 segundos
+determinísticos no no es para nada novedoso no fíjense que siempre tuvimos estos componentes que permiten que no se
+7:29
+7 minutos y 29 segundos
+haga uniforme y que toda la población que no conversa a un mismo mínimo poco podría ser un mínimo local en el cual
+7:38
+7 minutos y 38 segundos
+terminan todos en cerrándose ahí es decir la mejor posición de cada
+7:44
+7 minutos y 44 segundos
+individuo es orientada siempre hacia la mejor posición de la banda y resulta que la bandada se cayó toda en un mínimo
+7:52
+7 minutos y 52 segundos
+local evidentemente se van a encerrar ahí nunca van a poder salir o sea que esta componente de la todavía tiene un rol muy importante en la exploración del
+8:00
+8 minutos
+espacio permite que los individuos no solamente sigan la orientación en
+8:07
+8 minutos y 7 segundos
+definitiva de acuerdo a su experiencia personal y a la experiencia social sino que además también en algunas
+8:15
+8 minutos y 15 segundos
+situaciones exploren regiones del espacio totalmente inesperadas de acuerdo a la trayectoria general de la
+8:22
+8 minutos y 22 segundos
+bandada y eso podría ser que algunos individuos encuentren regiones mucho más interesantes entonces finalmente
+8:30
+8 minutos y 30 segundos
+el algoritmo termina con alguna condición de finalización en este caso no tenemos algo tan estricto
+8:38
+8 minutos y 38 segundos
+como decíamos con las hormigas de que todas las hormigas se alinean por un mismo camino sino que acá lo que podemos poner alguna cota de error de acuerdo a
+8:46
+8 minutos y 46 segundos
+la aplicación práctica que tengamos podemos decir bueno quiero un error menor a tanto entonces bueno cuando efe el mejor f que tengamos esté por debajo
+8:55
+8 minutos y 55 segundos
+de ese error podemos salir del abismo o podríamos tener algunas otras condiciones de finalización por no
+9:03
+9 minutos y 3 segundos
+convergencia podría ser que a lo largo de una cantidad de interacciones no haya ninguna mejora en el algoritmo se
+9:10
+9 minutos y 10 segundos
+estancó no encuentra nada mejor que lo que ya encontró y decidimos cortar ahí a pesar de que quizás no encontramos la mejor solución posible
+9:18
+9 minutos y 18 segundos
+bueno finalmente cuando decidimos cortar el algoritmo cortar el bucle principal
+9:25
+9 minutos y 25 segundos
+devolvemos la mejor partícula encontrada que en este caso en el vector s de la mejor tendrá el conjunto de variables
+9:34
+9 minutos y 34 segundos
+óptimas para la solución de nuestro problema esto es muy similar a lo que teníamos en el caso de un cromosoma que
+9:41
+9 minutos y 41 segundos
+codifica va el mejor conjunto de variables para resolver nuestro problema
+Sincronizar con el tiempo del vídeo

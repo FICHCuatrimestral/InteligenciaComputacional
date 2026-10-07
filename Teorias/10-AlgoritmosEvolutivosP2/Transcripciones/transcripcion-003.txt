@@ -1,0 +1,272 @@
+bueno vamos a ver un último tema también de interés practico en esto de la computación
+0:11
+11 segundos
+evolutiva y es como incorporar en el algoritmo de las restricciones del problema real en las restricciones del
+0:20
+20 segundos
+dominio de la aplicación hemos visto ya algunas formas la hemos estado viendo a modo de ejemplo de manera indirecta
+0:29
+29 segundos
+cuando vimos la representación cuando vimos la función de fines se acuerdan que por ejemplo con la función defines
+0:35
+35 segundos
+decíamos si hay una parte del área de una de las figuras que teníamos que
+0:41
+41 segundos
+cubrir que está por fuera entonces y vamos a penalizar que logramos con penalizar era incorporar
+0:50
+50 segundos
+una restricción del problema que era que no hubiera figuras que quedaron afuera del área que teníamos para cortar ese
+0:59
+59 segundos
+tipo de restricciones van a ver que hay otras conocidas ahora las vamos a enumerar un poquito más en detalle y vamos a ir a dando un ejemplo en cada
+1:07
+1 minuto y 7 segundos
+caso la primera es la más importante y la más deseable si se quiere
+1:15
+1 minuto y 15 segundos
+se trata de definir adecuadamente la representación de los individuos definir adecuadamente o redefinir lo en
+1:24
+1 minuto y 24 segundos
+caso que lo hayamos definido de una manera muy sencilla o simplificada esto es en lugar de hacer una
+1:32
+1 minuto y 32 segundos
+codificación directa tirar un número binario cualquiera de acuerdo a los bits que necesito ver
+1:39
+1 minuto y 39 segundos
+la forma de hacer que ya cuando uno codifica no importa cómo actúa la
+1:45
+1 minuto y 45 segundos
+mutación o como actúe la cruza el individuo resultante de esa operación
+1:51
+1 minuto y 51 segundos
+siempre va a ser válido tratar de pensar a la hora de representar los individuos
+1:59
+1 minuto y 59 segundos
+estrategias o ideas para que luego si actúa repito nuevamente
+2:07
+2 minutos y 7 segundos
+un simple operador de mutación que va a cambiar cualquier gen de 0 a 1 un operador de cruza simple en un solo
+2:16
+2 minutos y 16 segundos
+punto el individuo resultante sigue haciendo vale voy a dar un ejemplo muy elemental para ilustrar de qué estoy hablando yo
+2:24
+2 minutos y 24 segundos
+podría tener que codificar números que van entre el 0 y el 100
+2:32
+2 minutos y 32 segundos
+vamos a suponer que tenemos una aplicación en la cual hay un parámetro del problema que puede estar entre 0 y 100 por ejemplo podría ser un porcentaje
+2:40
+2 minutos y 40 segundos
+o cualquier medida que sea entre servicio entonces yo podría decir bueno esto con 7 bits
+2:49
+2 minutos y 49 segundos
+me alcanza me tiene que alcanzar bien entonces voy a representar este parámetro directamente con 7 bits 1 2 3
+2:59
+2 minutos y 59 segundos
+4 5 6 7 bits a continuación vendrán otras partes del cromosoma y acá también por supuesto
+3:06
+3 minutos y 6 segundos
+antes habrá otras partes pero esto que está acá lo estoy usando para representar esa cantidad de situaciones
+3:14
+3 minutos y 14 segundos
+sin embargo fíjense que acá hay algo que no está del todo bien porque si yo tengo 7 bits puedo llegar a representar
+3:24
+3 minutos y 24 segundos
+no sólo los números entre 0 y 100 sino que puedo representar a 101 y 102 hasta el 128 hasta 127 estrictamente
+3:34
+3 minutos y 34 segundos
+así que qué pasaría si yo arranco supongamos que está todo bien y tengo acá
+3:43
+3 minutos y 43 segundos
+todo 0 acá tengo 11 100 cosas así y de
+3:50
+3 minutos y 50 segundos
+pronto aparecen mutaciones que me cambian y que hacen que este número pase por arriba de 100 yo tendría que decir que
+3:59
+3 minutos y 59 segundos
+en / cuyo parámetro no tiene ninguna relación con la realidad sin embargo yo podría haber evitado eso
+4:08
+4 minutos y 8 segundos
+redefiniendo de otra manera esa codificación una alternativa por supuesto en muchas alternativas pero una
+4:16
+4 minutos y 16 segundos
+alternativa es hacer una escala es decir bueno el cero va a ser el cero pero el
+4:24
+4 minutos y 24 segundos
+100 va a ser el 127 entonces hago una regla de tres simple
+4:32
+4 minutos y 32 segundos
+escalo ese parámetro y en realidad cuando en este cromosoma hay a todos unos osea que pase el número binario 127
+4:41
+4 minutos y 41 segundos
+yo sé que le corresponde al 100 y cuando haya todos ceros sé que le corresponde al 0 y entremedio por
+4:50
+4 minutos y 50 segundos
+supuesto una escala lineal una regla de tres simple que me va a permitir tener 128 números entre el 0 y el 100 por
+4:58
+4 minutos y 58 segundos
+supuesto voy a tener los decimales voy a tener un poco más de resolución incluso que en el caso anterior pero voy a solucionar el problema de que cualquiera
+5:07
+5 minutos y 7 segundos
+sea el número cualquiera sea la mutación cualquiera ya ha sido la cruza que se da entre medio de éste
+5:17
+5 minutos y 17 segundos
+yo siempre voy a tener ahí un parámetro vale ese es un ejemplo muy sencillo de como yo con la representación logró
+5:25
+5 minutos y 25 segundos
+evitar problemas de individuos inválidos y considerar las restricciones del
+5:33
+5 minutos y 33 segundos
+problema cuál era la restricción del problema que tenía que ver un parámetro entre servicios vamos a ver otros casos
+5:42
+5 minutos y 42 segundos
+otra situación que yo puedo hacer es el rechazo o eliminación del inválido ello podría ser un operador que luego de
+5:49
+5 minutos y 49 segundos
+generar a toda la población de los hijos directamente lo que sean inválidos los elimine y por supuesto voy a tener que generar
+5:56
+5 minutos y 56 segundos
+más también podría ser un operador que actúe en seguida después de los otros operadores por ejemplo si estoy haciendo
+6:05
+6 minutos y 5 segundos
+una cruza y bien ahora cruza evalúo si un individuo válido o inválido y lo eliminó y lo vuelvo a cruzar hasta que
+6:14
+6 minutos y 14 segundos
+logre uno válido ese sería otro o mutar alguna mutación y si resulta que es inválido porque el parámetro o los
+6:22
+6 minutos y 22 segundos
+parámetros de alguno de los genes se van fuera de rango y lo eliminó y no más y vuelvo a hacer otra mutación
+6:31
+6 minutos y 31 segundos
+sin embargo imagínense que es tan nuevo si bien puede ser una solución no estricto deseable porque si realmente hay una mala representación y hay una
+6:41
+6 minutos y 41 segundos
+alta probabilidad de que yo cuando mucho cruzo salga un individuo en válido me la voy a pasar todo el tiempo evaluando la
+6:49
+6 minutos y 49 segundos
+validez de los individuos y volviendo a generar en vez de que una cruz hacia una beca para que la tengo que hace 10 15 o 50 veces hasta que empecé algo no válido
+6:57
+6 minutos y 57 segundos
+por lo tanto esta es una solución de segunda línea digamos menos deseable
+7:04
+7 minutos y 4 segundos
+en el caso de que yo sepa que en mi población tengo realmente pocos individuos inválidos a lo mejor no justifica cambiar la representación
+7:13
+7 minutos y 13 segundos
+simplemente con detectarlos con algún método rápido por supuesto que no requiere evaluar la función de fitness
+7:21
+7 minutos y 21 segundos
+completa sino tiene que hacer algún método rápido de detección y los puedo eliminar y volverlos a generar pero siempre como les decía antes lo mejor es
+7:31
+7 minutos y 31 segundos
+tener una muy buena representación que no requiera de estas verificaciones
+7:38
+7 minutos y 38 segundos
+otra alternativa es construir un operador de reparación de material genético es un poco parecida a la anterior y
+7:46
+7 minutos y 46 segundos
+también es una alternativa de segunda línea digamos no es lo ideal pero podría ser de que yo con cambiar algunos bits
+7:55
+7 minutos y 55 segundos
+del material genético repare corrija esos errores por ejemplo si yo detecto que
+8:02
+8 minutos y 2 segundos
+hice una mutación y una figura quedó por fuera del área en la que puedo cortar el ejemplo que dábamos antes
+8:10
+8 minutos y 10 segundos
+entonces yo hago que todas las medidas siempre queden dentro del rango entonces de esa manera reparo a los individuos
+8:19
+8 minutos y 19 segundos
+que quedaron afuera esto tiene sus ventajas es una ventaja y nuevamente es aplicable al caso en que yo tengo pocos individuos porque si yo tengo muchos
+8:28
+8 minutos y 28 segundos
+individuos nuevamente que pueden ser inválidos tengo que empezar a pensar en una redefinición de la representación porque porque al final este operador de
+8:37
+8 minutos y 37 segundos
+reparación va a estar haciendo modificaciones que no entran como parte de la evolución sino que siempre están
+8:44
+8 minutos y 44 segundos
+restringiendo algo de manera artificial y por fuera el proceso de evolución otra
+8:52
+8 minutos y 52 segundos
+alternativa que se usa bastante es la de modificar los operadores de variación
+8:59
+8 minutos y 59 segundos
+esta es una alternativa término medio y se usa mucho y básicamente consiste en redefinir el operador de cruza y el
+9:09
+9 minutos y 9 segundos
+operador de mutación para que no hagan cruzas que generen individuos inválidos o para que no hagan mutaciones que
+9:16
+9 minutos y 16 segundos
+generen individual varias en el caso de los siete bits que habíamos puesto como ejemplo al principio yo podría decir bueno voy a hacer una operadora de
+9:24
+9 minutos y 24 segundos
+mutación que solamente pueda mutar los primeros beats los beats menos significativos
+9:33
+9 minutos y 33 segundos
+pero que a partir de ciertos beats a partir de ciertos números tenga prohibido cambiar por ejemplo cuando yo
+9:40
+9 minutos y 40 segundos
+ya tengo un 1 en los primeros visten los más significativos ya entonces no puedo mutar poniendo más unos en los últimos
+9:49
+9 minutos y 49 segundos
+porque empiezo a contar desde el 101 hasta 127 otro ejemplo podría ser de que yo tengo
+9:58
+9 minutos y 58 segundos
+variables y la primera variable la voy a definir con 5 bits la segunda variable con 10 bits y la tercera variable con
+10:08
+10 minutos y 8 segundos
+otros 10 bits yo podría hacer que el operador de cruzar nunca elija un punto de cruza dentro de los primeros cinco
+10:16
+10 minutos y 16 segundos
+bits ni tampoco entre el 5 y el 15 ni tampoco entre el 15 y el 25 que los
+10:24
+10 minutos y 24 segundos
+puntos que puede elegir son el 5 o el 15 entonces corta y mezcla entre individuos
+10:32
+10 minutos y 32 segundos
+variables completas no mezcla partes de variables que es donde podría ocurrir que yo genere un individuo inválido por
+10:39
+10 minutos y 39 segundos
+cortar un pedazo de una variable y metérselo el pedazo correspondiente del otro individuo esa es una manera muy simplificada pero
+10:48
+10 minutos y 48 segundos
+bueno cada problema requiere un análisis particular de hacer pequeñas variaciones en los operadores de cruce y mutación de
+10:56
+10 minutos y 56 segundos
+manera de que cuando se hace la cruza dada la estructura que sabemos que tiene cromosoma no se corre el riesgo de
+11:04
+11 minutos y 4 segundos
+generar individuos inválidos y por último que no quiere decir que sea la última estrategia también hay otra
+11:11
+11 minutos y 11 segundos
+estrategia pero al menos son las más elementales las que vemos acá la estrategia de penalizar en la función
+11:19
+11 minutos y 19 segundos
+de fines esa ya la estuvimos viendo antes nosotros podríamos decir que se acuerdan en el caso de las áreas el área
+11:26
+11 minutos y 26 segundos
+cubierta la teníamos como positiva para el fitness pero toda el área que quedara por afuera del
+11:33
+11 minutos y 33 segundos
+rectángulo la consideramos negativa o sea que en el caso de cubrir si había una figura que quedaba con esta parte
+11:42
+11 minutos y 42 segundos
+del área afuera esa parte del área en la función de fitness esta sería el área cubierta menos el área que está afuera es la
+11:51
+11 minutos y 51 segundos
+usábamos como polarización y también esa priorización podríamos incorporar alguna constante que le daba peso más fuerza a
+12:00
+12 minutos
+la realización o menos fuerza depende de qué tan importante sea el error que se está cometiendo o distintas funciones podría ser en
+12:09
+12 minutos y 9 segundos
+escala logarítmica si le ponemos un logaritmo o cualquier tipo de función de acuerdo a la importancia que le queremos dar a los valores de lo que estamos
+12:17
+12 minutos y 17 segundos
+penalizando pero básicamente consiste en dividir o restar o hacer cualquier operación que vaya haciendo que caiga la
+12:25
+12 minutos y 25 segundos
+función de fitness en la medida en que no se cumplan las restricciones del problema
+Sincronizar con el tiempo del vídeo

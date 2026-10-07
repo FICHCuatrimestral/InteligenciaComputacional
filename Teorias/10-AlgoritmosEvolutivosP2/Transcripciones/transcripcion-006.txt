@@ -1,0 +1,329 @@
+bien vamos a comenzar a ver entonces ahora de una manera un poco más formal el algoritmo para las colonias de
+0:12
+12 segundos
+hormigas en primer lugar vamos a definir las variables
+0:19
+19 segundos
+y las estructuras que vamos a utilizar en este algoritmo lo más importante o el marco general está dado en términos de un grafo este
+0:29
+29 segundos
+grafo tiene como vértices los lugares o puntos o hitos por donde
+0:37
+37 segundos
+va pasando la hormiga como mojones en el camino de la hormiga puede ser una curva
+0:45
+45 segundos
+mundo natural podría ser una referencia a cualquiera y una matriz de conexiones entre esos puntos esa matriz de
+0:54
+54 segundos
+colecciones que en principio puede ser para todos los puntos posibles que hay en el
+1:01
+1 minuto y 1 segundo
+espacio simplemente un 0 1 1 si hay una conexión o no pero para el caso más completo podría tener alguna medida de
+1:10
+1 minuto y 10 segundos
+la dificultad que haya para pasar de un punto o un vértice del grafo al otro
+1:17
+1 minuto y 17 segundos
+podría ser la distancia podría ser un costo en el sentido que fuera eso por supuesto en el caso de la
+1:26
+1 minuto y 26 segundos
+simulación biológica en el caso de el problema del viajero o cualquier problema que queramos resolver hay que buscarle una interpretación propia del
+1:35
+1 minuto y 35 segundos
+dominio de aplicación luego el otro que vamos a tener es la cantidad de feromonas
+1:41
+1 minuto y 41 segundos
+que se encuentran depositadas en la conexión que hay entre el punto o el
+1:48
+1 minuto y 48 segundos
+vértice y el vértice j entre dos puntos del camino cuánta feromona hay en esa zona
+1:57
+1 minuto y 57 segundos
+luego vamos a indicar con acá a las hormigas vamos a suponer que tenemos un total de en mayúsculas hormigas
+2:06
+2 minutos y 6 segundos
+y para cada uno de los nodos o de los vértices de ese grafo o esos puntos de referencia que decíamos que la hormiga
+2:14
+2 minutos y 14 segundos
+ahí toma una decisión a ver si seguir para un lado o para el otro vamos a tener almacenado cuáles son todos los
+2:22
+2 minutos y 22 segundos
+nodos disponibles a los que se puede llegar desde ese nodo finalmente otra parte muy importante es
+2:30
+2 minutos y 30 segundos
+una lista fíjese que está negrita esta p una lista con todos los nodos que fue
+2:38
+2 minutos y 38 segundos
+atravesando por lo que fue pasando una determinada dormida esa lista es dependiente del tiempo porque va a ir
+2:45
+2 minutos y 45 segundos
+cambiando iteración de integración esa es la lista para el tiempo que no va a ser la misma para el tiempo de más de
+2:53
+2 minutos y 53 segundos
+un tema no o sea que una lista que podrá tener distintos tamaños pero lo importante que se acuerden que
+3:00
+3 minutos
+ahí hay muchos puntos y todos asociados a la hormiga acá algunas observaciones más fíjense que
+3:09
+3 minutos y 9 segundos
+vamos a tener este tiempo de referencia en el algoritmo que se va a incrementar el 1 cuando
+3:16
+3 minutos y 16 segundos
+todas las hormigas todas las hormigas hayan encontrado el alimento cuando todas sean capaces
+3:24
+3 minutos y 24 segundos
+de encontrar el alimento y vuelvan al origen entonces ahí vamos a contar cómo
+3:31
+3 minutos y 31 segundos
+que pasa una iteración de tiempo de tiempo sería un tiempo grande no no un tiempo vértice vértice nuevo nodo sino
+3:40
+3 minutos y 40 segundos
+un tiempo de camino total y lo otro que vamos a destacar como particular en la anotación es que
+3:49
+3 minutos y 49 segundos
+en algún caso vamos a utilizar para los nodos disponibles a partir de un nodo ese super índice acá que indica que son
+3:58
+3 minutos y 58 segundos
+los nodos disponibles para la hormiga k es decir de todos los nodos que hay disponibles a partir de un determinado
+4:05
+4 minutos y 5 segundos
+nodo vamos a sacar afuera los que la hormiga acá ya recorrió de manera que no
+4:13
+4 minutos y 13 segundos
+se hagan ciclos de que la única cada valla el nodo 1 al 2 y del 2 vuelve al 1 del 1 al 2 y del 2 vuelve al 1 por lo
+4:20
+4 minutos y 20 segundos
+tanto cuando una hormiga va del 1 al 2 entre los nodos posibles para esa hormiga a partir del 2 vamos a retirar
+4:29
+4 minutos y 29 segundos
+el 1 porque la hormiga ya pasó por ahí bueno vamos a empezar con el algoritmo vamos a inicializar
+4:38
+4 minutos y 38 segundos
+como siempre en este tipo de algoritmos con alguna componente aleatoria la cantidad de feromonas en valores muy
+4:45
+4 minutos y 45 segundos
+pequeños a lo largo de todos los caminos todas las transiciones entre j
+4:55
+4 minutos y 55 segundos
+y vamos a ubicar todas las hormigas en el nodo de origen supuestamente en el hormiguero para el modelo de la
+5:04
+5 minutos y 4 segundos
+naturaleza entonces después vamos a hacer un bucle repetir grande
+5:11
+5 minutos y 11 segundos
+dentro del cual vamos a hacer algo para cada una de las hormigas para cada hormiga vamos a hacer todo creo que digo
+5:20
+5 minutos y 20 segundos
+ahora a continuación inicialmente hacemos que la lista de
+5:28
+5 minutos y 28 segundos
+nodos por los que pasó la hormiga esté vacía parece obvio pero bueno hay que inicializar lo
+5:35
+5 minutos y 35 segundos
+fíjense que estamos en el tiempo de que por ahora es simplemente el primer instante de tiempo no hemos movido etc
+5:45
+5 minutos y 45 segundos
+luego lo que vamos a hacer es estamos para cada una de las hormigas un nuevo repetir en el cual vamos a seleccionar
+5:54
+5 minutos y 54 segundos
+como primer paso el próximo nodo al que se tiene que mover acá se incorpora una
+6:03
+6 minutos y 3 segundos
+probabilidad como recordarán cuando hicimos el ejemplo el puente si bien las hormigas eligen preferencialmente el
+6:11
+6 minutos y 11 segundos
+camino donde hay más feromonas de esa preferencia no es una cosa absoluta sino que
+6:20
+6 minutos y 20 segundos
+modelamos el término de una probabilidad y lo que hacemos es por ejemplo a partir de esta probabilidad si hay un 60 por
+6:29
+6 minutos y 29 segundos
+ciento de probabilidades de que la hormiga elija el camino 1 en 40 para el camino 2 tiramos un número entre el 1 al 10
+6:37
+6 minutos y 37 segundos
+y si sale del 1 al 6 elige en camino uno se sale 7-8 9-10
+6:45
+6 minutos y 45 segundos
+entonces esta probabilidad como la definimos naturalmente la vamos a definir en función de la cantidad de feromonas que es lo que estábamos
+6:52
+6 minutos y 52 segundos
+hablando pero acá se incorpora un factor adicional
+6:57
+6 minutos y 57 segundos
+fíjense que la cantidad de feromonas tiene
+7:05
+7 minutos y 5 segundos
+un exponente alfa es exponente alfa nos va a permitir
+7:11
+7 minutos y 11 segundos
+potenciar el efecto de esa cantidad de feromonas podría ser que haya una
+7:19
+7 minutos y 19 segundos
+diferencia muy pequeña entre todos los caminos por ejemplo uno 02 el otro es 0 21 el otro es
+7:29
+7 minutos y 29 segundos
+0 19 hay otro de 0 2 y así pero hay una diferencia muy pequeña entre los caminos
+7:36
+7 minutos y 36 segundos
+y ese alfa lo que nos va a permitir es que esa diferencia pequeña que puede
+7:45
+7 minutos y 45 segundos
+darse sobre todo a los primeros pasos del algoritmo tenga una influencia más grande en las diferencias de
+7:53
+7 minutos y 53 segundos
+probabilidad que hay asignada a cada uno de los caminos por supuesto para que esto siga siendo una probabilidad vamos a dividir por la sumatoria de todos los
+8:02
+8 minutos y 2 segundos
+valores que tenemos en el numerador así que la suma total de las probabilidades de este lado
+8:09
+8 minutos y 9 segundos
+o sea la suma de las probabilidades hacia todos los caminos a los que puedo ir va a tener que dar 1
+8:18
+8 minutos y 18 segundos
+esto lo hacemos todo esto de la probabilidad en el caso de que j el nodo al que queremos ir esté dentro de los
+8:27
+8 minutos y 27 segundos
+nodos que están conectados con y si no están conectados con directamente no lo tomamos en cuenta en ese caso la
+8:35
+8 minutos y 35 segundos
+probabilidad va a ser cero o sea un nodo que no está conectado por el nodo en el que estamos actualmente directamente no podemos ir
+8:42
+8 minutos y 42 segundos
+bueno con esas probabilidades definidas entonces ahora agregamos un paso en el camino como lo
+8:52
+8 minutos y 52 segundos
+agregamos como yo le decía tiramos un número al azar y decidimos de acuerdo a las probabilidades que teníamos cuáles
+9:01
+9 minutos y 1 segundo
+j que vamos a elegir como siguiente paso y esto lo repetimos fíjense este repetir
+9:10
+9 minutos y 10 segundos
+hasta alcanzar el destino o sea hasta alcanzar el alimento o sea que para esta hormiga inicializa mos el conjunto de la
+9:19
+9 minutos y 19 segundos
+lista de nodos en el conjunto de pasos vacío y le vamos agregando pasos hasta
+9:27
+9 minutos y 27 segundos
+que esa hormiga encontrar su camino luego eliminamos los ciclos por ejemplo si la hormiga
+9:34
+9 minutos y 34 segundos
+pasa del 5 al 6 y del 6 al 5 y del 5 al 6 del 6 al 5 del 5 al 6 y después recién
+9:41
+9 minutos y 41 segundos
+del 6 al 7 bueno toda esa vuelta entre el 5 y el 6 la detectamos y la eliminamos
+9:47
+9 minutos y 47 segundos
+y después calculamos la longitud de el camino de su amiga si ustedes se pueden
+9:56
+9 minutos y 56 segundos
+imaginar que cuanto menor sea esa longitud ese camino va a ser mejor a los fines de encontrar
+10:05
+10 minutos y 5 segundos
+el camino óptimo para llegar desde el hormiguero hasta el destino o desde el nuevo origen hasta el nodo destino sea
+10:13
+10 minutos y 13 segundos
+cual sea el problema que estamos queriendo resolver así que este cálculo es es un cálculo importante que hay que hacer
+10:21
+10 minutos y 21 segundos
+a continuación fíjense que ahora ya salimos de él para cada una de las hormigas
+10:28
+10 minutos y 28 segundos
+y entramos en un par de conexiones ahora vamos a recorrer todas las conexiones del grafo en todos los posibles y con
+10:37
+10 minutos y 37 segundos
+jota y qué vamos a hacer vamos a depositar feromonas si la hormiga paso por ahí por esa zona
+10:46
+10 minutos y 46 segundos
+vamos a ir depositando todos los lugares por donde pasó la hormiga algo de feromona pero previo a eso tenemos que también modelar un efecto que se da
+10:55
+10 minutos y 55 segundos
+naturaleza que es la evaporación de la feromona o sea si una hormiga paso por un lugar y dejó algo de feromona pero
+11:03
+11 minutos y 3 segundos
+luego de un tiempo no pasó ninguna otra es natural que esa feromona se vaya evaporando hasta desaparecer eso lo
+11:11
+11 minutos y 11 segundos
+vamos a modelar de esta manera con un exponencial decreciente donde uno menos rojo vendría a ser la tasa de
+11:20
+11 minutos y 20 segundos
+evaporación de las feromonas por ejemplo podría ser rock 0 1 con lo cual 1 -
+11:27
+11 minutos y 27 segundos
+rommedahl 09 o sea que de lo que tenía en el instante de tiempo actual va a tener el 90 por ciento del
+11:36
+11 minutos y 36 segundos
+siguiente y el 90 por ciento del 90 por ciento del siguiente y así va a disminuir de manera exponencial
+11:43
+11 minutos y 43 segundos
+a continuación como les anticipaba en lo que queremos es para cada una de las conexiones nuevamente
+11:52
+11 minutos y 52 segundos
+calcular cuánto va a dejar de feromonas la hormiga en ese lugar
+11:59
+11 minutos y 59 segundos
+entonces a la cantidad actual que tiene esa conexión le vamos a sumar
+12:09
+12 minutos y 9 segundos
+lo que aporta cada hormiga y todas las hormigas que hayan pasado por ahí para obtener la
+12:17
+12 minutos y 17 segundos
+cantidad de feromonas que va a haber en la próxima iteración que esta sumatoria que está acá fíjense esto se hace para todas las hormigas o
+12:26
+12 minutos y 26 segundos
+sea que vamos a recorrer los aportes de los caminos en las listas de nodos por los que pasaron
+12:34
+12 minutos y 34 segundos
+todas las hormigas y vamos a tomar todos los y j
+12:39
+12 minutos y 39 segundos
+todos los pares de nodos y j que estén que pertenezcan al camino de la hormiga
+12:48
+12 minutos y 48 segundos
+acá o sea que vamos a recorrer todas las hormigas acá todos los caminos de las hormigas acá
+12:55
+12 minutos y 55 segundos
+y para todos los caminos vamos a tomar todos los pares y j el 12 el 78 el 415
+13:03
+13 minutos y 3 segundos
+todos los saltos que hayan dado la hormiga y en esos lugares en esas transiciones vamos a depositar una
+13:11
+13 minutos y 11 segundos
+cantidad de feromonas inversamente proporcional a la longitud del camino de
+13:19
+13 minutos y 19 segundos
+esa hormiga es decir si la hormiga fue poco eficiente y no encontró un buen camino en por todos los lugares donde
+13:26
+13 minutos y 26 segundos
+pasó esa hormiga vamos a poner poquitas feromonas en cambio aquella hormiga que haya encontrado muy buen camino o sea que esta función
+13:34
+13 minutos y 34 segundos
+efe le da un valor pequeño o sea es un camino corto
+13:41
+13 minutos y 41 segundos
+en los nodos por los que pasó esa hormiga vamos a depositar más feromonas
+13:49
+13 minutos y 49 segundos
+entonces finalmente esto lo vamos a repetir hasta que todas las hormigas
+13:58
+13 minutos y 58 segundos
+sigan el mismo camino o sea que estas que se alineen todas por el mismo camino y fíjense que es acá recién dependiendo
+14:07
+14 minutos y 7 segundos
+del bucle principal el repetir principal que incrementamos el 1 el tiempo o sea que una vez que lo hicimos para todas
+14:16
+14 minutos y 16 segundos
+las hormigas recién ahí tenemos en un incremento de tiempo finalmente cuando
+14:23
+14 minutos y 23 segundos
+esté repetir termine o sea cuando todas las hormigas se uniformen pasen todos por el mismo
+14:30
+14 minutos y 30 segundos
+camino el camino óptimo supuestamente si todo funciona bien entonces ahí si salimos del algoritmo y devolvemos cuál
+14:40
+14 minutos y 40 segundos
+fue el camino más corto de todos los encontrados que si esto funciona bien va a ser el
+14:48
+14 minutos y 48 segundos
+mismo para todas las hormigas porque todas las hormigas ya están alineadas yendo por el mismo camino
+Sincronizar con el tiempo del vídeo

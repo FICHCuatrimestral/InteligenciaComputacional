@@ -1,0 +1,142 @@
+vamos a ver un experimento que se hizo originalmente con hormigas verdaderas unas hormigas originarias de argentina
+0:12
+12 segundos
+casualmente y es el experimento del puente binario este experimento dio origen a los
+0:20
+20 segundos
+algoritmos que surgieron después que surgieron más bien como un modelo del comportamiento de las hormigas y que luego se utilizaron para encontrar soluciones y optimizar problemas
+0:29
+29 segundos
+vamos a suponer que tenemos dos mesas que están a cierta distancia
+0:37
+37 segundos
+estas dos mesas las estoy mirando de arriba y en el medio de esas dos mesas tenemos un puente un puente que tiene dos brazos
+0:47
+47 segundos
+y un brazo más largo y otro brazo más corto
+0:55
+55 segundos
+vamos a dibujar acá el brazo más largo y el brazo
+1:02
+1 minuto y 2 segundos
+y más corta este puente una de las dos mesas de hecho se hizo con un puente con la
+1:11
+1 minuto y 11 segundos
+madera no era algo verdadero y vamos a suponer que de este lado de la mesa hay algún alimento de este lado
+1:20
+1 minuto y 20 segundos
+tenemos un montón de hormigas tenemos muchas hormiguitas que en determinado momento se sueltan los dos
+1:27
+1 minuto y 27 segundos
+puntitos que hago pretenden ser hormigas y las hormigas al principio comienzan a
+1:36
+1 minuto y 36 segundos
+caminar en todas direcciones hasta que con el tiempo algunas empiezan a transitar con cuenta
+1:45
+1 minuto y 45 segundos
+entonces vamos a suponer que en algún determinado momento las hormiguitas van por el puente y vamos a suponer que con
+1:53
+1 minuto y 53 segundos
+alguna probabilidad dos hormigas que van juntas exploran una el camino de arriba
+2:00
+2 minutos
+otra el camino de abajo o sea que en un determinado instante de tiempo quizás esta hormiga
+2:07
+2 minutos y 7 segundos
+la de abajo va por acá la de arriba va por allá vamos a poner que las dos corren a la misma velocidad así que no
+2:15
+2 minutos y 15 segundos
+no habría que esperar diferencias unos segundos después esta amiga ya va por acá esta hormiga ya recorrió la
+2:23
+2 minutos y 23 segundos
+misma distancia también como ustedes ya se imaginarán la hormiga que va por abajo se va a adelantar un
+2:30
+2 minutos y 30 segundos
+poco a la que va por arriba y evidentemente va a llegar antes
+2:38
+2 minutos y 38 segundos
+hasta el destino que iba a descubrir antes del alimento una vez que llegó y encontró alimentos
+2:47
+2 minutos y 47 segundos
+que vas a la hormigas la hormiga va a volver va a volver por el camino que hizo vamos a suponer acá que tiene alguna
+2:55
+2 minutos y 55 segundos
+forma de recordar el camino no es tan directo en la naturaleza pero pasa con vamos a decir con cierta probabilidad
+3:02
+3 minutos y 2 segundos
+hace que la hormiga tiene una forma de recordar por donde vino o de orientarse hacia dónde está el
+3:11
+3 minutos y 11 segundos
+hormiguero y la otra hormiga que va a llegar un poquito más tarde también va a emprender
+3:18
+3 minutos y 18 segundos
+el retorno en ese retorno va a ir un poquito más atrás y va a llegar al hormiguero más tarde
+3:25
+3 minutos y 25 segundos
+qué diferencia se va a marcar en este experimento del puente fíjense qué
+3:33
+3 minutos y 33 segundos
+como la hormiga que fue por abajo llegó antes dejo el rastro de feromonas en todo el
+3:40
+3 minutos y 40 segundos
+camino más corto cuando la de arriba todavía no alcanzó a llegar supongamos que va por acá
+3:49
+3 minutos y 49 segundos
+entonces supongamos que en ese momento hay una hormiga que está justo en la bifurcación del puente y tiene que tomar
+3:57
+3 minutos y 57 segundos
+la decisión si va para arriba o para abajo muy probablemente esa hormiga vea
+4:03
+4 minutos y 3 segundos
+perciba que hay más feromonas en el puente de abajo porque la que llegó más rápido ya volvió y ya dejó algo de
+4:12
+4 minutos y 12 segundos
+feromonas en cambio la que tuvo que ir por arriba y aquí fue más lento quizás todavía no alcanzó a llegar entonces
+4:21
+4 minutos y 21 segundos
+para esta hormiga que está por tomar la decisión de hacia dónde ir mucho más probablemente tome la decisión
+4:28
+4 minutos y 28 segundos
+de ir por abajo entonces podemos suponer para hacerlo en el sentido más probabilístico que de 10
+4:37
+4 minutos y 37 segundos
+hormigas que estaban ahí en posición de tomar la decisión de ir hacia abajo hacia arriba hubo seis o siete que
+4:45
+4 minutos y 45 segundos
+fueron por abajo y unas tres o cuatro que fueron por arriba eso que va a hacer que las que van por abajo nuevamente
+4:54
+4 minutos y 54 segundos
+siguen la comida antes regresen y refuercen más las feromonas del camino
+5:02
+5 minutos y 2 segundos
+abajo con el tiempo las hormigas que pasan más por abajo que por arriba van a
+5:10
+5 minutos y 10 segundos
+dejar un camino más marcado abajo que arriba y va a llegar al punto que la hormiga que se encuentra en la duda en la bifurcación del puente que no sepa
+5:19
+5 minutos y 19 segundos
+hacia dónde ir va a tener una huella muy fuerte abajo y una huella bastante más débil y
+5:28
+5 minutos y 28 segundos
+relativamente más débil en el de arriba con lo cual casi la decisión va a ser directa prácticamente todas las hormigas
+5:36
+5 minutos y 36 segundos
+van a ir por abajo hasta que va a llegar a un punto que ninguna hormiga va a ir por arriba y todas terminan pasando por
+5:43
+5 minutos y 43 segundos
+el camino abajo y volviendo por el camino de abajo que ya tiene una cantidad de feromonas altísima y que no
+5:50
+5 minutos y 50 segundos
+genera ninguna duda conclusión las hormigas encontraron la forma óptima de llegar al alimento
+5:58
+5 minutos y 58 segundos
+se supieron con ese mecanismo de las feromonas supieron cuál es el camino óptimo y esto
+6:06
+6 minutos y 6 segundos
+es lo que nosotros queremos utilizar como un algoritmo un método para encontrar el camino óptimo hacia una solución
+6:14
+6 minutos y 14 segundos
+así que nuevamente lo que vamos a tratar de hacer es convertir esto qué es como una cuestión de la naturaleza y
+6:22
+6 minutos y 22 segundos
+convertirlo en un algoritmo para poder utilizarlo en la resolución de problemas

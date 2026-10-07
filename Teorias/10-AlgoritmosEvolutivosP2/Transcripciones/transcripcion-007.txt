@@ -1,0 +1,172 @@
+bueno vamos a ver ahora el segundo algoritmo de color ya de hormiga un poquito más elaborado que en la anterior y vamos a tratar de hacer
+0:14
+14 segundos
+énfasis en los puntos diferentes o en las mejoras para este algoritmo en primer lugar hacemos una inicialización
+0:23
+23 segundos
+e igual que como la teníamos antes con una distribución uniforme con valores pequeños para todas las feromonas en
+0:30
+30 segundos
+todos los nodos y ubicamos las hormigas como lo hicimos antes volvemos a hacer ese bucle grande
+0:40
+40 segundos
+repetir el mismo que teníamos antes y dentro de ese tenemos el para cada hormiga
+0:47
+47 segundos
+y al igual que antes también inicializa mos con vacío la lista de todos los
+0:55
+55 segundos
+nodos por lo que pasó la hormiga acá así que ahora estamos en una hormiga acá y vamos a empezar a llenar la lista de nodos por los que
+1:04
+1 minuto y 4 segundos
+pasa muy parecido a lo que hacíamos antes lo que vamos a hacer es decidir porque no los sigue a partir del que
+1:12
+1 minuto y 12 segundos
+está ahora basado en una probabilidad pero ahora vamos a definir un poquito diferente esa probabilidad vamos a incorporar en esa
+1:20
+1 minuto y 20 segundos
+probabilidad un conocimiento adicional que vamos a suponer que tiene la hormiga que es
+1:28
+1 minuto y 28 segundos
+que tanto le conviene ir en un sentido o en el otro ir hacia un camino o hacia el otro en la bibliografía lo van a
+1:36
+1 minuto y 36 segundos
+encontrar como el deseo de la hormiga de moverse de un nodo al otro y este deseo
+1:45
+1 minuto y 45 segundos
+podría estar influenciado por por ejemplo la distancia sirve que un nodo
+1:52
+1 minuto y 52 segundos
+tiene una distancia más corta puede estar más interesada por moverse en ese sentido que hacia otro nodo en el cual
+2:01
+2 minutos y 1 segundo
+encuentra una distancia o un costo en el caso general más alto porque hay un obstáculo o por lo que sea entonces esa
+2:08
+2 minutos y 8 segundos
+información que en algunos problemas la tenemos en otros no no siempre la tenemos la vamos a incorporar con ésta
+2:16
+2 minutos y 16 segundos
+esta y nuevamente vamos a utilizar se acuerda como hacíamos con el alfa un beta para darle mayor o menor
+2:25
+2 minutos y 25 segundos
+importancia a ese conocimiento entonces con el alfa y el beta le vamos a estar dando al contenido de feromonas y a este
+2:35
+2 minutos y 35 segundos
+otro conocimiento adicional que tenemos del problema que queremos resolver un mayor o menor peso relativo nuevamente
+2:43
+2 minutos y 43 segundos
+como hacíamos antes tenemos que dividir por la sumatoria de todos los elementos que tenemos en el lugar a d'or
+2:51
+2 minutos y 51 segundos
+para que esto finalmente sea una probabilidad y hay otra cosa que vamos a incorporar
+2:58
+2 minutos y 58 segundos
+en esta en este algoritmo y que yo se lo había anticipado antes que es
+3:05
+3 minutos y 5 segundos
+una lista tabú una lista en la cual no se incluyen todos los posibles nodos a
+3:12
+3 minutos y 12 segundos
+los que se puede arribar a partir del nuevo en el que estamos parados actualmente sino que de todos los posibles no se eliminan aquellos por los
+3:20
+3 minutos y 20 segundos
+cuales la hormiga ya pasó esto lo que va a hacer es que va a evitar que se generen ciclos se acuerdan que el algoritmo anterior teníamos un paso que
+3:29
+3 minutos y 29 segundos
+era eliminar los ciclos y aquellas veces donde la única se quedaba dando vuelta entre el 5 y el 6 y después de un rato
+3:37
+3 minutos y 37 segundos
+salía del 6 del 7 ahora con esta nueva lista que armamos que simplemente elimina los nodos por
+3:45
+3 minutos y 45 segundos
+los que esa hormiga ya pasó y que se pueden ver en la lista p vamos a evitar que se formen esos ciclos así tenemos de
+3:54
+3 minutos y 54 segundos
+estas dos mejoras en el algoritmo a continuación vamos a agregar
+4:02
+4 minutos y 2 segundos
+un paso el paso del nodo y al j a la lista de pasos que dio esa hormiga y vamos a
+4:09
+4 minutos y 9 segundos
+repetir esto hasta que la hormiga alcance el destino o sea que hasta que alcance el alimento
+4:18
+4 minutos y 18 segundos
+luego vamos a calcular nuevamente como hacíamos antes la longitud del camino que recorrió esa hormiga por qué por qué esta longitud me da una idea de qué tan
+4:26
+4 minutos y 26 segundos
+bueno fue el camino que encontró desde el hormiguero hasta la comida y ahora vamos a actualizar como hicimos
+4:35
+4 minutos y 35 segundos
+antes también las hormonas con algunas variantes en este algoritmo lo primero es poner
+4:44
+4 minutos y 44 segundos
+el factor de evaporación acá lo que vamos a hacer es sacarle un poquito por evaporación esto es igual que lo que
+4:52
+4 minutos y 52 segundos
+teníamos para el caso anterior y ahora lo que vamos a hacer es trabajar con distintas alternativas de
+5:00
+5 minutos
+el incremento de la cantidad de feromonas entre un par de vértices del graso
+5:07
+5 minutos y 7 segundos
+hay distintas alternativas una es una constante / la longitud total del camino esta se
+5:15
+5 minutos y 15 segundos
+conoce como alternativa global y fíjense que si q vale 1 estaríamos en el caso del algoritmo anterior al menos para
+5:23
+5 minutos y 23 segundos
+este para este paso esto se conoce como en la estrategia global porque porque
+5:31
+5 minutos y 31 segundos
+tiene en cuenta el desempeño global de la hormiga o sea el camino que es tan corto o largo fue luego de haberlo
+5:39
+5 minutos y 39 segundos
+recorrido todo completo otra es la estrategia uniforme un poco más simple pero lo que hace es siempre
+5:48
+5 minutos y 48 segundos
+deposita la misma cantidad o sea que ahí lo único que cuenta es cuántas hormigas pasaron por ahí porque dependiendo de
+5:56
+5 minutos y 56 segundos
+eso va a ser cuánto va a aumentar la cantidad de feromonas por ese lugar pero no del hecho de que la hormiga haya llegado por un camino más corto más
+6:04
+6 minutos y 4 segundos
+largo al objetivo y la otra es una local la local tiene en cuenta solamente
+6:12
+6 minutos y 12 segundos
+cuánto le costó a la hormiga ir desde un nodo al otro esa es
+6:20
+6 minutos y 20 segundos
+la d de distancia o de costo en general si le costó mucho entonces vamos a agregar menos feromonas entre esas dos
+6:29
+6 minutos y 29 segundos
+conexiones entonces con esta definición del delta de feromonas para la hormiga acá vamos a volver a aplicar la misma
+6:39
+6 minutos y 39 segundos
+fórmula básicamente que teníamos antes que era a partir de la cantidad de feromonas actual vamos a obtener la
+6:45
+6 minutos y 45 segundos
+próxima sumando los aportes de todas las hormigas
+6:52
+6 minutos y 52 segundos
+esa intersección fíjense que acá estamos teniendo en cuenta todos los hijos que
+7:00
+7 minutos
+aparezcan en el camino pe para todas las hormigas acá fíjense que el hijo está es
+7:08
+7 minutos y 8 segundos
+acá está ahí jota es la cantidad de feromonas que queremos actualizar para la conexión entre el lobo y el nuevo j
+7:18
+7 minutos y 18 segundos
+no no para todos así que estamos viendo dentro de la lista p cuántas veces aparece y j y esas veces la actualizamos
+7:27
+7 minutos y 27 segundos
+con el delta sin más finalmente lo que hacemos es
+7:33
+7 minutos y 33 segundos
+incrementamos de nuevo el tiempo una nueva pasada y seguimos esperando en este repetir grande
+7:42
+7 minutos y 42 segundos
+hasta que todas las hormigas conversan o se alinean en un mismo camino
+7:49
+7 minutos y 49 segundos
+al final de todo eso cuando todas estén alineadas devolvemos el mejor camino encontrado al igual que hacíamos antes

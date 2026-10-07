@@ -5,7 +5,7 @@ Inteligencia Computacional · FICH-UNL
 | Archivo | Qué es |
 |---|---|
 | `01-inteligencia-colectiva.md` | La clase introductoria del bloque: autómatas ($A=\langle X,Y,E,D\rangle$, reglas deterministas y probabilísticas), autómatas celulares ($R=\langle A,T,C\rangle$, topologías, vecindades de von Neumann y Moore, juego de la vida), agentes y sistemas multiagente, y las características de la inteligencia colectiva, con la estigmergía como pregunta de parcial |
-| `02-algoritmos-evolutivos.md` | El tema completo: Lamarck y Darwin, el algoritmo (pseudocódigo de la diapositiva y versión con las cinco piezas), representación (decodificación, Gray, los cinco ejemplos del pizarrón, representación fenotípica), aptitud (las cuatro características y los ejemplos con fórmula), selección (ruleta, los dos mares con números, re-escalado, ventanas, competencias, tabla comparativa), cruza y mutación (tasas, multipunto, rol de cada operador, operadores reales), reemplazo (brecha y elitismo), características y teorema de los esquemas, paralelismo, **restricciones**, **Lamarck para acelerar la convergencia**, estrategias evolutivas, cómo encarar «proponga un algoritmo evolutivo para…», desarrollos para el pizarrón, formulario, errores típicos y autoevaluación |
+| `02-algoritmos-evolutivos.md` | El tema completo: Lamarck y Darwin, el algoritmo (pseudocódigo de la diapositiva y versión con las cinco piezas), representación (decodificación, Gray, los cinco ejemplos del pizarrón, representación fenotípica), aptitud (las cuatro características y los ejemplos con fórmula), selección (ruleta, los dos mares con números, re-escalado, ventanas, competencias, tabla comparativa), cruza y mutación (tasas, multipunto, rol de cada operador, operadores reales), reemplazo (brecha y elitismo), características y teorema de los esquemas, paralelismo, **Lamarck para acelerar la convergencia**, cómo encarar «proponga un algoritmo evolutivo para…», desarrollos para el pizarrón, formulario, errores típicos y autoevaluación |
 
 ## Lo que hay que saber de las fuentes
 
@@ -14,7 +14,6 @@ Inteligencia Computacional · FICH-UNL
 - **Los parciales 2013–2018 preguntan más que la clase:** restricciones (cuatro de seis), representaciones fenotípicas y sus operadores, cruza múltiple, estrategias evolutivas y Lamarck para acelerar la convergencia. Eso se armó con Engelbrecht (caps. 8, 9, 12, ap. A), Mitchell (caps. 1, 3, 4) y Goldberg, de `Bibliografía/`, y está marcado.
 - **Dos correcciones a la clase:** el ejemplo de tasas de mutación compara 1 % con 10 % (se rehízo con la misma tasa), y el teorema de los esquemas no «asegura la convergencia»: es una cota sobre el crecimiento esperado de un esquema en una generación.
 - **Matiz en el mar de mediocres:** la clase dice que el bueno queda ahogado; la simulación muestra que, si se elige la generación entera, el bueno no se pierde y se adueña de la población en 4 generaciones (convergencia prematura). El apunte da las dos caras.
-- **Hormigas y enjambre de partículas** no están en esta carpeta (ni diapositivas ni transcripciones), aunque los parciales los preguntan en el mismo bloque.
 
 ## Números del apunte
 
@@ -35,6 +34,8 @@ Todos salen de `../imagenes/graficos_evolutivos.py` (AG binario propio: ruleta, 
 | Penalización | $(x-3)^2$, $x\le2$: cuadrática $\lambda=100$ → 2,01; lineal $\lambda=10$ → 2,00 |
 | Viajante | la cruza simple repite 2 y 4 y pierde 5 y 7; la cruza de orden da `7 1 3 4 5 6 8 2` |
 | Lamarck (Rastrigin 6-D, 20 semillas) | hasta $f<0{,}01$: AG solo 10/20 (306 gen.), baldwiniano 20/20 (56 gen.), lamarckiano 20/20 (16,5 gen., 4184 evaluaciones) |
+
+Las restricciones (§12) y las otras ramas (§14) se desarrollan en `Teorias/10-AlgoritmosEvolutivosP2/Resumenes/01-variantes.md`; acá quedan sólo los punteros.
 
 ## Selección de características (§15)
 

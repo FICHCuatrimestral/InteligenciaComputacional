@@ -37,10 +37,10 @@ mindmap
       elitismo
     9 Esquemas
     10 Frente al gradiente
-    11-14 Extensiones
+    11-13 Extensiones
+      paralelismo
       restricciones
       Lamarck
-      estrategias evolutivas
     15 Selección de características
 ```
 
@@ -591,7 +591,7 @@ Así el hijo puede caer un poco afuera de los padres. Si los padres son muy pare
 $$\tilde x_j = x_j + \sigma\,N(0,1)$$
 Un $\sigma$ grande explora; uno chico ajusta. Es común achicar $\sigma$ a medida que pasan las generaciones. Después se recorta el gen al dominio $[a_j, b_j]$.
 
-**Para permutaciones** (el viajante): mutar es **intercambiar dos posiciones**; la cruza está en §12.
+**Para permutaciones** (el viajante): mutar es **intercambiar dos posiciones**; la cruza de orden está en el apunte de variantes, §6.
 
 ---
 
@@ -708,47 +708,9 @@ Como lo caro es evaluar la aptitud y cada individuo se evalúa por separado, el 
 
 ## 12. Restricciones del problema
 
-### El problema
+En muchos problemas hay soluciones **inválidas** (figuras fuera del lienzo, un viajante que repite ciudades, un gen fuera de su dominio) y la cruza y la mutación las fabrican igual. **Con el viajante:** los recorridos `1 2 3 4 5 6 7 8` y `3 7 5 1 6 8 2 4`, cruzados después del cuarto lugar, dan `1 2 3 4 | 6 8 2 4`, que repite el 2 y el 4 y no pasa por el 5 ni por el 7.
 
-En muchos de los ejemplos hay soluciones **inválidas**: figuras que se pisan o se salen del lienzo, un viajante que repite ciudades, un gen real que se va del dominio. La cruza y la mutación no saben nada del problema y las fabrican igual.
-
-**Con el viajante.** Recorridos `1 2 3 4 5 6 7 8` y `3 7 5 1 6 8 2 4`, cruza simple después del cuarto lugar. El primer hijo es `1 2 3 4 | 6 8 2 4`: **repite el 2 y el 4** y **no pasa por el 5 ni por el 7**. No es un recorrido.
-
-### Cuatro formas de manejarlas
-
-```mermaid
-%% titulo: Las cuatro formas, ordenadas de la más simple a la más elaborada.
-%% ancho: 0.55
-flowchart LR
-    I["Un hijo inválido<br/>(viola una restricción)"] --> R1["1. Rechazo<br/>se descarta o aptitud 0"]
-    I --> R2["2. Penalización<br/>f − λ·violación"]
-    I --> R3["3. Reparación<br/>se lo arregla a uno válido"]
-    P["Diseño previo"] --> R4["4. Que no pueda aparecer<br/>representación y operadores<br/>que sólo dan válidos"]
-```
-
-**1. Rechazo.** Los individuos inválidos se descartan, o reciben aptitud cero. Es lo más simple, pero si casi todo lo que se genera es inválido (porque la zona válida es chica), se tira casi todo y el algoritmo no avanza.
-
-**2. Penalización.** Se resta de la aptitud un término proporcional a **cuánto** se viola la restricción. Es lo que se hizo en el lienzo con $-1000\,A_{\text{fuera}}$:
-
-$$f_{\text{pen}}(x) = f(x) - \lambda\,\sum_m p_m(x)$$
-
-donde $p_m(x) \ge 0$ mide cuánto se viola la restricción $m$ (0 si se cumple). La ventaja frente al rechazo es que un inválido «casi válido» sigue teniendo una aptitud útil y puede tener hijos válidos. La dificultad es **elegir $\lambda$**:
-
-![Minimizar $(x-3)^2$ con la restricción $x\le 2$. El mínimo verdadero, respetando la restricción, es $x=2$. Con penalización cuadrática, aun con $\lambda=100$, el mínimo de la función penalizada queda en 2,01, fuera de lo permitido. Con penalización lineal y $\lambda=10$ cae justo en 2.](../imagenes/15-penalizacion.png)
-
-Si $\lambda$ es chico, al algoritmo le conviene violar un poco la restricción. Si es enorme, cualquier inválido queda pésimo y se pierde la información de cuál está más cerca de ser válido. Una variante: hacer que $\lambda$ **crezca con las generaciones**, para explorar al principio y exigir al final.
-
-**3. Reparación.** Un operador que **arregla** al inválido, convirtiéndolo en uno válido parecido:
-
-- en el viajante, cambiar las ciudades repetidas por las que faltan: `1 2 3 4 6 8 2 4` → `1 2 3 4 6 8 5 7`;
-- con genes reales, **recortar** cada gen a su dominio: $x_j \leftarrow \min(\max(x_j, a_j), b_j)$.
-
-**4. Que los inválidos no puedan aparecer.** Se elige una representación y unos operadores que **sólo pueden producir** individuos válidos.
-
-- **Viajante con cruza de orden:** se copia un tramo de un padre en su lugar y el resto se completa con las ciudades que faltan, **en el orden en que aparecen en el otro padre**. Con los padres de arriba, copiando el tramo `3 4 5` del primero en los lugares 3 a 5, las ciudades que faltan, en el orden del segundo padre, son 7, 1, 6, 8, 2. El hijo es `7 1 3 4 5 6 8 2`: un recorrido válido. Y la mutación es **intercambiar dos ciudades**, que también da un recorrido válido.
-- El robot de §4 es el mismo caso: codificar instrucciones con códigos, y no letras, hace que todo cromosoma sea un programa válido.
-
-**Comparar con restricciones sin elegir $\lambda$.** Si se usa competencia, se puede decidir cada duelo así: entre dos válidos, gana el de mejor aptitud; un válido le gana a cualquier inválido; entre dos inválidos, gana el que menos viola.
+Las cinco formas de tenerlas en cuenta (redefinir la representación, rechazo, reparación, modificar los operadores y penalizar la aptitud), en orden de preferencia y con un ejemplo cada una, están en el apunte **Variantes de la computación evolutiva**, §6.
 
 ---
 
@@ -790,39 +752,7 @@ El lamarckiano llega unas 18 veces antes en generaciones y unas 4 veces antes en
 
 ## 14. Otras ramas de la computación evolutiva
 
-Lo visto hasta acá son los **algoritmos genéticos**. Hay otras familias con la misma idea y distintos énfasis.
-
-```mermaid
-%% titulo: La familia de la computación evolutiva y qué distingue a cada rama.
-%% ancho: 0.75
-flowchart TD
-    CE["Computación evolutiva<br/>población + selección + variación"] --> AG["Algoritmos genéticos<br/>bits · la cruza manda"]
-    CE --> EE["Estrategias evolutivas<br/>reales + σ que evoluciona<br/>la mutación manda"]
-    CE --> PG["Programación genética<br/>programas como árboles<br/>cruza de subárboles"]
-    CE --> PE["Programación evolutiva<br/>sólo mutación"]
-```
-
-### Estrategias evolutivas
-
-| | Algoritmos genéticos | Estrategias evolutivas |
-|---|---|---|
-| Cromosoma | bits | vector de **reales** $\mathbf x$ y, además, un vector de **tamaños de paso** $\boldsymbol\sigma$ |
-| Operador principal | la **cruza** | la **mutación** gaussiana |
-| Mutación | invertir bits con probabilidad fija | $x_j' = x_j + \sigma_j\,N(0,1)$, y los $\sigma_j$ **también evolucionan** |
-| Elección de padres | según la aptitud | al azar |
-| Quiénes sobreviven | reemplazo total, brecha o elitismo | los $\mu$ mejores, sin azar: $(\mu,\lambda)$ los elige entre los $\lambda$ hijos; $(\mu+\lambda)$, entre padres **e** hijos |
-
-**La idea propia:** el individuo lleva también **cómo mutar**, su $\boldsymbol\sigma$. Un individuo con un $\sigma$ adecuado para la zona donde está produce mejores hijos, que heredan ese $\sigma$. Así el algoritmo **ajusta solo** el tamaño de paso.
-
-**La $(1+1)$-ES**, la primera: un padre, un hijo por mutación gaussiana, sobrevive el mejor de los dos. El tamaño del paso se ajusta con la **regla de 1/5**: si más de una de cada cinco mutaciones recientes mejoró al padre, se agranda $\sigma$ (se está siendo demasiado prudente); si menos, se achica.
-
-### Programación genética
-
-Los individuos son **programas**, representados como **árboles**: los nodos internos son operaciones (`si`, `+`, `avanzar`) y las hojas, valores o sensores. La cruza **intercambia subárboles** entre dos programas, y cualquier intercambio da otro programa válido. Es la forma completa de hacer lo del robot de §4.
-
-### Programación evolutiva
-
-Sólo usa mutación, sin cruza, y elige a los sobrevivientes por competencias entre padres e hijos.
+Lo visto hasta acá son los **algoritmos genéticos**. Las otras familias (las **estrategias de evolución**, con su regla de 1/5 y las reproducciones $(\mu+\lambda)$ y $(\mu,\lambda)$, y la **programación genética**, con programas como árboles) están en el apunte **Variantes de la computación evolutiva**.
 
 ## 15. Aplicación: selección de características
 
@@ -992,8 +922,6 @@ Este orden cubre todo el tema y cada paso se apoya en el anterior. Al lado de ca
 | Cruza aritmética | $\tilde x_j = (1-\gamma)x_{1j} + \gamma x_{2j}$ |
 | BLX-$\alpha$ | $\tilde x_j \sim U[\min-\alpha d_j,\ \max+\alpha d_j]$ |
 | Mutación gaussiana | $\tilde x_j = x_j + \sigma N(0,1)$ |
-| Penalización | $f_{\text{pen}} = f - \lambda\sum_m p_m(x)$ |
-| Estrategias evolutivas | $(\mu,\lambda)$, $(\mu+\lambda)$; regla de 1/5 |
 | Subconjuntos de $l$ entre $m$ | $\binom{m}{l} = \dfrac{m!}{l!(m-l)!}$; con $l$ libre, $2^m$ |
 | Aptitud para selección de características | $f = \alpha\cdot\text{acierto} - \beta\cdot\dfrac{\#\text{elegidas}}{\#\text{totales}}$ |
 | UAR (dos clases) | $\frac{1}{2}(\text{acierto clase 1} + \text{acierto clase 2})$ |
@@ -1039,11 +967,10 @@ Este orden cubre todo el tema y cada paso se apoya en el anterior. Al lado de ca
 18. Diferenciá reemplazo total, brecha generacional y elitismo. Dibujá la curva del mejor con y sin elitismo.
 19. Aplicá el teorema de los esquemas a `1****` en el ejemplo. ¿Qué dice y qué no dice?
 20. ¿Por qué un algoritmo genético encuentra el mínimo de la superficie de anillos y el gradiente no? ¿Y en los escalones?
-21. Mostrá cómo la cruza simple rompe un recorrido del viajante y explicá cuatro formas de manejar restricciones.
+21. Mostrá cómo la cruza simple rompe un recorrido del viajante.
 22. ¿Cómo se usa la idea de Lamarck para acelerar el algoritmo? ¿Qué diferencia hay con la versión baldwiniana?
-23. ¿En qué se diferencia una estrategia evolutiva de un algoritmo genético?
-24. ¿Qué es la selección de características y en qué se diferencia de la reducción de dimensión?
-25. Dibujá un ejemplo donde dos variables solas no sirven y juntas sí. ¿Por qué falla un ranking de variables?
-26. ¿Cuántos subconjuntos de 5 variables hay entre 20? ¿Y subconjuntos de cualquier tamaño entre 7129?
-27. Diseñá el AG para seleccionar características: cromosoma, aptitud y qué hace la evaluación. ¿Por qué la aptitud se mide en validación?
-28. ¿Qué es el UAR y por qué se usa con clases desbalanceadas?
+23. ¿Qué es la selección de características y en qué se diferencia de la reducción de dimensión?
+24. Dibujá un ejemplo donde dos variables solas no sirven y juntas sí. ¿Por qué falla un ranking de variables?
+25. ¿Cuántos subconjuntos de 5 variables hay entre 20? ¿Y subconjuntos de cualquier tamaño entre 7129?
+26. Diseñá el AG para seleccionar características: cromosoma, aptitud y qué hace la evaluación. ¿Por qué la aptitud se mide en validación?
+27. ¿Qué es el UAR y por qué se usa con clases desbalanceadas?

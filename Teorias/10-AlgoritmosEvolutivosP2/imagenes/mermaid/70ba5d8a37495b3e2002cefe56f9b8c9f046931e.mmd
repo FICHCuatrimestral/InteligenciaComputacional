@@ -1,0 +1,8 @@
+%% titulo: Por qué converge. Un ciclo que se amplifica a sí mismo (retroalimentación positiva) y la evaporación como freno.
+%% ancho: 0.8
+flowchart LR
+    A["más feromonas<br/>en la rama"] --> B["más probabilidad<br/>de elegirla"]
+    B --> C["más hormigas<br/>pasan por ella"]
+    C --> D["más depósito<br/>(y antes, si es corta)"]
+    D --> A
+    E["evaporación"] -. "borra lo que<br/>no se refuerza" .-> A

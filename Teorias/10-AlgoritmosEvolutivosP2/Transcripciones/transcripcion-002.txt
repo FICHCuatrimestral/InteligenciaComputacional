@@ -1,0 +1,161 @@
+los algoritmos importantes en el ámbito de la computación evolutiva es el de programación genética van a encontrar
+0:13
+13 segundos
+que tenemos una terminología bastante confusa de estrategias de evolución algoritmo genético computación evolutiva
+0:23
+23 segundos
+algoritmos evolutivos programación genética viene ahora todo suena más o menos parecido pero evidentemente no son
+0:30
+30 segundos
+los mismos van a ver que se van a acordar fácil a qué le llamamos programación genética porque se trata justamente de generar
+0:38
+38 segundos
+programas de forma automática se acuerdan que habíamos visto el caso del robot en el cual queríamos generar un programa hicimos una codificación
+0:47
+47 segundos
+binaria en una codificación lineal en un cromosoma lineal de las instrucciones
+0:54
+54 segundos
+para que se mueva ese robot pero podría haber una forma más adecuada de representar a los programas
+1:03
+1 minuto y 3 segundos
+y así es como surgió también en los orígenes de la computación evolutiva más o menos en la misma época que surgieron
+1:10
+1 minuto y 10 segundos
+los algoritmos genéticos surgió esto que se denomina programación genética cuyo objetivo claramente es generar programas
+1:18
+1 minuto y 18 segundos
+automáticamente se busca generar programas automáticamente vamos a ver un ejemplo sencillo en donde básicamente lo
+1:26
+1 minuto y 26 segundos
+que tenemos que hacer es codificar de alguna manera qué cosas las variables en las variables y constantes que tenga el
+1:34
+1 minuto y 34 segundos
+programa vamos a ir de menor a mayor complejidad luego tenemos los operadores aritméticos y lógicos
+1:42
+1 minuto y 42 segundos
+poquito fácil todavía sumas restas por todos los operadores que tengamos
+1:49
+1 minuto y 49 segundos
+luego podríamos incorporar también funciones matemáticas seno coseno logaritmo
+1:57
+1 minuto y 57 segundos
+cuadrado o lo que sea y luego ya empezamos a
+2:03
+2 minutos y 3 segundos
+reconocer partes de los programas en sí mismo como los y las instrucciones
+2:11
+2 minutos y 11 segundos
+condicionales los y esto entonces está la otra cosa los bucles los bucles para él o sea algo clifford los wide web'
+2:20
+2 minutos y 20 segundos
+repeat o lo que sea y podría hasta incluso tener recursos dentro del mismo
+2:28
+2 minutos y 28 segundos
+programa vamos a quedarnos con lo más simple para dar un ejemplo vamos a trabajar con algunos operadores y
+2:35
+2 minutos y 35 segundos
+algunas variables sencillas y vamos a ver como por ejemplo esta cuenta prácticamente acá lo que tenemos
+2:43
+2 minutos y 43 segundos
+fíjense es algo de lógica tenemos un equipo anotó
+2:50
+2 minutos y 50 segundos
+un and otro no no y tenemos las variables ab y
+2:57
+2 minutos y 57 segundos
+b son las variables es eso uno puede decir bueno es una ecuación y también en
+3:04
+3 minutos y 4 segundos
+un programa también yo lo puedo codificar en cualquier lenguaje de programación por eso yo les decía vamos a tomar un ejemplo sencillo
+3:13
+3 minutos y 13 segundos
+acá lo más importante es que tenemos dos partes unidas por una fíjense que acá podemos representarlo de
+3:22
+3 minutos y 22 segundos
+esta manera acá está el principal de más alto nivel pero después cada uno
+3:29
+3 minutos y 29 segundos
+de los lados el izquierdo y el derecho se puede representar como parte de un árbol acá tenemos todo el lado izquierdo
+3:37
+3 minutos y 37 segundos
+todo el lado derecho y acá tenemos el x org y acá tenemos el oro y acá tenemos fíjense ya directamente
+3:45
+3 minutos y 45 segundos
+una variable la variable m en cambio acá tenemos un not
+3:52
+3 minutos y 52 segundos
+y luego si la variable así que al final las hojas de este árbol son las variables
+4:01
+4 minutos y 1 segundo
+y los nodos que se van dando en cada rama son los distintos operadores lógicos de la
+4:09
+4 minutos y 9 segundos
+misma manera podríamos armar con los operadores o las funciones y sus correspondientes argumentos para
+4:17
+4 minutos y 17 segundos
+cualquier tipo de programa ahora bien una vez que lo conceptualizamos como un árbol podemos empezar a pensar en
+4:25
+4 minutos y 25 segundos
+operaciones de árbol en lugar de cruzas y mutaciones algo lineal podemos ahora pensarlo en
+4:33
+4 minutos y 33 segundos
+términos de árbol entonces por ejemplo para el caso de las cruzas hay distintas
+4:40
+4 minutos y 40 segundos
+estándares para la numeración tomamos un estándar de arriba hacia abajo primero vamos en profundidad y
+4:48
+4 minutos y 48 segundos
+después vamos recorriendo las ramas así que lo primero que hacemos es numerar
+4:53
+4 minutos y 53 segundos
+1 2 3 después vamos 4 5 6 7
+5:00
+5 minutos
+este sería un padre este sería otro padre y lo que tenemos que hacer es una cruz a
+5:07
+5 minutos y 7 segundos
+luego de enumerar los nodos en ambos árboles lo que vamos a hacer es seleccionar dos puntos a cruzar acá este
+5:15
+5 minutos y 15 segundos
+es un simple ejemplo y estamos suponiendo que seleccionamos el 2 en este árbol y el 6 en los 6 el otro árbol
+5:23
+5 minutos y 23 segundos
+y bueno como se imaginarán lo que vamos a hacer a continuación es intercambiar las ramas que están por abajo
+5:30
+5 minutos y 30 segundos
+esta rama se acuerdan estaba de este lado y esta rama chiquita era la que estaba
+5:37
+5 minutos y 37 segundos
+del otro lado o sea que lo que hicimos fue intercambiar esa rama lados del
+5:45
+5 minutos y 45 segundos
+árbol izquierdo con las 6 del árbol derecho y ya hicimos una cruza evidentemente este programa ahora va a
+5:53
+5 minutos y 53 segundos
+funcionar distinto lo bueno es que esta representación de árbol me permitió hacer cruzas de manera de mantener en
+6:01
+6 minutos y 1 segundo
+alguna medida la estructura que tenía ese árbol porque en este caso este árbol siguió manteniendo la función central y
+6:09
+6 minutos y 9 segundos
+toda esta rama y solo le cambió la otra rama lo mismo con el otro árbol o sea que no son cambios tan abruptos los que
+6:18
+6 minutos y 18 segundos
+se realizan con esta cruz por otro lado tenemos el caso de las mutaciones hay distintos operadores de
+6:26
+6 minutos y 26 segundos
+mutación yo les voy a comentar para dar una idea introducción uno de los más comunes consiste en lo siguiente nuevamente se
+6:34
+6 minutos y 34 segundos
+enumeran los nodos se les selecciona una rama mutar se genera una rama completamente al azar
+6:42
+6 minutos y 42 segundos
+se genera un arbolito cualquiera con las variables que están en juego y con operadores cualquiera y se reemplaza por
+6:51
+6 minutos y 51 segundos
+la rama que se había seleccionado sé que es bastante sencillo lo único que tiene acá como punto clave es que necesitamos
+7:00
+7 minutos
+una función generador de árboles al azar
+Sincronizar con el tiempo del vídeo

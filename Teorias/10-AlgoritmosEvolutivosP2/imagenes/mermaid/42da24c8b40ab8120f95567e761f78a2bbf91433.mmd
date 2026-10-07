@@ -1,0 +1,27 @@
+%% titulo: Enjambre de partículas. Una población de puntos que se mueven por el espacio de búsqueda; cada uno corrige su velocidad hacia lo mejor que encontró y hacia lo mejor que encontraron otros.
+%% ancho: 1.0
+mindmap
+  root((Enjambre de partículas))
+    1 Inspiración
+      bandadas, cardúmenes
+      experiencia propia: cognitiva
+      experiencia del entorno: social
+    2 El modelo
+      xk posición en R^n
+      vk velocidad
+      yk mejor posición personal
+      f error a minimizar
+    3 Mejor global gEP
+      topología estrella
+      ŷ mejor de todo el enjambre
+    4 Actualización
+      v + c1 r1 · y − x + c2 r2 · ŷ − x
+      x + v
+      r1, r2 al azar: exploración
+    5 Mejor local lEP
+      topología anillo
+      vecindad por índices
+      ŷk mejor del entorno
+    6 Extensión
+      inercia w
+      velocidad máxima

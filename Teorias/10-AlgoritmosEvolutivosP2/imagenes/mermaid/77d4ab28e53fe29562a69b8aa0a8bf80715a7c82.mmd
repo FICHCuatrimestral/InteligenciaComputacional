@@ -1,0 +1,29 @@
+%% titulo: Colonias de hormigas. El problema es siempre encontrar el camino más corto en un grafo; los dos algoritmos difieren en cómo elige la hormiga y cuánto deposita.
+%% ancho: 1.0
+mindmap
+  root((Colonias de hormigas))
+    1 Inspiración
+      comportamiento inicial al azar
+      reclutamiento por feromonas
+      el camino se refuerza
+      estigmergía
+    2 Puente binario
+      la rama corta se recorre antes
+      retroalimentación positiva
+    3 El modelo
+      grafo, nodos y conexiones
+      σij feromonas en cada conexión
+      Ni nodos disponibles
+      pk camino de la hormiga
+    4 sACO
+      probabilidad con σ elevado a α
+      eliminar ciclos
+      evaporación 1 − ρ
+      depósito 1 / longitud
+    5 AS
+      deseo η = 1 / d con exponente β
+      lista tabú
+      depósito global, uniforme o local
+    6 Parámetros
+      α, β, ρ
+      N hormigas, σ0, Q

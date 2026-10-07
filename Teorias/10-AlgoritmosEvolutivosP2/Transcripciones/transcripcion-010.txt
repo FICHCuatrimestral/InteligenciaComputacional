@@ -1,0 +1,134 @@
+vamos a ver ahora una variante del algoritmo de en cambio de partículas que básicamente lo que tiene en cuenta es el
+0:13
+13 segundos
+lugar de la información social global una información social acotada a un entorno así que básicamente volvemos a
+0:22
+22 segundos
+tener la mejor posición personal eso queda igual no cambia tenemos nuevamente esa función de error que es la
+0:31
+31 segundos
+la referencia que tenemos externa y que depende del problema que queremos resolver y ahora vamos a definir lo que
+0:38
+38 segundos
+necesitamos para el algoritmo del mejor local la topología ahora va a ser una topología en anillo es decir cada
+0:46
+46 segundos
+individuo va a estar relacionado con el que tiene al lado no con todos como teníamos antes sino solamente en que
+0:54
+54 segundos
+tiene al lado y esa definición y esa selección de quién tiene al lado se va a basar simplemente en los índices
+1:02
+1 minuto y 2 segundos
+de las partículas o sea nosotros las partículas le vamos a poner la partícula número uno lado blatter y la cuatro las cinco bueno la cuatro está al lado de
+1:09
+1 minuto y 9 segundos
+las cinco y de la tres ese es el sentido no es un sentido geométrico el de vecindad así que acá tenemos este
+1:19
+1 minuto y 19 segundos
+conjunto de vecindades acá tenemos las mejores posiciones de la partícula en camino cn acá estaría
+1:28
+1 minuto y 28 segundos
+la partícula k tenía la partícula k menos 1 y acá la
+1:33
+1 minuto y 33 segundos
+partícula más 1 así que esta vecindad es fíjense que es una vecindad hacia un
+1:41
+1 minuto y 41 segundos
+lado y hacia el otro define quiénes son las vecinas quién son las que están cerca de la partícula acá por eso es
+1:50
+1 minuto y 50 segundos
+la que tiene es un índice cac en base a eso lo que nosotros vamos a hacer es definir
+1:59
+1 minuto y 59 segundos
+cuál es la mejor posición y lo que antes llamábamos global ahora
+2:06
+2 minutos y 6 segundos
+va a ser del entorno local en función de buscar cuál es el mínimo de la función
+2:15
+2 minutos y 15 segundos
+esa función de error que tenemos que minimizar para todos los elementos que están en el conjunto
+2:22
+2 minutos y 22 segundos
+de vecinos de la partícula acá o sea para todas las mejores posiciones individuales que alcanzaron las
+2:31
+2 minutos y 31 segundos
+partículas que son vecinas de acá recorremos y buscamos el mínimo
+2:37
+2 minutos y 37 segundos
+y esa la definimos como la mejor local y la mejor posición local o sea que ahora
+2:46
+2 minutos y 46 segundos
+esa información social que antes era única y que era la mejor de todas y que todas las partículas tenían como
+2:54
+2 minutos y 54 segundos
+referencia social la mejor de todo todo el enjambre o de toda toda la bandada
+3:00
+3 minutos
+ahora va a ser diferente para cada partícula y cada partícula va a tener una vecindad unas vecinas y a partir de
+3:09
+3 minutos y 9 segundos
+esas vecinas solamente va a tomar la información social es la mejor que en este caso va a ser la mejor local
+3:18
+3 minutos y 18 segundos
+entonces la inicialización es básicamente la misma y volvemos a hacer esta distribución al azar y nuevamente
+3:27
+3 minutos y 27 segundos
+hacemos esta primera asignación nos fijamos que para cada una de las partículas este ciclo es el mismo que
+3:35
+3 minutos y 35 segundos
+teníamos antes y acá está el form para cada una de las partículas entonces nos fijamos si
+3:42
+3 minutos y 42 segundos
+en sí misma obtuvo en esta interacción algo mejor que lo que había obtenido antes en ese caso actualizamos la
+3:50
+3 minutos y 50 segundos
+información personal o cognitiva y luego hacemos la actualización para el
+3:59
+3 minutos y 59 segundos
+mejor global a continuación tenemos que actualizar la velocidad como hacíamos antes vamos a
+4:08
+4 minutos y 8 segundos
+tener una aceleración y esta componente aleatoria que me permitía explorar nuevas regiones del espacio acá tenemos
+4:15
+4 minutos y 15 segundos
+la mejor personal esto es igual que antes no hay ninguna novedad y tenemos la otra componente que
+4:24
+4 minutos y 24 segundos
+también tiene una aceleración y una componente aleatoria y acá tenemos la nueva
+4:31
+4 minutos y 31 segundos
+si bien la notación es muy similar a lo que teníamos antes fíjense que acá aparece acá
+4:39
+4 minutos y 39 segundos
+parece acá porque ahora la información social depende de cada partícula no es la misma para todas las partículas del
+4:48
+4 minutos y 48 segundos
+enjambre sino que depende de cada una de las partículas en qué sentido depende bueno en el que
+4:55
+4 minutos y 55 segundos
+acabamos de mencionar hace unos segundos que ahora para
+5:03
+5 minutos y 3 segundos
+obtener esa mejor social vamos a tomar la información local de un entorno
+5:10
+5 minutos y 10 segundos
+acotado de un entorno de una vecindad y esa vecindad se acuerdan está definido por
+5:19
+5 minutos y 19 segundos
+es sub cat así que vamos a buscar dentro de los vecinos de la partícula k
+5:25
+5 minutos y 25 segundos
+el menor error o la mejor función de actitud así que nos quedamos con ese y
+5:32
+5 minutos y 32 segundos
+ese va a ser en que vamos a utilizar acá para actualizar la velocidad con la información social finalmente se
+5:41
+5 minutos y 41 segundos
+actualiza la posición de la partícula como hacíamos antes y nuevamente con un criterio de finalización esto no tiene
+5:49
+5 minutos y 49 segundos
+ninguna variante con respecto al algoritmo anterior cuando se cumpla ese criterio de finalización
+5:57
+5 minutos y 57 segundos
+vamos a devolver la mejor partículas encontradas
+Sincronizar con el tiempo del vídeo

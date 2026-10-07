@@ -1,0 +1,9 @@
+%% titulo: Las dos reproducciones. En las dos se eligen los mejores sin azar; lo que cambia es entre quiénes.
+%% ancho: 0.85
+flowchart LR
+    P["μ padres"] --> H["λ hijos<br/>(padres al azar, mutación,<br/>cruza optativa)"]
+    H --> A{"¿entre quiénes<br/>se eligen los μ mejores?"}
+    A -- "(μ + λ)" --> U["padres ∪ hijos<br/>se eliminan los peores"]
+    A -- "(μ , λ)" --> S["sólo los hijos<br/>(hace falta λ > μ)"]
+    U --> N["μ padres de la<br/>generación siguiente"]
+    S --> N

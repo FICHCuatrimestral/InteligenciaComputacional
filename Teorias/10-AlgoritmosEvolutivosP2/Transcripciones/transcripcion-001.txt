@@ -1,0 +1,316 @@
+continuamos con computación evolutiva y ahora vamos a ver algunas variantes al esquema general que vimos en las partes
+0:12
+12 segundos
+anteriores recordarán que básicamente vimos cromosomas binarios lo que eran los algoritmos genéticos y si bien
+0:21
+21 segundos
+hicimos una introducción general a los mecanismos de la computación evolutiva nos centramos sobre todos los ejemplos
+0:28
+28 segundos
+en los algoritmos genéticos ahora vamos a ver algunas variantes algunas alternativas que son muy utilizadas
+0:35
+35 segundos
+también siempre dentro del área de computación evolutiva la primera de las variantes consiste en
+0:42
+42 segundos
+pensar que hay distintos parámetros que controlan la evolución que podrían variar que no necesariamente
+0:51
+51 segundos
+tiene que haber por ejemplo una probabilidad de mutación fija a lo largo de toda la evolución o incluso ni
+0:58
+58 segundos
+siquiera tiene que ser exactamente la misma para distintos individuos o quizás tampoco necesariamente tiene que ser la misma probabilidad mutación para
+1:06
+1 minuto y 6 segundos
+distintas partes dentro de un cromosoma para distintos genes algunos cromosomas a lo mejor o partes del cromosoma a lo mejor
+1:14
+1 minuto y 14 segundos
+necesita mutar con más probabilidad otros con menos entonces esta idea de que la
+1:22
+1 minuto y 22 segundos
+probabilidad mutación y otros parámetros del algoritmo pueden ir cambiando durante la evolución dio el surgimiento
+1:31
+1 minuto y 31 segundos
+de los algoritmos conocidos como estrategias de evolución así que básicamente con todos estos parámetros
+1:41
+1 minuto y 41 segundos
+que son los más importantes en las probabilidades de cruzar el tamaño de la población la brecha generacional el
+1:48
+1 minuto y 48 segundos
+elitismo podríamos ver cómo variar los e incluso también podríamos ver cómo hacer
+1:55
+1 minuto y 55 segundos
+para que se modifiquen automáticamente o sea que podríamos pensar en que los parámetros de la evolución también
+2:02
+2 minutos y 2 segundos
+evolucionan también cambien y hayan mejores parámetros y peores parámetros entonces en ese esquema
+2:11
+2 minutos y 11 segundos
+vamos a hablar de las estrategias de evolución y la primera diferencia con lo que vimos antes es que las
+2:18
+2 minutos y 18 segundos
+representaciones son fenotípicas que significa que la representación sea 0 típica que es directamente poner en el
+2:26
+2 minutos y 26 segundos
+cromosoma los valores de las variables los parámetros lo que sea que queremos evolucionar no convertirlos a binarios y
+2:34
+2 minutos y 34 segundos
+hacer todo un proceso de representación específico y binario sino directamente poner el valor si tenemos que evolucionar los pesos de una red
+2:42
+2 minutos y 42 segundos
+neuronal bueno el cromosoma tendrá un montón de pesos y no tenemos que combinar los binarios
+2:49
+2 minutos y 49 segundos
+ni nada sino que serán números reales directamente dentro de esta representación final típica en el caso particular de las
+2:58
+2 minutos y 58 segundos
+estrategias de evolución vamos a tener las denominadas variables objetivos y las variables de control las variables
+3:05
+3 minutos y 5 segundos
+objetivos son las que siempre estuvimos evolucionando en los pesos de la red neuronal el orden de las ciudades de la
+3:13
+3 minutos y 13 segundos
+gente viajero las coordenadas de las figuras las instrucciones del robot y las variables de control los variables
+3:20
+3 minutos y 20 segundos
+estratégicas son las variables que controlan la evolución es un ejemplo típico con el que surgió todo esto de
+3:28
+3 minutos y 28 segundos
+las estrategias evolución es la probabilidad de mutación en el caso del finde vamos a mantener el mismo esquema que teníamos con los
+3:36
+3 minutos y 36 segundos
+algoritmos genéticos que recordarán eran muy dependientes del problema que queremos resolver así que ahí no tenemos
+3:42
+3 minutos y 42 segundos
+ningún cambio importante en cambio en cuanto a los operadores tenemos los operadores de mutación y
+3:49
+3 minutos y 49 segundos
+cruza que son los básicos en el caso de las estrategias de evolución se utiliza por sobre todo o al menos así surgió el
+3:58
+3 minutos y 58 segundos
+primer algoritmo con solamente el operador de mutación luego se incorporó también una opción con el operador de cruzar
+4:06
+4 minutos y 6 segundos
+y según está se nota un padre he elegido al azar y directamente si ese padre luego de la mutación mejoró o sea su fin
+4:15
+4 minutos y 15 segundos
+subió se lo deja para la próxima generación y si no mejoro directamente se elimina
+4:23
+4 minutos y 23 segundos
+así que es un operador de mutación bastante particular una mezcla de selección con mutación
+4:30
+4 minutos y 30 segundos
+en este caso estamos haciendo una especie de mezcla de selección combinada con el operador de mutación es
+4:37
+4 minutos y 37 segundos
+una selección aleatoria es elija un padre cualquier al azar se lo muta vuelvo a repetirlo
+4:45
+4 minutos y 45 segundos
+y si mejora queda y si no mejora se elimina y luego tenemos la reproducción en el
+4:53
+4 minutos y 53 segundos
+caso de la reproducción hay dos esquemas los dos esquemas más conocidos uno se denominan muy más blanda este es
+5:02
+5 minutos y 2 segundos
+estrategia de evolución en el caso del esquema del mundo se
+5:08
+5 minutos y 8 segundos
+generan muy padres muy más landa tiene muy padres y landa mayor que un hijos
+5:16
+5 minutos y 16 segundos
+entonces en base al conjunto de la unión entre esos padres y los hijos
+5:23
+5 minutos y 23 segundos
+se eligen directamente los mejores o dicho de otra forma se eliminan los peores y esos pasan a ser la nueva
+5:31
+5 minutos y 31 segundos
+población o sea que tenemos los unión con el conjunto de lambda que son los hijos los ordenamos de menor a mayor
+5:40
+5 minutos y 40 segundos
+y nos quedamos con los de mayor fitness para mantener el tamaño de la población constante en el otro caso se llama muy blanda en
+5:49
+5 minutos y 49 segundos
+el otro de los mecanismos conocidos y en este caso se generan muchos más hijos
+5:56
+5 minutos y 56 segundos
+que padres acá se suele utilizar también el operador de cruzar entonces se generan una cantidad lambda mayor
+6:05
+6 minutos y 5 segundos
+a la cantidad de padres y luego nuevamente si se elige un subconjunto de lambda o sea de todos los hijos que se
+6:13
+6 minutos y 13 segundos
+generaron se eligen supongamos que la población de 100 bueno los 100 mejores ahí no hay
+6:22
+6 minutos y 22 segundos
+competencia no es ruleta no hay nada de eso se eligen directamente los sin mejores fíjense que el componente aleatorio estuvo antes estuvo cuando
+6:30
+6 minutos y 30 segundos
+aplicamos la selección y en esa selección mezclada con cruza no es que eliminamos el componente aleatorio
+6:38
+6 minutos y 38 segundos
+estamos haciendo una reproducción que es mas determinísticos pero la componente aleatoria sigue existiendo en este algoritmo
+6:48
+6 minutos y 48 segundos
+vamos a hacer una distinción entre esto de la representación fenotípica o genotípica y básicamente la distinción
+6:57
+6 minutos y 57 segundos
+que tenemos que hacer es entre algoritmo genético suele utilizarse ese término cuando la representación de los
+7:05
+7 minutos y 5 segundos
+individuos es binaria y algoritmo evolutivo o como decíamos antes estrategia de evolución estarían
+7:13
+7 minutos y 13 segundos
+dentro de el término evolutivo cuando se habla de evolutivo se habla en un sentido más general donde mayormente
+7:21
+7 minutos y 21 segundos
+están los fenotipos directamente en los cromosomas o sea las representaciones son fenotipos vamos a ver algunas
+7:29
+7 minutos y 29 segundos
+ventajas y desventajas por ejemplo en el caso del algoritmo genético en el
+7:35
+7 minutos y 35 segundos
+caso de los binarios tenemos genes que tienen dos alelos o sea pueden ser 0 o 1 0 o 1
+7:46
+7 minutos y 46 segundos
+no no puede haber otra alternativa en el caso para compararlo en el caso de los algoritmos fenotípicos cada gen puede
+7:54
+7 minutos y 54 segundos
+tener a lo mejor sin número real infinitos posibles valores esto tiene la desventaja de tener muy
+8:04
+8 minutos y 4 segundos
+pocas variantes pero tiene la gran ventaja de que el teorema de esquemas con los operadores clásicos asegura la
+8:10
+8 minutos y 10 segundos
+convergencia y es más fácil de demostrar una desventaja importante es el fenómeno
+8:17
+8 minutos y 17 segundos
+conocido como éxtasis la pista sis es cuando hay un gen un único gen que por
+8:24
+8 minutos y 24 segundos
+ser incorrecto inválida completamente al individuo nosotros podemos imaginarnos cómo pasa
+8:30
+8 minutos y 30 segundos
+esto si pensamos en un gen que tenga buenos ceros y uno como los algoritmos
+8:37
+8 minutos y 37 segundos
+genéticos y supongamos que estamos codificando con 8 bits un número evidentemente
+8:45
+8 minutos y 45 segundos
+si cambiamos por una mutación el bit menos significativo el valor en
+8:53
+8 minutos y 53 segundos
+en el mundo real en el fenotipo va a cambiar muy poco y ese mismo cambio si por azar tocó en el bit más
+9:00
+9 minutos
+significativo puede cambiar completamente y de hecho puede pasar de
+9:07
+9 minutos y 7 segundos
+ser 128 a ser 256 como tener cambios del doble no es cierto entonces podría ser
+9:15
+9 minutos y 15 segundos
+que incluso algunos valores algunos bits que yo cambié me generen un valor
+9:23
+9 minutos y 23 segundos
+completamente inválido o sea que hagan que esa variable que yo estaba codificando en binario tome un valor que
+9:33
+9 minutos y 33 segundos
+no es válido en el dominio de aplicación por ejemplo cuando yo trataba de poner figuras geométricas dentro de un área si
+9:40
+9 minutos y 40 segundos
+yo no codifica con suficiente cuidado la representación de los individuos podría cambiar un bit y hacer que la
+9:48
+9 minutos y 48 segundos
+figura quede completamente fuera del área o sea que ese gen incorrecto puede invalidar todo el cromosoma y por lo
+9:56
+9 minutos y 56 segundos
+tanto todo el individuo un individuo que estaba en una zona muy buena y prometedora por una simple mutación en un bit inapropiado puede quedar
+10:04
+10 minutos y 4 segundos
+completamente afuera la otra característica es la representación lejana al dominio del problema qué
+10:14
+10 minutos y 14 segundos
+significa esto que yo tengo que estar transformándose tengo que pensar que es la realidad del dominio el problema y
+10:21
+10 minutos y 21 segundos
+tengo que pensar por otro lado como lo codifica que significa ese número binario y esa transformación de un lado del otro evidentemente lo conceptual
+10:30
+10 minutos y 30 segundos
+complica un poco y de hecho hay que hacer un esfuerzo importante para encontrar una buena representación y otro problema relacionado con las
+10:39
+10 minutos y 39 segundos
+pistas y también es que si uno no diseña muy bien la representación de los individuos la población pueda llegar a
+10:48
+10 minutos y 48 segundos
+tener grandes cantidades de individuos inválidos puede converger a una población en donde de 100 a lo mejor 90 se han inválidos y no tengan
+10:56
+10 minutos y 56 segundos
+posibilidades de sobrevivir directamente y la evolución se reduzca la evolución de los 10 que más o menos son válidos
+11:03
+11 minutos y 3 segundos
+por otro lado en el caso de los algoritmos evolutivos donde podemos hacer una representación real o
+11:11
+11 minutos y 11 segundos
+fenotípica tenemos las contrapartes de de ventajas y desventajas tenemos muchos alelos o sea que un
+11:21
+11 minutos y 21 segundos
+ejemplo de tomar muchísima cantidad de valores diferentes tenemos la desventaja de que no hay un
+11:27
+11 minutos y 27 segundos
+teorema que me asegura la convergencia o bien hay muchos teoremas dependiendo de los operadores dependiendo del tipo
+11:35
+11 minutos y 35 segundos
+de representación que hace una convergencia en un caso en nuestro caso pero para el caso general no tenemos asegurada la convergencia y tenemos
+11:44
+11 minutos y 44 segundos
+muchas veces la necesidad de redefinir los operadores clásicos cuando tenemos genes que son números
+11:52
+11 minutos y 52 segundos
+reales y que representan cosas directamente de la realidad hay que definir de manera muy particular
+11:59
+11 minutos y 59 segundos
+el operador de cruza el portador mutación porque ya no podemos cambiar un cero por uno por uno cómo hacemos para hacer una mutación si se la tenemos que
+12:08
+12 minutos y 8 segundos
+hacer un número real por ejemplo muchas veces lo que se utiliza es el caso de la estrategia de evolución que es lo que
+12:14
+12 minutos y 14 segundos
+vimos antes tirar un número al azar con una determinada media y varianza de
+12:21
+12 minutos y 21 segundos
+acuerdo una distribución normal y sumarle a ese gen ese número al azar que acabamos de generar y de esa manera se
+12:29
+12 minutos y 29 segundos
+hace una mutación pero bueno hay muchas otras alternativas para apuntar y hay que empezar a buscar mutaciones que nada
+12:36
+12 minutos y 36 segundos
+tienen que ver con la mutación biológica hay otras alternativas que también
+12:43
+12 minutos y 43 segundos
+surgen además de la codificación en sí del gen si es binario o si en su número
+12:50
+12 minutos y 50 segundos
+real también podríamos empezar a pensar que un cromosoma no tiene por qué ser lineal por ejemplo un cromosoma podría ser un árbol
+12:58
+12 minutos y 58 segundos
+podría tener estructura de árbol de hecho hay algunos problemas donde conviene claramente armar una estructura de árbol
+13:06
+13 minutos y 6 segundos
+otra cosa que no hemos especificado es que el cromosoma pueda cambiar de longitud
+13:14
+13 minutos y 14 segundos
+si en una cruza cortamos al padre a los dos padres exactamente el mismo lugar bueno hacemos la cruz y queda todo igual pero si a un padre lo cortamos en
+13:22
+13 minutos y 22 segundos
+distinto lugar del otro al hacer la cruz a un hijo va a quedar más chico y el otro más grande con más genes y dependiendo el problema eso puede
+13:30
+13 minutos y 30 segundos
+tener significado o no hay en casos en que hay que obligatoriamente mantener la longitud constante y en otros casos
+13:37
+13 minutos y 37 segundos
+puede ser interesante mantener una longitud variable por ejemplo si estamos haciendo el programa del robot el programa el robot no tiene por qué tener
+13:45
+13 minutos y 45 segundos
+exactamente por ejemplo 50 instrucciones podría haber un cromosoma que tiene 200 otra que tiene 25 otra que tiene 400
+13:54
+13 minutos y 54 segundos
+entonces naturalmente ahí sería un cromosoma del tamaño variable

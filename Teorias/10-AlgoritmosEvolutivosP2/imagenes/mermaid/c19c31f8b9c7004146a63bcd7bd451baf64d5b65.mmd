@@ -1,0 +1,11 @@
+%% titulo: gEP. Primero se actualizan las memorias (y, ŷ) con las posiciones actuales; después se mueven todas.
+%% ancho: 0.75
+%%{init: {"flowchart": {"wrappingWidth": 420}}}%%
+flowchart TD
+    I["posiciones al azar: xki ~ U(ximin, ximax)"] --> E["evaluar f(xk) para todas"]
+    E --> Y["si f(xk) < f(yk): yk = xk<br/>si f(yk) < f(ŷ): ŷ = yk"]
+    Y --> V["nueva velocidad, dimensión por dimensión:<br/>v ← v + c1 r1 (y − x) + c2 r2 (ŷ − x)"]
+    V --> X["mover: x ← x + v"]
+    X --> F{"¿error suficiente o<br/>sin mejoras hace rato?"}
+    F -- no --> E
+    F -- sí --> R["devolver ŷ"]

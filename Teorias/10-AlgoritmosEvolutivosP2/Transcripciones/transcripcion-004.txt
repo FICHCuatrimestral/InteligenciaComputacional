@@ -1,0 +1,179 @@
+vamos a dar comienzo ahora al segundo bloque dentro de lo que es inteligencia colectiva se acuerdan que para hacer un
+0:12
+12 segundos
+repaso general habíamos visto un primer gran bloque de redes neuronales en la asignatura donde vimos distintas
+0:21
+21 segundos
+arquitecturas distintos algoritmo entrenamientos un segundo bloque de lógica borrosa y el tercer bloques de inteligencia colectiva básicamente está
+0:30
+30 segundos
+dividido en dos bloques o partes el primero es el de computación evolutiva que ya vimos los algoritmos genéticos
+0:38
+38 segundos
+estrategia de evolución algo de programación genética y la inteligencia de enjambres la
+0:47
+47 segundos
+inteligencia de hambres es la última disciplina que se incorpora a la inteligencia computacional sobre
+0:54
+54 segundos
+mediados fines de la década del 90 pero por sobre todo ya en los 2000 y dentro de inteligencia de enjambres
+1:02
+1 minuto y 2 segundos
+hay varios algoritmos que en particular vamos a ver dos que son los principales o los más utilizados
+1:10
+1 minuto y 10 segundos
+uno de ellos es el de colonia de hormigas y el otro es el de enjambre de partículas vamos a comenzar ahora
+1:18
+1 minuto y 18 segundos
+entonces con colonia de hormigas la inspiración biológica como siempre
+1:26
+1 minuto y 26 segundos
+busca encontrar en la naturaleza métodos requiere algoritmos de solución de
+1:33
+1 minuto y 33 segundos
+problemas que evidentemente son exitosos en la naturaleza copiar los convertirlos
+1:39
+1 minuto y 39 segundos
+en un algoritmo y utilizarlos desde la informática desde la computación para resolver cualquier tipo de problema o
+1:48
+1 minuto y 48 segundos
+sea que surgen en una inspiración biológica y hasta cierto punto dejan de ser un modelo biológico para empezar a
+1:56
+1 minuto y 56 segundos
+hacer una herramienta de solución de problemas algunos elementos y alguna información
+2:03
+2 minutos y 3 segundos
+de motivación hay 10 a las 16 hormigas en la tierra fíjense que solo hay 6 por 10 a las 9
+2:13
+2 minutos y 13 segundos
+humanos varios órdenes de magnitud más se ve que es una especie que claramente es muy superior a la especie humana en
+2:22
+2 minutos y 22 segundos
+cuanto a capacidad para sobrevivir y mantener incrementar la cantidad de individuos al menos en eso por lo menos
+2:31
+2 minutos y 31 segundos
+podemos también dar como dato curioso es que el peso total de la cantidad de hormigas sobre la tierra es equivalente
+2:39
+2 minutos y 39 segundos
+al peso en humanos lo cual también nos hace dudar de tanta supremacía de nuestra parte
+2:47
+2 minutos y 47 segundos
+y así como si fuera que estuviéramos en una de las ciudades más pobladas de la
+2:54
+2 minutos y 54 segundos
+tierra por colonia puede llegar a ver hasta 30 millones de hormigas o sea que
+3:00
+3 minutos
+son realmente ciudades muy pobladas y tiene una organización muy compleja
+3:07
+3 minutos y 7 segundos
+que también nos hace dudar vistos de lejos hasta qué punto nosotros no nos terminamos comportando de manera similar
+3:16
+3 minutos y 16 segundos
+esta motivación es muy general nos llevan a preguntarnos bueno como hacen las hormigas para sobrevivir también y cuáles son las estrategias que utilizan
+3:25
+3 minutos y 25 segundos
+hay una cuestión clave que es la forma en que se comunican a través de
+3:32
+3 minutos y 32 segundos
+las feromonas las hormigas buscan pueden encontrar cuál es el camino más corto o
+3:39
+3 minutos y 39 segundos
+el camino más corto no solo en distancia sino en camino óptimo para llegar algo donde está el alimento y poder recolectar lo para traerlo a los mineros
+3:48
+3 minutos y 48 segundos
+evitando obstáculos evitando agua o lo que sea y evidentemente lo hacen con bastante
+3:56
+3 minutos y 56 segundos
+eficiencia obvio se toman su tiempo pero lo hacen muy bien vamos a ver cómo hacen las hormigas en
+4:04
+4 minutos y 4 segundos
+principio como lo hacen biológicamente lo primero que se da es un comportamiento que nosotros podríamos
+4:11
+4 minutos y 11 segundos
+llamar aleatorio que no tiene un rumbo definido es como un tanteo van para todos lados sin una dirección clara y
+4:20
+4 minutos y 20 segundos
+cada hormiga empieza a hacer una especie de rastreo sin insisto una dirección o un camino definido
+4:29
+4 minutos y 29 segundos
+luego alguna o algunas encuentran la fuerte de comida y ahí se empiezan a
+4:36
+4 minutos y 36 segundos
+organizar cuando hay algunas que encuentre una fuente de comida y vuelve con esa información
+4:44
+4 minutos y 44 segundos
+empiezan a seguir todas de a poco un camino común que cada vez se va reforzando más cada vez se va haciendo
+4:51
+4 minutos y 51 segundos
+hasta incluso un hueco en el medio del pasto todas pasando por el mismo lugar y
+4:58
+4 minutos y 58 segundos
+llegando hasta ese mismo camino o sea que la clave es cuando encuentran la comida empieza a circular algún tipo de información entre ellas que hace que
+5:07
+5 minutos y 7 segundos
+todas se alineen por decirlo así que todas vayan por el mismo camino y empiecen a ser eficientes esa recolección
+5:15
+5 minutos y 15 segundos
+vamos a ver en esta estrategia en dos partes fundamentales uno es el mecanismo
+5:23
+5 minutos y 23 segundos
+de reclutamiento o sea de ir sumando a otras hormigas al mismo camino acá es donde actúan fundamentalmente las
+5:32
+5 minutos y 32 segundos
+feromonas las hormigas empiezan a liberar más feromonas cuando encontraron con éxito
+5:41
+5 minutos y 41 segundos
+esa fuente de alimentación y esa liberación de feromonas va quedando en la tierra en el camino
+5:50
+5 minutos y 50 segundos
+y puede ser percibida por otras hormigas se puede hay distintas especies de
+5:57
+5 minutos y 57 segundos
+hormigas hay distintos tipos no es que sea la única forma en que las hormigas hacen esto pero se puede hacer una
+6:05
+6 minutos y 5 segundos
+simplificación diciendo que liberan una cantidad de feromonas que es proporcional a la comida que encontraron
+6:14
+6 minutos y 14 segundos
+lo que pasa es que las otras como decíamos encuentran esas feromonas que tiene la capacidad de percibir las
+6:22
+6 minutos y 22 segundos
+y hacen que el camino en donde hay feromonas sea preferencial en su elección hacia dónde ir si bien no es
+6:31
+6 minutos y 31 segundos
+una cuestión completamente determinísticos ante un camino que tiene un poquito más de fe no mona que otra probabilísticamente
+6:39
+6 minutos y 39 segundos
+eligen más en que tiene más feromonas ni hablar en relación a uno que no tiene nada entonces con esos pasos básicos el
+6:49
+6 minutos y 49 segundos
+camino de las feromonas las lleva a su vez a encontrar el alimento que se había encontrado alguna anterior
+6:56
+6 minutos y 56 segundos
+vuelven dejando nuevamente rastros de feromonas en ese camino por lo cual se refuerza la cantidad de feromonas y hace
+7:03
+7 minutos y 3 segundos
+que otras con más probabilidad siga en ese camino y de esa manera se va construyendo un camino y se va reforzando ese camino
+7:12
+7 minutos y 12 segundos
+hasta que todas se alinean perfectamente ese camino hay que notar dos aspectos en esto uno es
+7:21
+7 minutos y 21 segundos
+que la comunicación es indirecta no hay una hormiga que tiene un código que mueve las patitas o las antenitas y
+7:31
+7 minutos y 31 segundos
+le indica la comida está para allá o la comida de verdad no hay una comunicación directa entre los agentes sino que hay
+7:37
+7 minutos y 37 segundos
+algo indirecto y ésto indirecto se da en el entorno físico en el entorno
+7:43
+7 minutos y 43 segundos
+físico tenemos que en la tierra dejan la feromona y otras la perciben desde la
+7:51
+7 minutos y 51 segundos
+misma tierra y esto es lo que habíamos definido en la introducción a toda esta unidad como este energía
+7:58
+7 minutos y 58 segundos
+es el uso del medio físico como medio de comunicación
+Sincronizar con el tiempo del vídeo

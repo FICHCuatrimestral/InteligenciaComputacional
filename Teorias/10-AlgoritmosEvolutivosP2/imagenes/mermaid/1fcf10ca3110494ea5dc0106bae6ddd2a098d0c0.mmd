@@ -1,0 +1,15 @@
+%% titulo: sACO. El bucle de arriba construye un camino por hormiga; recién cuando todas terminaron se actualizan las feromonas y avanza t.
+%% ancho: 0.42
+%%{init: {"flowchart": {"wrappingWidth": 420}}}%%
+flowchart TD
+    I["inicializar σij ~ U(0, σ0) chicos · N hormigas en el origen"] --> K["hormiga k: pk = ∅, parada en el origen"]
+    K --> P["elegir el próximo nodo j con pij (ruleta) · agregar (i, j) a pk"]
+    P --> D{"¿llegó al<br/>destino?"}
+    D -- no --> P
+    D -- sí --> C["eliminar ciclos · calcular f(pk)"]
+    C --> M{"¿quedan<br/>hormigas?"}
+    M -- "sí: la siguiente" --> K
+    M -- no --> E["evaporar en todas: σij ← (1 − ρ) σij<br/>depositar en las usadas: + 1/f(pk) por hormiga"]
+    E --> T{"¿todas siguen<br/>el mismo camino?"}
+    T -- "no: t ← t + 1" --> K
+    T -- sí --> R["devolver el camino más corto"]
