@@ -1,0 +1,10 @@
+%% titulo: Una iteración del enjambre. El mejor global se recalcula antes de mover a todas las partículas.
+%% ancho: 0.5
+%%{init: {"flowchart": {"wrappingWidth": 420}}}%%
+flowchart TD
+    A["Posiciones al azar · velocidades en 0"] --> B["Mejor global = el mejor de los mejores propios"]
+    B --> C["Cada partícula: nueva velocidad · mover x ← x + v sin salir de los límites"]
+    C --> E["Si f mejoró, actualizar su mejor propio"]
+    E --> F{"¿Máximo de iteraciones?"}
+    F -- no --> B
+    F -- sí --> Z(["Fin: el mejor global"])

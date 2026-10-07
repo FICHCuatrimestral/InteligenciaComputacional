@@ -1,0 +1,9 @@
+%% titulo: El flujo del ejercicio 2. Todo usa sólo train, salvo el último paso: el test se usa una sola vez, al final.
+%% ancho: 0.5
+%%{init: {"flowchart": {"wrappingWidth": 420}}}%%
+flowchart TD
+    N["Normalizar cada gen<br/>con media y desvío de train"] --> P["Prefiltro señal/ruido<br/>7129 → 50 genes candidatos"]
+    P --> AG["Algoritmo genético<br/>individuo = máscara de 50 bits"]
+    AG --> C["Aptitud: 1 vecino más cercano<br/>validación dejando uno afuera · UAR − β · genes"]
+    C --> AG
+    AG --> T["Genes elegidos → UAR en test<br/>una sola vez"]

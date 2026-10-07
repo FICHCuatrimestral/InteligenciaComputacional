@@ -1,0 +1,10 @@
+%% titulo: Una iteración del sistema de hormigas. Primero todas arman su recorrido; recién después se actualizan las feromonas.
+%% ancho: 0.5
+%%{init: {"flowchart": {"wrappingWidth": 420}}}%%
+flowchart TD
+    A["Feromonas iniciales chicas y al azar"] --> B["Cada hormiga arranca en una ciudad al azar"]
+    B --> C["Elige ciudad por ciudad con ruleta, sólo entre las no visitadas · vuelve a la primera · largo"]
+    C --> F["Evaporar en todos los tramos · depositar en los tramos usados"]
+    F --> H{"¿Todas iguales o máximo de iteraciones?"}
+    H -- no --> B
+    H -- sí --> Z(["Fin: el recorrido más corto encontrado"])

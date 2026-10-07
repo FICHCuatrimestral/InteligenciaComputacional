@@ -1,0 +1,12 @@
+%% titulo: Una generación. El mejor se copia sin cambios (elitismo) y el resto de la población se llena con hijos.
+%% ancho: 0.5
+%%{init: {"flowchart": {"wrappingWidth": 420}}}%%
+flowchart TD
+    A["Población inicial con bits al azar"] --> B["Evaluar: decodificar y calcular la aptitud de cada uno"]
+    B --> C{"¿Máximo de generaciones?"}
+    C -- sí --> Z(["Fin: el mejor de la última población"])
+    C -- no --> E["Elitismo: el mejor pasa directo a la nueva población"]
+    E --> D["Torneo de 3 → padre y madre · cruce en un punto → 2 hijos · mutación 1/n_bits"]
+    D --> H{"¿Población completa?"}
+    H -- no --> D
+    H -- sí --> B
